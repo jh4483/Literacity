@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 1408394519802987685}
   - component: {fileID: 5408439324475936354}
   - component: {fileID: 7681033270522117564}
-  - component: {fileID: -3841308446411822038}
   - component: {fileID: 3161466983965552160}
+  - component: {fileID: 9195971401947603865}
   m_Layer: 5
   m_Name: BackBoard Prefab
   m_TagString: Untagged
@@ -39,8 +39,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 73.76318, y: 8.455658}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 73.76318, y: -57.6839}
+  m_SizeDelta: {x: 100, y: 232.2791}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1408394519802987685
 CanvasRenderer:
@@ -63,14 +63,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5849056, g: 0.4717871, b: 0.4717871, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 6d6ea67990429400bb03c6658d17b32c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -124,9 +124,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -3841308446411822038}
-        m_TargetAssemblyTypeName: BasketballInitializes, Assembly-CSharp
-        m_MethodName: CorrectLetterClicked
+      - m_Target: {fileID: 9195971401947603865}
+        m_TargetAssemblyTypeName: BackboardAnswers, Assembly-CSharp
+        m_MethodName: BackboardClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -136,18 +136,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &-3841308446411822038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2416813962251207827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92e10617ba9af46d7acda7679eddf82f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &3161466983965552160
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -174,6 +162,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 99.362, y: 99.900696}
   m_EdgeRadius: 0
+--- !u!114 &9195971401947603865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2416813962251207827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae1be6bbaad2c4b3e8b5285e2e256812, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7157812969259918387
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,7 +209,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2, y: 80.4}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1561499101742393939

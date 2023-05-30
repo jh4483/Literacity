@@ -6,11 +6,15 @@ using UnityEngine.UI;
 
 public class SpreadSheetAccess : MonoBehaviour
 {
-    private int currentRound = 1;
+    public static int currentRound = 1;
+    public static int guessedAnswer = 0;
     public GameObject canvas;
     public GameObject blankPrefab;
     public GameObject filledPrefab;
+    public GameObject backBoardPrefab;
     public List<GameObject> upperStrip = new List<GameObject>();
+    public List<GameObject> lowerStrip = new List<GameObject>();
+    public static List<string> correctAnswers = new List<string>();
 
     [System.Serializable]
     public class RoundData
@@ -26,8 +30,9 @@ public class SpreadSheetAccess : MonoBehaviour
         public string BackLetterTwo;
         public string BackLetterThree;
         public string BackLetterFour;
-        public string CorrectLetterOne;
-        public string CorrectLetterTwo;
+        public string ImageURL;
+        public string CorrectAnswerOne;
+        public string CorrectAnswerTwo;
     }
 
     private IEnumerator Start()
@@ -49,6 +54,7 @@ public class SpreadSheetAccess : MonoBehaviour
             List<RoundData> roundDataList = wrapper.items;
 
             List<string> lettersList = new List<string>();
+            List<string> optionsList = new List<string>();
 
             foreach (RoundData roundData in roundDataList)
             {
@@ -61,16 +67,24 @@ public class SpreadSheetAccess : MonoBehaviour
 
                     if(roundData.LetterFive == "None")
                     {
-                        
+
                     }
 
                     else
                     {
                         lettersList.Add(roundData.LetterFive);
                     }
+
+                    optionsList.Add(roundData.BackLetterOne);
+                    optionsList.Add(roundData.BackLetterTwo);
+                    optionsList.Add(roundData.BackLetterThree);
+                    optionsList.Add(roundData.BackLetterFour);
+                    correctAnswers.Add(roundData.CorrectAnswerOne);
+                    correctAnswers.Add(roundData.CorrectAnswerTwo);
                 }
             }
 
+            // Adding letters to the upper List - missing and available
             for(int i = 0; i < lettersList.Count; i++)
             {
                 GameObject obj;
@@ -88,17 +102,41 @@ public class SpreadSheetAccess : MonoBehaviour
                 }
             }
 
-                for (int j = 0; j < 1; j++)
-                {
-                    upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-312, 151);
-                }
+            for (int j = 0; j < 1; j++)
+            {
+                upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-312, 135);
+            }
 
-                float xOffset = 150f;
-                for (int j = 1; j < upperStrip.Count; j++)
-                {
-                    float xPosition = upperStrip[j - 1].GetComponent<RectTransform>().anchoredPosition.x + xOffset;
-                    upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(xPosition, 151);
-                }
+            float xOffset = 110f;
+            for (int j = 1; j < upperStrip.Count; j++)
+            {
+                float xPosition = upperStrip[j - 1].GetComponent<RectTransform>().anchoredPosition.x + xOffset;
+                upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(xPosition, 135);
+            }
+            
+            // Adding letters to the backboard 
+
+            for(int i = 0; i < optionsList.Count; i++)
+            {
+                GameObject obj;
+
+                obj = Instantiate(backBoardPrefab, canvas.transform);
+                lowerStrip.Add(obj);
+                obj.transform.GetChild(0).GetComponent<Text>().text = optionsList[i];
+                obj.name =  obj.transform.GetChild(0).GetComponent<Text>().text;
+            }
+
+            for (int j = 0; j < 1; j++)
+            {
+                lowerStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-312, -80);
+            }
+
+            for (int j = 1; j < upperStrip.Count; j++)
+            {
+                float xPosition = upperStrip[j - 1].GetComponent<RectTransform>().anchoredPosition.x + xOffset;
+                lowerStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(xPosition, -80);
+            }
+
         }
     }
 
@@ -108,3 +146,4 @@ public class SpreadSheetAccess : MonoBehaviour
         public List<RoundData> items;
     }
 }
+
