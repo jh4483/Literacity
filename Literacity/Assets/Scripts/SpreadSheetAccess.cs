@@ -11,11 +11,12 @@ public class SpreadSheetAccess : MonoBehaviour
     [SerializeField] GameObject filledPrefab;
     [SerializeField] GameObject backBoardPrefab;
     [SerializeField] RawImage wordImage;
-    [SerializeField] List<GameObject> upperStrip = new List<GameObject>();
-    [SerializeField] List<GameObject> lowerStrip = new List<GameObject>();
+    public static List<GameObject> upperStrip = new List<GameObject>();
+    public static List<GameObject> lowerStrip = new List<GameObject>();
+    public static List<string> correctAnswers = new List<string>();
+    public static List<GameObject> fillableAnswers = new List<GameObject>();
     public static int currentRound = 1;
     public static int guessedAnswer = 0;
-    public static List<string> correctAnswers = new List<string>();
 
     [System.Serializable]
     public class RoundData
@@ -36,7 +37,7 @@ public class SpreadSheetAccess : MonoBehaviour
         public string CorrectAnswerTwo;
     }
 
-    private IEnumerator Start()
+    public IEnumerator Start()
     {
         string url = "https://drive.google.com/uc?export=download&id=1SozTgMxGMTog6efPz7BnzYn2Zv4bo5Jt";
         using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
@@ -87,7 +88,7 @@ public class SpreadSheetAccess : MonoBehaviour
                 }
             }
 
-            // Adding letters to the upper List - missing and available
+            // Adding letters to the upper List - missing and available, adding the available to a new list
             for(int i = 0; i < lettersList.Count; i++)
             {
                 GameObject obj;
@@ -95,6 +96,7 @@ public class SpreadSheetAccess : MonoBehaviour
                 {
                     obj = Instantiate(blankPrefab, canvas.transform);
                     upperStrip.Add(obj);
+                    fillableAnswers.Add(obj);
                     obj.transform.GetChild(0).GetComponent<Text>().text = lettersList[i];
                 }
                 else
@@ -110,15 +112,15 @@ public class SpreadSheetAccess : MonoBehaviour
                 upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-312, 135);
             }
 
-            float xOffset = 110f;
+            float upperOffset = 110f;
             for (int j = 1; j < upperStrip.Count; j++)
             {
-                float xPosition = upperStrip[j - 1].GetComponent<RectTransform>().anchoredPosition.x + xOffset;
+                float xPosition = upperStrip[j - 1].GetComponent<RectTransform>().anchoredPosition.x + upperOffset;
                 upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(xPosition, 135);
             }
 
             // Retrieving URL to be assigned to the image 
-            
+
             string imageUrl = imageList[0];
             UnityWebRequest request = UnityWebRequestTexture.GetTexture(imageUrl);
             yield return request.SendWebRequest();
@@ -147,13 +149,17 @@ public class SpreadSheetAccess : MonoBehaviour
 
             for (int j = 0; j < 1; j++)
             {
-                lowerStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-312, -80);
+                lowerStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-312, -40);
+                lowerStrip[j].transform.localScale = new Vector2(0.7f, 0.7f);
+                
             }
 
-            for (int j = 1; j < upperStrip.Count; j++)
+            float lowerOffset = 200f;
+            for (int j = 1; j < lowerStrip.Count; j++)
             {
-                float xPosition = upperStrip[j - 1].GetComponent<RectTransform>().anchoredPosition.x + xOffset;
-                lowerStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(xPosition, -80);
+                float xPosition = lowerStrip[j - 1].GetComponent<RectTransform>().anchoredPosition.x + lowerOffset;
+                lowerStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(xPosition, -40);
+                lowerStrip[j].transform.localScale = new Vector2(0.7f, 0.7f);
             }
 
         }
@@ -163,6 +169,14 @@ public class SpreadSheetAccess : MonoBehaviour
     private class Wrapper
     {
         public List<RoundData> items;
+    }
+
+    public static void ClearAllLists()
+    {
+        upperStrip.Clear();
+        lowerStrip.Clear();
+        correctAnswers.Clear();
+        fillableAnswers.Clear();
     }
 }
 
