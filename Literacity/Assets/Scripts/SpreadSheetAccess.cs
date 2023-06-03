@@ -37,7 +37,14 @@ public class SpreadSheetAccess : MonoBehaviour
         public string CorrectAnswerTwo;
     }
 
-    public IEnumerator Start()
+    
+    void Start()
+    {
+        StartCoroutine(LoadRoundData());
+    }
+    
+    
+    public IEnumerator LoadRoundData()
     {
         string url = "https://drive.google.com/uc?export=download&id=1SozTgMxGMTog6efPz7BnzYn2Zv4bo5Jt";
         using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
@@ -173,10 +180,21 @@ public class SpreadSheetAccess : MonoBehaviour
 
     public static void ClearAllLists()
     {
+        foreach (GameObject obj in upperStrip)
+        {
+            Destroy(obj);
+        }
         upperStrip.Clear();
+
+        foreach (GameObject obj in lowerStrip)
+        {
+            Destroy(obj);
+        }
         lowerStrip.Clear();
+        
         correctAnswers.Clear();
         fillableAnswers.Clear();
+
     }
 }
 
