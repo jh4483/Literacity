@@ -109,14 +109,14 @@ public class SpreadSheetAccess : MonoBehaviour
 
             for (int j = 0; j < 1; j++)
             {
-                upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-312, 135);
+                upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-250, 128);
             }
 
             float upperOffset = 110f;
             for (int j = 1; j < upperStrip.Count; j++)
             {
                 float xPosition = upperStrip[j - 1].GetComponent<RectTransform>().anchoredPosition.x + upperOffset;
-                upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(xPosition, 135);
+                upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(xPosition, 128);
             }
 
             // Retrieving URL to be assigned to the image 
