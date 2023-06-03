@@ -17,8 +17,7 @@ public class BackboardAnswers : MonoBehaviour
         if(SpreadSheetAccess.correctAnswers[SpreadSheetAccess.guessedAnswer] == gameObject.name)
         {
             
-            // This is where we need to incorporate the drag functionality of the ball 
-            
+            // This is where we need to incorporate the drag functionality of the ball
             SpreadSheetAccess.fillableAnswers[SpreadSheetAccess.guessedAnswer].transform.GetChild(0).GetComponent<Text>().text = SpreadSheetAccess.correctAnswers[SpreadSheetAccess.guessedAnswer];
             SpreadSheetAccess.guessedAnswer++;
 

@@ -46,7 +46,7 @@ public class SpreadSheetAccess : MonoBehaviour
 
             if (webRequest.result == UnityWebRequest.Result.ConnectionError || webRequest.result == UnityWebRequest.Result.ProtocolError)
             {
-                Debug.LogError("Error loading JSON data");
+                Debug.LogError("Error loading JSON data: " + webRequest.error);
                 yield break;
             }
 
