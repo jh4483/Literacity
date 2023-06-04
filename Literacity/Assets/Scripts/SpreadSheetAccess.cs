@@ -11,6 +11,7 @@ public class SpreadSheetAccess : MonoBehaviour
     [SerializeField] GameObject filledPrefab;
     [SerializeField] GameObject backBoardPrefab;
     [SerializeField] RawImage wordImage;
+    [SerializeField] Image blueStrip;
     public static List<GameObject> upperStrip = new List<GameObject>();
     public static List<GameObject> lowerStrip = new List<GameObject>();
     public static List<string> correctAnswers = new List<string>();
@@ -114,15 +115,19 @@ public class SpreadSheetAccess : MonoBehaviour
                 }
             }
 
+
             for (int j = 0; j < 1; j++)
             {
-                upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-250, 128);
+                upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-300, 128);
             }
 
-            float upperOffset = 110f;
+            float minX = -300f;
+            float maxX = 300f;
+
+            float upperOffset = 80f;
             for (int j = 1; j < upperStrip.Count; j++)
             {
-                float xPosition = upperStrip[j - 1].GetComponent<RectTransform>().anchoredPosition.x + upperOffset;
+                float xPosition = Mathf.Clamp(upperStrip[j - 1].GetComponent<RectTransform>().anchoredPosition.x + upperOffset, minX, maxX);
                 upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(xPosition, 128);
             }
 
@@ -191,7 +196,7 @@ public class SpreadSheetAccess : MonoBehaviour
             Destroy(obj);
         }
         lowerStrip.Clear();
-        
+
         correctAnswers.Clear();
         fillableAnswers.Clear();
 
