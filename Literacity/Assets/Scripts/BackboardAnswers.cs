@@ -21,7 +21,7 @@ public class BackboardAnswers : MonoBehaviour
             if(SpreadSheetAccess.guessedAnswer == SpreadSheetAccess.correctAnswers.Count)
             {
                 LoadLevel loadLevel = FindObjectOfType<LoadLevel>();
-                loadLevel.LoadNextLevel();
+                StartCoroutine(loadLevel.LoadNextLevel());
             }
         }
     }

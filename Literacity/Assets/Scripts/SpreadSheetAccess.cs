@@ -118,17 +118,17 @@ public class SpreadSheetAccess : MonoBehaviour
 
             for (int j = 0; j < 1; j++)
             {
-                upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-300, 128);
+                upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-295, 132);
             }
 
             float minX = -300f;
             float maxX = 300f;
 
-            float upperOffset = 80f;
+            float upperOffset = 90f;
             for (int j = 1; j < upperStrip.Count; j++)
             {
                 float xPosition = Mathf.Clamp(upperStrip[j - 1].GetComponent<RectTransform>().anchoredPosition.x + upperOffset, minX, maxX);
-                upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(xPosition, 128);
+                upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(xPosition, 132);
             }
 
             // Retrieving URL to be assigned to the image 

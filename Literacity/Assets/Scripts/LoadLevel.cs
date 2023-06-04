@@ -11,8 +11,9 @@ public class LoadLevel : MonoBehaviour
         spreadSheetAccess = FindObjectOfType<SpreadSheetAccess>();
     }
 
-    public void LoadNextLevel()
+    public IEnumerator LoadNextLevel()
     {
+            yield return new WaitForSeconds(1f);
             SpreadSheetAccess.ClearAllLists();
             SpreadSheetAccess.guessedAnswer = 0;
             SpreadSheetAccess.currentRound++;
