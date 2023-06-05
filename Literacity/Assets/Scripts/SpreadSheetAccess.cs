@@ -11,10 +11,12 @@ public class SpreadSheetAccess : MonoBehaviour
     [SerializeField] GameObject filledPrefab;
     [SerializeField] GameObject backBoardPrefab;
     [SerializeField] RawImage wordImage;
+    [SerializeField] Image blueStrip;
     public static List<GameObject> upperStrip = new List<GameObject>();
     public static List<GameObject> lowerStrip = new List<GameObject>();
     public static List<string> correctAnswers = new List<string>();
     public static List<GameObject> fillableAnswers = new List<GameObject>();
+    public static string audioWord;
     public static int currentRound = 1;
     public static int guessedAnswer = 0;
 
@@ -37,7 +39,14 @@ public class SpreadSheetAccess : MonoBehaviour
         public string CorrectAnswerTwo;
     }
 
-    public IEnumerator Start()
+    
+    void Start()
+    {
+        StartCoroutine(LoadRoundData());
+    }
+    
+    
+    public IEnumerator LoadRoundData()
     {
         string url = "https://drive.google.com/uc?export=download&id=1SozTgMxGMTog6efPz7BnzYn2Zv4bo5Jt";
         using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
@@ -46,7 +55,7 @@ public class SpreadSheetAccess : MonoBehaviour
 
             if (webRequest.result == UnityWebRequest.Result.ConnectionError || webRequest.result == UnityWebRequest.Result.ProtocolError)
             {
-                Debug.LogError("Error loading JSON data");
+                Debug.LogError("Error loading JSON data: " + webRequest.error);
                 yield break;
             }
 
@@ -85,6 +94,7 @@ public class SpreadSheetAccess : MonoBehaviour
                     imageList.Add(roundData.ImageURL);
                     correctAnswers.Add(roundData.CorrectAnswerOne);
                     correctAnswers.Add(roundData.CorrectAnswerTwo);
+                    audioWord = roundData.Word;
                 }
             }
 
@@ -107,16 +117,20 @@ public class SpreadSheetAccess : MonoBehaviour
                 }
             }
 
+
             for (int j = 0; j < 1; j++)
             {
-                upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-312, 135);
+                upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-295, 132);
             }
 
-            float upperOffset = 110f;
+            float minX = -300f;
+            float maxX = 300f;
+
+            float upperOffset = 90f;
             for (int j = 1; j < upperStrip.Count; j++)
             {
-                float xPosition = upperStrip[j - 1].GetComponent<RectTransform>().anchoredPosition.x + upperOffset;
-                upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(xPosition, 135);
+                float xPosition = Mathf.Clamp(upperStrip[j - 1].GetComponent<RectTransform>().anchoredPosition.x + upperOffset, minX, maxX);
+                upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(xPosition, 132);
             }
 
             // Retrieving URL to be assigned to the image 
@@ -173,10 +187,21 @@ public class SpreadSheetAccess : MonoBehaviour
 
     public static void ClearAllLists()
     {
+        foreach (GameObject obj in upperStrip)
+        {
+            Destroy(obj);
+        }
         upperStrip.Clear();
+
+        foreach (GameObject obj in lowerStrip)
+        {
+            Destroy(obj);
+        }
         lowerStrip.Clear();
+
         correctAnswers.Clear();
         fillableAnswers.Clear();
+
     }
 }
 
