@@ -16,6 +16,7 @@ public class SpreadSheetAccess : MonoBehaviour
     public static List<GameObject> lowerStrip = new List<GameObject>();
     public static List<string> correctAnswers = new List<string>();
     public static List<GameObject> fillableAnswers = new List<GameObject>();
+    public static string audioWord;
     public static int currentRound = 1;
     public static int guessedAnswer = 0;
 
@@ -93,6 +94,7 @@ public class SpreadSheetAccess : MonoBehaviour
                     imageList.Add(roundData.ImageURL);
                     correctAnswers.Add(roundData.CorrectAnswerOne);
                     correctAnswers.Add(roundData.CorrectAnswerTwo);
+                    audioWord = roundData.Word;
                 }
             }
 
