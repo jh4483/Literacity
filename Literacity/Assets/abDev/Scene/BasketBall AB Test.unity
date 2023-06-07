@@ -225,6 +225,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4665881856949318988, guid: e695627c517b0ed4095b0537a7b436da, type: 3}
+      propertyPath: m_Name
+      value: BackBoard 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7142130246378788309, guid: e695627c517b0ed4095b0537a7b436da, type: 3}
       propertyPath: m_Name
       value: Backboard (3)
@@ -788,10 +792,10 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!4 &1154287027 stripped
+--- !u!4 &1084562726 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 7538768814807789527, guid: e695627c517b0ed4095b0537a7b436da, type: 3}
-  m_PrefabInstance: {fileID: 6761342022291932847}
+  m_CorrespondingSourceObject: {fileID: 6265794835752158355, guid: e695627c517b0ed4095b0537a7b436da, type: 3}
+  m_PrefabInstance: {fileID: 2136303365}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1251984522
 GameObject:
@@ -869,6 +873,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1251984522}
   m_CullTransparentMesh: 1
+--- !u!4 &1270110199 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6265794835752158355, guid: e695627c517b0ed4095b0537a7b436da, type: 3}
+  m_PrefabInstance: {fileID: 26484865}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1560824546
 GameObject:
   m_ObjectHideFlags: 0
@@ -915,9 +924,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballRb: {fileID: 4814753763170629006}
-  backBoard: {fileID: 1154287027}
-  maxHeight: 15
+  backBoard:
+  - {fileID: 1923713101}
+  - {fileID: 1084562726}
+  - {fileID: 1751671935}
+  - {fileID: 1270110199}
+  targetIndex: 0
+  drawTrajectory: 0
+  maxHeight: 5
   gravity: -18
+  target1: 113
+  target2: 119
+  target3: 101
+  target4: 114
 --- !u!1 &1671387863
 GameObject:
   m_ObjectHideFlags: 0
@@ -991,6 +1010,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1671387863}
   m_CullTransparentMesh: 1
+--- !u!4 &1751671935 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6265794835752158355, guid: e695627c517b0ed4095b0537a7b436da, type: 3}
+  m_PrefabInstance: {fileID: 1880848687}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1880848687
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -999,6 +1023,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4665881856949318988, guid: e695627c517b0ed4095b0537a7b436da, type: 3}
+      propertyPath: m_Name
+      value: BackBoard 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7142130246378788309, guid: e695627c517b0ed4095b0537a7b436da, type: 3}
       propertyPath: m_Name
       value: Backboard (2)
@@ -1060,6 +1088,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e695627c517b0ed4095b0537a7b436da, type: 3}
+--- !u!4 &1923713101 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6265794835752158355, guid: e695627c517b0ed4095b0537a7b436da, type: 3}
+  m_PrefabInstance: {fileID: 6761342022291932847}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1994840088
 GameObject:
   m_ObjectHideFlags: 0
@@ -1136,6 +1169,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4665881856949318988, guid: e695627c517b0ed4095b0537a7b436da, type: 3}
+      propertyPath: m_Name
+      value: BackBoard 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7142130246378788309, guid: e695627c517b0ed4095b0537a7b436da, type: 3}
       propertyPath: m_Name
       value: Backboard (1)
@@ -1273,7 +1310,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4665881856949318988, guid: e695627c517b0ed4095b0537a7b436da, type: 3}
       propertyPath: m_Name
-      value: BackBoard
+      value: BackBoard 1
       objectReference: {fileID: 0}
     - target: {fileID: 7538768814807789527, guid: e695627c517b0ed4095b0537a7b436da, type: 3}
       propertyPath: m_RootOrder
