@@ -37,6 +37,7 @@ public class Basketball : MonoBehaviour
             if(counter > bounceCount)
             {
                 //! TODO This is Spagetti Code. Please FIX THIS ASAP
+                
                 launcher.ballRb.useGravity = false;                 //access ball's rb and sets the gravity to 0
                 launcher.ballRb.velocity = Vector3.zero;            //resets balls velocity on collision with ground
                 transform.position = basketballTransform;           //resets balls position on collision with ground
