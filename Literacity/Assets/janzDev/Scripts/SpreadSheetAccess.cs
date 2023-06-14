@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using TMPro;
 
 public class SpreadSheetAccess : MonoBehaviour
 {
     [SerializeField] GameObject canvas;
+    [SerializeField] GameObject blueStrip;
     [SerializeField] GameObject blankPrefab;
     [SerializeField] GameObject filledPrefab;
-    [SerializeField] GameObject backBoardPrefab;
+    [SerializeField] GameObject[] backboardPrefab;
     [SerializeField] RawImage wordImage;
-    [SerializeField] Image blueStrip;
     public static List<GameObject> upperStrip = new List<GameObject>();
     public static List<GameObject> lowerStrip = new List<GameObject>();
     public static List<string> correctAnswers = new List<string>();
@@ -19,6 +20,7 @@ public class SpreadSheetAccess : MonoBehaviour
     public static string audioWord;
     public static int currentRound = 1;
     public static int guessedAnswer = 0;
+    public static List<string> optionsList = new List<string>();
 
     [System.Serializable]
     public class RoundData
@@ -65,7 +67,6 @@ public class SpreadSheetAccess : MonoBehaviour
             List<RoundData> roundDataList = wrapper.items;
 
             List<string> lettersList = new List<string>();
-            List<string> optionsList = new List<string>();
             List<string> imageList = new List<string>();
 
             foreach (RoundData roundData in roundDataList)
@@ -104,33 +105,29 @@ public class SpreadSheetAccess : MonoBehaviour
                 GameObject obj;
                 if(lettersList[i] == "")
                 {
-                    obj = Instantiate(blankPrefab, canvas.transform);
+                    obj = Instantiate(blankPrefab, blueStrip.transform);
                     upperStrip.Add(obj);
                     fillableAnswers.Add(obj);
-                    obj.transform.GetChild(0).GetComponent<Text>().text = lettersList[i];
+                    obj.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = lettersList[i].ToString();
                 }
                 else
                 {
-                    obj = Instantiate(filledPrefab, canvas.transform);
+                    obj = Instantiate(filledPrefab, blueStrip.transform);
                     upperStrip.Add(obj);
-                    obj.transform.GetChild(0).GetComponent<Text>().text = lettersList[i];
+                    obj.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = lettersList[i].ToString();
                 }
             }
 
-
             for (int j = 0; j < 1; j++)
             {
-                upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-295, 132);
+                upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-7.9f, 0.71f);
             }
 
-            float minX = -300f;
-            float maxX = 300f;
-
-            float upperOffset = 90f;
             for (int j = 1; j < upperStrip.Count; j++)
             {
-                float xPosition = Mathf.Clamp(upperStrip[j - 1].GetComponent<RectTransform>().anchoredPosition.x + upperOffset, minX, maxX);
-                upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(xPosition, 132);
+                float upperOffset = 4f;
+                float xPosition = upperStrip[j - 1].GetComponent<RectTransform>().anchoredPosition.x + upperOffset;
+                upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(xPosition, 0.71f);
             }
 
             // Retrieving URL to be assigned to the image 
@@ -151,29 +148,9 @@ public class SpreadSheetAccess : MonoBehaviour
             
             // Adding letters to the backboard 
 
-            for(int i = 0; i < optionsList.Count; i++)
+            for (int i = 0; i < optionsList.Count; i++)
             {
-                GameObject obj;
-
-                obj = Instantiate(backBoardPrefab, canvas.transform);
-                lowerStrip.Add(obj);
-                obj.transform.GetChild(0).GetComponent<Text>().text = optionsList[i];
-                obj.name =  obj.transform.GetChild(0).GetComponent<Text>().text;
-            }
-
-            for (int j = 0; j < 1; j++)
-            {
-                lowerStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-312, -40);
-                lowerStrip[j].transform.localScale = new Vector2(0.7f, 0.7f);
-                
-            }
-
-            float lowerOffset = 200f;
-            for (int j = 1; j < lowerStrip.Count; j++)
-            {
-                float xPosition = lowerStrip[j - 1].GetComponent<RectTransform>().anchoredPosition.x + lowerOffset;
-                lowerStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(xPosition, -40);
-                lowerStrip[j].transform.localScale = new Vector2(0.7f, 0.7f);
+                backboardPrefab[i].transform.GetChild(0).transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = optionsList[i].ToString();
             }
 
         }
@@ -198,7 +175,6 @@ public class SpreadSheetAccess : MonoBehaviour
             Destroy(obj);
         }
         lowerStrip.Clear();
-
         correctAnswers.Clear();
         fillableAnswers.Clear();
 
