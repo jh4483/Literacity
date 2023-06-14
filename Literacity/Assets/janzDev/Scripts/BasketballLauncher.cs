@@ -26,7 +26,7 @@ public class BasketballLauncher : MonoBehaviour
     void Start()
     {
         ballRb.useGravity = false;    
-        drawTrajectory = false;
+        drawTrajectory = true;
     }
 
     void Update()
