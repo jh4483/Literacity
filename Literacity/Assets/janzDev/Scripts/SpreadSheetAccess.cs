@@ -48,11 +48,11 @@ public class SpreadSheetAccess : MonoBehaviour
     void Update()
     {
 
-        if(TargetCheck.hasIncreased)
-        {
-            currentRound++;
-            StartCoroutine(LoadRoundData());
-        }
+        // if(TargetCheck.hasIncreased)
+        // {
+        //     currentRound++;
+        //     StartCoroutine(LoadRoundData());
+        // }
     }
     
     public IEnumerator LoadRoundData()
@@ -62,7 +62,7 @@ public class SpreadSheetAccess : MonoBehaviour
         {
             yield return webRequest.SendWebRequest();
 
-            if (webRequest.result == UnityWebRequest.Result.ConnectionError || webRequest.result == UnityWebRequest.Result.ProtocolError)
+            if (webRequest.result == UnityWebRequest.Result.ConnectionError|| webRequest.result == UnityWebRequest.Result.ProtocolError)
             {
                 Debug.LogError("Error loading JSON data: " + webRequest.error);
                 yield break;

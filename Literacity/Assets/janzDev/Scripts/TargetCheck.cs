@@ -24,7 +24,7 @@ public class TargetCheck : MonoBehaviour
             Color greenColor =  new Color(63f / 255f, 103f / 255f, 70f / 255f, 1f);
             SpreadSheetAccess.fillableAnswers[answerIndex].GetComponent<Image>().color = greenColor;
             answerIndex++;
-            SpreadSheetAccess.ClearAllLists();
+            // SpreadSheetAccess.ClearAllLists();
             hasIncreased = true;
 
         }
