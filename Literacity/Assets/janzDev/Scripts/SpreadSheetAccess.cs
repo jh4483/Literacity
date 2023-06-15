@@ -41,7 +41,7 @@ public class SpreadSheetAccess : MonoBehaviour
 
     void Start()
     {
-        currentRound = 2;
+        currentRound = 1;
         StartCoroutine(LoadRoundData());
     }
 
@@ -116,7 +116,7 @@ public class SpreadSheetAccess : MonoBehaviour
 
             for (int j = 1; j < upperStrip.Count; j++)
             {
-                upperOffset = 5f;
+                upperOffset = 5.3f;
                 float xPosition = upperStrip[j - 1].GetComponent<RectTransform>().anchoredPosition.x + upperOffset;
                 upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(xPosition, 0.71f);
             }
