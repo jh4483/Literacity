@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 using UnityEngine.UI;
 using TMPro;
+using System.IO;
 
 public class SpreadSheetAccess : MonoBehaviour
 {
@@ -34,41 +34,29 @@ public class SpreadSheetAccess : MonoBehaviour
         public string BackLetterTwo;
         public string BackLetterThree;
         public string BackLetterFour;
-        public string ImageURL;
         public string CorrectAnswerOne;
+        public string ImageURL;
     }
 
-    
+
     void Start()
     {
-        currentRound = 1;
+        currentRound = 2;
         StartCoroutine(LoadRoundData());
     }
-    
+
     void Update()
     {
-
-        // if(TargetCheck.hasIncreased)
-        // {
-        //     currentRound++;
-        //     StartCoroutine(LoadRoundData());
-        // }
+        
     }
-    
+
     public IEnumerator LoadRoundData()
     {
-        string url = "https://drive.google.com/uc?export=download&id=1SozTgMxGMTog6efPz7BnzYn2Zv4bo5Jt";
-        using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
+        string filePath = Path.Combine(Application.streamingAssetsPath, "JSON File/json.txt");
+
+        if (File.Exists(filePath))
         {
-            yield return webRequest.SendWebRequest();
-
-            if (webRequest.result == UnityWebRequest.Result.ConnectionError|| webRequest.result == UnityWebRequest.Result.ProtocolError)
-            {
-                Debug.LogError("Error loading JSON data: " + webRequest.error);
-                yield break;
-            }
-
-            string json = webRequest.downloadHandler.text;
+            string json = File.ReadAllText(filePath);
             json = "{\"items\":" + json + "}";
             Wrapper wrapper = JsonUtility.FromJson<Wrapper>(json);
             List<RoundData> roundDataList = wrapper.items;
@@ -135,19 +123,19 @@ public class SpreadSheetAccess : MonoBehaviour
 
             // Retrieving URL to be assigned to the image 
 
-            string imageUrl = imageList[0];
-            UnityWebRequest request = UnityWebRequestTexture.GetTexture(imageUrl);
-            yield return request.SendWebRequest();
+            // string imageUrl = imageList[0];
+            // UnityWebRequest request = UnityWebRequestTexture.GetTexture(imageUrl);
+            // yield return request.SendWebRequest();
 
-            if (request.result == UnityWebRequest.Result.Success)
-            {
-                Texture2D texture = DownloadHandlerTexture.GetContent(request);
-                wordImage.texture = texture;
-            }
-            else
-            {
-                Debug.LogError("Error loading image from URL: " + imageUrl);
-            }
+            // if (request.result == UnityWebRequest.Result.Success)
+            // {
+            //     Texture2D texture = DownloadHandlerTexture.GetContent(request);
+            //     wordImage.texture = texture;
+            // }
+            // else
+            // {
+            //     Debug.LogError("Error loading image from URL: " + imageUrl);
+            // }
             
             // Adding letters to the backboard 
 
@@ -155,6 +143,7 @@ public class SpreadSheetAccess : MonoBehaviour
             {
                 backboardPrefab[i].transform.GetChild(0).transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = optionsList[i].ToString();
             }
+            yield break;
 
         }
     }
