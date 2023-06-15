@@ -18,8 +18,9 @@ public class SpreadSheetAccess : MonoBehaviour
     public static List<string> correctAnswers = new List<string>();
     public static List<GameObject> fillableAnswers = new List<GameObject>();
     public static string audioWord;
-    public static int currentRound = 1;
+    public static int currentRound;
     public static int guessedAnswer = 0;
+    public static float upperOffset;
     public static List<string> optionsList = new List<string>();
 
     [System.Serializable]
@@ -29,24 +30,30 @@ public class SpreadSheetAccess : MonoBehaviour
         public string Word;
         public string LetterOne;
         public string LetterTwo;
-        public string LetterThree;
-        public string LetterFour;
-        public string LetterFive;
         public string BackLetterOne;
         public string BackLetterTwo;
         public string BackLetterThree;
         public string BackLetterFour;
         public string ImageURL;
         public string CorrectAnswerOne;
-        public string CorrectAnswerTwo;
     }
 
     
     void Start()
     {
+        currentRound = 1;
         StartCoroutine(LoadRoundData());
     }
     
+    void Update()
+    {
+
+        if(TargetCheck.hasIncreased)
+        {
+            currentRound++;
+            StartCoroutine(LoadRoundData());
+        }
+    }
     
     public IEnumerator LoadRoundData()
     {
@@ -68,25 +75,22 @@ public class SpreadSheetAccess : MonoBehaviour
 
             List<string> lettersList = new List<string>();
             List<string> imageList = new List<string>();
-
             foreach (RoundData roundData in roundDataList)
             {
                 if (roundData.Round == currentRound)
                 {
                     lettersList.Add(roundData.LetterOne);
                     lettersList.Add(roundData.LetterTwo);
-                    lettersList.Add(roundData.LetterThree);
-                    lettersList.Add(roundData.LetterFour);
 
-                    if(roundData.LetterFive == "None")
-                    {
+                    // if(roundData.LetterFive == "None")
+                    // {
 
-                    }
+                    // }
 
-                    else
-                    {
-                        lettersList.Add(roundData.LetterFive);
-                    }
+                    // else
+                    // {
+                    //     lettersList.Add(roundData.LetterFive);
+                    // }
 
                     optionsList.Add(roundData.BackLetterOne);
                     optionsList.Add(roundData.BackLetterTwo);
@@ -94,7 +98,6 @@ public class SpreadSheetAccess : MonoBehaviour
                     optionsList.Add(roundData.BackLetterFour);
                     imageList.Add(roundData.ImageURL);
                     correctAnswers.Add(roundData.CorrectAnswerOne);
-                    correctAnswers.Add(roundData.CorrectAnswerTwo);
                     audioWord = roundData.Word;
                 }
             }
@@ -120,12 +123,12 @@ public class SpreadSheetAccess : MonoBehaviour
 
             for (int j = 0; j < 1; j++)
             {
-                upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-7.9f, 0.71f);
+                upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-2.9f, 0.71f);
             }
 
             for (int j = 1; j < upperStrip.Count; j++)
             {
-                float upperOffset = 4f;
+                upperOffset = 5f;
                 float xPosition = upperStrip[j - 1].GetComponent<RectTransform>().anchoredPosition.x + upperOffset;
                 upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(xPosition, 0.71f);
             }

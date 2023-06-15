@@ -18,7 +18,7 @@ public class Basketball : MonoBehaviour
         launcher = FindObjectOfType<BasketballLauncher>();
         basketballTransform = transform.position;
 
-        bounceCount = Random.Range(3, 5);
+        bounceCount = Random.Range(1, 2);
     }
 
     // Update is called once per frame
@@ -31,7 +31,6 @@ public class Basketball : MonoBehaviour
     {
         if(collisionInfo.gameObject.CompareTag("Ground"))
         {
-            Debug.Log("Basketball hit the ground");
             counter++;
 
             if(counter > bounceCount)
@@ -41,8 +40,9 @@ public class Basketball : MonoBehaviour
                 launcher.ballRb.useGravity = false;                 //access ball's rb and sets the gravity to 0
                 launcher.ballRb.velocity = Vector3.zero;            //resets balls velocity on collision with ground
                 transform.position = basketballTransform;           //resets balls position on collision with ground
-
-                bounceCount = Random.Range(3, 5);                   //randomizes bounce count
+                launcher.trajectoryLineRenderer.gameObject.SetActive(true);
+                launcher.drawTrajectory = true;
+                bounceCount = Random.Range(0, 2);                   //randomizes bounce count
                 counter = 0;    //resets counter
             }
 

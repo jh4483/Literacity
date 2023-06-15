@@ -21,6 +21,7 @@ public class BasketballLauncher : MonoBehaviour
     public KeyCode target4;
 
     public static int saveTargetIndex;
+    public LineRenderer trajectoryLineRenderer;
 
 
     void Start()
@@ -55,32 +56,41 @@ public class BasketballLauncher : MonoBehaviour
         return new LaunchData(velocityXZ + velocityY * -Mathf.Sign(gravity), timeOfFlight);                                                                                                          //Total initial velocity
     }
 
-    void DrawTrajectory()
+   void DrawTrajectory()
     {
-        if(!drawTrajectory)
+        if (!drawTrajectory)
         {
             return;
         }
         
-        if(drawTrajectory)
+        if (drawTrajectory)
         {
-            LaunchData launcData = CalculateBallLaunchVelocity();
+            LaunchData launchData = CalculateBallLaunchVelocity();
             Vector3 previousDrawPoint = ballRb.position;
 
             int resolution = 30;
-            for(int i = 1; i <= resolution; i++)
+            Vector3[] trajectoryPoints = new Vector3[resolution];
+
+            for (int i = 1; i <= resolution; i++)
             {
-                float simulationTime = i / (float)resolution * launcData.timeToTarget;
-                Vector3 displacement = launcData.initialVelocity * simulationTime + Vector3.up * gravity * simulationTime * simulationTime / 2f;
+                float simulationTime = i / (float)resolution * launchData.timeToTarget;
+                Vector3 displacement = launchData.initialVelocity * simulationTime + Vector3.up * gravity * simulationTime * simulationTime / 2f;
                 Vector3 drawPoint = ballRb.position + displacement;
-                Debug.DrawLine(previousDrawPoint, drawPoint, Color.green);
+
+                trajectoryPoints[i - 1] = drawPoint;
+
                 previousDrawPoint = drawPoint;
             }
+
+            trajectoryLineRenderer.positionCount = resolution;
+            trajectoryLineRenderer.SetPositions(trajectoryPoints);
         }
     }
 
+
     void Launch()
     {   
+        trajectoryLineRenderer.gameObject.SetActive(false);
         Physics.gravity = Vector3.up * gravity;                                                                                               //Sets gravity to the value of gravity variable
         ballRb.useGravity = true;
         drawTrajectory = false;                                                                                                          //Enables gravity  
