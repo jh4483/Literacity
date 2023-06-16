@@ -42,12 +42,11 @@ public class SpreadSheetAccess : MonoBehaviour
     void Start()
     {
         currentRound = 1;
-        StartCoroutine(LoadRoundData());
     }
 
     void Update()
     {
-        
+
     }
 
     public IEnumerator LoadRoundData()
@@ -89,7 +88,7 @@ public class SpreadSheetAccess : MonoBehaviour
                     audioWord = roundData.Word;
                 }
             }
-
+            yield return new WaitForSeconds(1);
             // Adding letters to the upper List - missing and available, adding the available to a new list
             for(int i = 0; i < lettersList.Count; i++)
             {
@@ -116,33 +115,16 @@ public class SpreadSheetAccess : MonoBehaviour
 
             for (int j = 1; j < upperStrip.Count; j++)
             {
-                upperOffset = 5.3f;
+                upperOffset = 5.3f; // needs to change depending on the length of the word
                 float xPosition = upperStrip[j - 1].GetComponent<RectTransform>().anchoredPosition.x + upperOffset;
                 upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(xPosition, 0.71f);
             }
-
-            // Retrieving URL to be assigned to the image 
-
-            // string imageUrl = imageList[0];
-            // UnityWebRequest request = UnityWebRequestTexture.GetTexture(imageUrl);
-            // yield return request.SendWebRequest();
-
-            // if (request.result == UnityWebRequest.Result.Success)
-            // {
-            //     Texture2D texture = DownloadHandlerTexture.GetContent(request);
-            //     wordImage.texture = texture;
-            // }
-            // else
-            // {
-            //     Debug.LogError("Error loading image from URL: " + imageUrl);
-            // }
-            
-            // Adding letters to the backboard 
 
             for (int i = 0; i < optionsList.Count; i++)
             {
                 backboardPrefab[i].transform.GetChild(0).transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = optionsList[i].ToString();
             }
+
             yield break;
 
         }
@@ -154,22 +136,22 @@ public class SpreadSheetAccess : MonoBehaviour
         public List<RoundData> items;
     }
 
-    public static void ClearAllLists()
+    public IEnumerator ClearAllLists()
     {
+        yield return new WaitForSeconds(2);
         foreach (GameObject obj in upperStrip)
         {
             Destroy(obj);
         }
         upperStrip.Clear();
-
-        foreach (GameObject obj in lowerStrip)
-        {
-            Destroy(obj);
-        }
-        lowerStrip.Clear();
         correctAnswers.Clear();
         fillableAnswers.Clear();
+        optionsList.Clear();
+
+        currentRound++;
+        StartCoroutine(LoadRoundData());
 
     }
+
 }
 
