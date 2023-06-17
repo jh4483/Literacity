@@ -23,7 +23,7 @@ public class DragBasketball : MonoBehaviour
             if(Physics.Raycast(ray, out hit, Mathf.Infinity, layer))
             {
                 var selection = hit.transform;
-                
+
                 launcher.Launch();
                 TargetCheck.CheckTarget();
 
@@ -31,5 +31,4 @@ public class DragBasketball : MonoBehaviour
             }
         }
     }
-    
 }

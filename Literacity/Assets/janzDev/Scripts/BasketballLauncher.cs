@@ -9,6 +9,10 @@ public class BasketballLauncher : MonoBehaviour
     public Transform[] backBoard;
     public int targetIndex = 0;
     public bool drawTrajectory = false;
+    public LayerMask layer;
+    Ray ray;
+    RaycastHit hit;
+    string targetName;
 
     [Header("Parabolic Path Parameters")]
     public float maxHeight = 5f;
@@ -32,15 +36,21 @@ public class BasketballLauncher : MonoBehaviour
 
     void Update()
     {
+        if(Input.GetMouseButtonDown(0))
+        {
+            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if(Physics.Raycast(ray, out hit, Mathf.Infinity, layer))
+            {
+                targetName = hit.transform.name;
+
+                Debug.Log(hit.transform.name);
+            }
+        }
+
         SelectTarget();                      //Selects the target to aim at
 
         DrawTrajectory();                    //Draws the trajectory of the ball
-
-        // if (Input.GetKeyDown(KeyCode.Space))
-        // {
-        //     Launch();  
-        //     TargetCheck.CheckTarget();                         
-        // }
     }
 
     LaunchData CalculateBallLaunchVelocity()
@@ -110,22 +120,22 @@ public class BasketballLauncher : MonoBehaviour
 
     void SelectTarget()
     {
-        if(Input.GetKeyDown(target1))
+        if(targetName == "Backboard (1)")
         {
             targetIndex = 0;
             saveTargetIndex = targetIndex;
         }
-        else if (Input.GetKeyDown(target2))
+        else if(targetName == "Backboard (2)")
         {
             targetIndex = 1;
             saveTargetIndex = targetIndex;
         }
-        else if (Input.GetKeyDown(target3))
+        else if(targetName == "Backboard (3)")
         {
             targetIndex = 2;
             saveTargetIndex = targetIndex;
         }
-        else if (Input.GetKeyDown(target4))
+        else if(targetName == "Backboard (4)")
         {
             targetIndex = 3;
             saveTargetIndex = targetIndex;
