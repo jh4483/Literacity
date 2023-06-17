@@ -1358,10 +1358,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1637525320365776041, guid: e695627c517b0ed4095b0537a7b436da, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4665881856949318988, guid: e695627c517b0ed4095b0537a7b436da, type: 3}
       propertyPath: m_Name
       value: Backboard (4)
