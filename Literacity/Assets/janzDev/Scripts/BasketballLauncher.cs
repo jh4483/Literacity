@@ -36,11 +36,11 @@ public class BasketballLauncher : MonoBehaviour
 
         DrawTrajectory();                    //Draws the trajectory of the ball
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Launch();  
-            TargetCheck.CheckTarget();                         
-        }
+        // if (Input.GetKeyDown(KeyCode.Space))
+        // {
+        //     Launch();  
+        //     TargetCheck.CheckTarget();                         
+        // }
     }
 
     LaunchData CalculateBallLaunchVelocity()
@@ -88,7 +88,7 @@ public class BasketballLauncher : MonoBehaviour
     }
 
 
-    void Launch()
+    public void Launch()
     {   
         trajectoryLineRenderer.gameObject.SetActive(false);
         Physics.gravity = Vector3.up * gravity;                                                                                               //Sets gravity to the value of gravity variable
