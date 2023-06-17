@@ -22,14 +22,12 @@ public class BasketballLauncher : MonoBehaviour
 
     public static int saveTargetIndex;
     public LineRenderer trajectoryLineRenderer;
-    TargetCheck checker;
 
 
     void Start()
     {
         ballRb.useGravity = false;    
         drawTrajectory = true;
-        checker = FindObjectOfType<TargetCheck>();
     }
 
     void Update()
@@ -41,7 +39,7 @@ public class BasketballLauncher : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Launch();  
-            checker.CheckTarget();                         
+            TargetCheck.CheckTarget();                         
         }
     }
 
