@@ -18,16 +18,15 @@ public class DragBasketball : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            ray = Camera.main.ScreenPointToRay(Input.mousePosition);            //converts mouse position to screenspace
 
-            if(Physics.Raycast(ray, out hit, Mathf.Infinity, layer))
+            if(Physics.Raycast(ray, out hit, Mathf.Infinity, layer))            //checks for a raycast hit
             {
-                var selection = hit.transform;
 
                 launcher.Launch();
                 TargetCheck.CheckTarget();
 
-                Debug.Log(selection.name);
+                Debug.Log(hit.collider.name);
             }
         }
     }
