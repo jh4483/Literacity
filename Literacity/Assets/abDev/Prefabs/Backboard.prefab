@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 4179330580579354450}
   - component: {fileID: 6803739580108216230}
   - component: {fileID: 9077302860213302734}
-  - component: {fileID: 1637525320365776041}
   - component: {fileID: 4419454970381125751}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Backboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,19 +89,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1637525320365776041
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 524364963713993879}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!222 &4419454970381125751
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -122,7 +108,7 @@ GameObject:
   - component: {fileID: 1956567265531969597}
   - component: {fileID: 2473348249947457839}
   - component: {fileID: 2345097472431716541}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,7 +182,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7538768814807789527}
-  m_Layer: 0
+  - component: {fileID: 4913570306398855091}
+  m_Layer: 6
   m_Name: Backboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,8 +206,29 @@ Transform:
   - {fileID: 4179330580579354450}
   - {fileID: 6265794835752158355}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4913570306398855091
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4665881856949318988}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.5, y: 1.2, z: 0.2}
+  m_Center: {x: 0, y: 1.6, z: 0}
 --- !u!1 &4998010091267161696
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,7 +240,7 @@ GameObject:
   - component: {fileID: 8804686645594983669}
   - component: {fileID: 4086475218208313362}
   - component: {fileID: 4784333734794527615}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -367,7 +375,7 @@ GameObject:
   - component: {fileID: 6265794835752158355}
   - component: {fileID: 4857580905852776851}
   - component: {fileID: 1949058868632397272}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -382,7 +390,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6746477184654559639}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.16, y: 0.306, z: -0.09}
+  m_LocalPosition: {x: 0.16, y: 0.306, z: -0.59000003}
   m_LocalScale: {x: 0.75, y: 0.02, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -451,7 +459,7 @@ GameObject:
   - component: {fileID: 5559262113936606121}
   - component: {fileID: 1431911158825475750}
   - component: {fileID: 1675038733786193361}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -498,7 +506,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -553,7 +563,7 @@ GameObject:
   - component: {fileID: 70299314322256330}
   - component: {fileID: 8239948512317749736}
   - component: {fileID: 181498188647928287}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
