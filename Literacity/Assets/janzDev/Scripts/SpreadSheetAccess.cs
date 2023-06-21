@@ -15,13 +15,14 @@ public class SpreadSheetAccess : MonoBehaviour
     [SerializeField] RawImage wordImage;
     public static List<GameObject> upperStrip = new List<GameObject>();
     public static List<GameObject> lowerStrip = new List<GameObject>();
-    public static List<string> correctAnswers = new List<string>();
     public static List<GameObject> fillableAnswers = new List<GameObject>();
-    public static string audioWord;
+    public static List<string> optionsList = new List<string>();
+    public static List<string> correctAnswers = new List<string>();
     public static int currentRound;
     public static int guessedAnswer = 0;
     public static float upperOffset;
-    public static List<string> optionsList = new List<string>();
+    public static string word;
+    PrefabDesign designer;
 
     [System.Serializable]
     public class RoundData
@@ -41,6 +42,7 @@ public class SpreadSheetAccess : MonoBehaviour
 
     void Start()
     {
+        designer = FindObjectOfType<PrefabDesign>();
         currentRound = 1;
     }
 
@@ -62,6 +64,7 @@ public class SpreadSheetAccess : MonoBehaviour
 
             List<string> lettersList = new List<string>();
             List<string> imageList = new List<string>();
+
             foreach (RoundData roundData in roundDataList)
             {
                 if (roundData.Round == currentRound)
@@ -85,10 +88,24 @@ public class SpreadSheetAccess : MonoBehaviour
                     optionsList.Add(roundData.BackLetterFour);
                     imageList.Add(roundData.ImageURL);
                     correctAnswers.Add(roundData.CorrectAnswerOne);
-                    audioWord = roundData.Word;
+                    word = roundData.Word;
+                    
                 }
+
             }
             yield return new WaitForSeconds(1);
+            //adjust the size of the upperstrip 
+            designer.StartCoroutine(designer.AdjustUI());
+
+            if(lettersList[1].Length > 3)
+            {
+                upperOffset = 5.8f;
+            }
+            else
+            {
+                upperOffset = 5.2f;
+            }
+
             // Adding letters to the upper List - missing and available, adding the available to a new list
             for(int i = 0; i < lettersList.Count; i++)
             {
@@ -108,14 +125,25 @@ public class SpreadSheetAccess : MonoBehaviour
                 }
             }
 
-            for (int j = 0; j < 1; j++)
+            if(designer.startingPosChanged)
             {
-                upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-2.9f, 0.71f);
+                for (int j = 0; j < 1; j++)
+                {
+                    upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-3.9f, 0.71f);
+                }
             }
+
+            else if(!designer.startingPosChanged)
+            {
+                for (int j = 0; j < 1; j++)
+                {
+                    upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-2.9f, 0.71f);
+                }
+            }
+
 
             for (int j = 1; j < upperStrip.Count; j++)
             {
-                upperOffset = 5.3f; // needs to change depending on the length of the word
                 float xPosition = upperStrip[j - 1].GetComponent<RectTransform>().anchoredPosition.x + upperOffset;
                 upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(xPosition, 0.71f);
             }
