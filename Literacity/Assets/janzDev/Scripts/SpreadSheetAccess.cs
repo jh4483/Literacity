@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 using UnityEngine.UI;
 using TMPro;
+using System.IO;
 
 public class SpreadSheetAccess : MonoBehaviour
 {
@@ -15,13 +15,14 @@ public class SpreadSheetAccess : MonoBehaviour
     [SerializeField] RawImage wordImage;
     public static List<GameObject> upperStrip = new List<GameObject>();
     public static List<GameObject> lowerStrip = new List<GameObject>();
-    public static List<string> correctAnswers = new List<string>();
     public static List<GameObject> fillableAnswers = new List<GameObject>();
-    public static string audioWord;
+    public static List<string> optionsList = new List<string>();
+    public static List<string> correctAnswers = new List<string>();
     public static int currentRound;
     public static int guessedAnswer = 0;
     public static float upperOffset;
-    public static List<string> optionsList = new List<string>();
+    public static string word;
+    PrefabDesign designer;
 
     [System.Serializable]
     public class RoundData
@@ -34,47 +35,36 @@ public class SpreadSheetAccess : MonoBehaviour
         public string BackLetterTwo;
         public string BackLetterThree;
         public string BackLetterFour;
-        public string ImageURL;
         public string CorrectAnswerOne;
+        public string ImageURL;
     }
 
-    
+
     void Start()
     {
+        designer = FindObjectOfType<PrefabDesign>();
         currentRound = 1;
-        StartCoroutine(LoadRoundData());
     }
-    
+
     void Update()
     {
 
-        // if(TargetCheck.hasIncreased)
-        // {
-        //     currentRound++;
-        //     StartCoroutine(LoadRoundData());
-        // }
     }
-    
+
     public IEnumerator LoadRoundData()
     {
-        string url = "https://drive.google.com/uc?export=download&id=1SozTgMxGMTog6efPz7BnzYn2Zv4bo5Jt";
-        using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
+        string filePath = Path.Combine(Application.streamingAssetsPath, "JSON File/json.txt");
+
+        if (File.Exists(filePath))
         {
-            yield return webRequest.SendWebRequest();
-
-            if (webRequest.result == UnityWebRequest.Result.ConnectionError|| webRequest.result == UnityWebRequest.Result.ProtocolError)
-            {
-                Debug.LogError("Error loading JSON data: " + webRequest.error);
-                yield break;
-            }
-
-            string json = webRequest.downloadHandler.text;
+            string json = File.ReadAllText(filePath);
             json = "{\"items\":" + json + "}";
             Wrapper wrapper = JsonUtility.FromJson<Wrapper>(json);
             List<RoundData> roundDataList = wrapper.items;
 
             List<string> lettersList = new List<string>();
             List<string> imageList = new List<string>();
+
             foreach (RoundData roundData in roundDataList)
             {
                 if (roundData.Round == currentRound)
@@ -98,8 +88,22 @@ public class SpreadSheetAccess : MonoBehaviour
                     optionsList.Add(roundData.BackLetterFour);
                     imageList.Add(roundData.ImageURL);
                     correctAnswers.Add(roundData.CorrectAnswerOne);
-                    audioWord = roundData.Word;
+                    word = roundData.Word;
+                    
                 }
+
+            }
+            yield return new WaitForSeconds(1);
+            //adjust the size of the upperstrip 
+            designer.StartCoroutine(designer.AdjustUI());
+
+            if(lettersList[1].Length > 3)
+            {
+                upperOffset = 5.8f;
+            }
+            else
+            {
+                upperOffset = 5.2f;
             }
 
             // Adding letters to the upper List - missing and available, adding the available to a new list
@@ -121,40 +125,35 @@ public class SpreadSheetAccess : MonoBehaviour
                 }
             }
 
-            for (int j = 0; j < 1; j++)
+            if(designer.startingPosChanged)
             {
-                upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-2.9f, 0.71f);
+                for (int j = 0; j < 1; j++)
+                {
+                    upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-3.9f, 0.71f);
+                }
             }
+
+            else if(!designer.startingPosChanged)
+            {
+                for (int j = 0; j < 1; j++)
+                {
+                    upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-2.9f, 0.71f);
+                }
+            }
+
 
             for (int j = 1; j < upperStrip.Count; j++)
             {
-                upperOffset = 5f;
                 float xPosition = upperStrip[j - 1].GetComponent<RectTransform>().anchoredPosition.x + upperOffset;
                 upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(xPosition, 0.71f);
             }
-
-            // Retrieving URL to be assigned to the image 
-
-            string imageUrl = imageList[0];
-            UnityWebRequest request = UnityWebRequestTexture.GetTexture(imageUrl);
-            yield return request.SendWebRequest();
-
-            if (request.result == UnityWebRequest.Result.Success)
-            {
-                Texture2D texture = DownloadHandlerTexture.GetContent(request);
-                wordImage.texture = texture;
-            }
-            else
-            {
-                Debug.LogError("Error loading image from URL: " + imageUrl);
-            }
-            
-            // Adding letters to the backboard 
 
             for (int i = 0; i < optionsList.Count; i++)
             {
                 backboardPrefab[i].transform.GetChild(0).transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = optionsList[i].ToString();
             }
+
+            yield break;
 
         }
     }
@@ -165,22 +164,22 @@ public class SpreadSheetAccess : MonoBehaviour
         public List<RoundData> items;
     }
 
-    public static void ClearAllLists()
+    public IEnumerator ClearAllLists()
     {
+        yield return new WaitForSeconds(2);
         foreach (GameObject obj in upperStrip)
         {
             Destroy(obj);
         }
         upperStrip.Clear();
-
-        foreach (GameObject obj in lowerStrip)
-        {
-            Destroy(obj);
-        }
-        lowerStrip.Clear();
         correctAnswers.Clear();
         fillableAnswers.Clear();
+        optionsList.Clear();
+
+        currentRound++;
+        StartCoroutine(LoadRoundData());
 
     }
+
 }
 
