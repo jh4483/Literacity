@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 14631
+  controlID: 36271
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 14632
+  controlID: 36272
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 14633
+  controlID: 36273
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -224,9 +224,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: d8580000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 2c95ffffa6bcffffb2c2ffff34fbffff165800003658000078580000
+      m_ExpandedIDs: fe23ffff7425ffff7429ffffe02affff522bffffb033ffff8c3bfffffe3bffff283fffff8442ffffec42ffff5e43ffff2248ffffa250ffff9c6fffff8072ffff9a74ffffc276fffffc76ffff3277ffff007affff2a7bffff687cffff2c95ffffa6bcffffb2c2ffff34fbffff165800003658000078580000b8b5000088be00009abe0000a8be00004cd400007cd4000098d4000078db0000e4de0000eade000014df000034df00009edf000028e200002ee2000058e20000bce80000d8e80000e6e8000010f5000066f5000086f50000caf50000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -535,9 +535,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1.4125824, y: 4.96315, z: 0}
+    m_Target: {x: 2.5111575, y: 2.8136332, z: -0.26028156}
     speed: 2
-    m_Value: {x: 1.4125824, y: 4.96315, z: 0}
+    m_Value: {x: 2.5111575, y: 2.8136332, z: -0.26028156}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -584,13 +584,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.05965152, y: -0.011393568, z: -0.00056599214, w: -0.9981693}
+    m_Target: {x: 0.0071884654, y: 0.0035918881, z: 0.00014380224, w: -0.99998313}
     speed: 2
-    m_Value: {x: 0.05965062, y: -0.011393395, z: -0.0005659836, w: -0.99815416}
+    m_Value: {x: 0.007188355, y: 0.003591833, z: 0.00014380003, w: -0.99996775}
   m_Size:
-    m_Target: 13.381974
+    m_Target: 3.9390316
     speed: 2
-    m_Value: 13.381974
+    m_Value: 3.9390316
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -625,7 +625,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ConsoleWindow
+  m_Name: ProjectBrowser
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -634,14 +634,14 @@ MonoBehaviour:
     y: 507.5
     width: 1100.5
     height: 342.5
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 11}
+  m_MinSize: {x: 231, y: 271}
+  m_MaxSize: {x: 10001, y: 10021}
+  m_ActualView: {fileID: 10}
   m_Panes:
   - {fileID: 10}
   - {fileID: 11}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -683,21 +683,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/janzDev/Sprites
+    - Assets/janzDev/Prefabs
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/janzDev/Sprites
+  - Assets/janzDev/Prefabs
   m_LastFoldersGridSize: -1
   m_LastProjectPath: /Users/jananiharinarayanan/Desktop/Unity Projects/Literacity/Literacity
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 70.5}
-    m_SelectedIDs: a0590000
-    m_LastClickedID: 22944
+    m_SelectedIDs: 9a590000
+    m_LastClickedID: 22938
     m_ExpandedIDs: 000000007c5900007e5900008059000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -751,9 +751,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: d8580000
-    m_LastClickedInstanceID: 22744
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -829,8 +829,8 @@ MonoBehaviour:
     y: 0
     width: 339.5
     height: 850
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}

@@ -12,9 +12,7 @@ public class PrefabDesign : MonoBehaviour
 
     void Start()
     {
-        rectTransform = blankPrefab.GetComponent<RectTransform>();
-        newSizeDelta = rectTransform.sizeDelta;
-        rectTransform.sizeDelta = newSizeDelta;
+        StartCoroutine(AdjustUI());
     }
 
     void Update()
@@ -28,34 +26,17 @@ public class PrefabDesign : MonoBehaviour
         {
             if(SpreadSheetAccess.correctAnswers[i].Length > 1)
             {
-                newSizeDelta.x = 7f;
+                rectTransform = blankPrefab.GetComponent<RectTransform>();
+                rectTransform.sizeDelta = new Vector2(6.7f, 3.2f);
                 startingPosChanged = false;
             }
-
-            else
+            else if(SpreadSheetAccess.correctAnswers[i].Length == 1)
             {
-                newSizeDelta.x = 6f;
+                rectTransform = blankPrefab.GetComponent<RectTransform>();
+                rectTransform.sizeDelta = new Vector2(5.2f, 3.2f);
                 startingPosChanged = true;
             }
+            yield return null; 
         }
-
-        for(int i = 0; i < SpreadSheetAccess.correctAnswers.Count; i++)
-        {
-            if(SpreadSheetAccess.correctAnswers[i].Length > 1)
-            {
-                newSizeDelta.x = 7f;
-                startingPosChanged = false;
-            }
-
-            else
-            {
-                newSizeDelta.x = 6f;
-                startingPosChanged = true;
-            }
-        }
-
-        yield break;
     }
-
-
 }

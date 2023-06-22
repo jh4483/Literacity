@@ -99,7 +99,8 @@ public class SpreadSheetAccess : MonoBehaviour
 
             if(lettersList[1].Length > 3)
             {
-                upperOffset = 5.8f;
+                Debug.Log("called");
+                upperOffset = 5.5f;
             }
             else
             {
@@ -129,7 +130,7 @@ public class SpreadSheetAccess : MonoBehaviour
             {
                 for (int j = 0; j < 1; j++)
                 {
-                    upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-3.9f, 0.71f);
+                    upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-3.7f, 0.70f);
                 }
             }
 
@@ -137,7 +138,7 @@ public class SpreadSheetAccess : MonoBehaviour
             {
                 for (int j = 0; j < 1; j++)
                 {
-                    upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-2.9f, 0.71f);
+                    upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-2.7f, 0.70f);
                 }
             }
 
@@ -145,7 +146,7 @@ public class SpreadSheetAccess : MonoBehaviour
             for (int j = 1; j < upperStrip.Count; j++)
             {
                 float xPosition = upperStrip[j - 1].GetComponent<RectTransform>().anchoredPosition.x + upperOffset;
-                upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(xPosition, 0.71f);
+                upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(xPosition, 0.70f);
             }
 
             for (int i = 0; i < optionsList.Count; i++)
@@ -167,6 +168,7 @@ public class SpreadSheetAccess : MonoBehaviour
     public IEnumerator ClearAllLists()
     {
         yield return new WaitForSeconds(2);
+        
         foreach (GameObject obj in upperStrip)
         {
             Destroy(obj);

@@ -441,28 +441,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 422294039}
   m_CullTransparentMesh: 1
---- !u!1 &482726307 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3663552833437725197, guid: 763f7ac6826854444a6c81254a5fcedc, type: 3}
-  m_PrefabInstance: {fileID: 1759473501}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &482726308 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4180758219063520547, guid: 763f7ac6826854444a6c81254a5fcedc, type: 3}
   m_PrefabInstance: {fileID: 1759473501}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &482726309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 482726307}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe64f479368fff945a1b0fe5bff43dc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &482726313 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 4969194895315092147, guid: 763f7ac6826854444a6c81254a5fcedc, type: 3}
@@ -799,7 +782,7 @@ MonoBehaviour:
   drawTrajectory: 0
   layer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   maxHeight: 5
   gravity: -18
   target1: 113
@@ -852,8 +835,8 @@ GameObject:
   - component: {fileID: 1311738807}
   - component: {fileID: 1311738806}
   - component: {fileID: 1311738805}
-  - component: {fileID: 1311738811}
   - component: {fileID: 1311738812}
+  - component: {fileID: 1311738813}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -978,28 +961,6 @@ RectTransform:
   m_AnchoredPosition: {x: 413.5, y: 232.75}
   m_SizeDelta: {x: 820, y: 461.55984}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1311738811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1311738804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99b74709f1b1d42359c9a375e1bed00f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spreadsheet: {fileID: 0}
-  backboardPrefabs:
-  - {fileID: 565244951}
-  - {fileID: 1269531097}
-  - {fileID: 1088867356}
-  - {fileID: 1920808686}
-  blueStrip: {fileID: 2101274626}
-  wordImage: {fileID: 909717263}
-  basketballLauncher: {fileID: 1051200011}
-  isCalled: 0
 --- !u!114 &1311738812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1014,6 +975,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blankPrefab: {fileID: 8997395865345265289, guid: 2ce0f8fe1d0eb4914abc767f038135fe, type: 3}
   startingPosChanged: 0
+--- !u!114 &1311738813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311738804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99b74709f1b1d42359c9a375e1bed00f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backboardPrefab:
+  - {fileID: 565244951}
+  - {fileID: 1269531097}
+  - {fileID: 1088867356}
+  - {fileID: 1920808686}
+  blueStrip: {fileID: 2101274626}
+  basketBall: {fileID: 1051200011}
+  wordImage: {fileID: 909717263}
 --- !u!1 &1538738344
 GameObject:
   m_ObjectHideFlags: 0
@@ -1334,9 +1315,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1311738811}
+      - m_Target: {fileID: 1311738813}
         m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
-        m_MethodName: LoadData
+        m_MethodName: PlayClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1366,7 +1347,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cfb6a8a84228144b7a3ac74fc9c6b42b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 72c00e53532124850b461a796010049f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1410,6 +1391,10 @@ PrefabInstance:
     - target: {fileID: 3663552833437725197, guid: 763f7ac6826854444a6c81254a5fcedc, type: 3}
       propertyPath: m_Name
       value: Basketball
+      objectReference: {fileID: 0}
+    - target: {fileID: 3663552833437725197, guid: 763f7ac6826854444a6c81254a5fcedc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4180758219063520547, guid: 763f7ac6826854444a6c81254a5fcedc, type: 3}
       propertyPath: m_RootOrder
@@ -1471,6 +1456,10 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 13400000, guid: 13cf65896feb0d14fb4fb06f51aa59d4, type: 2}
+    - target: {fileID: 8507089963299931153, guid: 763f7ac6826854444a6c81254a5fcedc, type: 3}
+      propertyPath: launcher
+      value: 
+      objectReference: {fileID: 1051200013}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 763f7ac6826854444a6c81254a5fcedc, type: 3}
 --- !u!1 &1818305883
@@ -1704,6 +1693,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4913570306398855091, guid: e695627c517b0ed4095b0537a7b436da, type: 3}
+      propertyPath: m_Size.y
+      value: 1.4844635
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913570306398855091, guid: e695627c517b0ed4095b0537a7b436da, type: 3}
+      propertyPath: m_Center.y
+      value: 1.8577682
+      objectReference: {fileID: 0}
     - target: {fileID: 7538768814807789527, guid: e695627c517b0ed4095b0537a7b436da, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1767,7 +1764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2101274627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1823,6 +1820,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.2486, y: -0.13}
-  m_SizeDelta: {x: 17.8171, y: 18.5909}
+  m_AnchoredPosition: {x: 1.5217, y: -0.13}
+  m_SizeDelta: {x: 19.449, y: 18.5909}
   m_Pivot: {x: 0.5, y: 0.5}

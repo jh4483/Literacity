@@ -18,7 +18,13 @@ public class DragBasketball : MonoBehaviour /*, IDragHandler, IBeginDragHandler,
 
     [Header("References")]
     public BasketballLauncher launcher;
+    public TargetCheck targetChecker;
 
+    void Start()
+    {
+        targetChecker = FindObjectOfType<TargetCheck>();
+    }
+    
     void Update()
     {
         if(Input.GetMouseButtonDown(0))
@@ -51,7 +57,7 @@ public class DragBasketball : MonoBehaviour /*, IDragHandler, IBeginDragHandler,
                 if(difference >= minimumDragDistance)
                 {
                     launcher.Launch();
-                    TargetCheck.CheckTarget();
+                    targetChecker.CheckTarget();
                 }
             }
         }
