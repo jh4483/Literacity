@@ -1566,6 +1566,10 @@ PrefabInstance:
       propertyPath: launcher
       value: 
       objectReference: {fileID: 1560824548}
+    - target: {fileID: 8507089963299931153, guid: 763f7ac6826854444a6c81254a5fcedc, type: 3}
+      propertyPath: minimumDragDistance
+      value: -1.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
