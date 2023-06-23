@@ -12,7 +12,7 @@ public class SpreadSheetAccess : MonoBehaviour
     [SerializeField] GameObject blankPrefab;
     [SerializeField] GameObject filledPrefab;
     [SerializeField] GameObject[] backboardPrefab;
-    [SerializeField] RawImage wordImage;
+    [SerializeField] Image wordImage;
     public static List<GameObject> upperStrip = new List<GameObject>();
     public static List<GameObject> lowerStrip = new List<GameObject>();
     public static List<GameObject> fillableAnswers = new List<GameObject>();
@@ -22,7 +22,10 @@ public class SpreadSheetAccess : MonoBehaviour
     public static int guessedAnswer = 0;
     public static float upperOffset;
     public static string word;
+    public Button playButton;
+    public GameObject basketBall;
     PrefabDesign designer;
+    LoadScene sceneLoader;
 
     [System.Serializable]
     public class RoundData
@@ -43,6 +46,7 @@ public class SpreadSheetAccess : MonoBehaviour
     void Start()
     {
         designer = FindObjectOfType<PrefabDesign>();
+        sceneLoader = FindObjectOfType<LoadScene>();
         currentRound = 1;
     }
 
@@ -53,6 +57,20 @@ public class SpreadSheetAccess : MonoBehaviour
 
     public IEnumerator LoadRoundData()
     {
+        if(currentRound == 6)
+        {
+            playButton.GetComponent<Image>().sprite = Resources.Load<Sprite>("replay"); 
+            blueStrip.SetActive(false);
+            wordImage.gameObject.SetActive(false);
+            for(int i =0; i < backboardPrefab.Length; i++)
+            {
+                backboardPrefab[i].SetActive(false);
+            }
+            basketBall.SetActive(false);
+            currentRound = 1;
+            yield break;
+        }
+        
         string filePath = Path.Combine(Application.streamingAssetsPath, "JSON File/json.txt");
 
         if (File.Exists(filePath))
@@ -96,17 +114,7 @@ public class SpreadSheetAccess : MonoBehaviour
             yield return new WaitForSeconds(1);
             //adjust the size of the upperstrip 
             designer.StartCoroutine(designer.AdjustUI());
-
-            if(lettersList[1].Length > 3)
-            {
-                Debug.Log("called");
-                upperOffset = 5.5f;
-            }
-            else
-            {
-                upperOffset = 5.2f;
-            }
-
+            upperOffset = 5.2f;
             // Adding letters to the upper List - missing and available, adding the available to a new list
             for(int i = 0; i < lettersList.Count; i++)
             {
@@ -153,6 +161,9 @@ public class SpreadSheetAccess : MonoBehaviour
             {
                 backboardPrefab[i].transform.GetChild(0).transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = optionsList[i].ToString();
             }
+
+            string imageName = currentRound.ToString();
+            wordImage.GetComponent<Image>().sprite = Resources.Load<Sprite>(imageName);
 
             yield break;
 

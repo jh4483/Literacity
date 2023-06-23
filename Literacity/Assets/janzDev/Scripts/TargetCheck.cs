@@ -27,9 +27,11 @@ public class TargetCheck : MonoBehaviour
             StartCoroutine(spreadsheet.ClearAllLists());
 
         }
-        else
+        else if (SpreadSheetAccess.optionsList[BasketballLauncher.saveTargetIndex] != SpreadSheetAccess.correctAnswers[answerIndex])
         {
-            // Need to figure out what needs to be done
+            {
+                // Debug.Log(BasketballLauncher.saveTargetIndex.gameObject.name);
+            }
         }
     }
 }
