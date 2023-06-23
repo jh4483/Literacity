@@ -18,7 +18,13 @@ public class DragBasketball : MonoBehaviour /*, IDragHandler, IBeginDragHandler,
 
     [Header("References")]
     public BasketballLauncher launcher;
+    public TargetCheck targetChecker;
 
+    void Start()
+    {
+        targetChecker = FindObjectOfType<TargetCheck>();
+    }
+    
     void Update()
     {
         if(Input.GetMouseButtonDown(0))
@@ -29,7 +35,7 @@ public class DragBasketball : MonoBehaviour /*, IDragHandler, IBeginDragHandler,
             {
                 startDragPoint = hit.point;
 
-                Debug.Log(hit.collider.name);
+                // Debug.Log(hit.collider.name);
             }
         }
 
@@ -42,16 +48,16 @@ public class DragBasketball : MonoBehaviour /*, IDragHandler, IBeginDragHandler,
             {
                 endDragPoint = hit.point;
 
-                Debug.Log(hit.collider.name);
+                // Debug.Log(hit.collider.name);
 
                 float difference = endDragPoint.y - startDragPoint.y;
-                //difference = Mathf.Abs(difference); 
-                Debug.Log(difference); 
+                difference = Mathf.Abs(difference); 
+                // Debug.Log(difference); 
 
                 if(difference <= minimumDragDistance)
                 {
                     launcher.Launch();
-                    TargetCheck.CheckTarget();
+                    targetChecker.StartCoroutine(targetChecker.CheckTarget());
                 }
             }
         }
