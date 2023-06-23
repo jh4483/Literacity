@@ -54,7 +54,7 @@ public class DragBasketball : MonoBehaviour /*, IDragHandler, IBeginDragHandler,
                 difference = Mathf.Abs(difference); 
                 // Debug.Log(difference); 
 
-                if(difference >= minimumDragDistance)
+                if(difference <= minimumDragDistance)
                 {
                     launcher.Launch();
                     targetChecker.StartCoroutine(targetChecker.CheckTarget());
