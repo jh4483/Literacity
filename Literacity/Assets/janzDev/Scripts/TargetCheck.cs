@@ -17,20 +17,27 @@ public class TargetCheck : MonoBehaviour
         spreadsheet = FindObjectOfType<SpreadSheetAccess>();
     }
 
-    public void CheckTarget()
+    public IEnumerator CheckTarget()
     {
         if (SpreadSheetAccess.optionsList[BasketballLauncher.saveTargetIndex] == SpreadSheetAccess.correctAnswers[answerIndex])
         {
-            SpreadSheetAccess.fillableAnswers[answerIndex].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = SpreadSheetAccess.correctAnswers[answerIndex].ToString();
+            Color originalColor =  BasketballLauncher.hitBackboard.transform.GetChild(0).transform.GetChild(1).GetComponent<Image>().color;
             Color greenColor =  new Color(63f / 255f, 103f / 255f, 70f / 255f, 1f);
+            BasketballLauncher.hitBackboard.transform.GetChild(0).transform.GetChild(1).GetComponent<Image>().color = greenColor;
+            SpreadSheetAccess.fillableAnswers[answerIndex].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = SpreadSheetAccess.correctAnswers[answerIndex].ToString();
             SpreadSheetAccess.fillableAnswers[answerIndex].GetComponent<Image>().color = greenColor;
             StartCoroutine(spreadsheet.ClearAllLists());
+            yield return new WaitForSeconds(2);
+            BasketballLauncher.hitBackboard.transform.GetChild(0).transform.GetChild(1).GetComponent<Image>().color = originalColor;
 
         }
         else if (SpreadSheetAccess.optionsList[BasketballLauncher.saveTargetIndex] != SpreadSheetAccess.correctAnswers[answerIndex])
         {
             {
-                // Debug.Log(BasketballLauncher.saveTargetIndex.gameObject.name);
+                Color originalColor =  BasketballLauncher.hitBackboard.transform.GetChild(0).transform.GetChild(1).GetComponent<Image>().color;
+                BasketballLauncher.hitBackboard.transform.GetChild(0).transform.GetChild(1).GetComponent<Image>().color = Color.red;
+                yield return new WaitForSeconds(2);
+                BasketballLauncher.hitBackboard.transform.GetChild(0).transform.GetChild(1).GetComponent<Image>().color = originalColor;
             }
         }
     }

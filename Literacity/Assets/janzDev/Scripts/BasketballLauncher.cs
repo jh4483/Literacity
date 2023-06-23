@@ -25,6 +25,7 @@ public class BasketballLauncher : MonoBehaviour
     public KeyCode target4;
 
     public static int saveTargetIndex;
+    public static GameObject hitBackboard;
     public LineRenderer trajectoryLineRenderer;
 
 
@@ -43,8 +44,9 @@ public class BasketballLauncher : MonoBehaviour
             if(Physics.Raycast(ray, out hit, Mathf.Infinity, layer))
             {
                 targetName = hit.transform.name;
+                hitBackboard = hit.transform.gameObject;
 
-                Debug.Log(hit.transform.name);
+                // Debug.Log(hit.transform.name);
             }
         }
 

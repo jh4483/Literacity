@@ -35,7 +35,7 @@ public class DragBasketball : MonoBehaviour /*, IDragHandler, IBeginDragHandler,
             {
                 startDragPoint = hit.point;
 
-                Debug.Log(hit.collider.name);
+                // Debug.Log(hit.collider.name);
             }
         }
 
@@ -48,16 +48,16 @@ public class DragBasketball : MonoBehaviour /*, IDragHandler, IBeginDragHandler,
             {
                 endDragPoint = hit.point;
 
-                Debug.Log(hit.collider.name);
+                // Debug.Log(hit.collider.name);
 
                 float difference = endDragPoint.y - startDragPoint.y;
                 difference = Mathf.Abs(difference); 
-                Debug.Log(difference); 
+                // Debug.Log(difference); 
 
                 if(difference >= minimumDragDistance)
                 {
                     launcher.Launch();
-                    targetChecker.CheckTarget();
+                    targetChecker.StartCoroutine(targetChecker.CheckTarget());
                 }
             }
         }
