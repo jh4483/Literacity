@@ -48,11 +48,11 @@ public class DragBasketball : MonoBehaviour /*, IDragHandler, IBeginDragHandler,
             {
                 endDragPoint = hit.point;
 
-                // Debug.Log(hit.collider.name);
+                Debug.Log(hit.collider.name);
 
                 float difference = endDragPoint.y - startDragPoint.y;
                 //difference = Mathf.Abs(difference); 
-                // Debug.Log(difference); 
+                Debug.Log(difference); 
 
                 if(difference <= minimumDragDistance)
                 {
