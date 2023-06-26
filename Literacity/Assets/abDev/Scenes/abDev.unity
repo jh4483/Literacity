@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &82015491 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1831719963209012880, guid: e695627c517b0ed4095b0537a7b436da, type: 3}
+  m_PrefabInstance: {fileID: 1877894751}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &193179731 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6265794835752158355, guid: e695627c517b0ed4095b0537a7b436da, type: 3}
@@ -514,6 +519,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &648774159 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1831719963209012880, guid: e695627c517b0ed4095b0537a7b436da, type: 3}
+  m_PrefabInstance: {fileID: 1947576104}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &728497893
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,6 +727,11 @@ MonoBehaviour:
   - {fileID: 1285490038}
   - {fileID: 193179731}
   - {fileID: 839799383}
+  missed:
+  - {fileID: 2086160762}
+  - {fileID: 82015491}
+  - {fileID: 1124934721}
+  - {fileID: 648774159}
   targetIndex: 3
   drawTrajectory: 0
   layer:
@@ -724,10 +739,6 @@ MonoBehaviour:
     m_Bits: 64
   maxHeight: 5
   gravity: -18
-  target1: 113
-  target2: 119
-  target3: 101
-  target4: 114
   trajectoryLineRenderer: {fileID: 577265440}
 --- !u!4 &1051200014
 Transform:
@@ -748,6 +759,11 @@ Transform:
 --- !u!1 &1088867356 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4665881856949318988, guid: e695627c517b0ed4095b0537a7b436da, type: 3}
+  m_PrefabInstance: {fileID: 741795087}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1124934721 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1831719963209012880, guid: e695627c517b0ed4095b0537a7b436da, type: 3}
   m_PrefabInstance: {fileID: 741795087}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1269531097 stripped
@@ -1798,6 +1814,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e695627c517b0ed4095b0537a7b436da, type: 3}
+--- !u!4 &2086160762 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1831719963209012880, guid: e695627c517b0ed4095b0537a7b436da, type: 3}
+  m_PrefabInstance: {fileID: 2086160760}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2101274626
 GameObject:
   m_ObjectHideFlags: 0

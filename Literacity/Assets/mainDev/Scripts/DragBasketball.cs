@@ -34,8 +34,6 @@ public class DragBasketball : MonoBehaviour /*, IDragHandler, IBeginDragHandler,
             if(Physics.Raycast(ray, out hit, Mathf.Infinity, startLayer))            //checks for a raycast hit
             {
                 startDragPoint = hit.point;
-
-                // Debug.Log(hit.collider.name);
             }
         }
 
@@ -51,13 +49,17 @@ public class DragBasketball : MonoBehaviour /*, IDragHandler, IBeginDragHandler,
                 Debug.Log(hit.collider.name);
 
                 float difference = endDragPoint.y - startDragPoint.y;
-                //difference = Mathf.Abs(difference); 
                 Debug.Log(difference); 
 
                 if(difference <= minimumDragDistance)
                 {
                     launcher.Launch();
                     targetChecker.StartCoroutine(targetChecker.CheckTarget());
+
+                    // if(targetchecker)
+                    {
+                            
+                    }
                 }
             }
         }

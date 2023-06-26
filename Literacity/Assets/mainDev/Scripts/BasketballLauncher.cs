@@ -7,6 +7,7 @@ public class BasketballLauncher : MonoBehaviour
     [Header("References")]
     public Rigidbody ballRb;
     public Transform[] backBoard;
+    public Transform[] missed;
     public int targetIndex = 0;
     public bool drawTrajectory = false;
     public LayerMask layer;
@@ -17,12 +18,6 @@ public class BasketballLauncher : MonoBehaviour
     [Header("Parabolic Path Parameters")]
     public float maxHeight = 5f;
     public float gravity = -18f;
-
-    [Header("Target Keys")]
-    public KeyCode target1;
-    public KeyCode target2;
-    public KeyCode target3;
-    public KeyCode target4;
 
     public static int saveTargetIndex;
     public static GameObject hitBackboard;
@@ -65,7 +60,16 @@ public class BasketballLauncher : MonoBehaviour
         Vector3 velocityY = Vector3.up * Mathf.Sqrt(-2 * gravity * maxHeight);                                                                  //Vertical velocity(initial) calculation using eqns of motion
         Vector3 velocityXZ = displacementXZ / timeOfFlight;                                                                                     //Horizontal velocity(initial) calculation using eqns of motion
 
-        return new LaunchData(velocityXZ + velocityY * -Mathf.Sign(gravity), timeOfFlight);                                                                                                          //Total initial velocity
+        // if(targetcheck = false)
+        // float displacementY = missed[targetIndex].position.y - ballRb.position.y;
+        // Vector3 displacementXZ = new Vector3(missed[targetIndex].position.x - ballRb.position.x, 0, missed[targetIndex].position.z - ballRb.position.z);
+
+        // float timeOfFlight = Mathf.Sqrt(-2 * maxHeight / gravity) + Mathf.Sqrt(2 * (displacementY - maxHeight) / gravity);
+
+        // Vector3 velocityY = Vector3.up * Mathf.Sqrt(-2 * gravity * maxHeight);
+        // Vector3 velocityXZ = displacementXZ / timeOfFlight;
+
+        return new LaunchData(velocityXZ + velocityY * -Mathf.Sign(gravity), timeOfFlight);                                               //Total initial velocity
     }
 
    void DrawTrajectory()
