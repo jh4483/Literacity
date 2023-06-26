@@ -37,6 +37,7 @@ public class TargetCheck : MonoBehaviour
         {
             {
                 targetChecked = false;
+                Debug.Log("After False flag" + targetChecked);
                 Color originalColor =  BasketballLauncher.hitBackboard.transform.GetChild(0).transform.GetChild(1).GetComponent<Image>().color;
                 BasketballLauncher.hitBackboard.transform.GetChild(0).transform.GetChild(1).GetComponent<Image>().color = Color.red;
                 yield return new WaitForSeconds(2);
@@ -44,6 +45,7 @@ public class TargetCheck : MonoBehaviour
 
                 //resets target checked to true so that trajectory shows to ring after a missed shot
                 targetChecked = true;
+                Debug.Log("After Reset" + targetChecked);
             }
         }
     }

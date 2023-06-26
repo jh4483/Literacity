@@ -28,6 +28,9 @@ public class BasketballLauncher : MonoBehaviour
     {
         ballRb.useGravity = false;    
         drawTrajectory = true;
+
+        hitBackboard = GameObject.Find("Backboard (1)");
+        // TODO : Remember to Debug the hitBackboard Issue that is due to hitBackboard not being properly set to a game object or the wrong game object
     }
 
     void Update()
