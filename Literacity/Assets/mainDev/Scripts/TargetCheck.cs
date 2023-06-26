@@ -9,6 +9,7 @@ public class TargetCheck : MonoBehaviour
     public static int answerIndex = 0;
     public static int changeRound = 1;
     public static GameObject canvas;
+    public bool targetChecked;
     SpreadSheetAccess spreadsheet;
 
     void Start()
@@ -21,6 +22,7 @@ public class TargetCheck : MonoBehaviour
     {
         if (SpreadSheetAccess.optionsList[BasketballLauncher.saveTargetIndex] == SpreadSheetAccess.correctAnswers[answerIndex])
         {
+            targetChecked = true;
             Color originalColor =  BasketballLauncher.hitBackboard.transform.GetChild(0).transform.GetChild(1).GetComponent<Image>().color;
             Color greenColor =  new Color(63f / 255f, 103f / 255f, 70f / 255f, 1f);
             BasketballLauncher.hitBackboard.transform.GetChild(0).transform.GetChild(1).GetComponent<Image>().color = greenColor;
@@ -34,6 +36,7 @@ public class TargetCheck : MonoBehaviour
         else if (SpreadSheetAccess.optionsList[BasketballLauncher.saveTargetIndex] != SpreadSheetAccess.correctAnswers[answerIndex])
         {
             {
+                targetChecked = false;
                 Color originalColor =  BasketballLauncher.hitBackboard.transform.GetChild(0).transform.GetChild(1).GetComponent<Image>().color;
                 BasketballLauncher.hitBackboard.transform.GetChild(0).transform.GetChild(1).GetComponent<Image>().color = Color.red;
                 yield return new WaitForSeconds(2);
