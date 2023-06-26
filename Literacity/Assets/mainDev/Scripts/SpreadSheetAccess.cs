@@ -57,6 +57,7 @@ public class SpreadSheetAccess : MonoBehaviour
     {
         if(currentRound == 6)
         {
+            sceneLoader.playButton.gameObject.SetActive(true);
             playButton.GetComponent<Image>().sprite = Resources.Load<Sprite>("replay"); 
             blueStrip.SetActive(false);
             wordImage.gameObject.SetActive(false);
@@ -111,7 +112,6 @@ public class SpreadSheetAccess : MonoBehaviour
             }
             yield return new WaitForSeconds(1);
             //adjust the size of the upperstrip 
-            // designer.StartCoroutine(designer.AdjustUI());
             if(lettersList[1].Length == 3)
             {
                 Debug.Log("over");
@@ -142,18 +142,10 @@ public class SpreadSheetAccess : MonoBehaviour
                 }
             }
 
-                for (int j = 0; j < 1; j++)
-                {
-                    upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-3.7f, 0.70f);
-                }
-
-            // else if(!designer.startingPosChanged)
-            // {
-            //     for (int j = 0; j < 1; j++)
-            //     {
-            //         upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-2.7f, 0.70f);
-            //     }
-            // }
+            for (int j = 0; j < 1; j++)
+            {
+                upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-3.7f, 0.70f);
+            }
 
 
             for (int j = 1; j < upperStrip.Count; j++)

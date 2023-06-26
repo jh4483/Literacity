@@ -27,7 +27,7 @@ public class TargetCheck : MonoBehaviour
             SpreadSheetAccess.fillableAnswers[answerIndex].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = SpreadSheetAccess.correctAnswers[answerIndex].ToString();
             SpreadSheetAccess.fillableAnswers[answerIndex].GetComponent<Image>().color = greenColor;
             StartCoroutine(spreadsheet.ClearAllLists());
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1);
             BasketballLauncher.hitBackboard.transform.GetChild(0).transform.GetChild(1).GetComponent<Image>().color = originalColor;
 
         }

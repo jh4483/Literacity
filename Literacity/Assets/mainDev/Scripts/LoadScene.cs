@@ -10,6 +10,7 @@ public class LoadScene : MonoBehaviour
     public GameObject blueStrip;
     public GameObject basketBall;
     public Image wordImage;
+    public Button playButton;
     SpreadSheetAccess spreadsheet;
 
     void Start()
@@ -34,6 +35,7 @@ public class LoadScene : MonoBehaviour
         blueStrip.SetActive(true);
         wordImage.gameObject.SetActive(true);
         basketBall.SetActive(true);
+        playButton.gameObject.SetActive(false);
     }
 
 

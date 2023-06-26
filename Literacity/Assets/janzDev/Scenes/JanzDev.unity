@@ -903,6 +903,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blankPrefab: {fileID: 8997395865345265289, guid: 2ce0f8fe1d0eb4914abc767f038135fe, type: 3}
+  newSizeDelta: {x: 0, y: 0}
+  rectTransform: {fileID: 0}
   startingPosChanged: 0
 --- !u!114 &1311738813
 MonoBehaviour:
@@ -924,6 +926,7 @@ MonoBehaviour:
   blueStrip: {fileID: 2101274626}
   basketBall: {fileID: 1051200011}
   wordImage: {fileID: 1647635735}
+  playButton: {fileID: 1712701285}
 --- !u!1 &1538738344
 GameObject:
   m_ObjectHideFlags: 0
@@ -1177,7 +1180,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1647635735
 MonoBehaviour:
   m_ObjectHideFlags: 0
