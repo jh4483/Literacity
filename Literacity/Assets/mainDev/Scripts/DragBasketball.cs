@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class DragBasketball : MonoBehaviour /*, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerDownHandler*/
+public class DragBasketball : MonoBehaviour
 {
     [Header("Variables")]
     public bool isPressed = false;
@@ -55,33 +55,8 @@ public class DragBasketball : MonoBehaviour /*, IDragHandler, IBeginDragHandler,
                 {
                     launcher.Launch();
                     targetChecker.StartCoroutine(targetChecker.CheckTarget());
-
-                    // if(targetchecker)
-                    {
-                            
-                    }
                 }
             }
         }
     }
-
-    // public void OnPointerDown(PointerEventData eventData)
-    // {
-    //     Debug.Log("Pointer Down");
-    // }
-
-    // public void OnDrag(PointerEventData eventData)
-    // {
-    //     Debug.Log("Dragging");
-    // }
-
-    // public void OnBeginDrag(PointerEventData eventData)
-    // {
-    //     Debug.Log("Begin Drag");
-    // }
-
-    // public void OnEndDrag(PointerEventData eventData)
-    // {
-    //     Debug.Log("End Drag");
-    // }
 }
