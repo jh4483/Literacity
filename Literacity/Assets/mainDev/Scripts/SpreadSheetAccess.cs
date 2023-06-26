@@ -24,7 +24,6 @@ public class SpreadSheetAccess : MonoBehaviour
     public static string word;
     public Button playButton;
     public GameObject basketBall;
-    PrefabDesign designer;
     LoadScene sceneLoader;
 
     [System.Serializable]
@@ -45,7 +44,6 @@ public class SpreadSheetAccess : MonoBehaviour
 
     void Start()
     {
-        designer = FindObjectOfType<PrefabDesign>();
         sceneLoader = FindObjectOfType<LoadScene>();
         currentRound = 1;
     }
@@ -59,6 +57,7 @@ public class SpreadSheetAccess : MonoBehaviour
     {
         if(currentRound == 6)
         {
+            sceneLoader.playButton.gameObject.SetActive(true);
             playButton.GetComponent<Image>().sprite = Resources.Load<Sprite>("replay"); 
             blueStrip.SetActive(false);
             wordImage.gameObject.SetActive(false);
@@ -113,8 +112,17 @@ public class SpreadSheetAccess : MonoBehaviour
             }
             yield return new WaitForSeconds(1);
             //adjust the size of the upperstrip 
-            designer.StartCoroutine(designer.AdjustUI());
-            upperOffset = 5.2f;
+            if(lettersList[1].Length == 3)
+            {
+                Debug.Log("over");
+                upperOffset = 6.0f;
+            }
+
+            else if (lettersList[1].Length == 4)
+            {
+                Debug.Log("under");
+                upperOffset = 6.6f;
+            }
             // Adding letters to the upper List - missing and available, adding the available to a new list
             for(int i = 0; i < lettersList.Count; i++)
             {
@@ -134,20 +142,9 @@ public class SpreadSheetAccess : MonoBehaviour
                 }
             }
 
-            if(designer.startingPosChanged)
+            for (int j = 0; j < 1; j++)
             {
-                for (int j = 0; j < 1; j++)
-                {
-                    upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-3.7f, 0.70f);
-                }
-            }
-
-            else if(!designer.startingPosChanged)
-            {
-                for (int j = 0; j < 1; j++)
-                {
-                    upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-2.7f, 0.70f);
-                }
+                upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-3.7f, 0.70f);
             }
 
 
