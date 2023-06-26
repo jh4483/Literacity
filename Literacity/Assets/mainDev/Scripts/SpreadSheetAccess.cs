@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.IO;
+using UnityEngine.Networking;
 
 public class SpreadSheetAccess : MonoBehaviour
 {
@@ -55,13 +56,13 @@ public class SpreadSheetAccess : MonoBehaviour
 
     public IEnumerator LoadRoundData()
     {
-        if(currentRound == 6)
+        if (currentRound == 6)
         {
             sceneLoader.playButton.gameObject.SetActive(true);
-            playButton.GetComponent<Image>().sprite = Resources.Load<Sprite>("replay"); 
+            playButton.GetComponent<Image>().sprite = Resources.Load<Sprite>("replay");
             blueStrip.SetActive(false);
             wordImage.gameObject.SetActive(false);
-            for(int i =0; i < backboardPrefab.Length; i++)
+            for (int i = 0; i < backboardPrefab.Length; i++)
             {
                 backboardPrefab[i].SetActive(false);
             }
@@ -69,102 +70,124 @@ public class SpreadSheetAccess : MonoBehaviour
             currentRound = 1;
             yield break;
         }
-        
+
         string filePath = Path.Combine(Application.streamingAssetsPath, "JSON File/json.txt");
+        string json = "";
 
-        if (File.Exists(filePath))
+        if (filePath.Contains("://") || filePath.Contains(":///"))
         {
-            string json = File.ReadAllText(filePath);
-            json = "{\"items\":" + json + "}";
-            Wrapper wrapper = JsonUtility.FromJson<Wrapper>(json);
-            List<RoundData> roundDataList = wrapper.items;
+            UnityWebRequest www = UnityWebRequest.Get(filePath);
+            yield return www.SendWebRequest();
 
-            List<string> lettersList = new List<string>();
-            List<string> imageList = new List<string>();
-
-            foreach (RoundData roundData in roundDataList)
+            if (www.result == UnityWebRequest.Result.Success)
             {
-                if (roundData.Round == currentRound)
-                {
-                    lettersList.Add(roundData.LetterOne);
-                    lettersList.Add(roundData.LetterTwo);
+                json = www.downloadHandler.text;
+            }
+            else
+            {
+                Debug.LogError("Failed to load JSON file: " + www.error);
+                yield break;
+            }
+        }
+        else
+        {
+            if (File.Exists(filePath))
+            {
+                json = File.ReadAllText(filePath);
+            }
+            else
+            {
+                Debug.LogError("JSON file not found at path: " + filePath);
+                yield break;
+            }
+        }
 
-                    // if(roundData.LetterFive == "None")
-                    // {
+        json = "{\"items\":" + json + "}";
+        Wrapper wrapper = JsonUtility.FromJson<Wrapper>(json);
+        List<RoundData> roundDataList = wrapper.items;
 
-                    // }
+        List<string> lettersList = new List<string>();
+        List<string> imageList = new List<string>();
 
-                    // else
-                    // {
-                    //     lettersList.Add(roundData.LetterFive);
-                    // }
+        foreach (RoundData roundData in roundDataList)
+        {
+            if (roundData.Round == currentRound)
+            {
+                lettersList.Add(roundData.LetterOne);
+                lettersList.Add(roundData.LetterTwo);
 
-                    optionsList.Add(roundData.BackLetterOne);
-                    optionsList.Add(roundData.BackLetterTwo);
-                    optionsList.Add(roundData.BackLetterThree);
-                    optionsList.Add(roundData.BackLetterFour);
-                    imageList.Add(roundData.ImageURL);
-                    correctAnswers.Add(roundData.CorrectAnswerOne);
-                    word = roundData.Word;
-                    
-                }
+                // if(roundData.LetterFive == "None")
+                // {
+
+                // }
+
+                // else
+                // {
+                //     lettersList.Add(roundData.LetterFive);
+                // }
+
+                optionsList.Add(roundData.BackLetterOne);
+                optionsList.Add(roundData.BackLetterTwo);
+                optionsList.Add(roundData.BackLetterThree);
+                optionsList.Add(roundData.BackLetterFour);
+                imageList.Add(roundData.ImageURL);
+                correctAnswers.Add(roundData.CorrectAnswerOne);
+                word = roundData.Word;
 
             }
-            yield return new WaitForSeconds(1);
-            //adjust the size of the upperstrip 
-            if(lettersList[1].Length == 3)
-            {
-                Debug.Log("over");
-                upperOffset = 6.0f;
-            }
-
-            else if (lettersList[1].Length == 4)
-            {
-                Debug.Log("under");
-                upperOffset = 6.6f;
-            }
-            // Adding letters to the upper List - missing and available, adding the available to a new list
-            for(int i = 0; i < lettersList.Count; i++)
-            {
-                GameObject obj;
-                if(lettersList[i] == "")
-                {
-                    obj = Instantiate(blankPrefab, blueStrip.transform);
-                    upperStrip.Add(obj);
-                    fillableAnswers.Add(obj);
-                    obj.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = lettersList[i].ToString();
-                }
-                else
-                {
-                    obj = Instantiate(filledPrefab, blueStrip.transform);
-                    upperStrip.Add(obj);
-                    obj.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = lettersList[i].ToString();
-                }
-            }
-
-            for (int j = 0; j < 1; j++)
-            {
-                upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-3.7f, 0.70f);
-            }
-
-
-            for (int j = 1; j < upperStrip.Count; j++)
-            {
-                float xPosition = upperStrip[j - 1].GetComponent<RectTransform>().anchoredPosition.x + upperOffset;
-                upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(xPosition, 0.70f);
-            }
-
-            for (int i = 0; i < optionsList.Count; i++)
-            {
-                backboardPrefab[i].transform.GetChild(0).transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = optionsList[i].ToString();
-            }
-
-            string imageName = currentRound.ToString();
-            wordImage.GetComponent<Image>().sprite = Resources.Load<Sprite>(imageName);
-
-            yield break;
 
         }
+        yield return new WaitForSeconds(1);
+        //adjust the size of the upperstrip 
+        if (lettersList[1].Length == 3)
+        {
+            Debug.Log("over");
+            upperOffset = 6.0f;
+        }
+        else if (lettersList[1].Length == 4)
+        {
+            Debug.Log("under");
+            upperOffset = 6.6f;
+        }
+        // Adding letters to the upper List - missing and available, adding the available to a new list
+        for (int i = 0; i < lettersList.Count; i++)
+        {
+            GameObject obj;
+            if (lettersList[i] == "")
+            {
+                obj = Instantiate(blankPrefab, blueStrip.transform);
+                upperStrip.Add(obj);
+                fillableAnswers.Add(obj);
+                obj.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = lettersList[i].ToString();
+            }
+            else
+            {
+                obj = Instantiate(filledPrefab, blueStrip.transform);
+                upperStrip.Add(obj);
+                obj.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = lettersList[i].ToString();
+            }
+        }
+
+        for (int j = 0; j < 1; j++)
+        {
+            upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(-3.7f, 0.70f);
+        }
+
+        for (int j = 1; j < upperStrip.Count; j++)
+        {
+            float xPosition = upperStrip[j - 1].GetComponent<RectTransform>().anchoredPosition.x + upperOffset;
+            upperStrip[j].GetComponent<RectTransform>().anchoredPosition = new Vector2(xPosition, 0.70f);
+        }
+
+        for (int i = 0; i < optionsList.Count; i++)
+        {
+            backboardPrefab[i].transform.GetChild(0).transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = optionsList[i].ToString();
+        }
+
+        string imageName = currentRound.ToString();
+        wordImage.GetComponent<Image>().sprite = Resources.Load<Sprite>(imageName);
+
+        yield break;
     }
 
     [System.Serializable]
@@ -176,7 +199,7 @@ public class SpreadSheetAccess : MonoBehaviour
     public IEnumerator ClearAllLists()
     {
         yield return new WaitForSeconds(2);
-        
+
         foreach (GameObject obj in upperStrip)
         {
             Destroy(obj);
@@ -188,8 +211,5 @@ public class SpreadSheetAccess : MonoBehaviour
 
         currentRound++;
         StartCoroutine(LoadRoundData());
-
     }
-
 }
-
