@@ -11,6 +11,8 @@ public class LoadScene : MonoBehaviour
     public GameObject basketBall;
     public Image wordImage;
     public Button playButton;
+    public Image fillaBar;
+    public Image fillBarBase;
     SpreadSheetAccess spreadsheet;
 
     void Start()
@@ -36,6 +38,8 @@ public class LoadScene : MonoBehaviour
         wordImage.gameObject.SetActive(true);
         basketBall.SetActive(true);
         playButton.gameObject.SetActive(false);
+        fillaBar.gameObject.SetActive(true);
+        fillBarBase.gameObject.SetActive(true);
     }
 
 
