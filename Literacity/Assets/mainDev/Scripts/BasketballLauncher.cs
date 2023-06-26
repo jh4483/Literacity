@@ -52,24 +52,38 @@ public class BasketballLauncher : MonoBehaviour
 
     LaunchData CalculateBallLaunchVelocity()
     {
-        float displacementY = backBoard[targetIndex].position.y - ballRb.position.y;                                                                                       //Vertical displacement calculation
-        Vector3 displacementXZ = new Vector3(backBoard[targetIndex].position.x - ballRb.position.x, 0, backBoard[targetIndex].position.z - ballRb.position.z);            //Horizontal displacement calculation
+        float displacementY;
+        Vector3 displacementXZ;
+        float timeOfFlight;
+        Vector3 velocityY;
+        Vector3 velocityXZ;
 
-        float timeOfFlight = Mathf.Sqrt(-2 * maxHeight / gravity) + Mathf.Sqrt(2 * (displacementY - maxHeight) / gravity);                      //Time of flight calculation using eqns of motion              
 
-        Vector3 velocityY = Vector3.up * Mathf.Sqrt(-2 * gravity * maxHeight);                                                                  //Vertical velocity(initial) calculation using eqns of motion
-        Vector3 velocityXZ = displacementXZ / timeOfFlight;                                                                                     //Horizontal velocity(initial) calculation using eqns of motion
+        if(TargetCheck.targetChecked)
+        {
+            displacementY = backBoard[targetIndex].position.y - ballRb.position.y;                                                                                       //Vertical displacement calculation
+            displacementXZ = new Vector3(backBoard[targetIndex].position.x - ballRb.position.x, 0, backBoard[targetIndex].position.z - ballRb.position.z);            //Horizontal displacement calculation
 
-        // if(targetcheck = false)
-        // float displacementY = missed[targetIndex].position.y - ballRb.position.y;
-        // Vector3 displacementXZ = new Vector3(missed[targetIndex].position.x - ballRb.position.x, 0, missed[targetIndex].position.z - ballRb.position.z);
+            timeOfFlight = Mathf.Sqrt(-2 * maxHeight / gravity) + Mathf.Sqrt(2 * (displacementY - maxHeight) / gravity);                      //Time of flight calculation using eqns of motion              
 
-        // float timeOfFlight = Mathf.Sqrt(-2 * maxHeight / gravity) + Mathf.Sqrt(2 * (displacementY - maxHeight) / gravity);
+            velocityY = Vector3.up * Mathf.Sqrt(-2 * gravity * maxHeight);                                                                  //Vertical velocity(initial) calculation using eqns of motion
+            velocityXZ = displacementXZ / timeOfFlight;                                                                                     //Horizontal velocity(initial) calculation using eqns of motion
 
-        // Vector3 velocityY = Vector3.up * Mathf.Sqrt(-2 * gravity * maxHeight);
-        // Vector3 velocityXZ = displacementXZ / timeOfFlight;
+            return new LaunchData(velocityXZ + velocityY * -Mathf.Sign(gravity), timeOfFlight);                                               //Total initial velocity
+        }
 
+        //Same code as the one in the top but with a different arry to calculate the trajectory for the missed shots
+
+        displacementY = missed[targetIndex].position.y - ballRb.position.y;
+        displacementXZ = new Vector3(missed[targetIndex].position.x - ballRb.position.x, 0, missed[targetIndex].position.z - ballRb.position.z);
+
+        timeOfFlight = Mathf.Sqrt(-2 * maxHeight / gravity) + Mathf.Sqrt(2 * (displacementY - maxHeight) / gravity);
+
+        velocityY = Vector3.up * Mathf.Sqrt(-2 * gravity * maxHeight);
+        velocityXZ = displacementXZ / timeOfFlight;
+            
         return new LaunchData(velocityXZ + velocityY * -Mathf.Sign(gravity), timeOfFlight);                                               //Total initial velocity
+
     }
 
    void DrawTrajectory()

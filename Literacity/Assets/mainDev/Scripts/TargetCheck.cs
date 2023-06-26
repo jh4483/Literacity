@@ -9,7 +9,7 @@ public class TargetCheck : MonoBehaviour
     public static int answerIndex = 0;
     public static int changeRound = 1;
     public static GameObject canvas;
-    public bool targetChecked;
+    public static bool targetChecked = true;
     SpreadSheetAccess spreadsheet;
 
     void Start()
@@ -41,6 +41,9 @@ public class TargetCheck : MonoBehaviour
                 BasketballLauncher.hitBackboard.transform.GetChild(0).transform.GetChild(1).GetComponent<Image>().color = Color.red;
                 yield return new WaitForSeconds(2);
                 BasketballLauncher.hitBackboard.transform.GetChild(0).transform.GetChild(1).GetComponent<Image>().color = originalColor;
+
+                //resets target checked to true so that trajectory shows to ring after a missed shot
+                targetChecked = true;
             }
         }
     }

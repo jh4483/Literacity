@@ -68,8 +68,8 @@ public class DragBasketball : MonoBehaviour
 
             if(dragValue <= minimumDragDistance)
             {
-                launcher.Launch();
                 targetChecker.StartCoroutine(targetChecker.CheckTarget());
+                launcher.Launch();
 
                 dragMeter.fillAmount = 0f;
             }
