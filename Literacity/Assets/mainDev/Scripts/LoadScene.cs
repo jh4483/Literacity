@@ -23,6 +23,7 @@ public class LoadScene : MonoBehaviour
 
     public void PlayClicked()
     {
+        playButton.gameObject.SetActive(false);
         StartCoroutine(LoadMain());
     }
 
@@ -37,7 +38,6 @@ public class LoadScene : MonoBehaviour
         blueStrip.SetActive(true);
         wordImage.gameObject.SetActive(true);
         basketBall.SetActive(true);
-        playButton.gameObject.SetActive(false);
         fillaBar.gameObject.SetActive(true);
         fillBarBase.gameObject.SetActive(true);
     }
