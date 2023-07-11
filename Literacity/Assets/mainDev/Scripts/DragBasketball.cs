@@ -13,7 +13,7 @@ public class DragBasketball : MonoBehaviour
     Ray ray;
     RaycastHit hit;
 
-    [Header("Darg Variables")]
+    [Header("Drag Variables")]
     public Vector3 startDragPoint = Vector3.zero;
     public Vector3 endDragPoint = Vector3.zero;
     public float minimumDragDistance = 5f;
@@ -75,4 +75,21 @@ public class DragBasketball : MonoBehaviour
             }
         }
     }
+
+    // Vector3 mousePoition;
+
+    // private Vector3 GetMousePos()
+    // {
+    //     return Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    // }
+
+    // private void OnMouseDown()
+    // {
+    //     mousePoition = Input.mousePosition - GetMousePos(); 
+    // }
+
+    // private void OnMouseDrag()
+    // {
+    //     transform.position = GetMousePos() + mousePoition;
+    // }
 }
