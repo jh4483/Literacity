@@ -15,6 +15,15 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         box = GetComponent<BoxCollider2D>();
     }
 
+    private void Update()
+    {
+        if(transform.position == (Vector3)initBallPos)
+        {
+            box.enabled = true;
+            rb.isKinematic = false;
+        }
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         Debug.Log("OnBeginDrag");
