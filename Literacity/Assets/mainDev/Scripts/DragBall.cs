@@ -5,9 +5,13 @@ using UnityEngine.EventSystems;
 
 public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    Vector2 initBallPos;
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         Debug.Log("OnBeginDrag");
+        initBallPos = transform.position;
+
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -31,4 +35,6 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         yield return new WaitForSeconds(time);
         //ball disappear w/VFX like sparkles
     }
+
+    
 }
