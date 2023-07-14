@@ -9,7 +9,9 @@ using UnityEngine.Networking;
 public class SpreadSheetNew : MonoBehaviour
 {
     public List<string> ballLetters = new List<string>();
-    public List<Button> ballOrder = new List<Button>();
+    public List <string> words = new List<string>();
+    public List <string> roundNumber = new List<string>();
+    public List<Button> ballOrder = new List<Button>();    
     public RectTransform origin;
     public Button basketBall;
     public AudioSource ballAudioSource;
@@ -17,7 +19,7 @@ public class SpreadSheetNew : MonoBehaviour
     [System.Serializable]
     public class RoundData
     {
-        public int Round;
+        public string Round;
         public string Word;
         public string BallLetters;
     }
@@ -78,6 +80,14 @@ public class SpreadSheetNew : MonoBehaviour
         foreach (RoundData roundData in roundDataList)
         {
             ballLetters.Add(roundData.BallLetters);
+            if(roundData.Word != "")
+            {
+                words.Add(roundData.Word);
+            }
+            if(roundData.Round != "")
+            {
+                roundNumber.Add(roundData.Round);
+            }
         }
 
         for (int i = 0; i < ballLetters.Count; i++)
