@@ -4,27 +4,27 @@ using UnityEngine;
 
 public class PlayAudio : MonoBehaviour
 {
-    public bool isSelected;
     private AudioSource audioSource;
     SpreadSheetNew spreadSheetNew;
+    DragBall dragBall;
 
     void Start()
     {
         spreadSheetNew = FindObjectOfType<SpreadSheetNew>();
+        dragBall = FindObjectOfType<DragBall>();
         audioSource = spreadSheetNew.ballAudioSource;
-        isSelected = false;
     }
 
     public void OnClick()
     {
-        if (audioSource != null && audioSource.clip != null)
+        if (audioSource != null && audioSource.clip != null && !dragBall.isDragging)
         {
             audioSource.Play();
         }
 
         else
         {
-            Debug.Log("not here");
+            audioSource.Stop();
         }
     }
 }

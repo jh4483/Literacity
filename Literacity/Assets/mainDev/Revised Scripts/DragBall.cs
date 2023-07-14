@@ -7,32 +7,32 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 {
     Vector2 initBallPos;
     Rigidbody2D rb;
-    BoxCollider2D box;
+    CircleCollider2D collider;
+    public bool isDragging;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        box = GetComponent<BoxCollider2D>();
+        collider = GetComponent<CircleCollider2D>();
+        isDragging = false;
     }
 
     private void Update()
     {
         if(transform.position == (Vector3)initBallPos)
         {
-            box.enabled = true;
+            collider.enabled = true;
             rb.isKinematic = false;
         }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("OnBeginDrag");
         initBallPos = transform.position;
 
-        rb.velocity = Vector2.zero;
-
-        box.enabled = false;
+        collider.enabled = false;
         rb.isKinematic = true;
+        isDragging = true;
 
     }
 
@@ -43,7 +43,10 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("OnEndDrag");
+        rb.isKinematic = false;
+        collider.enabled = true;
+        isDragging = false;
+        
     }
 
     IEnumerator BallReset(float time)
