@@ -8,11 +8,13 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     Vector2 initBallPos;
     Rigidbody2D rb;
     CircleCollider2D collider;
+    public bool isDragging;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         collider = GetComponent<CircleCollider2D>();
+        isDragging = false;
     }
 
     private void Update()
@@ -30,6 +32,7 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
         collider.enabled = false;
         rb.isKinematic = true;
+        isDragging = true;
 
     }
 
@@ -42,6 +45,7 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
         rb.isKinematic = false;
         collider.enabled = true;
+        isDragging = false;
         
     }
 
