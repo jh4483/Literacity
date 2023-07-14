@@ -22,7 +22,9 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         if(transform.position == (Vector3)initBallPos)
         {
             collider.enabled = true;
+
             rb.isKinematic = false;
+            rb.velocity = Vector2.zero;
         }
     }
 
@@ -31,7 +33,10 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         initBallPos = transform.position;
 
         collider.enabled = false;
+
+        rb.velocity = Vector2.zero;
         rb.isKinematic = true;
+
         isDragging = true;
 
     }
