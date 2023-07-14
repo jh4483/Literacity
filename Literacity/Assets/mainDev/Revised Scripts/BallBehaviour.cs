@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class BallBehaviour : MonoBehaviour
 {
-    Vector2 initialPos;
+    public Vector2 initialPos;
+    public Quaternion initialRot;
 
     void Start()
     {
         initialPos = transform.position;
+        initialRot = transform.rotation;
     }
 
     void Update()
@@ -18,9 +20,10 @@ public class BallBehaviour : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collider)
     {
-        if(collider.gameObject.name == "Upper Ground")
+        if(collider.gameObject.name == "Ring")
         {
             transform.position = initialPos;
+            transform.rotation = initialRot;
         }
     }
 }
