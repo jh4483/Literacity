@@ -29,6 +29,8 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         Debug.Log("OnBeginDrag");
         initBallPos = transform.position;
 
+        rb.velocity = Vector2.zero;
+
         box.enabled = false;
         rb.isKinematic = true;
 
