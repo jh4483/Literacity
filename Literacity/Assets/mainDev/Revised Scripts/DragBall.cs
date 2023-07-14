@@ -17,21 +17,21 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         rb = GetComponent<Rigidbody2D>();
         collider = GetComponent<CircleCollider2D>();
         isDragging = false;
-        rb.isKinematic = false;
+        rb.isKinematic = true;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         ballBehaviour = GetComponent<BallBehaviour>();
     }
 
     private void Update()
     {
-        if(transform.position == (Vector3)initBallPos)
-        {
-            collider.enabled = true;
+        // if(transform.position == (Vector3)initBallPos)
+        // {
+        //     collider.enabled = true;
 
-            rb.isKinematic = false;
-            rb.velocity = Vector2.zero;
-            rb.constraints = RigidbodyConstraints2D.FreezeAll;
-        }
+        //     rb.isKinematic = true;
+        //     rb.velocity = Vector2.zero;
+        //     rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        // }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -69,6 +69,12 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         yield return new WaitForSeconds(time);
         transform.position = ballBehaviour.initialPos;
         transform.rotation = ballBehaviour.initialRot;
+
+        collider.enabled = true;
+
+        rb.isKinematic = true;
+        rb.velocity = Vector2.zero;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 
     IEnumerator BallDisappear(float time)
