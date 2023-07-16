@@ -8,13 +8,14 @@ using UnityEngine.Networking;
 
 public class SpreadSheetNew : MonoBehaviour
 {
-    public List<string> ballLetters = new List<string>();
-    public List <string> words = new List<string>();
-    public List <string> roundNumber = new List<string>();
+    public List<string> ballLettersList = new List<string>();
+    public List <string> wordsList = new List<string>();
+    public List <string> roundNumberList = new List<string>();
     public List<Button> ballOrder = new List<Button>();    
     public RectTransform origin;
     public Button basketBall;
     public AudioSource ballAudioSource;
+    public Button[] wordImage;
 
     [System.Serializable]
     public class RoundData
@@ -77,29 +78,32 @@ public class SpreadSheetNew : MonoBehaviour
         Wrapper wrapper = JsonUtility.FromJson<Wrapper>(json);
         List<RoundData> roundDataList = wrapper.items;
 
+
+        // Adding necessary data to lists 
         foreach (RoundData roundData in roundDataList)
         {
-            ballLetters.Add(roundData.BallLetters);
+            ballLettersList.Add(roundData.BallLetters);
             if(roundData.Word != "")
             {
-                words.Add(roundData.Word);
+                wordsList.Add(roundData.Word);
             }
+
             if(roundData.Round != "")
             {
-                roundNumber.Add(roundData.Round);
+                roundNumberList.Add(roundData.Round);
             }
         }
 
-        for (int i = 0; i < ballLetters.Count; i++)
+        for (int i = 0; i < ballLettersList.Count; i++)
         {
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.1f);
             Button newBall = Instantiate(basketBall, origin);
             newBall.transform.SetParent(origin);
-            newBall.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = ballLetters[i].ToString();
+            newBall.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = ballLettersList[i].ToString();
             float xOffset = 60f;
             Vector2 anchoredPosition = new Vector2(-150f + (i * xOffset), 10f);
             newBall.GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
-            string audioFileName = ballLetters[i];
+            string audioFileName = ballLettersList[i];
             AudioClip audioClip = Resources.Load<AudioClip>(audioFileName);
             if (audioClip != null)
             {
@@ -110,8 +114,16 @@ public class SpreadSheetNew : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("Audio clip not found for ball: " + ballLetters[i]);
+                Debug.LogWarning("Audio clip not found for ball: " + ballLettersList[i]);
             }
+        }
+        for(int i = 0; i < wordsList.Count; i++)
+        {
+            Button wordPrompt = Instantiate(wordImage[i]);
+            wordPrompt.transform.SetParent(origin);
+            float yOffset = 30f;
+            Vector2 anchoredPosition = new Vector2(230f, 100f + (i * yOffset));
+            wordPrompt.GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
         }
     }
 }
