@@ -189,7 +189,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d67046e833d06443ea4b91a7470aecc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSelected: 0
 --- !u!114 &-8117403149025064080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,6 +201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fae1d96b2d3099640ab0e66f0fd749d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDragging: 0
+  resetTime: 1.5
 --- !u!114 &2978850377939330995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,6 +215,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a985fc4e95f0c47e183e3c50d2995a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkText: {fileID: 6827126101667054148}
+  initialPos: {x: 0, y: 0}
+  initialRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &-7011520880739262004
 MonoBehaviour:
   m_ObjectHideFlags: 0

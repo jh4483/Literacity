@@ -11,11 +11,15 @@ public class SpreadSheetNew : MonoBehaviour
     public List<string> ballLettersList = new List<string>();
     public List <string> wordsList = new List<string>();
     public List <string> roundNumberList = new List<string>();
+    public List <string> letterOneList = new List<string>();
+    public List <string> letterTwoList = new List<string>();
     public List<Button> ballOrder = new List<Button>();    
     public RectTransform origin;
     public Button basketBall;
     public AudioSource ballAudioSource;
     public Button[] wordImage;
+    public int targetIndex;
+    public bool playNextRound;
 
     [System.Serializable]
     public class RoundData
@@ -23,6 +27,8 @@ public class SpreadSheetNew : MonoBehaviour
         public string Round;
         public string Word;
         public string BallLetters;
+        public string LetterOne;
+        public string LetterTwo;
     }
 
     [System.Serializable]
@@ -33,6 +39,7 @@ public class SpreadSheetNew : MonoBehaviour
 
     void Start()
     {
+        playNextRound = false;
         StartCoroutine(LoadRoundData());
     }
 
@@ -92,6 +99,16 @@ public class SpreadSheetNew : MonoBehaviour
             {
                 roundNumberList.Add(roundData.Round);
             }
+
+            if(roundData.LetterOne != "")
+            {
+                letterOneList.Add(roundData.LetterOne);
+            }
+
+            if(roundData.LetterTwo != "")
+            {
+                letterTwoList.Add(roundData.LetterTwo);
+            }
         }
 
         for (int i = 0; i < ballLettersList.Count; i++)
@@ -124,6 +141,7 @@ public class SpreadSheetNew : MonoBehaviour
             float yOffset = 30f;
             Vector2 anchoredPosition = new Vector2(230f, 100f + (i * yOffset));
             wordPrompt.GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
+            wordPrompt.gameObject.name = i.ToString();
         }
     }
 }

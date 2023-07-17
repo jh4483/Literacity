@@ -56,7 +56,6 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("called");
         rb.isKinematic = false;
         collider.enabled = true;
         isDragging = false;
