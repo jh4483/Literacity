@@ -1,1 +1,10 @@
-[{"Round":"A1","Word":"THING","BallLetters":"ING"},{"Round":"A2","Word":"WINGS","BallLetters":"TH"},{"Round":"A3","Word":"BRING","BallLetters":"ING"},{"Round":"A4","Word":"SING","BallLetters":"W"},{"Round":"","Word":"","BallLetters":"ING"},{"Round":"","Word":"","BallLetters":"S"},{"Round":"","Word":"","BallLetters":"ING"},{"Round":"","Word":"","BallLetters":"BR"}]
+[
+  {"Round": "A1", "Word": "THING", "BallLetters": "ING", "LetterOne": "TH", "LetterTwo": "ING"},
+  {"Round": "A2", "Word": "WING", "BallLetters": "TH", "LetterOne": "W", "LetterTwo": "ING"},
+  {"Round": "A3", "Word": "BRING", "BallLetters": "ING", "LetterOne": "BR", "LetterTwo": "ING"},
+  {"Round": "A4", "Word": "SING", "BallLetters": "W", "LetterOne": "S", "LetterTwo": "ING"},
+  {"Round": "", "Word": "", "BallLetters": "ING", "LetterOne": "", "LetterTwo": ""},
+  {"Round": "", "Word": "", "BallLetters": "S", "LetterOne": "", "LetterTwo": ""},
+  {"Round": "", "Word": "", "BallLetters": "ING", "LetterOne": "", "LetterTwo": ""},
+  {"Round": "", "Word": "", "BallLetters": "BR", "LetterOne": "", "LetterTwo": ""}
+]

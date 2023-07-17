@@ -5,7 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
-  - Pencil Box
+  - undone
+  - done
   layers:
   - Default
   - TransparentFX
