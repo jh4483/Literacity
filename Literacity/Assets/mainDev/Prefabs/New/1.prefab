@@ -147,9 +147,9 @@ GameObject:
   - component: {fileID: 6807438523714124636}
   - component: {fileID: 8428666322484705378}
   - component: {fileID: 1735015956214274900}
-  - component: {fileID: 1945997499519175972}
+  - component: {fileID: 5205238381692891433}
   m_Layer: 5
-  m_Name: 4
+  m_Name: 1
   m_TagString: undone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -197,15 +197,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.6792453, b: 0.16734506, a: 1}
+  m_Color: {r: 0, g: 0.10293579, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 22c3e22223eb61747b1583a9ce000a5d, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -258,7 +258,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1945997499519175972}
+      - m_Target: {fileID: 5205238381692891433}
         m_TargetAssemblyTypeName: ClickedPrompt, Assembly-CSharp
         m_MethodName: OnPromptClicked
         m_Mode: 1
@@ -270,7 +270,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1945997499519175972
+--- !u!114 &5205238381692891433
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
