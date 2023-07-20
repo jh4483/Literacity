@@ -139,7 +139,7 @@ public class SpreadSheetNew : MonoBehaviour
             Button wordPrompt = Instantiate(wordImage[i]);
             wordPrompt.transform.SetParent(origin);
             float yOffset = 30f;
-            Vector2 anchoredPosition = new Vector2(230f, 100f + (i * yOffset));
+            Vector2 anchoredPosition = new Vector2(250f, 100f + (i * yOffset));
             wordPrompt.GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
             wordPrompt.gameObject.name = i.ToString();
         }
