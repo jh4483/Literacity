@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -458,7 +458,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  isClosed: 1
 --- !u!114 &235971178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1141,6 +1140,7 @@ GameObject:
   - component: {fileID: 653129119}
   - component: {fileID: 653129118}
   - component: {fileID: 653129120}
+  - component: {fileID: 653129121}
   m_Layer: 5
   m_Name: Card - Yellow
   m_TagString: Untagged
@@ -1227,6 +1227,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &653129121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653129116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2371de51ad47757449779c715f18aa88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
 --- !u!1 &666855418
 GameObject:
   m_ObjectHideFlags: 0
@@ -1239,6 +1252,7 @@ GameObject:
   - component: {fileID: 666855421}
   - component: {fileID: 666855420}
   - component: {fileID: 666855422}
+  - component: {fileID: 666855423}
   m_Layer: 5
   m_Name: Card - BLUE
   m_TagString: Untagged
@@ -1325,6 +1339,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &666855423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666855418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2371de51ad47757449779c715f18aa88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
 --- !u!1 &1149157754
 GameObject:
   m_ObjectHideFlags: 0
@@ -1582,6 +1609,7 @@ GameObject:
   - component: {fileID: 1714880066}
   - component: {fileID: 1714880065}
   - component: {fileID: 1714880067}
+  - component: {fileID: 1714880068}
   m_Layer: 5
   m_Name: Card - RED
   m_TagString: Untagged
@@ -1668,6 +1696,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1714880068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1714880063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2371de51ad47757449779c715f18aa88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
 --- !u!1 &1889088885
 GameObject:
   m_ObjectHideFlags: 0
@@ -1756,6 +1797,7 @@ GameObject:
   - component: {fileID: 1990830105}
   - component: {fileID: 1990830104}
   - component: {fileID: 1990830106}
+  - component: {fileID: 1990830107}
   m_Layer: 5
   m_Name: Card - GREEN
   m_TagString: Untagged
@@ -1842,3 +1884,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1990830107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990830102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2371de51ad47757449779c715f18aa88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
