@@ -1003,7 +1003,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 54.652344, y: -62.914627}
+  m_Offset: {x: 63.794434, y: -65.85684}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1014,7 +1014,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 542.5742, y: 13.292084}
+  m_Size: {x: 1304.501, y: 19.176514}
   m_EdgeRadius: 0
 --- !u!1 &506195975
 GameObject:
@@ -1063,6 +1063,8 @@ GameObject:
   - component: {fileID: 527643946}
   - component: {fileID: 527643948}
   - component: {fileID: 527643947}
+  - component: {fileID: 527643949}
+  - component: {fileID: 527643950}
   m_Layer: 5
   m_Name: Backboard Highlight
   m_TagString: Untagged
@@ -1077,18 +1079,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527643945}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.023774276, w: 0.99971735}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 261535566}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -2.725}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -45.80005, y: 126.10446}
-  m_SizeDelta: {x: 107.3902, y: 68.0554}
+  m_AnchoredPosition: {x: -46.0407, y: 126.35726}
+  m_SizeDelta: {x: 122.5682, y: 80.4804}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &527643947
 MonoBehaviour:
@@ -1128,6 +1130,44 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527643945}
   m_CullTransparentMesh: 1
+--- !u!95 &527643949
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527643945}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 31b5a199c03ab498fa5f6398677c9950, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!111 &527643950
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527643945}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: 98e0c1092c1924ceda7dc0ceaf5af543, type: 2}
+  - {fileID: 7400000, guid: 24ca41db030b24f1387e15b677464001, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &653129116
 GameObject:
   m_ObjectHideFlags: 0
