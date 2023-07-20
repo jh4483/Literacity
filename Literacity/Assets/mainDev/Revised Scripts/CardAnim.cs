@@ -8,7 +8,7 @@ public class CardAnim : MonoBehaviour
 
     private void Start() 
     {
-        //animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
 
     public void OnSelected()
