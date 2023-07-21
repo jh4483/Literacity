@@ -15,6 +15,7 @@ public class SpreadSheetNew : MonoBehaviour
     public List <string> letterTwoList = new List<string>();
     public List<Button> ballOrder = new List<Button>();    
     public RectTransform origin;
+    public Transform selectedCard;
     public Button basketBall;
     public AudioSource ballAudioSource;
     public Button[] wordImage;
@@ -138,8 +139,8 @@ public class SpreadSheetNew : MonoBehaviour
         {
             Button wordPrompt = Instantiate(wordImage[i]);
             wordPrompt.transform.SetParent(origin);
-            float yOffset = 30f;
-            Vector2 anchoredPosition = new Vector2(250f, 100f + (i * yOffset));
+            float yOffset = -30f;
+            Vector2 anchoredPosition = new Vector2(250f, 175f + (i * yOffset));
             wordPrompt.GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
             wordPrompt.gameObject.name = i.ToString();
         }
