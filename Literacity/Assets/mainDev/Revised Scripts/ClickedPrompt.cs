@@ -22,7 +22,7 @@ public class ClickedPrompt : MonoBehaviour
     public void OnPromptClicked()
     {
         spreadSheetNew.targetIndex = int.Parse(gameObject.name);
-        spreadSheetNew.selectedCard = cardParent.transform.Find((spreadSheetNew.targetIndex).ToString());
+        spreadSheetNew.selectedCard = cardParent.transform.Find((spreadSheetNew.targetIndex).ToString() + " Card");
         GameObject openPrompt = GameObject.FindGameObjectWithTag("open");
         if (openPrompt != null)
         {
