@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class ClickedPrompt : MonoBehaviour
 {
-    SpreadSheetNew spreadSheetNew;
     public GameObject cardParent;
+    SpreadSheetNew spreadSheetNew;
 
     void Start()
     {
@@ -22,8 +22,14 @@ public class ClickedPrompt : MonoBehaviour
     public void OnPromptClicked()
     {
         spreadSheetNew.targetIndex = int.Parse(gameObject.name);
-        Transform selectedCard = cardParent.transform.GetChild(spreadSheetNew.targetIndex);   
-
-        selectedCard.GetComponent<CardAnim>().OnSelected();    
+        spreadSheetNew.selectedCard = cardParent.transform.Find((spreadSheetNew.targetIndex).ToString());
+        GameObject openPrompt = GameObject.FindGameObjectWithTag("open");
+        if (openPrompt != null)
+        {
+            openPrompt.transform.GetComponent<CardAnim>().OnDone();
+            openPrompt.tag = "close";
+        }
+        spreadSheetNew.selectedCard.GetComponent<CardAnim>().OnSelected();
+        spreadSheetNew.selectedCard.tag = "open";
     }
 }
