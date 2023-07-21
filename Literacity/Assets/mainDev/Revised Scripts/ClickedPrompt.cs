@@ -6,12 +6,18 @@ using UnityEngine.UI;
 public class ClickedPrompt : MonoBehaviour
 {
     public GameObject cardParent;
+    public GameObject backboardHighlight;
+    private Color currentColour;
+    private Color orginalColour;
     SpreadSheetNew spreadSheetNew;
 
     void Start()
     {
+        backboardHighlight = GameObject.Find("Backboard Highlight");
         spreadSheetNew = FindObjectOfType<SpreadSheetNew>();
         cardParent = GameObject.Find("Card Mask");
+        orginalColour = backboardHighlight.GetComponent<Image>().color;
+        currentColour = this.GetComponent<Image>().color;
     }
 
     void Update()
@@ -21,6 +27,7 @@ public class ClickedPrompt : MonoBehaviour
 
     public void OnPromptClicked()
     {
+        backboardHighlight.GetComponent<Image>().color = currentColour;
         spreadSheetNew.targetIndex = int.Parse(gameObject.name);
         spreadSheetNew.selectedCard = cardParent.transform.Find((spreadSheetNew.targetIndex).ToString() + " Card");
         GameObject openPrompt = GameObject.FindGameObjectWithTag("open");
