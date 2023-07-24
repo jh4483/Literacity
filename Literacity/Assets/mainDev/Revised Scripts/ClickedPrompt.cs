@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class ClickedPrompt : MonoBehaviour
 {
-    [SerializeField] GameObject openPrompt;
     public GameObject cardParent;
     public GameObject backboardHighlight;
+    public GameObject openPrompt;
     private Color currentColour;
     private Color orginalColour;
     SpreadSheetNew spreadSheetNew;
@@ -32,7 +32,6 @@ public class ClickedPrompt : MonoBehaviour
         spreadSheetNew.targetIndex = int.Parse(gameObject.name);
         spreadSheetNew.selectedCard = cardParent.transform.Find((spreadSheetNew.targetIndex).ToString() + " Card");
         openPrompt = GameObject.FindGameObjectWithTag("open");
-
         if (openPrompt == spreadSheetNew.selectedCard.gameObject)
         {
             spreadSheetNew.selectedCard.GetComponent<CardAnim>().OnDone();

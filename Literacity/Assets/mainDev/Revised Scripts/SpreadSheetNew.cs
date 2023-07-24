@@ -40,9 +40,7 @@ public class SpreadSheetNew : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(LoadRoundData());
         playNextRound = false;
-
     }
 
     void Update()

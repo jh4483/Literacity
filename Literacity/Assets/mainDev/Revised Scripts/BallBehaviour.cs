@@ -53,7 +53,6 @@ public class BallBehaviour : MonoBehaviour
                 spreadSheetNew.playNextRound = false;
                 selectedTarget.tag = "done";
                 backboardScale.Play("Backboard Scaling");
-    
                 for (int i = 0; i < enabledButtons.Length; i++)
                 {
                     if (enabledButtons[i].tag == "undone")
