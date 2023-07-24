@@ -15,7 +15,6 @@ public class CardAnim : MonoBehaviour
     {
         if(!animator.GetBool("isSelected"))
         {
-            Debug.Log("called");
             animator.SetBool("isSelected", true);
             animator.SetBool("isDone", false);
         }

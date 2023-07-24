@@ -284,3 +284,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardParent: {fileID: 0}
   backboardHighlight: {fileID: 0}
+  openPrompt: {fileID: 0}
