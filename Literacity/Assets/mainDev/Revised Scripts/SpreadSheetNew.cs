@@ -8,6 +8,7 @@ using UnityEngine.Networking;
 
 public class SpreadSheetNew : MonoBehaviour
 {
+    public Transform selectedCard;
     public List<string> ballLettersList = new List<string>();
     public List <string> wordsList = new List<string>();
     public List <string> roundNumberList = new List<string>();
@@ -15,7 +16,6 @@ public class SpreadSheetNew : MonoBehaviour
     public List <string> letterTwoList = new List<string>();
     public List<Button> ballOrder = new List<Button>();    
     public RectTransform origin;
-    public Transform selectedCard;
     public Button basketBall;
     public AudioSource ballAudioSource;
     public Button[] wordImage;
@@ -40,8 +40,9 @@ public class SpreadSheetNew : MonoBehaviour
 
     void Start()
     {
-        playNextRound = false;
         StartCoroutine(LoadRoundData());
+        playNextRound = false;
+
     }
 
     void Update()

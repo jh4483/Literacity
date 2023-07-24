@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ClickedPrompt : MonoBehaviour
 {
+    [SerializeField] GameObject openPrompt;
     public GameObject cardParent;
     public GameObject backboardHighlight;
     private Color currentColour;
@@ -30,13 +31,24 @@ public class ClickedPrompt : MonoBehaviour
         backboardHighlight.GetComponent<Image>().color = currentColour;
         spreadSheetNew.targetIndex = int.Parse(gameObject.name);
         spreadSheetNew.selectedCard = cardParent.transform.Find((spreadSheetNew.targetIndex).ToString() + " Card");
-        GameObject openPrompt = GameObject.FindGameObjectWithTag("open");
-        if (openPrompt != null)
+        openPrompt = GameObject.FindGameObjectWithTag("open");
+
+        if (openPrompt == spreadSheetNew.selectedCard.gameObject)
         {
-            openPrompt.transform.GetComponent<CardAnim>().OnDone();
-            openPrompt.tag = "close";
+            spreadSheetNew.selectedCard.GetComponent<CardAnim>().OnDone();
+            spreadSheetNew.selectedCard.tag = "close";
         }
-        spreadSheetNew.selectedCard.GetComponent<CardAnim>().OnSelected();
-        spreadSheetNew.selectedCard.tag = "open";
+        else
+        {
+            if (openPrompt != null)
+            {
+                openPrompt.GetComponent<CardAnim>().OnDone();
+                openPrompt.tag = "close";
+            }
+
+            spreadSheetNew.selectedCard.GetComponent<CardAnim>().OnSelected();
+            spreadSheetNew.selectedCard.tag = "open";
+        }
     }
+
 }
