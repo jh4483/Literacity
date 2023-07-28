@@ -147,18 +147,172 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Dunk_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 199.85715
+        height: 345
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b93517d84a33ceb44bfb3a457fd393de
+      internalID: 823928952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dunk_1
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 0
+        width: 199.85715
+        height: 345
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2d1d0d34df0b85408e59392c3a68ff0
+      internalID: 339553433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dunk_2
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 0
+        width: 200
+        height: 345
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d401294cb74be45459992c1798b221ab
+      internalID: -1568696198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dunk_3
+      rect:
+        serializedVersion: 2
+        x: 622
+        y: 0
+        width: 200
+        height: 345
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85adebc9569254149bc52c1187599604
+      internalID: 2073781048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dunk_4
+      rect:
+        serializedVersion: 2
+        x: 826
+        y: 0
+        width: 200
+        height: 345
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b24e38c448ec8414a84ab00435dd7635
+      internalID: -888561102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dunk_5
+      rect:
+        serializedVersion: 2
+        x: 1037
+        y: 0
+        width: 200
+        height: 345
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcc8cf0f5545586459a108e32cbb791d
+      internalID: -495935219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dunk_6
+      rect:
+        serializedVersion: 2
+        x: 1245
+        y: 0
+        width: 200
+        height: 345
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa70b7e927dbc7745a9d5abd7e63247b
+      internalID: -546006401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5d3a2522f14b11349b5ffdc3525bc030
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Dunk_0: 823928952
+      Dunk_1: 339553433
+      Dunk_2: -1568696198
+      Dunk_3: 2073781048
+      Dunk_4: -888561102
+      Dunk_5: -495935219
+      Dunk_6: -546006401
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
