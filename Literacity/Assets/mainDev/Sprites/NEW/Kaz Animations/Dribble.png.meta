@@ -147,18 +147,172 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Dribble_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 185
+        height: 331
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6dc76a535ff8664cbb57f0bda308726
+      internalID: 1332107616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dribble_1
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 0
+        width: 185
+        height: 331
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b41039069a5e44342905a57be345705c
+      internalID: 1412870450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dribble_2
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 0
+        width: 185
+        height: 331
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63c019026e8bc11458e4ea94564764bf
+      internalID: -858368708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dribble_3
+      rect:
+        serializedVersion: 2
+        x: 612
+        y: 0
+        width: 185
+        height: 331
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f9be2865fa44a145bfc9cfc9edb5222
+      internalID: 1915549991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dribble_4
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 0
+        width: 185
+        height: 331
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16a0fd5d08558f940bd711b1cb0ea294
+      internalID: -962274855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dribble_5
+      rect:
+        serializedVersion: 2
+        x: 1049
+        y: 0
+        width: 185
+        height: 331
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89bbd1c2dc1ef344d89907716e013624
+      internalID: -71192790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dribble_6
+      rect:
+        serializedVersion: 2
+        x: 1246
+        y: 0
+        width: 185
+        height: 331
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a06807bf4a2668428c6cd3515e15b2f
+      internalID: -1983588868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 716c5a02f642d994b871a17f54d0b770
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Dribble_0: 1332107616
+      Dribble_1: 1412870450
+      Dribble_2: -858368708
+      Dribble_3: 1915549991
+      Dribble_4: -962274855
+      Dribble_5: -71192790
+      Dribble_6: -1983588868
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
