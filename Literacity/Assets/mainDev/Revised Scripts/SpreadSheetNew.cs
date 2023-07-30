@@ -147,7 +147,7 @@ public class SpreadSheetNew : MonoBehaviour
 
         if (animationComponent != null && animationComponent.GetClipCount() > 0)
         {
-            AnimationClip firstClip = animationComponent.GetClip("ButtonAnimation"); 
+            AnimationClip firstClip = animationComponent.GetClip("ButtonAnim"); 
             animationComponent.Play(firstClip.name);
         }
     }
