@@ -118,7 +118,7 @@ public class SpreadSheetNew : MonoBehaviour
             newBall.transform.SetParent(origin);
             newBall.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = ballLettersList[i].ToString();
             float xOffset = 60f;
-            Vector2 anchoredPosition = new Vector2(-150f + (i * xOffset), 10f);
+            Vector2 anchoredPosition = new Vector2(-150f + (i * xOffset), 25f);
             newBall.GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
             string audioFileName = ballLettersList[i];
             AudioClip audioClip = Resources.Load<AudioClip>(audioFileName);

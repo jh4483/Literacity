@@ -9,19 +9,21 @@ public class BallBehaviour : MonoBehaviour
     public TextMeshProUGUI checkText;
     public Vector2 initialPos;
     public Quaternion initialRot;
+    private Image backboardHighlight;
     private GameObject winningParticles;
-    private GameObject backboardHighlight;
     private Animation backboardScale;
     private Color backboardColor;
     ClickedPrompt clickedPrompt;
     SpreadSheetNew spreadSheetNew;
     GameObject[] enabledButtons;
+    PlayButton playButton;
 
     void Start()
     {
+        playButton = FindObjectOfType<PlayButton>();
+        backboardHighlight = playButton.basketballHighlight;
         initialPos = transform.position;
         initialRot = transform.rotation;
-        backboardHighlight = GameObject.Find("Backboard Highlight");
         clickedPrompt = FindObjectOfType<ClickedPrompt>();
         spreadSheetNew = FindObjectOfType<SpreadSheetNew>();
         backboardScale = backboardHighlight.GetComponent<Animation>();
