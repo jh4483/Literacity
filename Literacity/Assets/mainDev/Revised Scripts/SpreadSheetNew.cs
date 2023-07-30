@@ -134,14 +134,22 @@ public class SpreadSheetNew : MonoBehaviour
                 Debug.LogWarning("Audio clip not found for ball: " + ballLettersList[i]);
             }
         }
-        for(int i = 0; i < wordsList.Count; i++)
+    for (int i = 0; i < wordsList.Count; i++)
+    {
+        Button wordPrompt = Instantiate(wordImage[i]);
+        wordPrompt.transform.SetParent(origin);
+        float yOffset = -30f;
+        Vector2 anchoredPosition = new Vector2(260, 175f + (i * yOffset));
+        wordPrompt.GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
+        wordPrompt.gameObject.name = i.ToString();
+
+        Animation animationComponent = wordPrompt.GetComponentInChildren<Animation>();
+
+        if (animationComponent != null && animationComponent.GetClipCount() > 0)
         {
-            Button wordPrompt = Instantiate(wordImage[i]);
-            wordPrompt.transform.SetParent(origin);
-            float yOffset = -30f;
-            Vector2 anchoredPosition = new Vector2(250f, 175f + (i * yOffset));
-            wordPrompt.GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
-            wordPrompt.gameObject.name = i.ToString();
+            AnimationClip firstClip = animationComponent.GetClip("ButtonAnimation"); 
+            animationComponent.Play(firstClip.name);
         }
+    }
     }
 }
