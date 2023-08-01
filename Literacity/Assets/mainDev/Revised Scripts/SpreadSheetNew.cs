@@ -118,7 +118,7 @@ public class SpreadSheetNew : MonoBehaviour
             newBall.transform.SetParent(origin);
             newBall.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = ballLettersList[i].ToString();
             float xOffset = 60f;
-            Vector2 anchoredPosition = new Vector2(-150f + (i * xOffset), 10f);
+            Vector2 anchoredPosition = new Vector2(-150f + (i * xOffset), 25f);
             newBall.GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
             string audioFileName = ballLettersList[i];
             AudioClip audioClip = Resources.Load<AudioClip>(audioFileName);
@@ -134,14 +134,22 @@ public class SpreadSheetNew : MonoBehaviour
                 Debug.LogWarning("Audio clip not found for ball: " + ballLettersList[i]);
             }
         }
-        for(int i = 0; i < wordsList.Count; i++)
+    for (int i = 0; i < wordsList.Count; i++)
+    {
+        Button wordPrompt = Instantiate(wordImage[i]);
+        wordPrompt.transform.SetParent(origin);
+        float yOffset = -30f;
+        Vector2 anchoredPosition = new Vector2(260, 175f + (i * yOffset));
+        wordPrompt.GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
+        wordPrompt.gameObject.name = i.ToString();
+
+        Animation animationComponent = wordPrompt.GetComponentInChildren<Animation>();
+
+        if (animationComponent != null && animationComponent.GetClipCount() > 0)
         {
-            Button wordPrompt = Instantiate(wordImage[i]);
-            wordPrompt.transform.SetParent(origin);
-            float yOffset = -30f;
-            Vector2 anchoredPosition = new Vector2(250f, 175f + (i * yOffset));
-            wordPrompt.GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
-            wordPrompt.gameObject.name = i.ToString();
+            AnimationClip firstClip = animationComponent.GetClip("ButtonAnim"); 
+            animationComponent.Play(firstClip.name);
         }
+    }
     }
 }

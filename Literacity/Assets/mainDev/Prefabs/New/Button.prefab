@@ -243,6 +243,7 @@ MonoBehaviour:
   checkText: {fileID: 6827126101667054148}
   initialPos: {x: 0, y: 0}
   initialRot: {x: 0, y: 0, z: 0, w: 0}
+  backboardHighlight: {fileID: 0}
 --- !u!114 &-7011520880739262004
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 8428666322484705378}
   - component: {fileID: 1735015956214274900}
   - component: {fileID: -5845814323185904030}
+  - component: {fileID: -6512921115828730916}
   m_Layer: 5
   m_Name: 2
   m_TagString: undone
@@ -173,7 +174,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -17.2942, y: 27.1516}
+  m_AnchoredPosition: {x: 260, y: 27.1516}
   m_SizeDelta: {x: 75.4647, y: 26.5013}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6807438523714124636
@@ -285,3 +286,19 @@ MonoBehaviour:
   cardParent: {fileID: 0}
   backboardHighlight: {fileID: 0}
   openPrompt: {fileID: 0}
+--- !u!111 &-6512921115828730916
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9022558824891619703}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: ebac1f64e1e454ca3aac1b2e109c5bcc, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: ebac1f64e1e454ca3aac1b2e109c5bcc, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0

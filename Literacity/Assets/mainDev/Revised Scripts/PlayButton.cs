@@ -26,6 +26,5 @@ public class PlayButton : MonoBehaviour
         StartCoroutine(spreadSheetNew.LoadRoundData());
         kazBasketball.gameObject.SetActive(true);
         cardMask.SetActive(true);
-        basketballHighlight.gameObject.SetActive(true);
     }
 }

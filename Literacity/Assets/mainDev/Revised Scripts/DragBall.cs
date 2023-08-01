@@ -14,12 +14,7 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        collider = GetComponent<CircleCollider2D>();
-        isDragging = false;
-        rb.isKinematic = true;
-        rb.constraints = RigidbodyConstraints2D.FreezeAll;
-        ballBehaviour = GetComponent<BallBehaviour>();
+        StartCoroutine(BallDrop());
     }
 
     private void Update()
@@ -32,6 +27,18 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         //     rb.velocity = Vector2.zero;
         //     rb.constraints = RigidbodyConstraints2D.FreezeAll;
         // }
+    }
+
+    private IEnumerator BallDrop()
+    {
+        yield return new WaitForSeconds(3);
+        rb = GetComponent<Rigidbody2D>();
+        collider = GetComponent<CircleCollider2D>();
+        isDragging = false;
+        rb.isKinematic = true;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        ballBehaviour = GetComponent<BallBehaviour>();
+
     }
 
     public void OnBeginDrag(PointerEventData eventData)
