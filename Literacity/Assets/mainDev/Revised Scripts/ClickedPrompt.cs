@@ -11,6 +11,7 @@ public class ClickedPrompt : MonoBehaviour
     private Color currentColour;
     private Color orginalColour;
     SpreadSheetNew spreadSheetNew;
+    PlayButton playButton;
 
     void Start()
     {
@@ -23,7 +24,10 @@ public class ClickedPrompt : MonoBehaviour
 
     void Update()
     {
-        
+        if(GameObject.FindGameObjectsWithTag("open").Length == 0)
+        {
+            backboardHighlight.GetComponent<Image>().color = orginalColour;
+        }
     }
 
     public void OnPromptClicked()
@@ -48,6 +52,7 @@ public class ClickedPrompt : MonoBehaviour
             spreadSheetNew.selectedCard.GetComponent<CardAnim>().OnSelected();
             spreadSheetNew.selectedCard.tag = "open";
         }
+
     }
 
 }
