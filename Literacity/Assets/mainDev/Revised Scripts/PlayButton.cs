@@ -32,7 +32,7 @@ public class PlayButton : MonoBehaviour
 
     private IEnumerator DisablePlay()
     {
-        yield return new WaitForSeconds(1);
-        this.gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.1f);
+        this.gameObject.GetComponent<Button>().enabled = false;
     }
 }

@@ -43,7 +43,7 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        initBallPos = transform.position;
+        initBallPos = ballBehaviour.initialPos;
 
         collider.enabled = false;
 

@@ -30,29 +30,44 @@ public class ClickedPrompt : MonoBehaviour
         }
     }
 
-    public void OnPromptClicked()
+        public void OnPromptClicked()
     {
-        backboardHighlight.GetComponent<Image>().color = currentColour;
         spreadSheetNew.targetIndex = int.Parse(gameObject.name);
         spreadSheetNew.selectedCard = cardParent.transform.Find((spreadSheetNew.targetIndex).ToString() + " Card");
         openPrompt = GameObject.FindGameObjectWithTag("open");
-        if (openPrompt == spreadSheetNew.selectedCard.gameObject)
+
+        if (openPrompt != null && openPrompt == spreadSheetNew.selectedCard.gameObject)
         {
-            spreadSheetNew.selectedCard.GetComponent<CardAnim>().OnDone();
-            spreadSheetNew.selectedCard.tag = "close";
+            StartCoroutine(CloseCard());
         }
         else
         {
-            if (openPrompt != null)
-            {
-                openPrompt.GetComponent<CardAnim>().OnDone();
-                openPrompt.tag = "close";
-            }
-
-            spreadSheetNew.selectedCard.GetComponent<CardAnim>().OnSelected();
-            spreadSheetNew.selectedCard.tag = "open";
+            StartCoroutine(OpenCard());
         }
-
     }
 
+    private IEnumerator CloseCard()
+    {
+        openPrompt.GetComponent<CardAnim>().OnDone();
+        openPrompt.tag = "close";
+        yield return new WaitForSeconds(0.1f);
+
+        backboardHighlight.GetComponent<Image>().color = orginalColour;
+    }
+
+    private IEnumerator OpenCard()
+    {
+        if (openPrompt != null)
+        {
+            openPrompt.GetComponent<CardAnim>().OnDone();
+            openPrompt.tag = "close";
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        spreadSheetNew.selectedCard.GetComponent<CardAnim>().OnSelected();
+        spreadSheetNew.selectedCard.tag = "open";
+        yield return new WaitForSeconds(0.3f);
+
+        backboardHighlight.GetComponent<Image>().color = currentColour;
+    }
 }
