@@ -57,17 +57,17 @@ public class ClickedPrompt : MonoBehaviour
 
     private IEnumerator OpenCard()
     {
+        // yield return new WaitForSeconds(0.1f);
+        // backboardHighlight.GetComponent<Image>().color = currentColour;
+
         if (openPrompt != null)
         {
             openPrompt.GetComponent<CardAnim>().OnDone();
             openPrompt.tag = "close";
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.05f);
         }
 
         spreadSheetNew.selectedCard.GetComponent<CardAnim>().OnSelected();
         spreadSheetNew.selectedCard.tag = "open";
-        yield return new WaitForSeconds(0.3f);
-
-        backboardHighlight.GetComponent<Image>().color = currentColour;
     }
 }

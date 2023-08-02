@@ -75,7 +75,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4281479730
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 7.622528}
+  m_margin: {x: 0, y: 0, z: 0, w: 6.5069733}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -147,8 +147,8 @@ GameObject:
   - component: {fileID: 6807438523714124636}
   - component: {fileID: 8428666322484705378}
   - component: {fileID: 1735015956214274900}
-  - component: {fileID: 5205238381692891433}
-  - component: {fileID: 2892152278129635171}
+  - component: {fileID: -5845814323185904030}
+  - component: {fileID: -6512921115828730916}
   m_Layer: 5
   m_Name: 1
   m_TagString: undone
@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.10293579, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.9929693, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -259,7 +259,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5205238381692891433}
+      - m_Target: {fileID: -5845814323185904030}
         m_TargetAssemblyTypeName: ClickedPrompt, Assembly-CSharp
         m_MethodName: OnPromptClicked
         m_Mode: 1
@@ -271,7 +271,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &5205238381692891433
+--- !u!114 &-5845814323185904030
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -286,7 +286,7 @@ MonoBehaviour:
   cardParent: {fileID: 0}
   backboardHighlight: {fileID: 0}
   openPrompt: {fileID: 0}
---- !u!111 &2892152278129635171
+--- !u!111 &-6512921115828730916
 Animation:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

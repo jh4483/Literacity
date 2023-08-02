@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 93637651}
   - component: {fileID: 93637650}
   m_Layer: 5
-  m_Name: 0 Card
+  m_Name: 2 Card
   m_TagString: close
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -678,10 +678,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1219995423}
   - {fileID: 93637649}
   - {fileID: 1053612839}
   - {fileID: 1827561396}
+  - {fileID: 1219995423}
   m_Father: {fileID: 2019489088}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
