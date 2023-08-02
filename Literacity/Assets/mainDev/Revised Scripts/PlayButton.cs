@@ -27,5 +27,12 @@ public class PlayButton : MonoBehaviour
         kazBasketball.gameObject.SetActive(true);
         cardMask.SetActive(true);
         basketballHighlight.gameObject.SetActive(true);
+        StartCoroutine(DisablePlay());
+    }
+
+    private IEnumerator DisablePlay()
+    {
+        yield return new WaitForSeconds(0.1f);
+        this.gameObject.GetComponent<Button>().enabled = false;
     }
 }
