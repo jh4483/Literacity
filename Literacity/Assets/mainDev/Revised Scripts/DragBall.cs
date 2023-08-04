@@ -5,12 +5,12 @@ using UnityEngine.EventSystems;
 
 public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    [SerializeField] float resetTime = 0.5f;
     Vector2 initBallPos;
     Rigidbody2D rb;
     CircleCollider2D collider;
-    public bool isDragging;
     BallBehaviour ballBehaviour;
-    [SerializeField] float resetTime = 1.5f;
+    public bool isDragging;
 
     private void Start()
     {
@@ -19,32 +19,24 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     private void Update()
     {
-        // if(transform.position == (Vector3)initBallPos)
-        // {
-        //     collider.enabled = true;
 
-        //     rb.isKinematic = true;
-        //     rb.velocity = Vector2.zero;
-        //     rb.constraints = RigidbodyConstraints2D.FreezeAll;
-        // }
     }
 
     private IEnumerator BallDrop()
     {
+        collider = GetComponent<CircleCollider2D>();
         yield return new WaitForSeconds(3);
         rb = GetComponent<Rigidbody2D>();
-        collider = GetComponent<CircleCollider2D>();
         isDragging = false;
         rb.isKinematic = true;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         ballBehaviour = GetComponent<BallBehaviour>();
+        initBallPos = transform.position;
 
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        initBallPos = ballBehaviour.initialPos;
-
         collider.enabled = false;
 
         rb.velocity = Vector2.zero;
@@ -66,14 +58,14 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         rb.isKinematic = false;
         collider.enabled = true;
         isDragging = false;
-        StartCoroutine(BallReset(resetTime));
-        
+
+        StartCoroutine(BallReset(resetTime));        
     }
 
     IEnumerator BallReset(float time)
     {
         yield return new WaitForSeconds(time);
-        transform.position = ballBehaviour.initialPos;
+        transform.position = initBallPos;
         transform.rotation = ballBehaviour.initialRot;
 
         collider.enabled = true;
@@ -86,8 +78,6 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     IEnumerator BallDisappear(float time)
     {
         yield return new WaitForSeconds(time);
-        //ball disappear w/VFX like sparkles
     }
-
 
 }

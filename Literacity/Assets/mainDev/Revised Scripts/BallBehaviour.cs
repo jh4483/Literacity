@@ -27,19 +27,12 @@ public class BallBehaviour : MonoBehaviour
         clickedPrompt = FindObjectOfType<ClickedPrompt>();
         spreadSheetNew = FindObjectOfType<SpreadSheetNew>();
         backboardScale = backboardHighlight.GetComponent<Animation>();
-        // winningParticles = GameObject.Find("Canvas").transform.GetChild(5).gameObject;
+        winningParticles = GameObject.Find("Canvas").transform.GetChild(6).transform.GetChild(0).gameObject;
     }
 
     private void OnCollisionEnter2D(Collision2D collider)
-    { 
-        if(collider.gameObject.name == "Ground")
-        {
-            initialPos = transform.position;
-        }
-        
+    {         
         backboardColor = backboardHighlight.GetComponent<Image>().color;
-        // var mainModule = winningParticles.GetComponent<ParticleSystem>().main;
-        // mainModule.startColor = new ParticleSystem.MinMaxGradient(backboardColor);
         if (collider.gameObject.name == "Basketball Ring")
         {
             transform.position = initialPos;
@@ -50,7 +43,7 @@ public class BallBehaviour : MonoBehaviour
             {
                 GameObject selectedTarget = GameObject.Find((spreadSheetNew.targetIndex).ToString());
                 backboardScale.Play("Backboard Scaling");
-                // winningParticles.GetComponent<ParticleSystem>().Play();
+                winningParticles.GetComponent<ParticleSystem>().Play();
                 selectedTarget.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = checkText.GetComponent<TextMeshProUGUI>().text.ToString();
                 spreadSheetNew.playNextRound = true;
 
@@ -67,7 +60,7 @@ public class BallBehaviour : MonoBehaviour
                 spreadSheetNew.playNextRound = false;
                 selectedTarget.tag = "done";
                 backboardScale.Play("Backboard Scaling");
-                // winningParticles.GetComponent<ParticleSystem>().Play();
+                winningParticles.GetComponent<ParticleSystem>().Play();
 
                 for (int i = 0; i < enabledButtons.Length; i++)
                 {
