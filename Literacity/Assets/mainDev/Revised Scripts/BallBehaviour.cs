@@ -53,25 +53,10 @@ public class BallBehaviour : MonoBehaviour
                 }
             }
             else if (checkText.GetComponent<TextMeshProUGUI>().text == spreadSheetNew.letterTwoList[spreadSheetNew.targetIndex].ToString() && spreadSheetNew.playNextRound)
-            {
-                GameObject selectedTarget = GameObject.Find((spreadSheetNew.targetIndex).ToString());
-                string existingText = selectedTarget.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text;
-                selectedTarget.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = existingText + checkText.GetComponent<TextMeshProUGUI>().text.ToString();
-                spreadSheetNew.playNextRound = false;
-                selectedTarget.tag = "done";
-                backboardScale.Play("Backboard Scaling");
-                winningParticles.GetComponent<ParticleSystem>().Play();
+            {                
 
-                for (int i = 0; i < enabledButtons.Length; i++)
-                {
-                    if (enabledButtons[i].tag == "undone")
-                    {
-                        enabledButtons[i].gameObject.GetComponent<Button>().enabled = true;
-                    }       
-                }
+                StartCoroutine(CompletedWord());
 
-                spreadSheetNew.selectedCard.GetComponent<CardAnim>().OnDone();
-                spreadSheetNew.selectedCard.tag = "close";
             }
             else if (checkText.GetComponent<TextMeshProUGUI>().text != spreadSheetNew.letterOneList[spreadSheetNew.targetIndex].ToString() && !spreadSheetNew.playNextRound)
             {
@@ -82,6 +67,29 @@ public class BallBehaviour : MonoBehaviour
                 backboardScale.Play("Backboard Rotation");
             }
         }
+    }
+
+    private IEnumerator CompletedWord()
+    {
+        GameObject selectedTarget = GameObject.Find((spreadSheetNew.targetIndex).ToString());
+        string existingText = selectedTarget.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text;
+        selectedTarget.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = existingText + checkText.GetComponent<TextMeshProUGUI>().text.ToString();
+        spreadSheetNew.playNextRound = false;
+        selectedTarget.tag = "done";
+        backboardScale.Play("Backboard Scaling");
+        winningParticles.GetComponent<ParticleSystem>().Play();
+
+        yield return new WaitForSeconds(2);
+        for (int i = 0; i < enabledButtons.Length; i++)
+        {
+            if (enabledButtons[i].tag == "undone")
+                {
+                    enabledButtons[i].gameObject.GetComponent<Button>().enabled = true;
+                }       
+        }
+
+        spreadSheetNew.selectedCard.GetComponent<CardAnim>().OnDone();
+        spreadSheetNew.selectedCard.tag = "close";
     }
 }
 

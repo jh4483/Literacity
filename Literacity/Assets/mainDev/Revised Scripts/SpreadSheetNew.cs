@@ -21,6 +21,10 @@ public class SpreadSheetNew : MonoBehaviour
     public Button[] wordImage;
     public int targetIndex;
     public bool playNextRound;
+    public Vector2 buttonOnePos;
+    public Vector2 buttonTwoPos;
+    public Vector2 buttonThreePos;
+    public Vector2 buttonFourPos;
 
     [System.Serializable]
     public class RoundData
@@ -150,6 +154,11 @@ public class SpreadSheetNew : MonoBehaviour
             AnimationClip firstClip = animationComponent.GetClip("ButtonAnim"); 
             animationComponent.Play(firstClip.name);
         }
+
+        buttonOnePos = wordImage[0].gameObject.GetComponent<RectTransform>().anchoredPosition;
+        buttonTwoPos = wordImage[1].gameObject.GetComponent<RectTransform>().anchoredPosition;
+        buttonThreePos = wordImage[2].gameObject.GetComponent<RectTransform>().anchoredPosition;
+        buttonFourPos = wordImage[3].gameObject.GetComponent<RectTransform>().anchoredPosition;
     }
     }
 }

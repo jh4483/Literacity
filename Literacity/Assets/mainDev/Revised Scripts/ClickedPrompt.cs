@@ -36,6 +36,8 @@ public class ClickedPrompt : MonoBehaviour
         spreadSheetNew.targetIndex = int.Parse(gameObject.name);
         spreadSheetNew.selectedCard = cardParent.transform.Find((spreadSheetNew.targetIndex).ToString() + " Card");
         openPrompt = GameObject.FindGameObjectWithTag("open");
+        gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(87.4f, 162.6f);
+
         if (openPrompt == spreadSheetNew.selectedCard.gameObject)
         {
             spreadSheetNew.selectedCard.GetComponent<CardAnim>().OnDone();
