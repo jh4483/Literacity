@@ -27,7 +27,7 @@ public class BallBehaviour : MonoBehaviour
         clickedPrompt = FindObjectOfType<ClickedPrompt>();
         spreadSheetNew = FindObjectOfType<SpreadSheetNew>();
         backboardScale = backboardHighlight.GetComponent<Animation>();
-        winningParticles = GameObject.Find("Canvas").transform.GetChild(6).transform.GetChild(0).gameObject;
+        winningParticles = GameObject.Find("Canvas").transform.GetChild(7).transform.GetChild(0).gameObject;
     }
 
     private void OnCollisionEnter2D(Collision2D collider)

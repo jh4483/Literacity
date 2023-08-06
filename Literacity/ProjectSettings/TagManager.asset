@@ -9,6 +9,8 @@ TagManager:
   - done
   - open
   - close
+  - moved
+  - unmoved
   layers:
   - Default
   - TransparentFX

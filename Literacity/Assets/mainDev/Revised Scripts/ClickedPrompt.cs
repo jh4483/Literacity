@@ -31,12 +31,11 @@ public class ClickedPrompt : MonoBehaviour
     }
 
     public void OnPromptClicked()
-    {
+    {   
         backboardHighlight.GetComponent<Image>().color = currentColour;
         spreadSheetNew.targetIndex = int.Parse(gameObject.name);
         spreadSheetNew.selectedCard = cardParent.transform.Find((spreadSheetNew.targetIndex).ToString() + " Card");
         openPrompt = GameObject.FindGameObjectWithTag("open");
-        gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(87.4f, 162.6f);
 
         if (openPrompt == spreadSheetNew.selectedCard.gameObject)
         {
@@ -55,7 +54,6 @@ public class ClickedPrompt : MonoBehaviour
 
             spreadSheetNew.selectedCard.GetComponent<CardAnim>().OnSelected();
             spreadSheetNew.selectedCard.tag = "open";
-
         }
     }
 

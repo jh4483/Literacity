@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] float resetTime = 0.5f;
+    public GameObject gameMask;
     Vector2 initBallPos;
     Rigidbody2D rb;
     CircleCollider2D collider;
@@ -15,6 +16,7 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private void Start()
     {
         StartCoroutine(BallDrop());
+        gameMask = GameObject.Find("Canvas").transform.Find("Mask").gameObject;
     }
 
     private void Update()
@@ -32,6 +34,7 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         ballBehaviour = GetComponent<BallBehaviour>();
         initBallPos = transform.position;
+        gameMask.SetActive(false);
 
     }
 
