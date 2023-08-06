@@ -46,6 +46,7 @@ public class BallBehaviour : MonoBehaviour
                 winningParticles.GetComponent<ParticleSystem>().Play();
                 selectedTarget.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = checkText.GetComponent<TextMeshProUGUI>().text.ToString();
                 spreadSheetNew.playNextRound = true;
+                BoosterState.boosterPower++;
 
                 for (int i = 0; i < enabledButtons.Length; i++)
                 {
@@ -61,10 +62,12 @@ public class BallBehaviour : MonoBehaviour
             else if (checkText.GetComponent<TextMeshProUGUI>().text != spreadSheetNew.letterOneList[spreadSheetNew.targetIndex].ToString() && !spreadSheetNew.playNextRound)
             {
                 backboardScale.Play("Backboard Rotation");
+                BoosterState.boosterPower--;
             }
             else if (checkText.GetComponent<TextMeshProUGUI>().text != spreadSheetNew.letterTwoList[spreadSheetNew.targetIndex].ToString() && spreadSheetNew.playNextRound)
             {
                 backboardScale.Play("Backboard Rotation");
+                BoosterState.boosterPower--;
             }
         }
     }
@@ -90,6 +93,7 @@ public class BallBehaviour : MonoBehaviour
 
         spreadSheetNew.selectedCard.GetComponent<CardAnim>().OnDone();
         spreadSheetNew.selectedCard.tag = "close";
+        BoosterState.boosterPower++;
     }
 }
 
