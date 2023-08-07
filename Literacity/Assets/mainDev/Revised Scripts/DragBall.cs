@@ -5,7 +5,6 @@ using UnityEngine.EventSystems;
 
 public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    [SerializeField] float resetTime = 0.5f;
     public GameObject gameMask;
     Vector2 initBallPos;
     Rigidbody2D rb;
@@ -40,7 +39,7 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        collider.enabled = false;
+        // collider.enabled = false;
 
         rb.velocity = Vector2.zero;
         rb.isKinematic = true;
@@ -58,16 +57,18 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        
         rb.isKinematic = false;
         collider.enabled = true;
         isDragging = false;
 
-        StartCoroutine(BallReset(resetTime));        
+        StartCoroutine(BallReset()); 
+       
     }
 
-    IEnumerator BallReset(float time)
+    IEnumerator BallReset()
     {
-        yield return new WaitForSeconds(time);
+        yield return new WaitForSeconds(3);
         transform.position = initBallPos;
         transform.rotation = ballBehaviour.initialRot;
 

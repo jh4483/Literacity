@@ -6,14 +6,26 @@ public class BoosterState : MonoBehaviour
 {
 
     public static int boosterPower;
+    public ParticleSystem winningParticles;
+    SpreadSheetNew spreadSheetNew;
 
     void Start()
     {
         boosterPower = 0;
+        spreadSheetNew = FindObjectOfType<SpreadSheetNew>();
     }
 
     void Update()
     {
 
+    }
+
+    public void PlayParticles()
+    {
+        if(boosterPower == 1)
+        {
+            // string particleSystemName = "1 - " + spreadSheetNew.targetIndex.ToString();
+            // GetComponent<ParticleSystem>().Play(particleSystemName);
+        }
     }
 }

@@ -10,13 +10,13 @@ public class BallBehaviour : MonoBehaviour
     public Vector2 initialPos;
     public Quaternion initialRot;
     private Image backboardHighlight;
-    private GameObject winningParticles;
     private Animation backboardScale;
     private Color backboardColor;
     ClickedPrompt clickedPrompt;
     SpreadSheetNew spreadSheetNew;
     GameObject[] enabledButtons;
     PlayButton playButton;
+    BoosterState boosterState;
 
     void Start()
     {
@@ -27,10 +27,10 @@ public class BallBehaviour : MonoBehaviour
         clickedPrompt = FindObjectOfType<ClickedPrompt>();
         spreadSheetNew = FindObjectOfType<SpreadSheetNew>();
         backboardScale = backboardHighlight.GetComponent<Animation>();
-        winningParticles = GameObject.Find("Canvas").transform.GetChild(7).transform.GetChild(0).gameObject;
+        boosterState = FindObjectOfType<BoosterState>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collider)
+    private void OnTriggerEnter2D(Collider2D collider)
     {         
         backboardColor = backboardHighlight.GetComponent<Image>().color;
         if (collider.gameObject.name == "Basketball Ring")
@@ -43,10 +43,10 @@ public class BallBehaviour : MonoBehaviour
             {
                 GameObject selectedTarget = GameObject.Find((spreadSheetNew.targetIndex).ToString());
                 backboardScale.Play("Backboard Scaling");
-                winningParticles.GetComponent<ParticleSystem>().Play();
+                BoosterState.boosterPower++;  
+                boosterState.PlayParticles();              
                 selectedTarget.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = checkText.GetComponent<TextMeshProUGUI>().text.ToString();
                 spreadSheetNew.playNextRound = true;
-                BoosterState.boosterPower++;
 
                 for (int i = 0; i < enabledButtons.Length; i++)
                 {
@@ -80,7 +80,8 @@ public class BallBehaviour : MonoBehaviour
         spreadSheetNew.playNextRound = false;
         selectedTarget.tag = "done";
         backboardScale.Play("Backboard Scaling");
-        winningParticles.GetComponent<ParticleSystem>().Play();
+        BoosterState.boosterPower++;
+        boosterState.PlayParticles(); 
 
         yield return new WaitForSeconds(2);
         for (int i = 0; i < enabledButtons.Length; i++)
@@ -93,7 +94,6 @@ public class BallBehaviour : MonoBehaviour
 
         spreadSheetNew.selectedCard.GetComponent<CardAnim>().OnDone();
         spreadSheetNew.selectedCard.tag = "close";
-        BoosterState.boosterPower++;
     }
 }
 
