@@ -39,6 +39,15 @@ AnimationClip:
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 2
+        value: -100
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -62,6 +71,33 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.8333333
+        value: 25.09
+        inSlope: 9.893333
+        outSlope: 9.893333
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1.5
+        value: 28.8
+        inSlope: 14.839996
+        outSlope: 14.839996
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1.8333334
+        value: 40
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 2
         value: 25.09
         inSlope: 0
         outSlope: 0
@@ -164,6 +200,8 @@ AnimationClip:
       value: {fileID: -725788865, guid: 055d57c8d1e0ece44976aba81924414a, type: 3}
     - time: 1.8333334
       value: {fileID: 354841617, guid: 055d57c8d1e0ece44976aba81924414a, type: 3}
+    - time: 2
+      value: {fileID: -2141250183, guid: 055d57c8d1e0ece44976aba81924414a, type: 3}
     attribute: m_Sprite
     path: 
     classID: 114
@@ -234,12 +272,13 @@ AnimationClip:
     - {fileID: 846609447, guid: 055d57c8d1e0ece44976aba81924414a, type: 3}
     - {fileID: -725788865, guid: 055d57c8d1e0ece44976aba81924414a, type: 3}
     - {fileID: 354841617, guid: 055d57c8d1e0ece44976aba81924414a, type: 3}
+    - {fileID: -2141250183, guid: 055d57c8d1e0ece44976aba81924414a, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 2
+    m_StopTime: 2.1666667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -277,6 +316,15 @@ AnimationClip:
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 2
+        value: -100
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -300,6 +348,33 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.8333333
+        value: 25.09
+        inSlope: 9.893333
+        outSlope: 9.893333
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1.5
+        value: 28.8
+        inSlope: 14.839996
+        outSlope: 14.839996
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1.8333334
+        value: 40
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 2
         value: 25.09
         inSlope: 0
         outSlope: 0
