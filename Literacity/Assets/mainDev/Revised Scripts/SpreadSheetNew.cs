@@ -21,6 +21,7 @@ public class SpreadSheetNew : MonoBehaviour
     public Button[] wordImage;
     public int targetIndex;
     public bool playNextRound;
+    ClickedPrompt clickedPrompt;
 
     [System.Serializable]
     public class RoundData
@@ -41,6 +42,7 @@ public class SpreadSheetNew : MonoBehaviour
     void Start()
     {
         playNextRound = false;
+        clickedPrompt = FindObjectOfType<ClickedPrompt>();
     }
 
     void Update()
@@ -150,6 +152,12 @@ public class SpreadSheetNew : MonoBehaviour
             AnimationClip firstClip = animationComponent.GetClip("ButtonAnim"); 
             animationComponent.Play(firstClip.name);
         }
+
     }
+    }
+
+    public void MoveButton()
+    {
+        
     }
 }
