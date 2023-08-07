@@ -11,11 +11,13 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     CircleCollider2D collider;
     BallBehaviour ballBehaviour;
     public bool isDragging;
+    private GameObject backBoardCollider;
 
     private void Start()
     {
         StartCoroutine(BallDrop());
         gameMask = GameObject.Find("Canvas").transform.Find("Mask").gameObject;
+        backBoardCollider = GameObject.Find("Canvas").transform.Find("Backboard Highlight").gameObject;
     }
 
     private void Update()
@@ -29,7 +31,6 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         yield return new WaitForSeconds(3);
         rb = GetComponent<Rigidbody2D>();
         isDragging = false;
-        rb.isKinematic = true;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         ballBehaviour = GetComponent<BallBehaviour>();
         initBallPos = transform.position;
@@ -39,10 +40,6 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        // collider.enabled = false;
-
-        rb.velocity = Vector2.zero;
-        rb.isKinematic = true;
 
         isDragging = true;
         rb.constraints = RigidbodyConstraints2D.None;
@@ -66,8 +63,18 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
        
     }
 
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.name == "Backboard Highlight")
+        {            
+            other.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 25f);        
+        }
+    }
+
     IEnumerator BallReset()
     {
+        backBoardCollider.GetComponent<BoxCollider2D>().enabled = true;
         yield return new WaitForSeconds(3);
         transform.position = initBallPos;
         transform.rotation = ballBehaviour.initialRot;

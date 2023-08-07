@@ -9,7 +9,7 @@ public class BallBehaviour : MonoBehaviour
     public TextMeshProUGUI checkText;
     public Vector2 initialPos;
     public Quaternion initialRot;
-    private Image backboardHighlight;
+    public Image backboardHighlight;
     private Animation backboardScale;
     private Color backboardColor;
     ClickedPrompt clickedPrompt;

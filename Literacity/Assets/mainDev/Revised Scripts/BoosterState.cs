@@ -22,10 +22,9 @@ public class BoosterState : MonoBehaviour
 
     public void PlayParticles()
     {
-        if(boosterPower == 1)
+        if(boosterPower >= 1)
         {
-            // string particleSystemName = "1 - " + spreadSheetNew.targetIndex.ToString();
-            // GetComponent<ParticleSystem>().Play(particleSystemName);
+            winningParticles.Play();
         }
     }
 }
