@@ -229,6 +229,7 @@ MonoBehaviour:
   checkText: {fileID: 6827126101667054148}
   initialPos: {x: 0, y: 0}
   initialRot: {x: 0, y: 0, z: 0, w: 0}
+  backboardHighlight: {fileID: 0}
 --- !u!114 &-7011520880739262004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,7 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fae1d96b2d3099640ab0e66f0fd749d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetTime: 0.5
+  gameMask: {fileID: 0}
   isDragging: 0
 --- !u!1 &6827126101667054150
 GameObject:

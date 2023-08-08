@@ -772,7 +772,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startColor:
       serializedVersion: 2
-      minMaxState: 1
+      minMaxState: 4
       minColor: {r: 1, g: 1, b: 1, a: 1}
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
@@ -5554,8 +5554,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -1.918}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -47.416767, y: 110.65885}
-  m_SizeDelta: {x: 131.0199, y: 110.7486}
+  m_AnchoredPosition: {x: -46.81379, y: 114.37065}
+  m_SizeDelta: {x: 112.8165, y: 95.8764}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &507140442
 GameObject:
@@ -6405,7 +6405,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.54888886, y: 0.5}
   m_AnchorMax: {x: 0.54888886, y: 0.5}
-  m_AnchoredPosition: {x: -73, y: 119}
+  m_AnchoredPosition: {x: -73, y: 118.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!61 &1281638749
@@ -6440,7 +6440,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -10.746029, y: -2.1641045}
+  m_Offset: {x: -11.8555355, y: -1.0456486}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -6451,7 +6451,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 43.906113, y: 26.23441}
+  m_Size: {x: 16.002579, y: 23.997501}
   m_EdgeRadius: 0
 --- !u!1 &1380483078
 GameObject:
@@ -7347,6 +7347,7 @@ GameObject:
   - component: {fileID: 2019489085}
   - component: {fileID: 2019489084}
   - component: {fileID: 2019489089}
+  - component: {fileID: 2019489090}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -7613,3 +7614,16 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
+--- !u!114 &2019489090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019489083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64536bcc650f049ea837a9b5a1ea0567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movedButtons: []

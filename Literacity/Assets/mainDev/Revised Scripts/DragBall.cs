@@ -29,6 +29,7 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         yield return new WaitForSeconds(3);
         rb = GetComponent<Rigidbody2D>();
         isDragging = false;
+        rb.isKinematic = true;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         ballBehaviour = GetComponent<BallBehaviour>();
         initBallPos = transform.position;
@@ -38,6 +39,8 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        rb.velocity = Vector2.zero;
+        rb.isKinematic = true;
 
         isDragging = true;
         rb.constraints = RigidbodyConstraints2D.None;
@@ -63,7 +66,7 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     IEnumerator BallReset()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
         transform.position = initBallPos;
         transform.rotation = ballBehaviour.initialRot;
 
@@ -77,6 +80,24 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     IEnumerator BallDisappear(float time)
     {
         yield return new WaitForSeconds(time);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) 
+    {
+        if(other.gameObject.name == "Backboard Highlight")
+        {
+            // rb.isKinematic = false;
+            // StartCoroutine(TriggerExit());
+
+        }
+    }
+
+    IEnumerator TriggerExit()
+    {          
+        // rb.drag = 20.0f;
+        yield return new WaitForSeconds(0.6f);
+        // rb.drag = 0;
+        // rb.isKinematic = true;
     }
 
 }

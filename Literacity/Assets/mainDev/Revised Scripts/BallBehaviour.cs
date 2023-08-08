@@ -10,6 +10,10 @@ public class BallBehaviour : MonoBehaviour
     public Vector2 initialPos;
     public Quaternion initialRot;
     public Image backboardHighlight;
+    public AudioSource wordAudioSource;
+    private AudioSource ballAudioSource;
+    private AudioSource firstBallAudioSource;
+    private AudioSource secondBallAudioSource;
     private Animation backboardScale;
     private Color backboardColor;
     ClickedPrompt clickedPrompt;
@@ -28,6 +32,7 @@ public class BallBehaviour : MonoBehaviour
         spreadSheetNew = FindObjectOfType<SpreadSheetNew>();
         backboardScale = backboardHighlight.GetComponent<Animation>();
         boosterState = FindObjectOfType<BoosterState>();
+        ballAudioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -41,10 +46,10 @@ public class BallBehaviour : MonoBehaviour
 
             if (checkText.GetComponent<TextMeshProUGUI>().text == spreadSheetNew.letterOneList[spreadSheetNew.targetIndex].ToString() && !spreadSheetNew.playNextRound)
             {
+                ballAudioSource.Play();
                 GameObject selectedTarget = GameObject.Find((spreadSheetNew.targetIndex).ToString());
                 backboardScale.Play("Backboard Scaling");
-                BoosterState.boosterPower++;  
-                boosterState.PlayParticles();              
+                BoosterState.boosterPower++;             
                 selectedTarget.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = checkText.GetComponent<TextMeshProUGUI>().text.ToString();
                 spreadSheetNew.playNextRound = true;
 
@@ -73,15 +78,29 @@ public class BallBehaviour : MonoBehaviour
     }
 
     private IEnumerator CompletedWord()
-    {
+    {    
+        ballAudioSource.Play();
+
         GameObject selectedTarget = GameObject.Find((spreadSheetNew.targetIndex).ToString());
+
+        string audioFileName = spreadSheetNew.wordsList[spreadSheetNew.targetIndex];
+        AudioClip audioClip = Resources.Load<AudioClip>(audioFileName);
+            
+        if (audioClip != null)
+        {
+            wordAudioSource = selectedTarget.gameObject.AddComponent<AudioSource>();
+            wordAudioSource.loop = false;
+            wordAudioSource.playOnAwake = false;
+            wordAudioSource.clip = audioClip;
+            wordAudioSource.Play();
+        }
+
         string existingText = selectedTarget.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text;
         selectedTarget.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = existingText + checkText.GetComponent<TextMeshProUGUI>().text.ToString();
         spreadSheetNew.playNextRound = false;
         selectedTarget.tag = "done";
         backboardScale.Play("Backboard Scaling");
         BoosterState.boosterPower++;
-        boosterState.PlayParticles(); 
 
         yield return new WaitForSeconds(2);
         for (int i = 0; i < enabledButtons.Length; i++)
