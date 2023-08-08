@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class MoveButton : MonoBehaviour
 {
     public List <GameObject> movedButtons = new List<GameObject>();
-    private Vector2 originialPos;
+    public Vector2 originialPos;
 
     void Start()
     {

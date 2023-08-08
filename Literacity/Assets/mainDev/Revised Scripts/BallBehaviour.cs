@@ -11,8 +11,8 @@ public class BallBehaviour : MonoBehaviour
     public Quaternion initialRot;
     public Image backboardHighlight;
     public AudioSource wordAudioSource;
-    public AudioSource firstBallAudioSource;
-    public AudioSource secondBallAudioSource;
+    public AudioClip firstBallAudioSource;
+    public AudioClip secondBallAudioSource;
     private Animation backboardScale;
     private Color backboardColor;
     ClickedPrompt clickedPrompt;
@@ -21,6 +21,7 @@ public class BallBehaviour : MonoBehaviour
     PlayButton playButton;
     BoosterState boosterState;
     PlayAudio playAudio;
+    MoveButton moveButton;
 
     void Start()
     {
@@ -33,6 +34,7 @@ public class BallBehaviour : MonoBehaviour
         backboardScale = backboardHighlight.GetComponent<Animation>();
         boosterState = FindObjectOfType<BoosterState>();
         playAudio = GetComponent<PlayAudio>();
+        moveButton = FindObjectOfType<MoveButton>();
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -46,7 +48,7 @@ public class BallBehaviour : MonoBehaviour
 
             if (checkText.GetComponent<TextMeshProUGUI>().text == spreadSheetNew.letterOneList[spreadSheetNew.targetIndex].ToString() && !spreadSheetNew.playNextRound)
             {
-                firstBallAudioSource = playAudio.audioSource;
+                firstBallAudioSource = playAudio.audioSource.clip;
                 playAudio.OnCollisionAudio();
                 GameObject selectedTarget = GameObject.Find((spreadSheetNew.targetIndex).ToString());
                 backboardScale.Play("Backboard Scaling");
@@ -82,12 +84,12 @@ public class BallBehaviour : MonoBehaviour
     {    
 
         playAudio.OnCollisionAudio();
-        secondBallAudioSource = playAudio.audioSource;
+        secondBallAudioSource = playAudio.audioSource.clip;
         GameObject selectedTarget = GameObject.Find((spreadSheetNew.targetIndex).ToString());
 
         string audioFileName = spreadSheetNew.wordsList[spreadSheetNew.targetIndex];
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.3f);
 
         AudioClip audioClip = Resources.Load<AudioClip>(audioFileName);
             
@@ -118,6 +120,7 @@ public class BallBehaviour : MonoBehaviour
 
         spreadSheetNew.selectedCard.GetComponent<CardAnim>().OnDone();
         spreadSheetNew.selectedCard.tag = "close";
+        selectedTarget.GetComponent<RectTransform>().anchoredPosition = moveButton.originialPos;
     }
 }
 
