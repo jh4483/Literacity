@@ -82,29 +82,22 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         yield return new WaitForSeconds(time);
     }
 
-    private void OnTriggerEnter2D(Collider2D other) 
+    private void OnCollisionEnter2D(Collision2D other) 
     {
-        if(other.gameObject.name == "Bump Collider")
+        if(other.gameObject.name == "Backboard Highlight")
         {
-            rb.isKinematic = false;
-            rb.simulated = false;
-            collider.enabled = false;
-
-            StartCoroutine(TriggerExit());
+            // rb.isKinematic = false;
+            // StartCoroutine(TriggerExit());
 
         }
     }
 
     IEnumerator TriggerExit()
-    {    
+    {          
+        // rb.drag = 20.0f;
         yield return new WaitForSeconds(0.6f);
-        rb.simulated = true;
-        collider.enabled = true;
-      
-        rb.drag = 20.0f;
-        yield return new WaitForSeconds(0.6f);
-        rb.drag = 0;
-        rb.isKinematic = true;
+        // rb.drag = 0;
+        // rb.isKinematic = true;
     }
 
 }
