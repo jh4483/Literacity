@@ -11,9 +11,8 @@ public class BallBehaviour : MonoBehaviour
     public Quaternion initialRot;
     public Image backboardHighlight;
     public AudioSource wordAudioSource;
-    private AudioSource ballAudioSource;
-    private AudioSource firstBallAudioSource;
-    private AudioSource secondBallAudioSource;
+    public AudioSource firstBallAudioSource;
+    public AudioSource secondBallAudioSource;
     private Animation backboardScale;
     private Color backboardColor;
     ClickedPrompt clickedPrompt;
@@ -21,6 +20,7 @@ public class BallBehaviour : MonoBehaviour
     GameObject[] enabledButtons;
     PlayButton playButton;
     BoosterState boosterState;
+    PlayAudio playAudio;
 
     void Start()
     {
@@ -32,7 +32,7 @@ public class BallBehaviour : MonoBehaviour
         spreadSheetNew = FindObjectOfType<SpreadSheetNew>();
         backboardScale = backboardHighlight.GetComponent<Animation>();
         boosterState = FindObjectOfType<BoosterState>();
-        ballAudioSource = GetComponent<AudioSource>();
+        playAudio = GetComponent<PlayAudio>();
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -46,7 +46,8 @@ public class BallBehaviour : MonoBehaviour
 
             if (checkText.GetComponent<TextMeshProUGUI>().text == spreadSheetNew.letterOneList[spreadSheetNew.targetIndex].ToString() && !spreadSheetNew.playNextRound)
             {
-                ballAudioSource.Play();
+                firstBallAudioSource = playAudio.audioSource;
+                playAudio.OnCollisionAudio();
                 GameObject selectedTarget = GameObject.Find((spreadSheetNew.targetIndex).ToString());
                 backboardScale.Play("Backboard Scaling");
                 BoosterState.boosterPower++;             
@@ -79,11 +80,15 @@ public class BallBehaviour : MonoBehaviour
 
     private IEnumerator CompletedWord()
     {    
-        ballAudioSource.Play();
 
+        playAudio.OnCollisionAudio();
+        secondBallAudioSource = playAudio.audioSource;
         GameObject selectedTarget = GameObject.Find((spreadSheetNew.targetIndex).ToString());
 
         string audioFileName = spreadSheetNew.wordsList[spreadSheetNew.targetIndex];
+
+        yield return new WaitForSeconds(1f);
+
         AudioClip audioClip = Resources.Load<AudioClip>(audioFileName);
             
         if (audioClip != null)

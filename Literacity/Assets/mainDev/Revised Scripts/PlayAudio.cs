@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayAudio : MonoBehaviour
 {
-    private AudioSource audioSource;
+    public AudioSource audioSource;
     SpreadSheetNew spreadSheetNew;
     DragBall dragBall;
 
@@ -24,7 +24,15 @@ public class PlayAudio : MonoBehaviour
 
         else
         {
-            audioSource.Stop();
+
+        }
+    }
+
+    public void OnCollisionAudio()
+    {
+        if (audioSource != null && audioSource.clip != null)
+        {
+            audioSource.Play();
         }
     }
 }
