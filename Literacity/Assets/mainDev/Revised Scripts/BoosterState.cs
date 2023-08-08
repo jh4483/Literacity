@@ -26,7 +26,9 @@ public class BoosterState : MonoBehaviour
         if (boosterPower == 1)
         {
             var main = particleSystem.main;
-            main.startColor.randomColor = presetColors[spreadSheetNew.targetIndex];
+            var randomColors = new ParticleSystem.MinMaxGradient(presetColors[spreadSheetNew.targetIndex]);
+            randomColors.mode = ParticleSystemGradientMode.RandomColor;
+            main.startColor = randomColors;
             particleSystem.Play();
         }
     }
