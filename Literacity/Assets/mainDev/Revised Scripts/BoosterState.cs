@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class BoosterState : MonoBehaviour
 {
-
     public static int boosterPower;
-    public ParticleSystem winningParticles;
-    SpreadSheetNew spreadSheetNew;
+    public ParticleSystem particleSystem;
+    public SpreadSheetNew spreadSheetNew;
+
+    public Gradient[] presetColors; 
 
     void Start()
     {
@@ -17,14 +18,17 @@ public class BoosterState : MonoBehaviour
 
     void Update()
     {
-
+        
     }
 
     public void PlayParticles()
     {
-        if(boosterPower >= 1)
+        if (boosterPower == 1)
         {
-            winningParticles.Play();
+            var main = particleSystem.main;
+            main.startColor.randomColor = presetColors[spreadSheetNew.targetIndex];
+            particleSystem.Play();
         }
     }
 }
+

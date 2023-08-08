@@ -50,34 +50,13 @@ public class ClickedPrompt : MonoBehaviour
                 openPrompt.tag = "close";
             }
 
-            StartCoroutine(StartFadeIn());
+                Color targetColor = currentColour;
+                Image backboardImage = backboardHighlight.GetComponent<Image>();
+                Color originalColor = backboardImage.color;
+                backboardImage.color = targetColor;
 
             spreadSheetNew.selectedCard.GetComponent<CardAnim>().OnSelected();
             spreadSheetNew.selectedCard.tag = "open";
         }
-    }
-
-    private IEnumerator StartFadeIn()
-    {
-        Color targetColor = currentColour;
-        Image backboardImage = backboardHighlight.GetComponent<Image>();
-        Color originalColor = backboardImage.color;
-
-        float duration = 1f;
-        float elapsedTime = 0f;
-
-        while (elapsedTime < duration)
-        {
-            float alphaValue = Mathf.Lerp(0f, 1f, elapsedTime / duration);
-            targetColor.a = alphaValue;
-            backboardImage.color = targetColor;
-
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        targetColor.a = 1f;
-        backboardImage.color = targetColor;
-
     }
 }
