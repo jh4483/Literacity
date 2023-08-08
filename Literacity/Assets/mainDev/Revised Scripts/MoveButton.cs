@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class MoveButton : MonoBehaviour
 {
     public List <GameObject> movedButtons = new List<GameObject>();
-    public Vector2 originialPos;
+    public Vector2 originalPos;
 
     void Start()
     {
@@ -23,7 +23,7 @@ public class MoveButton : MonoBehaviour
     {
         if(movedButtons.Count == 1)
         {
-            originialPos = movedButtons[0].gameObject.GetComponent<RectTransform>().anchoredPosition;
+            originalPos = movedButtons[0].gameObject.GetComponent<RectTransform>().anchoredPosition;
             movedButtons[0].gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(77, 175);
         }
 
@@ -32,15 +32,15 @@ public class MoveButton : MonoBehaviour
         {
             if(movedButtons[0].name != movedButtons[1].name)
             {
-                movedButtons[0].gameObject.GetComponent<RectTransform>().anchoredPosition = originialPos;
+                movedButtons[0].gameObject.GetComponent<RectTransform>().anchoredPosition = originalPos;
                 movedButtons.RemoveAt(0);
-                originialPos = movedButtons[0].gameObject.GetComponent<RectTransform>().anchoredPosition;
+                originalPos = movedButtons[0].gameObject.GetComponent<RectTransform>().anchoredPosition;
                 movedButtons[0].gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(77, 175);
             }
 
             else 
             {
-                movedButtons[0].gameObject.GetComponent<RectTransform>().anchoredPosition = originialPos;
+                movedButtons[0].gameObject.GetComponent<RectTransform>().anchoredPosition = originalPos;
                 movedButtons.RemoveAt(0);
                 movedButtons.RemoveAt(0);
             }

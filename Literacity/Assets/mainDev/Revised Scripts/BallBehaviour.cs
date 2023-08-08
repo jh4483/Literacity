@@ -120,7 +120,7 @@ public class BallBehaviour : MonoBehaviour
 
         spreadSheetNew.selectedCard.GetComponent<CardAnim>().OnDone();
         spreadSheetNew.selectedCard.tag = "close";
-        selectedTarget.GetComponent<RectTransform>().anchoredPosition = moveButton.originialPos;
+        selectedTarget.GetComponent<RectTransform>().anchoredPosition = moveButton.originalPos;
     }
 }
 
