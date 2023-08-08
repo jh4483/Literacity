@@ -12,6 +12,7 @@ public class ClickedPrompt : MonoBehaviour
     private Color orginalColour;
     SpreadSheetNew spreadSheetNew;
     PlayButton playButton;
+    MoveButton moveButton;
 
     void Start()
     {
@@ -20,6 +21,7 @@ public class ClickedPrompt : MonoBehaviour
         cardParent = GameObject.Find("Card Mask");
         orginalColour = backboardHighlight.GetComponent<Image>().color;
         currentColour = this.GetComponent<Image>().color;
+        moveButton = FindObjectOfType<MoveButton>();
     }
 
     void Update()
@@ -32,6 +34,8 @@ public class ClickedPrompt : MonoBehaviour
 
     public void OnPromptClicked()
     {   
+        moveButton.movedButtons.Add(gameObject);
+        moveButton.TransformButton();
         backboardHighlight.GetComponent<Image>().color = currentColour;
         spreadSheetNew.targetIndex = int.Parse(gameObject.name);
         spreadSheetNew.selectedCard = cardParent.transform.Find((spreadSheetNew.targetIndex).ToString() + " Card");
