@@ -43,8 +43,7 @@ public class BallBehaviour : MonoBehaviour
             {
                 GameObject selectedTarget = GameObject.Find((spreadSheetNew.targetIndex).ToString());
                 backboardScale.Play("Backboard Scaling");
-                BoosterState.boosterPower++;  
-                boosterState.PlayParticles();              
+                BoosterState.boosterPower++;             
                 selectedTarget.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = checkText.GetComponent<TextMeshProUGUI>().text.ToString();
                 spreadSheetNew.playNextRound = true;
 
@@ -81,7 +80,6 @@ public class BallBehaviour : MonoBehaviour
         selectedTarget.tag = "done";
         backboardScale.Play("Backboard Scaling");
         BoosterState.boosterPower++;
-        boosterState.PlayParticles(); 
 
         yield return new WaitForSeconds(2);
         for (int i = 0; i < enabledButtons.Length; i++)
