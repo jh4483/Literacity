@@ -31,9 +31,9 @@ public class BoosterState : MonoBehaviour
             animator.SetBool("Kaz_Shoot", true);
         }
 
-        if(animator.GetBool("Kaz_Shoot"))
+        else if(animator.GetBool("Kaz_Shoot"))
         {
-            // animator.SetBool("Kaz_Shoot", false);
+            animator.SetBool("Kaz_Shoot", false);
         }
     }
 
@@ -44,7 +44,7 @@ public class BoosterState : MonoBehaviour
             animator.SetBool("Kaz_DribbleN'Shoot", true);
         }
 
-        if(animator.GetBool("Kaz_DribbleN'Shoot"))
+        else if(animator.GetBool("Kaz_DribbleN'Shoot"))
         {
             animator.SetBool("Kaz_DribbleN'Shoot", false);
         }
@@ -58,7 +58,7 @@ public class BoosterState : MonoBehaviour
             animator.SetBool("Kaz_DisappearL", true);
         }
 
-        if(animator.GetBool("Kaz_DisappearL"))
+        else if(animator.GetBool("Kaz_DisappearL"))
         {
             animator.SetBool("Kaz_DisappearL", false);
         }
@@ -72,7 +72,7 @@ public class BoosterState : MonoBehaviour
             animator.SetBool("Kaz_DisappearR", true);
         }
 
-        if(animator.GetBool("Kaz_DisappearR"))
+        else if(animator.GetBool("Kaz_DisappearR"))
         {
             animator.SetBool("Kaz_DisappearR", false);
         }
@@ -86,7 +86,7 @@ public class BoosterState : MonoBehaviour
             animator.SetBool("Kaz_Fade", true);
         }
 
-        if(animator.GetBool("Kaz_Fade"))
+        else if(animator.GetBool("Kaz_Fade"))
         {
             animator.SetBool("Kaz_Fade", false);
         }
@@ -100,79 +100,134 @@ public class BoosterState : MonoBehaviour
             animator.SetBool("Kaz_Dunk", true);
         }
 
-        if(animator.GetBool("Kaz_Dunk"))
+        else if(animator.GetBool("Kaz_Dunk"))
         {
             animator.SetBool("Kaz_Dunk", false);
         }
 
     }
 
+    public void KazDribbleTurn()
+    {
+        if(!animator.GetBool("Kaz_DribbleTurn"))
+        {
+            animator.SetBool("Kaz_DribbleTurn", true);
+        }
 
+        else if(animator.GetBool("Kaz_DribbleTurn"))
+        {
+            animator.SetBool("Kaz_DribbleTurn", false);
+        }
+
+    }
+    
 
     public IEnumerator PlayParticles()
     {
-        if (boosterPower == 1)
+        var main = particleSystem.main;
+        var randomColors = new ParticleSystem.MinMaxGradient(presetColors[spreadSheetNew.targetIndex]);
+        yield return new WaitForSeconds(1.5f);
+        origin.SetActive(false);
+        cardMask.SetActive(false);
+
+
+
+        switch (boosterPower)
         {
-            yield return new WaitForSeconds(1.5f);
-            origin.SetActive(false);
-            cardMask.SetActive(false);
+            case 1:
+                yield return new WaitForSeconds(1.5f);
+                KazShoots();
 
-            yield return new WaitForSeconds(3f);
-            KazShoots();
+                yield return new WaitForSeconds(2f);
+                randomColors.mode = ParticleSystemGradientMode.RandomColor;
+                main.startColor = randomColors;
+                particleSystem.Play();
+                break;
+            
+            case 2:
+                yield return new WaitForSeconds(1.5f);
+                KazShoots();
 
-            yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(2f);
+                randomColors.mode = ParticleSystemGradientMode.RandomColor;
+                main.startColor = randomColors;
+                particleSystem.Play();
 
-            var main = particleSystem.main;
-            var randomColors = new ParticleSystem.MinMaxGradient(presetColors[spreadSheetNew.targetIndex]);
-            randomColors.mode = ParticleSystemGradientMode.RandomColor;
-            main.startColor = randomColors;
-            particleSystem.Play();
+                break;
+            
+            case 3:
+                yield return new WaitForSeconds(1.5f);
+                KazLayUp();
 
-            origin.SetActive(true);
-            cardMask.SetActive(true);
+                yield return new WaitForSeconds(2f);
+                randomColors.mode = ParticleSystemGradientMode.RandomColor;
+                main.startColor = randomColors;
+                particleSystem.Play();
+                
+                break;
+
+            case 4:
+                yield return new WaitForSeconds(1.5f);
+                KazDisappearR();
+
+                yield return new WaitForSeconds(2f);
+                randomColors.mode = ParticleSystemGradientMode.RandomColor;
+                main.startColor = randomColors;
+                particleSystem.Play();
+                
+                break;
+
+            case 5:
+                yield return new WaitForSeconds(1.5f);
+                KazDribbleTurn();
+
+                yield return new WaitForSeconds(2f);
+                randomColors.mode = ParticleSystemGradientMode.RandomColor;
+                main.startColor = randomColors;
+                particleSystem.Play();
+
+                break;
+            
+            case 6:
+                yield return new WaitForSeconds(1.5f);
+                KazDisappearL();
+
+                yield return new WaitForSeconds(2f);
+                randomColors.mode = ParticleSystemGradientMode.RandomColor;
+                main.startColor = randomColors;
+                particleSystem.Play();
+
+                break;
+
+            case 7:
+                yield return new WaitForSeconds(1.5f);
+                KazFade();
+
+                yield return new WaitForSeconds(2f);
+                randomColors.mode = ParticleSystemGradientMode.RandomColor;
+                main.startColor = randomColors;
+                particleSystem.Play();
+
+                break;
+
+            case 8:
+                yield return new WaitForSeconds(1.5f);
+                KazDunk();
+
+                yield return new WaitForSeconds(2f);
+                randomColors.mode = ParticleSystemGradientMode.RandomColor;
+                main.startColor = randomColors;
+                particleSystem.Play();
+        
+                break;
+
+            default:
+                break;
         }
 
-        // switch (boosterPower)
-        // {
-        //     case 1:
-        //         var main = particleSystem.main;
-        //         var randomColors = new ParticleSystem.MinMaxGradient(presetColors[spreadSheetNew.targetIndex]);
-        //         randomColors.mode = ParticleSystemGradientMode.RandomColor;
-        //         main.startColor = randomColors;
-        //         particleSystem.Play();
-        //         break;
-            
-        //     case 2:
-
-        //         break;
-            
-        //     case 3:
-                
-        //         break;
-
-        //     case 4:
-                
-        //         break;
-
-        //     case 5:
-
-        //         break;
-            
-        //     case 6:
-
-        //         break;
-
-        //     case 7:
-
-        //         break;
-
-        //     case 8:
-        
-        //         break;
-
-        //     default:
-        //         break;
-        // }
+        yield return new WaitForSeconds(2f);
+        origin.SetActive(true);
+        cardMask.SetActive(true);
     }
 }
 
