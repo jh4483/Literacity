@@ -30,6 +30,11 @@ public class BoosterState : MonoBehaviour
         {
             animator.SetBool("Kaz_Shoot", true);
         }
+
+        if(animator.GetBool("Kaz_Shoot"))
+        {
+            animator.SetBool("Kaz_Shoot", false);
+        }
     }
 
 
@@ -54,6 +59,9 @@ public class BoosterState : MonoBehaviour
             particleSystem.Play();
 
             yield return new WaitForSeconds(3f);
+
+            KazShoots();
+
             origin.SetActive(true);
             cardMask.SetActive(true);
         }
