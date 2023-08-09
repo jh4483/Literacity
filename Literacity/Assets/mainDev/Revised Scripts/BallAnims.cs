@@ -20,11 +20,21 @@ public class BallAnims : MonoBehaviour
 
     public void ShootBallL()
     {
-        
+        Debug.Log("Shoot Ball");
+        ballSprite.SetActive(true);
+        if(!ballSprite.GetComponent<Animator>().GetBool("Shoot_Ball_L"))
+        {
+            ballSprite.GetComponent<Animator>().SetBool("Shoot_Ball_L", true);
+        }
     }
 
     public void ShootBallDribbleL()
     {
+        Debug.Log("DribbleNShoot");
+        if(ballSprite.GetComponent<Animator>().GetBool("Ball_DribbleNShoot_L"))
+        {
+            ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_L", true);
+        }
 
     }
 
