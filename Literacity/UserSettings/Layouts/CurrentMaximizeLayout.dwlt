@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 24233
+  controlID: 25118
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -92,7 +92,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 24197
+  controlID: 25119
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 24175
+  controlID: 25120
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -236,8 +236,8 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
+      m_SelectedIDs: 8a56ffff
+      m_LastClickedID: -43382
       m_ExpandedIDs: 8a56ffff8c56ffff9857ffff5058ffff4297ffff229fffff249fffff10fbffffa272000058730000d87400009c8200008e840000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -696,7 +696,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: -0.010805704, y: -0.0053900364, z: 0.00084525935, w: -0.999962}
     speed: 2
-    m_Value: {x: -0.010805324, y: -0.005389847, z: 0.0008452296, w: -0.9999268}
+    m_Value: {x: -0.010805704, y: -0.0053900364, z: 0.0008452594, w: -0.99996203}
   m_Size:
     m_Target: 412.38248
     speed: 2
@@ -1076,8 +1076,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs: 8a56ffff
+    m_LastClickedInstanceID: -43382
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000000000007c5d0000
     m_RenameOverlay:
@@ -1244,7 +1244,7 @@ MonoBehaviour:
     m_CachedPref: 281.80005
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: -43382
+  m_LastInspectedObjectInstanceID: -1
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
