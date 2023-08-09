@@ -8,6 +8,8 @@ public class BoosterState : MonoBehaviour
     public ParticleSystem particleSystem;
     public SpreadSheetNew spreadSheetNew;
     public Animator animator;
+    public GameObject origin;
+    public GameObject cardMask;
 
     public Gradient[] presetColors; 
 
@@ -36,15 +38,24 @@ public class BoosterState : MonoBehaviour
     {
         if (boosterPower == 1)
         {
+            yield return new WaitForSeconds(1.5f);
+            origin.SetActive(false);
+            cardMask.SetActive(false);
+
+            yield return new WaitForSeconds(1.5f);
             KazShoots();
 
             yield return new WaitForSeconds(2f);
-            
+
             var main = particleSystem.main;
             var randomColors = new ParticleSystem.MinMaxGradient(presetColors[spreadSheetNew.targetIndex]);
             randomColors.mode = ParticleSystemGradientMode.RandomColor;
             main.startColor = randomColors;
             particleSystem.Play();
+
+            yield return new WaitForSeconds(3f);
+            origin.SetActive(true);
+            cardMask.SetActive(true);
         }
     }
 }
