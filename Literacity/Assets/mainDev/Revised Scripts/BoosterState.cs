@@ -33,7 +33,7 @@ public class BoosterState : MonoBehaviour
 
         if(animator.GetBool("Kaz_Shoot"))
         {
-            animator.SetBool("Kaz_Shoot", false);
+            // animator.SetBool("Kaz_Shoot", false);
         }
     }
 
@@ -117,7 +117,7 @@ public class BoosterState : MonoBehaviour
             origin.SetActive(false);
             cardMask.SetActive(false);
 
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(3f);
             KazShoots();
 
             yield return new WaitForSeconds(2f);
@@ -127,10 +127,6 @@ public class BoosterState : MonoBehaviour
             randomColors.mode = ParticleSystemGradientMode.RandomColor;
             main.startColor = randomColors;
             particleSystem.Play();
-
-            yield return new WaitForSeconds(3f);
-
-            KazShoots();
 
             origin.SetActive(true);
             cardMask.SetActive(true);
