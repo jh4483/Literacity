@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class BoosterState : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class BoosterState : MonoBehaviour
     public Animator animator;
     public GameObject origin;
     public GameObject cardMask;
+    private float fadeDuration = 1.0f;
 
     public Gradient[] presetColors; 
 
@@ -17,6 +20,7 @@ public class BoosterState : MonoBehaviour
     {
         boosterPower = 0;
         spreadSheetNew = FindObjectOfType<SpreadSheetNew>();
+        
     }
 
     void Update()
@@ -124,13 +128,36 @@ public class BoosterState : MonoBehaviour
 
     public IEnumerator PlayParticles()
     {
+        // if(boosterPower == 1 || boosterPower == 2)
+        // {
+        //     var main = particleSystem.main;
+        //     var randomColors = new ParticleSystem.MinMaxGradient(presetColors[spreadSheetNew.targetIndex]);
+        //     yield return new WaitForSeconds(1.5f);
+        //     origin.SetActive(false);
+        //     cardMask.SetActive(false);
+        //     yield return new WaitForSeconds(1.5f);
+        //     KazShoots();
+
+        //     yield return new WaitForSeconds(2f);
+        //     randomColors.mode = ParticleSystemGradientMode.RandomColor;
+        //     main.startColor = randomColors;
+        //     particleSystem.Play();
+
+        //     KazShoots();
+
+        //     yield return new WaitForSeconds(2f);
+        //     origin.SetActive(true);
+        //     cardMask.SetActive(true);
+        // }
+        
+        
         var main = particleSystem.main;
         var randomColors = new ParticleSystem.MinMaxGradient(presetColors[spreadSheetNew.targetIndex]);
-        yield return new WaitForSeconds(1.5f);
-        origin.SetActive(false);
-        cardMask.SetActive(false);
+        // origin.SetActive(false);
+        // cardMask.SetActive(false);
 
-
+        // Become Transparent (fading)
+        StartCoroutine(FadeOutImagesAndText());
 
         switch (boosterPower)
         {
@@ -243,8 +270,84 @@ public class BoosterState : MonoBehaviour
         }
 
         yield return new WaitForSeconds(2f);
-        origin.SetActive(true);
-        cardMask.SetActive(true);
+
+        StartCoroutine(FadeInImagesAndText());
+        // origin.SetActive(true);
+        // cardMask.SetActive(true);
+    }
+
+
+    private IEnumerator FadeOutImagesAndText()
+    {
+        float elapsedTime = 0;
+        float startAlpha = 1.0f;
+        float targetAlpha = 0.0f;
+
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+
+            float normalizedTime = elapsedTime / fadeDuration;
+            float currentAlpha = Mathf.Lerp(startAlpha, targetAlpha, normalizedTime);
+            foreach (Image image in origin.GetComponentsInChildren<Image>())
+            {
+                Color imageColor = image.color;
+                imageColor.a = currentAlpha;
+                image.color = imageColor;
+            }
+            foreach (TextMeshProUGUI textMeshPro in origin.GetComponentsInChildren<TextMeshProUGUI>())
+            {
+                Color textMeshColor = textMeshPro.color;
+                textMeshColor.a = currentAlpha;
+                textMeshPro.color = textMeshColor;
+            }
+            foreach (Image image in cardMask.GetComponentsInChildren<Image>())
+            {
+                Color imageColor = image.color;
+                imageColor.a = currentAlpha;
+                image.color = imageColor;
+            }
+
+            yield return null;
+        }
+
+    }
+
+    private IEnumerator FadeInImagesAndText()
+    {
+        float elapsedTime = 0;
+        float startAlpha = 0.0f;
+        float targetAlpha = 1.0f;
+
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+
+            float normalizedTime = elapsedTime / fadeDuration;
+            float currentAlpha = Mathf.Lerp(startAlpha, targetAlpha, normalizedTime);
+
+            foreach (Image image in origin.GetComponentsInChildren<Image>())
+            {
+                Color imageColor = image.color;
+                imageColor.a = currentAlpha;
+                image.color = imageColor;
+            }
+
+            foreach (TextMeshProUGUI textMeshPro in origin.GetComponentsInChildren<TextMeshProUGUI>())
+            {
+                Color textMeshColor = textMeshPro.color;
+                textMeshColor.a = currentAlpha;
+                textMeshPro.color = textMeshColor;
+            }
+
+            foreach (Image image in cardMask.GetComponentsInChildren<Image>())
+            {
+                Color imageColor = image.color;
+                imageColor.a = currentAlpha;
+                image.color = imageColor;
+            }
+
+            yield return null;
+        }
     }
 }
-
