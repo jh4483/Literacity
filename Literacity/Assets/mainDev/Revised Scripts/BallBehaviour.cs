@@ -110,5 +110,11 @@ public class BallBehaviour : MonoBehaviour
         spreadSheetNew.selectedCard.tag = "close";
         selectedTarget.GetComponent<RectTransform>().anchoredPosition = moveButton.originalPos;
     }
+
+    private void OnDisable() 
+    {
+        //Write the position reset code here to reset's ball's state
+        //In case of that ball being the right word maybe disable the ball?    
+    }
 }
 
