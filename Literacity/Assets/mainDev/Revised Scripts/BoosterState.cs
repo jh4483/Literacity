@@ -7,6 +7,7 @@ public class BoosterState : MonoBehaviour
     public static int boosterPower;
     public ParticleSystem particleSystem;
     public SpreadSheetNew spreadSheetNew;
+    public Animator animator;
 
     public Gradient[] presetColors; 
 
@@ -21,10 +22,24 @@ public class BoosterState : MonoBehaviour
         
     }
 
-    public void PlayParticles()
+    public void KazShoots()
+    {
+        if(!animator.GetBool("Kaz_Shoot"))
+        {
+            animator.SetBool("Kaz_Shoot", true);
+        }
+    }
+
+
+
+    public IEnumerator PlayParticles()
     {
         if (boosterPower == 1)
         {
+            KazShoots();
+
+            yield return new WaitForSeconds(2f);
+            
             var main = particleSystem.main;
             var randomColors = new ParticleSystem.MinMaxGradient(presetColors[spreadSheetNew.targetIndex]);
             randomColors.mode = ParticleSystemGradientMode.RandomColor;
