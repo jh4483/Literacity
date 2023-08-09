@@ -87,20 +87,8 @@ public class BallBehaviour : MonoBehaviour
         secondBallAudioSource = playAudio.audioSource.clip;
         GameObject selectedTarget = GameObject.Find((spreadSheetNew.targetIndex).ToString());
 
-        string audioFileName = spreadSheetNew.wordsList[spreadSheetNew.targetIndex];
-
-        yield return new WaitForSeconds(1.3f);
-
-        AudioClip audioClip = Resources.Load<AudioClip>(audioFileName);
-            
-        if (audioClip != null)
-        {
-            wordAudioSource = selectedTarget.gameObject.AddComponent<AudioSource>();
-            wordAudioSource.loop = false;
-            wordAudioSource.playOnAwake = false;
-            wordAudioSource.clip = audioClip;
-            wordAudioSource.Play();
-        }
+        yield return new WaitForSeconds(1f);
+        selectedTarget.gameObject.GetComponent<AudioSource>().Play();
 
         string existingText = selectedTarget.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text;
         selectedTarget.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = existingText + checkText.GetComponent<TextMeshProUGUI>().text.ToString();
