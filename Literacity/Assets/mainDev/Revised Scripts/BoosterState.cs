@@ -37,6 +37,76 @@ public class BoosterState : MonoBehaviour
         }
     }
 
+    public void KazLayUp()
+    {
+        if(!animator.GetBool("Kaz_DribbleN'Shoot"))
+        {
+            animator.SetBool("Kaz_DribbleN'Shoot", true);
+        }
+
+        if(animator.GetBool("Kaz_DribbleN'Shoot"))
+        {
+            animator.SetBool("Kaz_DribbleN'Shoot", false);
+        }
+
+    }
+
+    public void KazDisappearL()
+    {
+        if(!animator.GetBool("Kaz_DisappearL"))
+        {
+            animator.SetBool("Kaz_DisappearL", true);
+        }
+
+        if(animator.GetBool("Kaz_DisappearL"))
+        {
+            animator.SetBool("Kaz_DisappearL", false);
+        }
+
+    }
+
+    public void KazDisappearR()
+    {
+        if(!animator.GetBool("Kaz_DisappearR"))
+        {
+            animator.SetBool("Kaz_DisappearR", true);
+        }
+
+        if(animator.GetBool("Kaz_DisappearR"))
+        {
+            animator.SetBool("Kaz_DisappearR", false);
+        }
+
+    }
+
+    public void KazFade()
+    {
+        if(!animator.GetBool("Kaz_Fade"))
+        {
+            animator.SetBool("Kaz_Fade", true);
+        }
+
+        if(animator.GetBool("Kaz_Fade"))
+        {
+            animator.SetBool("Kaz_Fade", false);
+        }
+
+    }
+
+    public void KazDunk()
+    {
+        if(!animator.GetBool("Kaz_Dunk"))
+        {
+            animator.SetBool("Kaz_Dunk", true);
+        }
+
+        if(animator.GetBool("Kaz_Dunk"))
+        {
+            animator.SetBool("Kaz_Dunk", false);
+        }
+
+    }
+
 
 
     public IEnumerator PlayParticles()
