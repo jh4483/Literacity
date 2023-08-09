@@ -14,12 +14,16 @@ public class BoosterState : MonoBehaviour
     public GameObject cardMask;
     private float fadeDuration = 1.0f;
 
-    public Gradient[] presetColors; 
+    public Gradient[] presetColors;
+
+    public BallAnims ballAnims; 
 
     void Start()
     {
         boosterPower = 0;
         spreadSheetNew = FindObjectOfType<SpreadSheetNew>();
+
+        //ballAnims = FindObjectOfType<BallAnims>();
         
     }
 
@@ -166,6 +170,9 @@ public class BoosterState : MonoBehaviour
                 KazShoots();
 
                 yield return new WaitForSeconds(2f);
+                ballAnims.ShootBallL();
+                ballAnims.ballSprite.SetActive(false);
+
                 randomColors.mode = ParticleSystemGradientMode.RandomColor;
                 main.startColor = randomColors;
                 particleSystem.Play();
@@ -179,6 +186,9 @@ public class BoosterState : MonoBehaviour
                 KazShoots();
 
                 yield return new WaitForSeconds(2f);
+                ballAnims.ShootBallL();
+                ballAnims.ballSprite.SetActive(false);
+
                 randomColors.mode = ParticleSystemGradientMode.RandomColor;
                 main.startColor = randomColors;
                 particleSystem.Play();
@@ -192,6 +202,9 @@ public class BoosterState : MonoBehaviour
                 KazLayUp();
 
                 yield return new WaitForSeconds(2f);
+                ballAnims.ShootBallDribbleL();
+                ballAnims.ballSprite.SetActive(false);
+
                 randomColors.mode = ParticleSystemGradientMode.RandomColor;
                 main.startColor = randomColors;
                 particleSystem.Play();
@@ -205,6 +218,9 @@ public class BoosterState : MonoBehaviour
                 KazDisappearR();
 
                 yield return new WaitForSeconds(2f);
+                ballAnims.ShootBallDribbleL();
+                ballAnims.ballSprite.SetActive(false);
+                
                 randomColors.mode = ParticleSystemGradientMode.RandomColor;
                 main.startColor = randomColors;
                 particleSystem.Play();
