@@ -8,6 +8,7 @@ public class ClickedPrompt : MonoBehaviour
     public GameObject cardParent;
     public GameObject backboardHighlight;
     public GameObject openPrompt;
+    public AudioSource promptAudio;
     private Color currentColour;
     private Color orginalColour;
     SpreadSheetNew spreadSheetNew;
@@ -61,6 +62,8 @@ public class ClickedPrompt : MonoBehaviour
 
             spreadSheetNew.selectedCard.GetComponent<CardAnim>().OnSelected();
             spreadSheetNew.selectedCard.tag = "open";
+            promptAudio = GetComponent<AudioSource>();
+            promptAudio.Play();
         }
     }
 }

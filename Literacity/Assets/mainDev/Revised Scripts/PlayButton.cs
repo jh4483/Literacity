@@ -9,6 +9,7 @@ public class PlayButton : MonoBehaviour
     public Image kazBasketball;
     public GameObject cardMask;
     public Image basketballHighlight;
+    public GameObject introScene;
 
     void Start()
     {
@@ -23,6 +24,7 @@ public class PlayButton : MonoBehaviour
 
     public void OnPlay()
     {
+        introScene.SetActive(false);
         StartCoroutine(spreadSheetNew.LoadRoundData());
         kazBasketball.gameObject.SetActive(true);
         cardMask.SetActive(true);
