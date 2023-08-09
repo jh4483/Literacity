@@ -726,7 +726,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5694821218384390773, guid: 8f4701d0e47d6ba4c9c662a130b635ba, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6426733026779122351, guid: 8f4701d0e47d6ba4c9c662a130b635ba, type: 3}
       propertyPath: m_Type
@@ -6698,7 +6698,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1162942084
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7758,6 +7758,8 @@ MonoBehaviour:
   cardMask: {fileID: 507140442}
   basketballHighlight: {fileID: 456354187}
   introScene: {fileID: 1162942083}
+  buttonAudio: {fileID: 0}
+  hoopAudio: {fileID: 0}
 --- !u!222 &1475507935
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8825,6 +8827,7 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
+  ballAnims: {fileID: 0}
 --- !u!114 &2019489090
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -22,8 +22,6 @@ public class BoosterState : MonoBehaviour
     {
         boosterPower = 0;
         spreadSheetNew = FindObjectOfType<SpreadSheetNew>();
-
-        //ballAnims = FindObjectOfType<BallAnims>();
         
     }
 

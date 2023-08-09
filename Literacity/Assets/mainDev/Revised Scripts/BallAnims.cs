@@ -39,7 +39,12 @@ public class BallAnims : MonoBehaviour
         Debug.Log("DribbleNShoot");
         ballSprite.SetActive(true);
         
-        if(ballSprite.GetComponent<Animator>().GetBool("Ball_DribbleNShoot_L"))
+        if(!ballSprite.GetComponent<Animator>().GetBool("Ball_DribbleNShoot_L"))
+        {
+            ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_L", true);
+        }
+
+        else if(ballSprite.GetComponent<Animator>().GetBool("Ball_DribbleNShoot_L"))
         {
             ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_L", true);
         }
@@ -48,6 +53,18 @@ public class BallAnims : MonoBehaviour
 
     public void ShootBallDribbleR()
     {
+        Debug.Log("DribbleNShoot_R");
+        ballSprite.SetActive(true);
+        
+        if(!ballSprite.GetComponent<Animator>().GetBool("Ball_DribbleNShoot_L"))
+        {
+            ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_L", true);
+        }
+
+        else if(ballSprite.GetComponent<Animator>().GetBool("Ball_DribbleNShoot_L"))
+        {
+            ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_L", true);
+        }
 
     }
 }
