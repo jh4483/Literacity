@@ -170,6 +170,9 @@ public class BoosterState : MonoBehaviour
 
         //         break;
 
+        //     case 8:
+        
+        //         break;
 
         //     default:
         //         break;
