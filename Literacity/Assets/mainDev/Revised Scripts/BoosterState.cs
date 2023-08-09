@@ -142,6 +142,9 @@ public class BoosterState : MonoBehaviour
                 randomColors.mode = ParticleSystemGradientMode.RandomColor;
                 main.startColor = randomColors;
                 particleSystem.Play();
+
+                KazShoots();
+
                 break;
             
             case 2:
@@ -153,6 +156,8 @@ public class BoosterState : MonoBehaviour
                 main.startColor = randomColors;
                 particleSystem.Play();
 
+                KazShoots();
+
                 break;
             
             case 3:
@@ -163,6 +168,8 @@ public class BoosterState : MonoBehaviour
                 randomColors.mode = ParticleSystemGradientMode.RandomColor;
                 main.startColor = randomColors;
                 particleSystem.Play();
+
+                KazLayUp();
                 
                 break;
 
@@ -174,6 +181,8 @@ public class BoosterState : MonoBehaviour
                 randomColors.mode = ParticleSystemGradientMode.RandomColor;
                 main.startColor = randomColors;
                 particleSystem.Play();
+
+                KazDisappearR();
                 
                 break;
 
@@ -186,6 +195,8 @@ public class BoosterState : MonoBehaviour
                 main.startColor = randomColors;
                 particleSystem.Play();
 
+                KazDribbleTurn();
+
                 break;
             
             case 6:
@@ -196,6 +207,8 @@ public class BoosterState : MonoBehaviour
                 randomColors.mode = ParticleSystemGradientMode.RandomColor;
                 main.startColor = randomColors;
                 particleSystem.Play();
+
+                KazDisappearL();
 
                 break;
 
@@ -208,6 +221,8 @@ public class BoosterState : MonoBehaviour
                 main.startColor = randomColors;
                 particleSystem.Play();
 
+                KazFade();
+
                 break;
 
             case 8:
@@ -218,6 +233,8 @@ public class BoosterState : MonoBehaviour
                 randomColors.mode = ParticleSystemGradientMode.RandomColor;
                 main.startColor = randomColors;
                 particleSystem.Play();
+
+                KazDunk();
         
                 break;
 
