@@ -10,6 +10,8 @@ public class PlayButton : MonoBehaviour
     public GameObject cardMask;
     public Image basketballHighlight;
     public GameObject introScene;
+    public AudioSource buttonAudio;
+    public AudioSource hoopAudio;
 
     void Start()
     {
@@ -36,5 +38,11 @@ public class PlayButton : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         this.gameObject.GetComponent<Button>().enabled = false;
+
+        yield return new WaitForSeconds(1.4f);
+        buttonAudio.Play();
+
+        yield return new WaitForSeconds(4f);
+        hoopAudio.Play();
     }
 }
