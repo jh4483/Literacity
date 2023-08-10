@@ -65,21 +65,21 @@ public class BallAnims : MonoBehaviour
 
     }
 
-    public void ShootBallDribbleR()
-    {
-        Debug.Log("DribbleNShoot_R");
-        ballSprite.SetActive(true);
+    // public void ShootBallDribbleR()
+    // {
+    //     Debug.Log("DribbleNShoot_R");
+    //     ballSprite.SetActive(true);
 
-        if(!ballSprite.GetComponent<Animator>().GetBool("Ball_DribbleNShoot_R"))
-        {
-            ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_R", true);
-        }
+    //     if(!ballSprite.GetComponent<Animator>().GetBool("Ball_DribbleNShoot_R"))
+    //     {
+    //         ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_R", true);
+    //     }
 
-        else if(ballSprite.GetComponent<Animator>().GetBool("Ball_DribbleNShoot_R"))
-        {
-            ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_R", false);
-        }
-    }
+    //     else if(ballSprite.GetComponent<Animator>().GetBool("Ball_DribbleNShoot_R"))
+    //     {
+    //         ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_R", false);
+    //     }
+    // }
 
     public void Fade()
     {
