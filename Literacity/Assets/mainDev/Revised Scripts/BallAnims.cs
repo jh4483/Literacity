@@ -5,20 +5,21 @@ using UnityEngine;
 public class BallAnims : MonoBehaviour
 {
     public GameObject ballSprite;
+    public BoosterState boosterState;
 
     public void ShootBallL()
     {
         Debug.Log("Shoot Ball");
         ballSprite.SetActive(true);
 
-        //if()
-        // {
-        //     SBLMade();
-        // }
-        // else if()
-        // {
-        //     SBLMissed();
-        // }
+        if(boosterState.isCorrect)
+        {
+            SBLMade();
+        }
+        else if(!boosterState.isCorrect)
+        {
+            SBLMissed();
+        }
     }
 
     void SBLMade()
@@ -59,7 +60,7 @@ public class BallAnims : MonoBehaviour
 
         else if(ballSprite.GetComponent<Animator>().GetBool("Ball_DribbleNShoot_L"))
         {
-            ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_L", true);
+            ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_L", false);
         }
 
     }
@@ -69,14 +70,14 @@ public class BallAnims : MonoBehaviour
         Debug.Log("DribbleNShoot_R");
         ballSprite.SetActive(true);
 
-        if(!ballSprite.GetComponent<Animator>().GetBool("Ball_DribbleNShoot_L"))
+        if(!ballSprite.GetComponent<Animator>().GetBool("Ball_DribbleNShoot_R"))
         {
-            ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_L", true);
+            ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_R", true);
         }
 
-        else if(ballSprite.GetComponent<Animator>().GetBool("Ball_DribbleNShoot_L"))
+        else if(ballSprite.GetComponent<Animator>().GetBool("Ball_DribbleNShoot_R"))
         {
-            ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_L", true);
+            ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_R", false);
         }
     }
 
