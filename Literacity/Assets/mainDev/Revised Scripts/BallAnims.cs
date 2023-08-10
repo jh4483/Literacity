@@ -28,11 +28,6 @@ public class BallAnims : MonoBehaviour
         {
             ballSprite.GetComponent<Animator>().SetBool("Ball_Shoot_L", true);
         }
-
-        else if(ballSprite.GetComponent<Animator>().GetBool("Ball_Shoot_L"))
-        {
-            ballSprite.GetComponent<Animator>().SetBool("Ball_Shoot_L", false);
-        }
     }
 
     void SBLMissed()
@@ -40,11 +35,6 @@ public class BallAnims : MonoBehaviour
         if(!ballSprite.GetComponent<Animator>().GetBool("Ball_Shoot_Missed"))
         {
             ballSprite.GetComponent<Animator>().SetBool("Ball_Shoot_Missed", true);
-        }
-
-        else if(ballSprite.GetComponent<Animator>().GetBool("Ball_Shoot_Missed"))
-        {
-            ballSprite.GetComponent<Animator>().SetBool("Ball_Shoot_Missed", false);
         }
     }
 
@@ -58,28 +48,7 @@ public class BallAnims : MonoBehaviour
             ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_L", true);
         }
 
-        else if(ballSprite.GetComponent<Animator>().GetBool("Ball_DribbleNShoot_L"))
-        {
-            ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_L", false);
-        }
-
     }
-
-    // public void ShootBallDribbleR()
-    // {
-    //     Debug.Log("DribbleNShoot_R");
-    //     ballSprite.SetActive(true);
-
-    //     if(!ballSprite.GetComponent<Animator>().GetBool("Ball_DribbleNShoot_R"))
-    //     {
-    //         ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_R", true);
-    //     }
-
-    //     else if(ballSprite.GetComponent<Animator>().GetBool("Ball_DribbleNShoot_R"))
-    //     {
-    //         ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_R", false);
-    //     }
-    // }
 
     public void Fade()
     {
@@ -89,11 +58,6 @@ public class BallAnims : MonoBehaviour
         if(!ballSprite.GetComponent<Animator>().GetBool("Ball_Fade"))
         {
             ballSprite.GetComponent<Animator>().SetBool("Ball_Fade", true);
-        }
-
-        else if(ballSprite.GetComponent<Animator>().GetBool("Ball_Fade"))
-        {
-            ballSprite.GetComponent<Animator>().SetBool("Ball_Fade", false);
         }
     }
 }
