@@ -13,6 +13,7 @@ public class BoosterState : MonoBehaviour
     public GameObject origin;
     public GameObject cardMask;
     public GameObject backBoardHighlight;
+    public bool isCorrect;
     public bool hasPlayedParticles;
     public float timeTaken;
     private float fadeDuration = 1.0f;
