@@ -13,7 +13,8 @@ public class BallBehaviour : MonoBehaviour
     public AudioSource wordAudioSource;
     public AudioClip firstBallAudioSource;
     public AudioClip secondBallAudioSource;
-    public AudioSource ballHitAudio;
+    private GameObject basketBallRing;
+    private AudioSource ballHitAudio;
     private Animation backboardScale;
     private Color backboardColor;
     ClickedPrompt clickedPrompt;
@@ -36,14 +37,24 @@ public class BallBehaviour : MonoBehaviour
         boosterState = FindObjectOfType<BoosterState>();
         playAudio = GetComponent<PlayAudio>();
         moveButton = FindObjectOfType<MoveButton>();
+        basketBallRing = GameObject.Find("Basketball Ring");
+        ballHitAudio = basketBallRing.GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {         
+        ballHitAudio.Play();
         backboardColor = backboardHighlight.GetComponent<Image>().color;
         if (collider.gameObject.name == "Basketball Ring")
         {
+            StartCoroutine(HalfCompletedWord());
+        }
+    }
+
+    private IEnumerator HalfCompletedWord()
+    {
             ballHitAudio.Play();
+            yield return new WaitForSeconds(0.5f);
             transform.position = initialPos;
             transform.rotation = initialRot;
             enabledButtons = GameObject.FindGameObjectsWithTag("undone");
@@ -86,7 +97,6 @@ public class BallBehaviour : MonoBehaviour
                 BoosterState.boosterPower = 0;
                 boosterState.isCorrect = false;
             }
-        }
     }
 
     private IEnumerator CompletedWord()
