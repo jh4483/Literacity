@@ -20,8 +20,11 @@ public class SpreadSheetNew : MonoBehaviour
     public AudioSource ballAudioSource;
     public Button[] wordImage;
     public int targetIndex;
+    public int totalScore = 0;
     public bool playNextRound;
+    public GameObject outroScene;
     ClickedPrompt clickedPrompt;
+    BoosterState boosterState;
 
     [System.Serializable]
     public class RoundData
@@ -43,15 +46,20 @@ public class SpreadSheetNew : MonoBehaviour
     {
         playNextRound = false;
         clickedPrompt = FindObjectOfType<ClickedPrompt>();
+        boosterState = FindObjectOfType<BoosterState>();
     }
 
     void Update()
     {
-
+        if(totalScore == 4)
+        {
+            outroScene.SetActive(true);
+        }
     }
 
     public IEnumerator LoadRoundData()
     {
+        GetComponent<AudioSource>().Play();
         string filePath = Path.Combine(Application.streamingAssetsPath, "JSON File/revised_json.txt");
         string json = "";
 
