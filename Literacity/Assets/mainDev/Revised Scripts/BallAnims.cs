@@ -6,23 +6,23 @@ public class BallAnims : MonoBehaviour
 {
     public GameObject ballSprite;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void ShootBallL()
     {
         Debug.Log("Shoot Ball");
         ballSprite.SetActive(true);
 
+        //if()
+        // {
+        //     SBLMade();
+        // }
+        // else if()
+        // {
+        //     SBLMissed();
+        // }
+    }
+
+    void SBLMade()
+    {
         if(!ballSprite.GetComponent<Animator>().GetBool("Ball_Shoot_L"))
         {
             ballSprite.GetComponent<Animator>().SetBool("Ball_Shoot_L", true);
@@ -34,12 +34,30 @@ public class BallAnims : MonoBehaviour
         }
     }
 
+    void SBLMissed()
+    {
+        if(!ballSprite.GetComponent<Animator>().GetBool("Ball_Shoot_Missed"))
+        {
+            ballSprite.GetComponent<Animator>().SetBool("Ball_Shoot_Missed", true);
+        }
+
+        else if(ballSprite.GetComponent<Animator>().GetBool("Ball_Shoot_Missed"))
+        {
+            ballSprite.GetComponent<Animator>().SetBool("Ball_Shoot_Missed", false);
+        }
+    }
+
     public void ShootBallDribbleL()
     {
         Debug.Log("DribbleNShoot");
         ballSprite.SetActive(true);
-        
-        if(ballSprite.GetComponent<Animator>().GetBool("Ball_DribbleNShoot_L"))
+
+        if(!ballSprite.GetComponent<Animator>().GetBool("Ball_DribbleNShoot_L"))
+        {
+            ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_L", true);
+        }
+
+        else if(ballSprite.GetComponent<Animator>().GetBool("Ball_DribbleNShoot_L"))
         {
             ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_L", true);
         }
@@ -48,6 +66,33 @@ public class BallAnims : MonoBehaviour
 
     public void ShootBallDribbleR()
     {
+        Debug.Log("DribbleNShoot_R");
+        ballSprite.SetActive(true);
 
+        if(!ballSprite.GetComponent<Animator>().GetBool("Ball_DribbleNShoot_L"))
+        {
+            ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_L", true);
+        }
+
+        else if(ballSprite.GetComponent<Animator>().GetBool("Ball_DribbleNShoot_L"))
+        {
+            ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_L", true);
+        }
+    }
+
+    public void Fade()
+    {
+        Debug.Log("Fade");
+        ballSprite.SetActive(true);
+
+        if(!ballSprite.GetComponent<Animator>().GetBool("Ball_Fade"))
+        {
+            ballSprite.GetComponent<Animator>().SetBool("Ball_Fade", true);
+        }
+
+        else if(ballSprite.GetComponent<Animator>().GetBool("Ball_Fade"))
+        {
+            ballSprite.GetComponent<Animator>().SetBool("Ball_Fade", false);
+        }
     }
 }
