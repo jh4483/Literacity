@@ -12,14 +12,14 @@ public class BallAnims : MonoBehaviour
         Debug.Log("Shoot Ball");
         ballSprite.SetActive(true);
 
-        //if()
-        // {
-        //     SBLMade();
-        // }
-        // else if()
-        // {
-        //     SBLMissed();
-        // }
+        if(boosterState.isCorrect)
+        {
+            SBLMade();
+        }
+        else if(!boosterState.isCorrect)
+        {
+            SBLMissed();
+        }
     }
 
     void SBLMade()
