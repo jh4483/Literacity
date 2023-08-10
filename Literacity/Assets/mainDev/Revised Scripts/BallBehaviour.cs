@@ -13,6 +13,7 @@ public class BallBehaviour : MonoBehaviour
     public AudioSource wordAudioSource;
     public AudioClip firstBallAudioSource;
     public AudioClip secondBallAudioSource;
+    public AudioSource ballHitAudio;
     private Animation backboardScale;
     private Color backboardColor;
     ClickedPrompt clickedPrompt;
@@ -42,6 +43,7 @@ public class BallBehaviour : MonoBehaviour
         backboardColor = backboardHighlight.GetComponent<Image>().color;
         if (collider.gameObject.name == "Basketball Ring")
         {
+            ballHitAudio.Play();
             transform.position = initialPos;
             transform.rotation = initialRot;
             enabledButtons = GameObject.FindGameObjectsWithTag("undone");
