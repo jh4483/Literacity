@@ -9949,6 +9949,7 @@ MonoBehaviour:
   backBoardHighlight: {fileID: 456354186}
   isCorrect: 0
   hasPlayedParticles: 0
+  hasCollided: 0
   timeTaken: 0
   presetColors:
   - serializedVersion: 2

@@ -22,13 +22,13 @@ public class IntroScene : MonoBehaviour
         introAudio.Play();
         playButton.SetActive(false);
         GetComponent<AudioSource>().Play();
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(1.5f);
         transform.GetChild(1).gameObject.SetActive(true);   
 
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(3f);
         transform.GetChild(2).gameObject.SetActive(true);  
         
-        yield return new WaitForSeconds(1.4f);
+        yield return new WaitForSeconds(1.9f);
         transform.GetChild(3).gameObject.SetActive(true); 
 
         yield return new WaitForSeconds(1.4f);

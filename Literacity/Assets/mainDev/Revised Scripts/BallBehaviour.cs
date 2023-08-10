@@ -23,8 +23,6 @@ public class BallBehaviour : MonoBehaviour
     PlayAudio playAudio;
     MoveButton moveButton;
 
-    private bool hasCollided = false;
-
     void Start()
     {
         playButton = FindObjectOfType<PlayButton>();
@@ -43,9 +41,9 @@ public class BallBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (!hasCollided) 
+        if (!boosterState.hasCollided) 
         {
-            hasCollided = true; 
+            boosterState.hasCollided = true; 
             backboardColor = backboardHighlight.GetComponent<Image>().color;
             if (collider.gameObject.name == "Basketball Ring")
             {
@@ -99,8 +97,6 @@ public class BallBehaviour : MonoBehaviour
             BoosterState.boosterPower = 0;
             boosterState.isCorrect = false;
         }
-
-        hasCollided = false;
     }
 
     private IEnumerator CompletedWord()
@@ -134,7 +130,5 @@ public class BallBehaviour : MonoBehaviour
         spreadSheetNew.selectedCard.tag = "close";
         selectedTarget.GetComponent<RectTransform>().anchoredPosition = moveButton.originalPos;
         spreadSheetNew.totalScore++;
-
-        hasCollided = false;
     }
 }
