@@ -1,0 +1,34 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class OutroScene : MonoBehaviour
+{
+    public GameObject outroScene;
+    public GameObject outroAudio;
+    void Start()
+    {
+        StartCoroutine(LoadOutroScene());
+    }
+
+    void Update()
+    {
+        
+    }
+    IEnumerator LoadOutroScene()
+    {
+        GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(1.2f);
+        transform.GetChild(0).gameObject.SetActive(true);   
+
+        yield return new WaitForSeconds(2.5f);
+        transform.GetChild(1).gameObject.SetActive(true);  
+        
+        yield return new WaitForSeconds(1.4f);
+        transform.GetChild(2).gameObject.SetActive(true); 
+
+        yield return new WaitForSeconds(1.4f);
+        transform.GetChild(3).gameObject.SetActive(true);  
+
+    }
+}

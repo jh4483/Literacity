@@ -17,7 +17,7 @@ public class PlayAudio : MonoBehaviour
 
     public void OnClick()
     {
-        if (audioSource != null && audioSource.clip != null && !dragBall.isDragging)
+        if (audioSource != null && audioSource.clip != null)
         {
             audioSource.Play();
         }

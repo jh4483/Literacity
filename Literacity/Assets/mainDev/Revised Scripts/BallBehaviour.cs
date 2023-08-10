@@ -11,8 +11,6 @@ public class BallBehaviour : MonoBehaviour
     public Quaternion initialRot;
     public Image backboardHighlight;
     public AudioSource wordAudioSource;
-    public AudioClip firstBallAudioSource;
-    public AudioClip secondBallAudioSource;
     private GameObject basketBallRing;
     private AudioSource ballHitAudio;
     private Animation backboardScale;
@@ -24,6 +22,8 @@ public class BallBehaviour : MonoBehaviour
     BoosterState boosterState;
     PlayAudio playAudio;
     MoveButton moveButton;
+
+    private bool hasCollided = false;
 
     void Start()
     {
@@ -42,77 +42,80 @@ public class BallBehaviour : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
-    {         
-        ballHitAudio.Play();
-        backboardColor = backboardHighlight.GetComponent<Image>().color;
-        if (collider.gameObject.name == "Basketball Ring")
+    {
+        if (!hasCollided) 
         {
-            StartCoroutine(HalfCompletedWord());
+            hasCollided = true; 
+            backboardColor = backboardHighlight.GetComponent<Image>().color;
+            if (collider.gameObject.name == "Basketball Ring")
+            {
+                StartCoroutine(HalfCompletedWord());
+            }
         }
     }
 
     private IEnumerator HalfCompletedWord()
     {
-            ballHitAudio.Play();
-            yield return new WaitForSeconds(0.5f);
-            transform.position = initialPos;
-            transform.rotation = initialRot;
-            enabledButtons = GameObject.FindGameObjectsWithTag("undone");
+        ballHitAudio.Play();
+        transform.position = initialPos;
+        transform.rotation = initialRot;
+        enabledButtons = GameObject.FindGameObjectsWithTag("undone");
 
-            if (checkText.GetComponent<TextMeshProUGUI>().text == spreadSheetNew.letterOneList[spreadSheetNew.targetIndex].ToString() && !spreadSheetNew.playNextRound)
+        if (checkText.GetComponent<TextMeshProUGUI>().text == spreadSheetNew.letterOneList[spreadSheetNew.targetIndex].ToString() && !spreadSheetNew.playNextRound)
+        {
+            boosterState.isCorrect = true;
+            yield return new WaitForSeconds(0.7f);
+            playAudio.OnCollisionAudio();
+            GameObject selectedTarget = GameObject.Find((spreadSheetNew.targetIndex).ToString());
+            backboardScale.Play("Backboard Scaling");
+            BoosterState.boosterPower++;
+            selectedTarget.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = checkText.GetComponent<TextMeshProUGUI>().text.ToString();
+            boosterState.StartCoroutine(boosterState.PlayParticles());
+            spreadSheetNew.playNextRound = true;
+
+            for (int i = 0; i < enabledButtons.Length; i++)
             {
-                boosterState.isCorrect = true;
-                firstBallAudioSource = playAudio.audioSource.clip;
-                playAudio.OnCollisionAudio();
-                GameObject selectedTarget = GameObject.Find((spreadSheetNew.targetIndex).ToString());
-                backboardScale.Play("Backboard Scaling");
-                BoosterState.boosterPower++;             
-                selectedTarget.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = checkText.GetComponent<TextMeshProUGUI>().text.ToString();
-                boosterState.StartCoroutine(boosterState.PlayParticles());
-                spreadSheetNew.playNextRound = true;
-
-                for (int i = 0; i < enabledButtons.Length; i++)
-                {
-                    enabledButtons[i].gameObject.GetComponent<Button>().enabled = false;
-                }
+                enabledButtons[i].gameObject.GetComponent<Button>().enabled = false;
             }
-            else if (checkText.GetComponent<TextMeshProUGUI>().text == spreadSheetNew.letterTwoList[spreadSheetNew.targetIndex].ToString() && spreadSheetNew.playNextRound)
-            {                
+        }
+        else if (checkText.GetComponent<TextMeshProUGUI>().text == spreadSheetNew.letterTwoList[spreadSheetNew.targetIndex].ToString() && spreadSheetNew.playNextRound)
+        {
+            spreadSheetNew.playNextRound = false;
+            StartCoroutine(CompletedWord());
 
-                StartCoroutine(CompletedWord());
-
-            }
-            else if (checkText.GetComponent<TextMeshProUGUI>().text != spreadSheetNew.letterOneList[spreadSheetNew.targetIndex].ToString() && !spreadSheetNew.playNextRound)
+        }
+        else if (checkText.GetComponent<TextMeshProUGUI>().text != spreadSheetNew.letterOneList[spreadSheetNew.targetIndex].ToString() && !spreadSheetNew.playNextRound)
+        {
+            backboardScale.Play("Backboard Rotation");
+            if (BoosterState.boosterPower != 0)
             {
-                backboardScale.Play("Backboard Rotation");
-                if(BoosterState.boosterPower != 0)
-                {
-                    BoosterState.boosterPower = 0;
-                    boosterState.isCorrect = false;
-                }
-            }
-            else if (checkText.GetComponent<TextMeshProUGUI>().text != spreadSheetNew.letterTwoList[spreadSheetNew.targetIndex].ToString() && spreadSheetNew.playNextRound)
-            {
-                backboardScale.Play("Backboard Rotation");
                 BoosterState.boosterPower = 0;
                 boosterState.isCorrect = false;
             }
+        }
+        else if (checkText.GetComponent<TextMeshProUGUI>().text != spreadSheetNew.letterTwoList[spreadSheetNew.targetIndex].ToString() && spreadSheetNew.playNextRound)
+        {
+            backboardScale.Play("Backboard Rotation");
+            BoosterState.boosterPower = 0;
+            boosterState.isCorrect = false;
+        }
+
+        hasCollided = false;
     }
 
     private IEnumerator CompletedWord()
-    {    
+    {
         boosterState.isCorrect = true;
+        yield return new WaitForSeconds(0.7f);
         playAudio.OnCollisionAudio();
-        secondBallAudioSource = playAudio.audioSource.clip;
         backboardScale.Play("Backboard Scaling");
         GameObject selectedTarget = GameObject.Find((spreadSheetNew.targetIndex).ToString());
         string existingText = selectedTarget.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text;
         selectedTarget.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = existingText + checkText.GetComponent<TextMeshProUGUI>().text.ToString();
-        
+
         yield return new WaitForSeconds(1.5f);
         selectedTarget.gameObject.GetComponent<AudioSource>().Play();
 
-        spreadSheetNew.playNextRound = false;
         BoosterState.boosterPower++;
         boosterState.StartCoroutine(boosterState.PlayParticles());
 
@@ -122,16 +125,16 @@ public class BallBehaviour : MonoBehaviour
         for (int i = 0; i < enabledButtons.Length; i++)
         {
             if (enabledButtons[i].tag == "undone")
-                {
-                    enabledButtons[i].gameObject.GetComponent<Button>().enabled = true;
-                }       
+            {
+                enabledButtons[i].gameObject.GetComponent<Button>().enabled = true;
+            }
         }
 
         spreadSheetNew.selectedCard.GetComponent<CardAnim>().OnDone();
         spreadSheetNew.selectedCard.tag = "close";
-        selectedTarget.GetComponent<RectTransform>().anchoredPosition = moveButton.originalPos;            
-            
+        selectedTarget.GetComponent<RectTransform>().anchoredPosition = moveButton.originalPos;
+        spreadSheetNew.totalScore++;
+
+        hasCollided = false;
     }
-
 }
-

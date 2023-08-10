@@ -26,7 +26,7 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private IEnumerator BallDrop()
     {
         collider = GetComponent<CircleCollider2D>();
-
+        yield return new WaitForSeconds(3);
         rb = GetComponent<Rigidbody2D>();
         isDragging = false;
         rb.isKinematic = true;
@@ -34,7 +34,7 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         ballBehaviour = GetComponent<BallBehaviour>();
         initBallPos = transform.position;
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(8);
         gameMask.SetActive(false);
 
     }
