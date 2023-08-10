@@ -13,7 +13,6 @@ public class BallBehaviour : MonoBehaviour
     public AudioSource wordAudioSource;
     public AudioClip firstBallAudioSource;
     public AudioClip secondBallAudioSource;
-    public bool isCorrect;
     private Animation backboardScale;
     private Color backboardColor;
     ClickedPrompt clickedPrompt;
@@ -49,7 +48,7 @@ public class BallBehaviour : MonoBehaviour
 
             if (checkText.GetComponent<TextMeshProUGUI>().text == spreadSheetNew.letterOneList[spreadSheetNew.targetIndex].ToString() && !spreadSheetNew.playNextRound)
             {
-                isCorrect = true;
+                boosterState.isCorrect = true;
                 firstBallAudioSource = playAudio.audioSource.clip;
                 playAudio.OnCollisionAudio();
                 GameObject selectedTarget = GameObject.Find((spreadSheetNew.targetIndex).ToString());
@@ -76,21 +75,21 @@ public class BallBehaviour : MonoBehaviour
                 if(BoosterState.boosterPower != 0)
                 {
                     BoosterState.boosterPower = 0;
-                    isCorrect = false;
+                    boosterState.isCorrect = false;
                 }
             }
             else if (checkText.GetComponent<TextMeshProUGUI>().text != spreadSheetNew.letterTwoList[spreadSheetNew.targetIndex].ToString() && spreadSheetNew.playNextRound)
             {
                 backboardScale.Play("Backboard Rotation");
                 BoosterState.boosterPower = 0;
-                isCorrect = false;
+                boosterState.isCorrect = false;
             }
         }
     }
 
     private IEnumerator CompletedWord()
     {    
-        isCorrect = true;
+        boosterState.isCorrect = true;
         playAudio.OnCollisionAudio();
         secondBallAudioSource = playAudio.audioSource.clip;
         backboardScale.Play("Backboard Scaling");
