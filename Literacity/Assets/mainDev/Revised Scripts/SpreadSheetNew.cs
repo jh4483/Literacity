@@ -51,7 +51,7 @@ public class SpreadSheetNew : MonoBehaviour
 
     void Update()
     {
-        if(totalScore == 4)
+        if(totalScore == 4 && boosterState.hasCollided)
         {
             outroScene.SetActive(true);
         }

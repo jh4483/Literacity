@@ -15,8 +15,10 @@ public class BoosterState : MonoBehaviour
     public GameObject backBoardHighlight;
     public bool isCorrect;
     public bool hasPlayedParticles;
+    public bool hasCollided;
     public float timeTaken;
     private float fadeDuration = 1.0f;
+
 
     public Gradient[] presetColors;
 
@@ -280,6 +282,7 @@ public class BoosterState : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         hasPlayedParticles = true;
+        hasCollided = false;
         StartCoroutine(FadeInImagesAndText());
         // origin.SetActive(true);
         // cardMask.SetActive(true);
