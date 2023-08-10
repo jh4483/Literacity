@@ -36,7 +36,15 @@ public class BallAnims : MonoBehaviour
 
     void SBLMissed()
     {
+        if(!ballSprite.GetComponent<Animator>().GetBool("Ball_Shoot_Missed"))
+        {
+            ballSprite.GetComponent<Animator>().SetBool("Ball_Shoot_Missed", true);
+        }
 
+        else if(ballSprite.GetComponent<Animator>().GetBool("Ball_Shoot_Missed"))
+        {
+            ballSprite.GetComponent<Animator>().SetBool("Ball_Shoot_Missed", false);
+        }
     }
 
     public void ShootBallDribbleL()
