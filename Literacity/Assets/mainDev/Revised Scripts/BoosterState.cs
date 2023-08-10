@@ -26,7 +26,7 @@ public class BoosterState : MonoBehaviour
 
     void Start()
     {
-        boosterPower = 6;
+        boosterPower = 0;
         spreadSheetNew = FindObjectOfType<SpreadSheetNew>();
         hasPlayedParticles = false;
 
