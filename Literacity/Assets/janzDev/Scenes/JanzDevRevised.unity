@@ -6023,6 +6023,7 @@ Animation:
   m_Animations:
   - {fileID: 7400000, guid: 98e0c1092c1924ceda7dc0ceaf5af543, type: 2}
   - {fileID: 7400000, guid: 24ca41db030b24f1387e15b677464001, type: 2}
+  - {fileID: 7400000, guid: aeaf92e4ce7264f60a6a0acfe5ca2806, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -7252,7 +7253,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1162942084
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9743,13 +9744,13 @@ RectTransform:
   - {fileID: 757086197}
   - {fileID: 251108983}
   - {fileID: 1446668925}
-  - {fileID: 1599437731}
   - {fileID: 507140446}
   - {fileID: 456354191}
   - {fileID: 1281638748}
   - {fileID: 1468226986}
   - {fileID: 80430392}
   - {fileID: 1620014615}
+  - {fileID: 1599437731}
   - {fileID: 2588213}
   - {fileID: 1475507931}
   - {fileID: 649357082}
@@ -9783,6 +9784,9 @@ MonoBehaviour:
   animator: {fileID: 136605444}
   origin: {fileID: 1599437730}
   cardMask: {fileID: 507140442}
+  backBoardHighlight: {fileID: 456354186}
+  hasPlayedParticles: 0
+  timeTaken: 0
   presetColors:
   - serializedVersion: 2
     key0: {r: 0.9339623, g: 0.85705733, b: 0.18062477, a: 1}
