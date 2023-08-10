@@ -27,7 +27,7 @@ public class OutroScene : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         transform.GetChild(2).gameObject.SetActive(true); 
 
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(1.5f);
         transform.GetChild(3).gameObject.SetActive(true);  
 
     }
