@@ -197,11 +197,11 @@ public class BoosterState : MonoBehaviour
                 break;
             
             case 3:
-                timeTaken = 5.5f;
+                timeTaken = 5.45f;
                 yield return new WaitForSeconds(2f);
                 KazLayUp();
 
-                yield return new WaitForSeconds(3.5f);
+                yield return new WaitForSeconds(3.45f);
                 //ballAnims.ShootBallDribbleL();
                 ballAnims.ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_L", false);
                 ballAnims.ballSprite.SetActive(false);
@@ -210,11 +210,11 @@ public class BoosterState : MonoBehaviour
                 break;
 
             case 4:
-                timeTaken = 7.9f;
+                timeTaken = 7.85f;
                 yield return new WaitForSeconds(2f);
                 KazDisappearR();
 
-                yield return new WaitForSeconds(5.9f);
+                yield return new WaitForSeconds(5.85f);
                 //ballAnims.ShootBallDribbleL();
                 ballAnims.ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_L", false);
                 ballAnims.ballSprite.SetActive(false);                
@@ -223,11 +223,11 @@ public class BoosterState : MonoBehaviour
                 break;
 
             case 5:
-                timeTaken = 7.7f;
+                timeTaken = 7.65f;
                 yield return new WaitForSeconds(2f);
                 KazDribbleTurn();
 
-                yield return new WaitForSeconds(5.7f);
+                yield return new WaitForSeconds(5.65f);
                 ballAnims.ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_R", false);
                 ballAnims.ballSprite.SetActive(false);
                 KazDribbleTurn();
@@ -235,11 +235,11 @@ public class BoosterState : MonoBehaviour
                 break;
             
             case 6:
-                timeTaken = 7.9f;
+                timeTaken = 7.8f;
                 yield return new WaitForSeconds(2f);
                 KazDisappearL();
 
-                yield return new WaitForSeconds(5.9f);
+                yield return new WaitForSeconds(5.8f);
                 ballAnims.ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_R", false);
                 ballAnims.ballSprite.SetActive(false);
                 KazDisappearL();
@@ -247,11 +247,11 @@ public class BoosterState : MonoBehaviour
                 break;
 
             case 7:
-                timeTaken = 5.7f;
+                timeTaken = 6.0f;
                 yield return new WaitForSeconds(2f);
                 KazFade();
 
-                yield return new WaitForSeconds(3.7f);
+                yield return new WaitForSeconds(4.0f);
                 ballAnims.ballSprite.GetComponent<Animator>().SetBool("Ball_Fade", false);
                 ballAnims.ballSprite.SetActive(false);
                 KazFade();
