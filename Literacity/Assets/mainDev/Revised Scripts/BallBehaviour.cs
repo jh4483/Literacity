@@ -71,7 +71,10 @@ public class BallBehaviour : MonoBehaviour
             else if (checkText.GetComponent<TextMeshProUGUI>().text != spreadSheetNew.letterOneList[spreadSheetNew.targetIndex].ToString() && !spreadSheetNew.playNextRound)
             {
                 backboardScale.Play("Backboard Rotation");
-                BoosterState.boosterPower--;
+                if(BoosterState.boosterPower != 0)
+                {
+                    BoosterState.boosterPower--;
+                }
             }
             else if (checkText.GetComponent<TextMeshProUGUI>().text != spreadSheetNew.letterTwoList[spreadSheetNew.targetIndex].ToString() && spreadSheetNew.playNextRound)
             {
@@ -86,20 +89,21 @@ public class BallBehaviour : MonoBehaviour
 
         playAudio.OnCollisionAudio();
         secondBallAudioSource = playAudio.audioSource.clip;
+        backboardScale.Play("Backboard Scaling");
         GameObject selectedTarget = GameObject.Find((spreadSheetNew.targetIndex).ToString());
-
-        yield return new WaitForSeconds(1f);
-        selectedTarget.gameObject.GetComponent<AudioSource>().Play();
-
         string existingText = selectedTarget.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text;
         selectedTarget.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = existingText + checkText.GetComponent<TextMeshProUGUI>().text.ToString();
-        boosterState.StartCoroutine(boosterState.PlayParticles());
-        spreadSheetNew.playNextRound = false;
-        selectedTarget.tag = "done";
-        backboardScale.Play("Backboard Scaling");
-        BoosterState.boosterPower++;
+        
+        yield return new WaitForSeconds(1.5f);
+        selectedTarget.gameObject.GetComponent<AudioSource>().Play();
 
-        yield return new WaitForSeconds(2);
+        spreadSheetNew.playNextRound = false;
+        BoosterState.boosterPower++;
+        boosterState.StartCoroutine(boosterState.PlayParticles());
+
+        yield return new WaitForSeconds(boosterState.timeTaken + 0.2f);
+
+        selectedTarget.tag = "done";
         for (int i = 0; i < enabledButtons.Length; i++)
         {
             if (enabledButtons[i].tag == "undone")
@@ -110,13 +114,9 @@ public class BallBehaviour : MonoBehaviour
 
         spreadSheetNew.selectedCard.GetComponent<CardAnim>().OnDone();
         spreadSheetNew.selectedCard.tag = "close";
-        selectedTarget.GetComponent<RectTransform>().anchoredPosition = moveButton.originalPos;
+        selectedTarget.GetComponent<RectTransform>().anchoredPosition = moveButton.originalPos;            
+            
     }
 
-    private void OnDisable() 
-    {
-        //Write the position reset code here to reset's ball's state
-        //In case of that ball being the right word maybe disable the ball?    
-    }
 }
 

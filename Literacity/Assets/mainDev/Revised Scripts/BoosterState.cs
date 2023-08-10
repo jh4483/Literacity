@@ -12,6 +12,9 @@ public class BoosterState : MonoBehaviour
     public Animator animator;
     public GameObject origin;
     public GameObject cardMask;
+    public GameObject backBoardHighlight;
+    public bool hasPlayedParticles;
+    public float timeTaken;
     private float fadeDuration = 1.0f;
 
     public Gradient[] presetColors;
@@ -22,6 +25,7 @@ public class BoosterState : MonoBehaviour
     {
         boosterPower = 0;
         spreadSheetNew = FindObjectOfType<SpreadSheetNew>();
+        hasPlayedParticles = false;
 
         //ballAnims = FindObjectOfType<BallAnims>();
         
@@ -166,117 +170,89 @@ public class BoosterState : MonoBehaviour
         switch (boosterPower)
         {
             case 1:
-                yield return new WaitForSeconds(1.5f);
+                timeTaken = 4f;
+                yield return new WaitForSeconds(2f);
                 KazShoots();
 
                 yield return new WaitForSeconds(2f);
                 ballAnims.ShootBallL();
                 ballAnims.ballSprite.SetActive(false);
-
-                randomColors.mode = ParticleSystemGradientMode.RandomColor;
-                main.startColor = randomColors;
-                particleSystem.Play();
-
                 KazShoots();
 
                 break;
             
             case 2:
-                yield return new WaitForSeconds(1.5f);
+                timeTaken = 4f;
+                yield return new WaitForSeconds(2f);
                 KazShoots();
 
                 yield return new WaitForSeconds(2f);
                 ballAnims.ShootBallL();
                 ballAnims.ballSprite.SetActive(false);
-
-                randomColors.mode = ParticleSystemGradientMode.RandomColor;
-                main.startColor = randomColors;
-                particleSystem.Play();
-
                 KazShoots();
 
                 break;
             
             case 3:
-                yield return new WaitForSeconds(1.5f);
+                timeTaken = 4.3f;
+                yield return new WaitForSeconds(2f);
                 KazLayUp();
 
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(2.3f);
                 ballAnims.ShootBallDribbleL();
                 ballAnims.ballSprite.SetActive(false);
-
-                randomColors.mode = ParticleSystemGradientMode.RandomColor;
-                main.startColor = randomColors;
-                particleSystem.Play();
-
                 KazLayUp();
                 
                 break;
 
             case 4:
-                yield return new WaitForSeconds(1.5f);
+                timeTaken = 6.7f;
+                yield return new WaitForSeconds(2f);
                 KazDisappearR();
 
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(4.7f);
                 ballAnims.ShootBallDribbleL();
-                ballAnims.ballSprite.SetActive(false);
-                
-                randomColors.mode = ParticleSystemGradientMode.RandomColor;
-                main.startColor = randomColors;
-                particleSystem.Play();
-
+                ballAnims.ballSprite.SetActive(false);                
                 KazDisappearR();
                 
                 break;
 
             case 5:
-                yield return new WaitForSeconds(1.5f);
+                timeTaken = 6.5f;
+                yield return new WaitForSeconds(2f);
                 KazDribbleTurn();
 
-                yield return new WaitForSeconds(2f);
-                randomColors.mode = ParticleSystemGradientMode.RandomColor;
-                main.startColor = randomColors;
-                particleSystem.Play();
-
+                yield return new WaitForSeconds(4.5f);
                 KazDribbleTurn();
 
                 break;
             
             case 6:
-                yield return new WaitForSeconds(1.5f);
+                timeTaken = 6.7f;
+                yield return new WaitForSeconds(2f);
                 KazDisappearL();
 
-                yield return new WaitForSeconds(2f);
-                randomColors.mode = ParticleSystemGradientMode.RandomColor;
-                main.startColor = randomColors;
-                particleSystem.Play();
-
+                yield return new WaitForSeconds(4.7f);
                 KazDisappearL();
 
                 break;
 
             case 7:
-                yield return new WaitForSeconds(1.5f);
+                timeTaken = 4.5f;
+                yield return new WaitForSeconds(2f);
                 KazFade();
 
-                yield return new WaitForSeconds(2f);
-                randomColors.mode = ParticleSystemGradientMode.RandomColor;
-                main.startColor = randomColors;
-                particleSystem.Play();
-
+                yield return new WaitForSeconds(2.5f);
                 KazFade();
 
                 break;
 
             case 8:
-                yield return new WaitForSeconds(1.5f);
+                timeTaken = 4.7f;
+                yield return new WaitForSeconds(2f);
                 KazDunk();
 
-                yield return new WaitForSeconds(2f);
-                randomColors.mode = ParticleSystemGradientMode.RandomColor;
-                main.startColor = randomColors;
-                particleSystem.Play();
-
+                yield return new WaitForSeconds(2.7f);
                 KazDunk();
         
                 break;
@@ -285,8 +261,14 @@ public class BoosterState : MonoBehaviour
                 break;
         }
 
-        yield return new WaitForSeconds(2f);
+        randomColors.mode = ParticleSystemGradientMode.RandomColor;
+        main.startColor = randomColors;
+        backBoardHighlight.GetComponent<Animation>().Play("Backboard explodes");
+        particleSystem.Play();
+        
+        yield return new WaitForSeconds(1f);
 
+        hasPlayedParticles = true;
         StartCoroutine(FadeInImagesAndText());
         // origin.SetActive(true);
         // cardMask.SetActive(true);
@@ -362,6 +344,8 @@ public class BoosterState : MonoBehaviour
                 imageColor.a = currentAlpha;
                 image.color = imageColor;
             }
+
+            hasPlayedParticles = false;
 
             yield return null;
         }
