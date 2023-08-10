@@ -5,6 +5,7 @@ using UnityEngine;
 public class BallAnims : MonoBehaviour
 {
     public GameObject ballSprite;
+    public BoosterState boosterState;
 
     public void ShootBallL()
     {
