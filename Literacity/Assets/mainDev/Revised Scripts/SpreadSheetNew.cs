@@ -51,9 +51,9 @@ public class SpreadSheetNew : MonoBehaviour
 
     void Update()
     {
-        if(totalScore == 4 && boosterState.hasCollided)
+        if(totalScore == 4 && !boosterState.hasCollided)
         {
-            outroScene.SetActive(true);
+            StartCoroutine(EnableOutroScene());
         }
     }
 
@@ -164,8 +164,9 @@ public class SpreadSheetNew : MonoBehaviour
     }
     }
 
-    public void MoveButton()
+    private IEnumerator EnableOutroScene()
     {
-        
+        yield return new WaitForSeconds(1);
+        outroScene.SetActive(true);
     }
 }

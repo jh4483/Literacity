@@ -89,6 +89,7 @@ public class BallBehaviour : MonoBehaviour
             {
                 BoosterState.boosterPower = 0;
                 boosterState.isCorrect = false;
+                boosterState.hasCollided = false;
             }
         }
         else if (checkText.GetComponent<TextMeshProUGUI>().text != spreadSheetNew.letterTwoList[spreadSheetNew.targetIndex].ToString() && spreadSheetNew.playNextRound)
@@ -96,6 +97,7 @@ public class BallBehaviour : MonoBehaviour
             backboardScale.Play("Backboard Rotation");
             BoosterState.boosterPower = 0;
             boosterState.isCorrect = false;
+            boosterState.hasCollided = false;
         }
     }
 
