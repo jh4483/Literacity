@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 4749875701890194261}
   - component: {fileID: 8349370421286976957}
   - component: {fileID: 2978850377939330995}
-  - component: {fileID: -7011520880739262004}
   - component: {fileID: 5977954055823130552}
   - component: {fileID: -1737883155450259559}
   m_Layer: 5
@@ -144,7 +143,7 @@ Rigidbody2D:
   m_Mass: 3
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 10
+  m_GravityScale: 26
   m_Material: {fileID: 6200000, guid: 3de50c6a01e184f9dac6d695993a28aa, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -221,20 +220,6 @@ MonoBehaviour:
   initialRot: {x: 0, y: 0, z: 0, w: 0}
   backboardHighlight: {fileID: 0}
   wordAudioSource: {fileID: 0}
-  firstBallAudioSource: {fileID: 0}
-  secondBallAudioSource: {fileID: 0}
---- !u!114 &-7011520880739262004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6827126101435410769}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86892dcbaefde40bfbe52b986496c139, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5977954055823130552
 MonoBehaviour:
   m_ObjectHideFlags: 0

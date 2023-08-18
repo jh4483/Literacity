@@ -121,6 +121,26 @@ public class SpreadSheetNew : MonoBehaviour
             }
         }
 
+        for (int i = 0; i < wordsList.Count; i++)
+        {
+            Button wordPrompt = Instantiate(wordImage[i]);
+            wordPrompt.transform.SetParent(origin);
+            wordPrompt.transform.localScale = new Vector2(1, 1);
+            float yOffset = -30f;
+            Vector2 anchoredPosition = new Vector2(260, 175f + (i * yOffset));
+            wordPrompt.GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
+            wordPrompt.gameObject.name = i.ToString();
+
+            Animation animationComponent = wordPrompt.GetComponentInChildren<Animation>();
+
+            if (animationComponent != null && animationComponent.GetClipCount() > 0)
+            {
+                AnimationClip firstClip = animationComponent.GetClip("ButtonAnim"); 
+                animationComponent.Play(firstClip.name);
+            }
+
+        }
+
         for (int i = 0; i < ballLettersList.Count; i++)
         {
             yield return new WaitForSeconds(0.1f);
@@ -144,24 +164,6 @@ public class SpreadSheetNew : MonoBehaviour
                 Debug.LogWarning("Audio clip not found for ball: " + ballLettersList[i]);
             }
         }
-    for (int i = 0; i < wordsList.Count; i++)
-    {
-        Button wordPrompt = Instantiate(wordImage[i]);
-        wordPrompt.transform.SetParent(origin);
-        float yOffset = -30f;
-        Vector2 anchoredPosition = new Vector2(260, 175f + (i * yOffset));
-        wordPrompt.GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
-        wordPrompt.gameObject.name = i.ToString();
-
-        Animation animationComponent = wordPrompt.GetComponentInChildren<Animation>();
-
-        if (animationComponent != null && animationComponent.GetClipCount() > 0)
-        {
-            AnimationClip firstClip = animationComponent.GetClip("ButtonAnim"); 
-            animationComponent.Play(firstClip.name);
-        }
-
-    }
     }
 
     private IEnumerator EnableOutroScene()

@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class IntroScene : MonoBehaviour
 {
-    public GameObject playButton;
-    public AudioSource introAudio;
+    [SerializeField] private GameObject playButton;
+    [SerializeField] private AudioSource introAudio;
 
     void Start()
     {
-        StartCoroutine(LoadIntroScene());
+        
     }
 
 
     void Update()
     {
         
+    }
+
+    public void OnMouseDown()
+    {
+        StartCoroutine(LoadIntroScene());
     }
     IEnumerator LoadIntroScene()
     {
@@ -36,7 +41,7 @@ public class IntroScene : MonoBehaviour
         
         yield return new WaitForSeconds(1.4f);
         transform.GetChild(5).gameObject.SetActive(true); 
-
+        
         playButton.SetActive(true);
 
     }

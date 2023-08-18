@@ -54,6 +54,7 @@ public class BallBehaviour : MonoBehaviour
 
     private IEnumerator HalfCompletedWord()
     {
+        backboardScale.Play("Backboard Scaling");
         ballHitAudio.Play();
         transform.position = initialPos;
         transform.rotation = initialRot;
@@ -65,7 +66,6 @@ public class BallBehaviour : MonoBehaviour
             yield return new WaitForSeconds(0.7f);
             playAudio.OnCollisionAudio();
             GameObject selectedTarget = GameObject.Find((spreadSheetNew.targetIndex).ToString());
-            backboardScale.Play("Backboard Scaling");
             BoosterState.boosterPower++;
             selectedTarget.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = checkText.GetComponent<TextMeshProUGUI>().text.ToString();
             boosterState.StartCoroutine(boosterState.PlayParticles());
@@ -89,24 +89,24 @@ public class BallBehaviour : MonoBehaviour
             {
                 BoosterState.boosterPower = 0;
                 boosterState.isCorrect = false;
-                boosterState.hasCollided = false;
             }
+            boosterState.hasCollided = false;
         }
         else if (checkText.GetComponent<TextMeshProUGUI>().text != spreadSheetNew.letterTwoList[spreadSheetNew.targetIndex].ToString() && spreadSheetNew.playNextRound)
         {
             backboardScale.Play("Backboard Rotation");
             BoosterState.boosterPower = 0;
             boosterState.isCorrect = false;
-            boosterState.hasCollided = false;
         }
+            boosterState.hasCollided = false;
     }
 
     private IEnumerator CompletedWord()
     {
+        backboardScale.Play("Backboard Scaling");
         boosterState.isCorrect = true;
         yield return new WaitForSeconds(0.7f);
         playAudio.OnCollisionAudio();
-        backboardScale.Play("Backboard Scaling");
         GameObject selectedTarget = GameObject.Find((spreadSheetNew.targetIndex).ToString());
         string existingText = selectedTarget.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text;
         selectedTarget.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = existingText + checkText.GetComponent<TextMeshProUGUI>().text.ToString();

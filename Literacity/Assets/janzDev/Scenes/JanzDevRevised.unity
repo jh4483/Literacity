@@ -7251,13 +7251,14 @@ GameObject:
   - component: {fileID: 1162942085}
   - component: {fileID: 1162942087}
   - component: {fileID: 1162942088}
+  - component: {fileID: 1162942089}
   m_Layer: 5
   m_Name: Intro - Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1162942084
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7347,7 +7348,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f86049444d493425e8d9529438ab5d24, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -7432,6 +7433,35 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1162942089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162942083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1162942087}
+          m_TargetAssemblyTypeName: IntroScene, Assembly-CSharp
+          m_MethodName: OnMouseDown
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1219995422
 GameObject:
   m_ObjectHideFlags: 0
@@ -7783,7 +7813,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -11.8555355, y: -1.0456486}
+  m_Offset: {x: -15.34019, y: 3.649311}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -7794,7 +7824,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 16.002579, y: 23.997501}
+  m_Size: {x: 27.878534, y: 14.607594}
   m_EdgeRadius: 0
 --- !u!82 &1281638750
 AudioSource:
@@ -7816,7 +7846,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0.97735596
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -9791,6 +9821,7 @@ GameObject:
   - component: {fileID: 2019489089}
   - component: {fileID: 2019489090}
   - component: {fileID: 2019489091}
+  - component: {fileID: 2019489092}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -9908,8 +9939,8 @@ RectTransform:
   - {fileID: 251108983}
   - {fileID: 1446668925}
   - {fileID: 507140446}
-  - {fileID: 456354191}
   - {fileID: 1281638748}
+  - {fileID: 456354191}
   - {fileID: 1468226986}
   - {fileID: 80430392}
   - {fileID: 1599437731}
@@ -10179,6 +10210,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2019489092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019489083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3400e44306c9b4f53938d073e3253aa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyClickIndex: 
 --- !u!1 &2070361149
 GameObject:
   m_ObjectHideFlags: 0
