@@ -7582,8 +7582,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 179.7788, y: 0.00001525879}
-  m_SizeDelta: {x: 300, y: 100}
+  m_AnchoredPosition: {x: 132, y: 0.00001525879}
+  m_SizeDelta: {x: 700, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1276841574
 Animator:
@@ -7695,7 +7695,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3f386b690b4b9774c9c584db21be00fe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: eeb2b1d45d5f22c439e025eb6f26d7b8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9914,8 +9914,8 @@ RectTransform:
   - {fileID: 80430392}
   - {fileID: 1599437731}
   - {fileID: 1620014615}
-  - {fileID: 2588213}
   - {fileID: 1475507931}
+  - {fileID: 2588213}
   - {fileID: 649357082}
   - {fileID: 692893735}
   - {fileID: 136605440}
@@ -10400,10 +10400,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2019489088}
     m_Modifications:
-    - target: {fileID: -5041555103845236828, guid: cdd28d63d985617408ceeb68888113d3, type: 3}
-      propertyPath: cursorTex
-      value: 
-      objectReference: {fileID: 2800000, guid: f10106ccda6814c4bbe562df1155d182, type: 3}
     - target: {fileID: 4868510014651910311, guid: cdd28d63d985617408ceeb68888113d3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
