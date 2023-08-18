@@ -174,7 +174,7 @@ public class BoosterState : MonoBehaviour
         {
             case 1:
                 timeTaken = 4f;
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(0.5f);
                 KazShoots();
 
                 yield return new WaitForSeconds(2f);
@@ -189,7 +189,7 @@ public class BoosterState : MonoBehaviour
             
             case 2:
                 timeTaken = 4f;
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(0.5f);
                 KazShoots();
 
                 yield return new WaitForSeconds(2f);
@@ -204,7 +204,7 @@ public class BoosterState : MonoBehaviour
             
             case 3:
                 timeTaken = 5.3f;
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(0.5f);
                 KazLayUp();
 
                 yield return new WaitForSeconds(3.3f);
@@ -218,7 +218,7 @@ public class BoosterState : MonoBehaviour
 
             case 4:
                 timeTaken = 7.7f;
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(0.5f);
                 KazDisappearR();
 
                 yield return new WaitForSeconds(5.7f);
@@ -232,7 +232,7 @@ public class BoosterState : MonoBehaviour
 
             case 5:
                 timeTaken = 7.5f;
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(0.5f);
                 KazDribbleTurn();
 
                 yield return new WaitForSeconds(5.5f);
@@ -245,7 +245,7 @@ public class BoosterState : MonoBehaviour
             
             case 6:
                 timeTaken = 7.7f;
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(0.5f);
                 KazDisappearL();
 
                 yield return new WaitForSeconds(5.7f);
@@ -258,7 +258,7 @@ public class BoosterState : MonoBehaviour
 
             case 7:
                 timeTaken = 5.95f;
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(0.5f);
                 KazFade();
 
                 yield return new WaitForSeconds(3.95f);
@@ -271,7 +271,7 @@ public class BoosterState : MonoBehaviour
 
             case 8:
                 timeTaken = 4.6f;
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(0.5f);
                 KazDunk();
 
                 yield return new WaitForSeconds(2.6f);
@@ -304,6 +304,7 @@ public class BoosterState : MonoBehaviour
         float elapsedTime = 0;
         float startAlpha = 1.0f;
         float targetAlpha = 0.0f;
+        float fadeDuration = 0.1f;
 
         while (elapsedTime < fadeDuration)
         {
@@ -332,7 +333,6 @@ public class BoosterState : MonoBehaviour
 
             yield return null;
         }
-
     }
 
     private IEnumerator FadeInImagesAndText()
