@@ -13,7 +13,11 @@ public class PencilBox : MonoBehaviour
 
     public void OpenBox()
     {
-        if(animator.GetBool("isOpen"))
+        if(animator.GetBool("IntroDone"))
+        {
+            animator.SetBool("IntroDone", false);
+        }
+        else if(animator.GetBool("isOpen"))
         {
             animator.SetBool("isOpen", false);
         }

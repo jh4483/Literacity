@@ -7336,6 +7336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playButton: {fileID: 1475507930}
   introAudio: {fileID: 1372167727}
+  animator: {fileID: 1276841574}
 --- !u!82 &1162942088
 AudioSource:
   m_ObjectHideFlags: 0
