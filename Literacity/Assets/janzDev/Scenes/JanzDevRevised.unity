@@ -5978,6 +5978,7 @@ GameObject:
   - component: {fileID: 456354188}
   - component: {fileID: 456354192}
   - component: {fileID: 456354193}
+  - component: {fileID: 456354194}
   m_Layer: 5
   m_Name: Backboard Highlight
   m_TagString: Untagged
@@ -6223,6 +6224,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 112.030624, y: 75.763466}
   m_EdgeRadius: 0
+--- !u!114 &456354194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456354186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 331e99f3be64c436eb7d77c83ffb9587, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &496618776
 GameObject:
   m_ObjectHideFlags: 0
@@ -9985,8 +9998,8 @@ RectTransform:
   - {fileID: 251108983}
   - {fileID: 1446668925}
   - {fileID: 507140446}
-  - {fileID: 1281638748}
   - {fileID: 456354191}
+  - {fileID: 1281638748}
   - {fileID: 1468226986}
   - {fileID: 80430392}
   - {fileID: 1599437731}

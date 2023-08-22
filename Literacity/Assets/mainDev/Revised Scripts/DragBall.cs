@@ -34,7 +34,7 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         ballBehaviour = GetComponent<BallBehaviour>();
         initBallPos = transform.position;
 
-        yield return new WaitForSeconds(0);
+        yield return new WaitForSeconds(8);
         gameMask.SetActive(false);
 
     }
