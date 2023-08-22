@@ -7,6 +7,7 @@ public class BackboardDrag : MonoBehaviour
 {
     public Image backboardImage;
     public float width = 10f;
+    public bool isColliding = false;
 
     void Update()
     {
@@ -60,7 +61,11 @@ public class BackboardDrag : MonoBehaviour
             Input.mousePosition.y > backboardImage.rectTransform.position.y - backboardImage.rectTransform.rect.height /2 &&
             Input.mousePosition.y < backboardImage.rectTransform.position.y + backboardImage.rectTransform.rect.height /2)
         {
-            Debug.Log("Collision");
+            isColliding = true;
+        }
+        else
+        {
+            isColliding = false;
         }
     }
 }
