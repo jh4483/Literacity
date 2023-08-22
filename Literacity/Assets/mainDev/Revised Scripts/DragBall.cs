@@ -32,9 +32,10 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         rb.isKinematic = true;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         ballBehaviour = GetComponent<BallBehaviour>();
-        initBallPos = transform.position;
 
         yield return new WaitForSeconds(8);
+
+        initBallPos = GetComponent<RectTransform>().anchoredPosition;
         gameMask.SetActive(false);
 
     }
@@ -69,7 +70,7 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     IEnumerator BallReset()
     {
         yield return new WaitForSeconds(3);
-        transform.position = initBallPos;
+        GetComponent<RectTransform>().anchoredPosition = initBallPos;
         transform.rotation = ballBehaviour.initialRot;
 
         collider.enabled = true;

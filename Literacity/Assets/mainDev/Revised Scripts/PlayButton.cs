@@ -39,10 +39,10 @@ public class PlayButton : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         this.gameObject.GetComponent<Button>().enabled = false;
 
-        // yield return new WaitForSeconds(1.4f);
-        // buttonAudio.Play();
+        yield return new WaitForSeconds(1.4f);
+        buttonAudio.Play();
 
-        // yield return new WaitForSeconds(4f);
-        // hoopAudio.Play();
+        yield return new WaitForSeconds(4f);
+        hoopAudio.Play();
     }
 }
