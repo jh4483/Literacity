@@ -47,7 +47,7 @@ public class IntroScene : MonoBehaviour
         {
             animator.SetBool("IntroDone", true);
         }
-                
+
         playButton.SetActive(true);
 
     }

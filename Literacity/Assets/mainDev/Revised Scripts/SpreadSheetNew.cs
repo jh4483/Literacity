@@ -125,7 +125,7 @@ public class SpreadSheetNew : MonoBehaviour
         {
             Button wordPrompt = Instantiate(wordImage[i]);
             wordPrompt.transform.SetParent(origin);
-            wordPrompt.transform.localScale = new Vector2(1, 1);
+            wordPrompt.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
             float yOffset = -30f;
             Vector2 anchoredPosition = new Vector2(260, 175f + (i * yOffset));
             wordPrompt.GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
