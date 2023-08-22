@@ -34,7 +34,7 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         ballBehaviour = GetComponent<BallBehaviour>();
         initBallPos = transform.position;
 
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(0);
         gameMask.SetActive(false);
 
     }
@@ -82,24 +82,6 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     IEnumerator BallDisappear(float time)
     {
         yield return new WaitForSeconds(time);
-    }
-
-    private void OnCollisionEnter2D(Collision2D other) 
-    {
-        if(other.gameObject.name == "Backboard Highlight")
-        {
-            // rb.isKinematic = false;
-            // StartCoroutine(TriggerExit());
-
-        }
-    }
-
-    IEnumerator TriggerExit()
-    {          
-        // rb.drag = 20.0f;
-        yield return new WaitForSeconds(0.6f);
-        // rb.drag = 0;
-        // rb.isKinematic = true;
     }
 
 }

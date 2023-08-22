@@ -41,6 +41,11 @@ public class BallBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
+        if (collider.gameObject.name == "Backboard Highlight")
+        {
+            StartCoroutine(BumpCollider());
+        }        
+
         if (!boosterState.hasCollided) 
         {
             boosterState.hasCollided = true; 
@@ -132,5 +137,15 @@ public class BallBehaviour : MonoBehaviour
         spreadSheetNew.selectedCard.tag = "close";
         selectedTarget.GetComponent<RectTransform>().anchoredPosition = moveButton.originalPos;
         spreadSheetNew.totalScore++;
+    }
+
+    public IEnumerator BumpCollider()
+    {
+        GetComponent<DragBall>().enabled = false;
+
+        yield return new WaitForSeconds(0.1f);
+
+        GetComponent<DragBall>().enabled = true;
+
     }
 }
