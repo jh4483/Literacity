@@ -5977,7 +5977,6 @@ GameObject:
   - component: {fileID: 456354189}
   - component: {fileID: 456354188}
   - component: {fileID: 456354192}
-  - component: {fileID: 456354193}
   m_Layer: 5
   m_Name: Backboard Highlight
   m_TagString: Untagged
@@ -6178,51 +6177,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!61 &456354193
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 456354186}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.083366394, y: 11.145115}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 112.030624, y: 75.763466}
-  m_EdgeRadius: 0
 --- !u!1 &496618776
 GameObject:
   m_ObjectHideFlags: 0
@@ -7304,7 +7258,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1162942084
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7383,6 +7337,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playButton: {fileID: 1475507930}
   introAudio: {fileID: 1372167727}
+  animator: {fileID: 1276841574}
 --- !u!82 &1162942088
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7659,7 +7614,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 179.7788, y: 0.00001525879}
-  m_SizeDelta: {x: 300, y: 100}
+  m_SizeDelta: {x: 700, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1276841574
 Animator:
@@ -7771,7 +7726,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3f386b690b4b9774c9c584db21be00fe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: eeb2b1d45d5f22c439e025eb6f26d7b8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9985,14 +9940,14 @@ RectTransform:
   - {fileID: 251108983}
   - {fileID: 1446668925}
   - {fileID: 507140446}
-  - {fileID: 1281638748}
   - {fileID: 456354191}
+  - {fileID: 1281638748}
   - {fileID: 1468226986}
   - {fileID: 80430392}
   - {fileID: 1599437731}
   - {fileID: 1620014615}
-  - {fileID: 2588213}
   - {fileID: 1475507931}
+  - {fileID: 2588213}
   - {fileID: 649357082}
   - {fileID: 692893735}
   - {fileID: 136605440}

@@ -40,12 +40,7 @@ public class BallBehaviour : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
-    {
-        if (collider.gameObject.name == "Backboard Highlight")
-        {
-            StartCoroutine(BumpCollider());
-        }        
-
+    {      
         if (!boosterState.hasCollided) 
         {
             boosterState.hasCollided = true; 
@@ -143,7 +138,7 @@ public class BallBehaviour : MonoBehaviour
     {
         GetComponent<DragBall>().enabled = false;
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
 
         GetComponent<DragBall>().enabled = true;
 

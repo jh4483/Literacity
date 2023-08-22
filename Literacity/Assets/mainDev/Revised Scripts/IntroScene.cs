@@ -6,6 +6,7 @@ public class IntroScene : MonoBehaviour
 {
     [SerializeField] private GameObject playButton;
     [SerializeField] private AudioSource introAudio;
+    public Animator animator;
 
     void Start()
     {
@@ -42,6 +43,11 @@ public class IntroScene : MonoBehaviour
         yield return new WaitForSeconds(1.4f);
         transform.GetChild(5).gameObject.SetActive(true); 
         
+        if(!animator.GetBool("IntroDone"))
+        {
+            animator.SetBool("IntroDone", true);
+        }
+                
         playButton.SetActive(true);
 
     }
