@@ -19,7 +19,7 @@ public class BackboardDrag : MonoBehaviour
         CustomCollisionCheck();
     }
 
-    void CustomCollisionCheck()
+    bool CustomCollisionCheck()
     {
         // if( Input.mousePosition.x > backboardImage.rectTransform.position.x - backboardImage.rectTransform.rect.width / 2 &&
         //     Input.mousePosition.x < backboardImage.rectTransform.position.x - backboardImage.rectTransform.rect.width / 2 + (width) ||
@@ -66,11 +66,11 @@ public class BackboardDrag : MonoBehaviour
             Input.mousePosition.y > backboardImage.rectTransform.position.y - backboardImage.rectTransform.rect.height /2 &&
             Input.mousePosition.y < backboardImage.rectTransform.position.y + backboardImage.rectTransform.rect.height /2)
         {
-            isColliding = true;
+            return isColliding = true;
         }
         else
         {
-            isColliding = false;
+            return isColliding = false;
         }
     }
 }
