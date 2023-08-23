@@ -9,6 +9,11 @@ public class BackboardDrag : MonoBehaviour
     public float width = 10f;
     public bool isColliding = false;
 
+    void Start()
+    {
+
+    }
+
     void Update()
     {
         CustomCollisionCheck();
