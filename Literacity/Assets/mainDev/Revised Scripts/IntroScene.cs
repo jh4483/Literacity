@@ -7,10 +7,11 @@ public class IntroScene : MonoBehaviour
     [SerializeField] private GameObject playButton;
     [SerializeField] private AudioSource introAudio;
     public Animator animator;
+    private int introCount;
 
     void Start()
     {
-        
+        introCount = 0;
     }
 
 
@@ -21,7 +22,13 @@ public class IntroScene : MonoBehaviour
 
     public void OnMouseDown()
     {
-        StartCoroutine(LoadIntroScene());
+        introCount++;
+        if(introCount == 1)
+        {
+            StartCoroutine(LoadIntroScene());
+        }
+
+        else return;
     }
     IEnumerator LoadIntroScene()
     {
