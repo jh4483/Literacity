@@ -60,7 +60,7 @@ public class SpreadSheetNew : MonoBehaviour
     public IEnumerator LoadRoundData()
     {
         GetComponent<AudioSource>().Play();
-        string filePath = Path.Combine(Application.streamingAssetsPath, "JSON File/revised_json.txt");
+        string filePath = Path.Combine(Application.streamingAssetsPath, "Hoops Heroes JSON/revised_json.txt");
         string json = "";
 
         if (filePath.Contains("://") || filePath.Contains(":///"))

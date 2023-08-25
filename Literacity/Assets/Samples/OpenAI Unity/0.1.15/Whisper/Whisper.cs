@@ -27,7 +27,7 @@ namespace OpenAI
         private void Start()
         {
             // Load the API key from auth.json
-            string jsonFilePath = Path.Combine(Application.streamingAssetsPath, "JSON File/auth.json.txt");
+            string jsonFilePath = Path.Combine(Application.streamingAssetsPath, "Hoops Heroes JSON/auth.json.txt");
 
             if (File.Exists(jsonFilePath))
             {
