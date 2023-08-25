@@ -9,6 +9,7 @@ public class BallAnims : MonoBehaviour
 
     public void ShootBallL()
     {
+        boosterState = FindObjectOfType<BoosterState>();
         Debug.Log("Shoot Ball");
         ballSprite.SetActive(true);
 

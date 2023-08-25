@@ -62,6 +62,7 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         rb.isKinematic = false;
         collider.enabled = true;
         isDragging = false;
+        rb.gravityScale = 40;
 
         StartCoroutine(BallReset()); 
        
@@ -78,6 +79,7 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         rb.isKinematic = true;
         rb.velocity = Vector2.zero;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
     }
 
     IEnumerator BallDisappear(float time)

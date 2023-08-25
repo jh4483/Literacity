@@ -7,7 +7,7 @@ public class KeyClicks : MonoBehaviour
     public string keyClickIndex;
     void Start()
     {
-        
+     
     }
 
     void Update()
@@ -40,7 +40,7 @@ public class KeyClicks : MonoBehaviour
     void KeyClickAction()
     {
         int index = int.Parse(keyClickIndex);
-        Transform origin = transform.Find("Origin");
+        Transform origin = GameObject.Find("Canvas").transform.Find("Origin");
         Transform child = origin.GetChild(index);
      
         if (child.tag == "done")
