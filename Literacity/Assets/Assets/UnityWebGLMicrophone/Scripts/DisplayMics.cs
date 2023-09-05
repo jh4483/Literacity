@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 namespace UnityWebGLMicrophone
@@ -7,20 +6,25 @@ namespace UnityWebGLMicrophone
     public class DisplayMics : MonoBehaviour
     {
 
-        #if UNITY_WEBGL && !UNITY_EDITOR
+        public TextMeshProUGUI labelOne;
+        public TextMeshProUGUI labelTwo;
+        
+#if UNITY_WEBGL && !UNITY_EDITOR
         void Awake()
         {
             Microphone.Init();
             Microphone.QueryAudioInput();
         }
-        #endif
+#endif
 
-        #if UNITY_WEBGL && !UNITY_EDITOR
+#if UNITY_WEBGL && !UNITY_EDITOR
         void Update()
         {
             Microphone.Update();
+            // string[] devices = Microphone.devices();
+            // float[] volumes = Microphone.volumes();
         }
-        #endif
+#endif
 
         void OnGUI()
         {
@@ -29,9 +33,9 @@ namespace UnityWebGLMicrophone
 
             string[] devices = Microphone.devices;
 
-            #if UNITY_WEBGL && !UNITY_EDITOR
+#if UNITY_WEBGL && !UNITY_EDITOR
             float[] volumes = Microphone.volumes;
-            #endif
+#endif
 
             GUILayout.BeginHorizontal(GUILayout.Width(Screen.width));
             GUILayout.FlexibleSpace();
@@ -49,11 +53,11 @@ namespace UnityWebGLMicrophone
 
                 GUILayout.BeginHorizontal(GUILayout.Width(Screen.width));
                 GUILayout.FlexibleSpace();
-                #if UNITY_WEBGL && !UNITY_EDITOR
+#if UNITY_WEBGL && !UNITY_EDITOR
                 GUILayout.Label(string.Format("Device Name={0} Volume={1}", deviceName, volumes[index]));
-                #else
+#else
                 GUILayout.Label(string.Format("Device Name={0}", deviceName));
-                #endif
+#endif
                 GUILayout.FlexibleSpace();
                 GUILayout.EndHorizontal();
             }

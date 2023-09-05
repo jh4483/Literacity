@@ -25,6 +25,11 @@ namespace UnityEngine
 
         private static List<Action> _sActions = new List<Action>();
 
+        public static AudioClip Start(string deviceName, bool loop, int lengthSec, int frequency)
+        {
+            AudioClip audioClip = AudioClip.Create("NewAudioClip", lengthSec * frequency, 15, frequency, loop);
+            return audioClip;
+        }
         public static void Update()
         {
             for (int i = 0; i < _sActions.Count; ++i)
@@ -66,7 +71,7 @@ namespace UnityEngine
 
         public static bool IsRecording(string deviceName)
         {
-            return false;
+            return true;
         }
 
         public static void GetDeviceCaps(string deviceName, out int minFreq, out int maxFreq)
