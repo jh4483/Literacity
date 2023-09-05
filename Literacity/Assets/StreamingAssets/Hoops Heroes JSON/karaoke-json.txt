@@ -1,0 +1,14 @@
+[
+ {
+  "Line Number": 1,
+  "Line": "Kaz and Flash go to class."
+ },
+ {
+  "Line Number": 2,
+  "Line": "They bring a thing that sings."
+ },
+ {
+  "Line Number": 3,
+  "Line": "The thing is pink and small. It sings and sings."
+ }
+]

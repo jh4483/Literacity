@@ -1,142 +1,144 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using System.Runtime.InteropServices;
+using OpenAI;
 
-namespace OpenAI
+public class Whisper : MonoBehaviour
 {
-    public class Whisper : MonoBehaviour
+    [SerializeField] private Button recordButton;
+    [SerializeField] private Image progressBar;
+    [SerializeField] private Text message;
+    [SerializeField] private Dropdown dropdown;
+    [SerializeField] private AudioSource audioSource;
+
+    private readonly string fileName = "output.wav";
+    private readonly int duration = 2;
+
+    private AudioClip clip;
+    private bool isRecording;
+    private float time;
+    private OpenAIApi openai = new OpenAIApi();
+    private string selectedMicrophone;
+
+    public class AuthData
     {
-        [SerializeField] private Button recordButton;
-        [SerializeField] private Image progressBar;
-        [SerializeField] private Text message;
-        [SerializeField] private Dropdown dropdown;
+        public string ApiKey;
+    }
 
-        private readonly string fileName = "output.wav";
-        private readonly int duration = 1;
+    private void Start()
+    {
+        string apiKey = "";
+        openai = new OpenAIApi(apiKey);
 
-        private AudioClip clip;
-        private bool isRecording;
-        private float time;
-        private OpenAIApi openai = new OpenAIApi();
-
-        public class AuthData
+        string[] availableDevices = Microphone.devices;
+        foreach (var device in availableDevices)
         {
-            public string ApiKey;
+            dropdown.options.Add(new Dropdown.OptionData(device));
+        }
+        recordButton.onClick.AddListener(StartRecording);
+        dropdown.onValueChanged.AddListener(ChangeMicrophone);
+
+        var index = PlayerPrefs.GetInt("user-mic-device-index");
+        dropdown.SetValueWithoutNotify(index);
+
+        audioSource = GetComponent<AudioSource>();
+        audioSource.enabled = false;
+    }
+
+    private void ChangeMicrophone(int index)
+    {
+        PlayerPrefs.SetInt("user-mic-device-index", index);
+    }
+
+    private void StartRecording()
+    {
+        time = 0;
+        isRecording = true;
+        recordButton.enabled = false;
+
+        var index = PlayerPrefs.GetInt("user-mic-device-index");
+
+        string selectedDevice = dropdown.options[index].text;
+
+        string[] availableDevices = Microphone.devices;
+
+        if (!System.Array.Exists(availableDevices, device => device == selectedDevice))
+        {
+            Debug.LogError("Selected microphone device does not exist: " + selectedDevice);
+            return;
+        }
+        
+        selectedMicrophone = selectedDevice;
+        clip = Microphone.Start(selectedDevice, false, 2, 44100);
+
+        if (clip == null)
+        {
+            Debug.LogError("Microphone initialization failed for device: " + selectedDevice);
+        }
+        else if (clip.length == 0)
+        {
+            Debug.LogError("Microphone clip is empty.");
         }
 
-        private void Start()
+    }
+
+    private async void EndRecording()
+    {
+       
+       Microphone.End(selectedMicrophone);
+
+        if (clip == null)
         {
-            // Load the API key from auth.json
-            string jsonFilePath = Path.Combine(Application.streamingAssetsPath, "Hoops Heroes JSON/auth.json.txt");
-
-            if (File.Exists(jsonFilePath))
-            {
-                // Read the API key from the JSON file
-                using (StreamReader reader = new StreamReader(jsonFilePath))
-                {
-                    string jsonContents = reader.ReadToEnd();
-                    var jsonData = JsonUtility.FromJson<AuthData>(jsonContents);
-                    string apiKey = jsonData.ApiKey.Trim();
-
-                    openai = new OpenAIApi(apiKey);
-
-                    Debug.Log(apiKey);
-                }
-            }
-
-            // Populate the microphone dropdown list
-            foreach (var device in Microphone.devices)
-            {
-                dropdown.options.Add(new Dropdown.OptionData(device));
-            }
-            recordButton.onClick.AddListener(StartRecording);
-            dropdown.onValueChanged.AddListener(ChangeMicrophone);
-
-            var index = PlayerPrefs.GetInt("user-mic-device-index");
-            dropdown.SetValueWithoutNotify(index);
+            message.text = "Error: Recording clip is null.";
+            recordButton.enabled = true;
+            return;
         }
-
-        private void ChangeMicrophone(int index)
-        {
-            PlayerPrefs.SetInt("user-mic-device-index", index);
-        }
-
-        private void StartRecording()
-        {
-            isRecording = true;
-            recordButton.enabled = false;
-
-            var index = PlayerPrefs.GetInt("user-mic-device-index");
-
-            string selectedDevice = dropdown.options[index].text;
-
-            string[] availableDevices = Microphone.devices;
-
-            if (!System.Array.Exists(availableDevices, device => device == selectedDevice))
-            {
-                // The selected microphone device does not exist.
-                Debug.LogError("Selected microphone device does not exist: " + selectedDevice);
-                return;
-            }
-
-            clip = Microphone.Start(selectedDevice, false, duration, 44100);
-
-            if (clip == null)
-            {
-                // Microphone initialization failed.
-                Debug.LogError("Microphone initialization failed for device: " + selectedDevice);
-            }
-            else
-            {
-                Debug.Log("Microphone recording started on device: " + selectedDevice);
-            }
-        }
-
-        private async void EndRecording()
-        {
-            message.text = "Transcribing...";
-
-            // Remove the conditional check
-            Microphone.End(null);
-
-            if (clip == null)
-            {
-                // Handle the case where clip is null (e.g., show an error message).
-                message.text = "Error: Recording clip is null.";
-                recordButton.enabled = true;
-                return;
-            }
 
             byte[] data = SaveWav.Save(fileName, clip);
-
+            
             var req = new CreateAudioTranscriptionsRequest
             {
-                FileData = new FileData() { Data = data, Name = "audio.wav" },
+                FileData = new FileData() {Data = data, Name = "audio.wav"},
                 Model = "whisper-1",
                 Language = "en"
             };
             var res = await openai.CreateAudioTranscription(req);
 
-            Debug.Log("Transcription complete");
+        Debug.Log("Transcription complete");
 
-            progressBar.fillAmount = 0;
-            message.text = res.Text;
-            recordButton.enabled = true;
-        }
+        progressBar.fillAmount = 0;
 
-        private void Update()
+        message.text = message.text + " " + res.Text;
+
+        string audioURL = "https://example.com/path/to/audio.wav";
+        OnRecordingComplete(audioURL);
+
+        recordButton.enabled = true;
+
+        StartRecording();
+
+    }
+
+    private void OnRecordingComplete(string audioUrl)
+    {
+            // audioSource.clip = clip;
+            // audioSource.enabled = true;
+            // audioSource.Play();
+    }
+
+    private void Update()
+    {
+        if (isRecording)
         {
-            if (isRecording)
-            {
-                time += Time.deltaTime;
-                progressBar.fillAmount = time / duration;
+            time += Time.deltaTime;
+            progressBar.fillAmount = time / 1;
 
-                if (time >= duration)
-                {
-                    time = 0;
-                    isRecording = false;
-                    EndRecording();
-                }
+            if (time >= 1)
+            {
+                time = 1;
+                isRecording = false;
+                EndRecording();
             }
         }
     }
