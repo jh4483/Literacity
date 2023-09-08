@@ -21,6 +21,11 @@ public class Whisper : MonoBehaviour
     private OpenAIApi openai = new OpenAIApi();
     private string selectedMicrophone;
 
+    public int moveNextLine;
+
+    KaraokeSpreadSheet karaokeSpreadSheet;
+
+
     public class AuthData
     {
         public string ApiKey;
@@ -28,6 +33,8 @@ public class Whisper : MonoBehaviour
 
     private void Start()
     {
+        moveNextLine = 0;
+        karaokeSpreadSheet = FindObjectOfType<KaraokeSpreadSheet>();
         string apiKey = "";
         openai = new OpenAIApi(apiKey);
 
@@ -57,6 +64,7 @@ public class Whisper : MonoBehaviour
         isRecording = true;
         recordButton.enabled = false;
 
+        Debug.Log("clicked");
         var index = PlayerPrefs.GetInt("user-mic-device-index");
 
         string selectedDevice = dropdown.options[index].text;
@@ -70,7 +78,7 @@ public class Whisper : MonoBehaviour
         }
         
         selectedMicrophone = selectedDevice;
-        clip = Microphone.Start(selectedDevice, false, 2, 44100);
+        clip = Microphone.Start(selectedDevice, false, 4, 44100);
 
         if (clip == null)
         {
@@ -109,14 +117,28 @@ public class Whisper : MonoBehaviour
 
         progressBar.fillAmount = 0;
 
-        message.text = message.text + " " + res.Text;
+
+        string messageTextLower = res.Text.ToLower();
+        string searchStringLower = karaokeSpreadSheet.lineText.text.ToLower();
+        Debug.Log(messageTextLower);
+        Debug.Log(searchStringLower);
+
+        if (messageTextLower.Contains(searchStringLower))
+        {
+            // Check if the answer is the same as the audio input 
+            Debug.Log("That's correct!");
+            karaokeSpreadSheet.lineText.GetComponent<Text>().color = Color.red;
+        }
+
+        else
+        {
+            Debug.Log(res.Text);
+        }
 
         string audioURL = "https://example.com/path/to/audio.wav";
         OnRecordingComplete(audioURL);
 
         recordButton.enabled = true;
-
-        StartRecording();
 
     }
 
@@ -132,13 +154,14 @@ public class Whisper : MonoBehaviour
         if (isRecording)
         {
             time += Time.deltaTime;
-            progressBar.fillAmount = time / 1;
+            progressBar.fillAmount = time / 4;
 
-            if (time >= 1)
+            if (time >= 4)
             {
-                time = 1;
+                time = 4;
                 isRecording = false;
                 EndRecording();
+                // StartRecording();
             }
         }
     }
