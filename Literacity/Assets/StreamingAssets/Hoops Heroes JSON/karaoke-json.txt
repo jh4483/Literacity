@@ -1,7 +1,7 @@
 [
  {
   "Line Number": 1,
-  "Line": "Kaz and Flash go to class."
+  "Line": "and flash go to class."
  },
  {
   "Line Number": 2,
