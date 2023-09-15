@@ -9,6 +9,7 @@ using UnityEngine.Networking;
 public class KaraokeSpreadSheet : MonoBehaviour
 {
     public TextMeshProUGUI lineText;
+    public string[] lineSeparated;
     public List<string> lineWordsList = new List<string>();
 
     [System.Serializable]
@@ -79,7 +80,24 @@ public class KaraokeSpreadSheet : MonoBehaviour
         for (int i = 0; i < lineDataList.Count; i++)
         {
             lineText.text = lineDataList[0].Line;
+            lineSeparated = lineText.text.Split();
         }
 
     }
+
+
+        //     string messageTextLower = message.text.ToLower();
+        // string searchStringLower = karaokeSpreadSheet.lineSeparated[lineChecker].ToLower(); // Replace "your-search-string" with the string you want to search for
+
+        // // Check if messageTextLower contains searchStringLower
+        // if (messageTextLower.Contains(searchStringLower))
+        // {
+        //     Debug.Log("That's correct!");
+        //     message.text = message.text + " " + res.Text;
+        // }
+
+        // else
+        // {
+        //     Debug.Log(message.text);
+        // }
 }
