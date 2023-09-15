@@ -20,6 +20,7 @@ public class MoveTitles : MonoBehaviour
     void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, location[target].transform.position, 500 * Time.deltaTime);
+        //transform.position = Vector3.Lerp(transform.position, location[target].transform.position, 500 * Time.deltaTime);
         if (transform.position == location[target].transform.position)
         {
             target += 1;
