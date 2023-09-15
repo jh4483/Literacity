@@ -18,11 +18,6 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         gameMask = GameObject.Find("Canvas").transform.Find("Mask").gameObject;
     }
 
-    private void Update()
-    {
-
-    }
-
     private IEnumerator BallDrop()
     {
         collider = GetComponent<CircleCollider2D>();

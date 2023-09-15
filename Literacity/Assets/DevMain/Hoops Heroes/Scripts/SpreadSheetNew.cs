@@ -151,6 +151,10 @@ public class SpreadSheetNew : MonoBehaviour
             Vector2 anchoredPosition = new Vector2(-150f + (i * xOffset), 25f);
             newBall.GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
             string audioFileName = ballLettersList[i];
+            for(int j = 0; j <ballLettersList.Count; j++)
+            {
+                Debug.Log(ballLettersList[j].ToString());
+            }
             AudioClip audioClip = Resources.Load<AudioClip>(audioFileName);
             if (audioClip != null)
             {

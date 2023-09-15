@@ -11,10 +11,6 @@ public class OutroScene : MonoBehaviour
         StartCoroutine(LoadOutroScene());
     }
 
-    void Update()
-    {
-        
-    }
     IEnumerator LoadOutroScene()
     {
         GetComponent<AudioSource>().Play();

@@ -138,34 +138,9 @@ public class BoosterState : MonoBehaviour
     
 
     public IEnumerator PlayParticles()
-    {
-        // if(boosterPower == 1 || boosterPower == 2)
-        // {
-        //     var main = particleSystem.main;
-        //     var randomColors = new ParticleSystem.MinMaxGradient(presetColors[spreadSheetNew.targetIndex]);
-        //     yield return new WaitForSeconds(1.5f);
-        //     origin.SetActive(false);
-        //     cardMask.SetActive(false);
-        //     yield return new WaitForSeconds(1.5f);
-        //     KazShoots();
-
-        //     yield return new WaitForSeconds(2f);
-        //     randomColors.mode = ParticleSystemGradientMode.RandomColor;
-        //     main.startColor = randomColors;
-        //     particleSystem.Play();
-
-        //     KazShoots();
-
-        //     yield return new WaitForSeconds(2f);
-        //     origin.SetActive(true);
-        //     cardMask.SetActive(true);
-        // }
-        
-        
+    {     
         var main = particleSystem.main;
         var randomColors = new ParticleSystem.MinMaxGradient(presetColors[spreadSheetNew.targetIndex]);
-        // origin.SetActive(false);
-        // cardMask.SetActive(false);
 
         // Become Transparent (fading)
         StartCoroutine(FadeOutImagesAndText());
@@ -178,11 +153,11 @@ public class BoosterState : MonoBehaviour
                 KazShoots();
 
                 yield return new WaitForSeconds(2f);
-                //ballAnims.ShootBallL();
+                
                 ballAnims.ballSprite.GetComponent<Animator>().SetBool("Ball_Shoot_L", false);
                 ballAnims.ballSprite.GetComponent<Animator>().SetBool("Ball_Shoot_Missed", false);
                 ballAnims.ballSprite.SetActive(false);
-                //KazShoots();
+                
                 animator.SetBool("Kaz_Shoot", false);
 
                 break;
@@ -193,11 +168,11 @@ public class BoosterState : MonoBehaviour
                 KazShoots();
 
                 yield return new WaitForSeconds(2f);
-                //ballAnims.ShootBallL();
+                
                 ballAnims.ballSprite.GetComponent<Animator>().SetBool("Ball_Shoot_L", false);
                 ballAnims.ballSprite.GetComponent<Animator>().SetBool("Ball_Shoot_Missed", false);
                 ballAnims.ballSprite.SetActive(false);
-                //KazShoots();
+                
                 animator.SetBool("Kaz_Shoot", false);
 
                 break;
@@ -208,10 +183,10 @@ public class BoosterState : MonoBehaviour
                 KazLayUp();
 
                 yield return new WaitForSeconds(3.3f);
-                //ballAnims.ShootBallDribbleL();
+                
                 ballAnims.ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_L", false);
                 ballAnims.ballSprite.SetActive(false);
-                //KazLayUp();
+                
                 animator.SetBool("Kaz_DribbleN'Shoot", false);
                 
                 break;
@@ -222,10 +197,10 @@ public class BoosterState : MonoBehaviour
                 KazDisappearR();
 
                 yield return new WaitForSeconds(5.7f);
-                //ballAnims.ShootBallDribbleL();
+                
                 ballAnims.ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_L", false);
                 ballAnims.ballSprite.SetActive(false);                
-                //KazDisappearR();
+                
                 animator.SetBool("Kaz_DisappearR", false);
                 
                 break;
@@ -238,7 +213,7 @@ public class BoosterState : MonoBehaviour
                 yield return new WaitForSeconds(5.5f);
                 ballAnims.ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_L", false);
                 ballAnims.ballSprite.SetActive(false);
-                //KazDribbleTurn();
+                
                 animator.SetBool("Kaz_DribbleTurn", false);
 
                 break;
@@ -251,7 +226,7 @@ public class BoosterState : MonoBehaviour
                 yield return new WaitForSeconds(5.7f);
                 ballAnims.ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_L", false);
                 ballAnims.ballSprite.SetActive(false);
-                //KazDisappearL();
+                
                 animator.SetBool("Kaz_DisappearL", false);
 
                 break;
@@ -264,7 +239,7 @@ public class BoosterState : MonoBehaviour
                 yield return new WaitForSeconds(3.95f);
                 ballAnims.ballSprite.GetComponent<Animator>().SetBool("Ball_Fade", false);
                 ballAnims.ballSprite.SetActive(false);
-                //KazFade();
+                
                 animator.SetBool("Kaz_Fade", false);
 
                 break;
@@ -275,7 +250,7 @@ public class BoosterState : MonoBehaviour
                 KazDunk();
 
                 yield return new WaitForSeconds(2.6f);
-                //KazDunk();
+                
                 animator.SetBool("Kaz_Dunk", false);
         
                 break;
@@ -294,8 +269,6 @@ public class BoosterState : MonoBehaviour
         hasPlayedParticles = true;
         hasCollided = false;
         StartCoroutine(FadeInImagesAndText());
-        // origin.SetActive(true);
-        // cardMask.SetActive(true);
     }
 
 

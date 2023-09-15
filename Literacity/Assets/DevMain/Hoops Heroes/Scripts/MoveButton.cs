@@ -8,17 +8,6 @@ public class MoveButton : MonoBehaviour
     public List <GameObject> movedButtons = new List<GameObject>();
     public Vector2 originalPos;
 
-    void Start()
-    {
-
-    }
-
-
-    void Update()
-    {
-        
-    }
-
     public void TransformButton()
     {
         if(movedButtons.Count == 1)
