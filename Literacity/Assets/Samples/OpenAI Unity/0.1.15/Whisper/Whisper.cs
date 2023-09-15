@@ -141,6 +141,11 @@ public class Whisper : MonoBehaviour
 
         Debug.Log("Transcription complete");
 
+
+        // CHECK IF STRINGS MATCH WORD BY WORD - IF THEY MATCH, CHANGE COLOUR TO GREEN, IF NOT, CHANGE  TO RED.
+
+
+
         // string messageTextLower = res.Text.ToLower();
         transcribedText.text = res.Text.ToLower();
         // string searchStringLower = TextInput.textOutput.ToLower();
