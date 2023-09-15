@@ -10,5 +10,37 @@
  {
   "Line Number": 3,
   "Line": "The thing is pink and small. It sings and sings."
+ },
+ {
+  "Line Number": 4,
+  "Line": "Kaz says, “Shhhh! Do not sing! The class can not think!”"
+ },
+  {
+  "Line Number": 5,
+  "Line": "The thing sings and sings!"
+ },
+ {
+  "Line Number": 6,
+  "Line": "Flash says, “We can not think!”"
+ },
+  {
+  "Line Number": 7,
+  "Line": "Kaz runs to get a glass."
+ },
+  {
+  "Line Number": 8,
+  "Line": "Flash puts the glass on top of the thing."
+ },
+ {
+  "Line Number": 9,
+  "Line": "The thing tucks its wings."
+ },
+ {
+  "Line Number": 10,
+  "Line": "The class can not hear it sing!"
+ },
+ {
+  "Line Number": 11,
+  "Line": "Now Kaz and Flash can think in class."
  }
 ]
