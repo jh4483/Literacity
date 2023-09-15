@@ -14,12 +14,6 @@ public class IntroScene : MonoBehaviour
         introCount = 0;
     }
 
-
-    void Update()
-    {
-        
-    }
-
     public void OnMouseDown()
     {
         introCount++;

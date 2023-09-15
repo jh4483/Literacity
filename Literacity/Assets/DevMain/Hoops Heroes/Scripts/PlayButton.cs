@@ -19,12 +19,6 @@ public class PlayButton : MonoBehaviour
         spreadSheetNew = FindObjectOfType<SpreadSheetNew>();
     }
 
-
-    void Update()
-    {
-        
-    }
-
     public void OnPlay()
     {       
         introScene.SetActive(false);

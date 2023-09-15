@@ -5,10 +5,6 @@ using UnityEngine;
 public class KeyClicks : MonoBehaviour
 {
     public string keyClickIndex;
-    void Start()
-    {
-     
-    }
 
     void Update()
     {

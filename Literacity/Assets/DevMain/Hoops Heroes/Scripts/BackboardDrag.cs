@@ -24,8 +24,8 @@ public class BackboardDrag : MonoBehaviour
     {
         if( Input.mousePosition.x > backboardImage.rectTransform.position.x - backboardImage.rectTransform.rect.width / 2 &&
             Input.mousePosition.x < backboardImage.rectTransform.position.x + backboardImage.rectTransform.rect.width / 2 &&
-            Input.mousePosition.y > backboardImage.rectTransform.position.y - backboardImage.rectTransform.rect.height /2 &&
-            Input.mousePosition.y < backboardImage.rectTransform.position.y + backboardImage.rectTransform.rect.height /2)
+            Input.mousePosition.y > backboardImage.rectTransform.position.y - backboardImage.rectTransform.rect.height/ 2 &&
+            Input.mousePosition.y < backboardImage.rectTransform.position.y + backboardImage.rectTransform.rect.height/ 2)
         {
             StartCoroutine(TurnOffDragBall());
         }
