@@ -685,6 +685,7 @@ MonoBehaviour:
   noiseText: {fileID: 1855860439}
   transcribedText: {fileID: 126362018}
   speedChecker: {fileID: 235133887}
+  textOutput: {fileID: 1384394611}
   moveNextLine: 0
 --- !u!114 &209904770
 MonoBehaviour:
