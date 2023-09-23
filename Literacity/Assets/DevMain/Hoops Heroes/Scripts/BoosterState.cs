@@ -257,7 +257,7 @@ public class BoosterState : MonoBehaviour
 
         randomColors.mode = ParticleSystemGradientMode.RandomColor;
         main.startColor = randomColors;
-        backBoardHighlight.GetComponent<Animation>().Play("Backboard explodes");
+        backBoardHighlight.GetComponent<Animation>().Play("Backboard_Explode");
         particleSystem.Play();
         
         yield return new WaitForSeconds(1f);

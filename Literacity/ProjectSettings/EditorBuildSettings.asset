@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/janzDev/Scenes/JanzDevNewScene.unity
     guid: 9cc241f19e7c34712a8bfada20495972
-  - enabled: 1
+  - enabled: 0
     path: Assets/Samples/OpenAI Unity/0.1.15/Whisper/Whisper Sample.unity
     guid: 8f47e0e7c9e717a4ab6e6faa20ebb0e0
+  - enabled: 1
+    path: Assets/Dev/Akshay/Hoops Heroes/abDev_HoopsHeroes.unity
+    guid: 08d22dbef9798954da2c509f41e19405
   m_configObjects: {}
