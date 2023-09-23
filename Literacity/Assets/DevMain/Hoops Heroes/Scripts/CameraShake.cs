@@ -6,13 +6,12 @@ using UnityEngine.UI;
 public class CameraShake : MonoBehaviour
 {
     public AnimationCurve curve;
-    //public Canvas canvas;
-    //public Image background;
     public float duration = 1f;
     public Vector3 startPos;
     public float time = 0f;
     public float strengthMultiplier = 1f;
     public bool isShaking = false;
+    public CameraShakeData testing;
 
     void Update()
     {
@@ -22,16 +21,16 @@ public class CameraShake : MonoBehaviour
             {
                 return;
             }
-            StartCoroutine(ShakeCamera());
+            StartCoroutine(ShakeCamera(testing));
         }
     }
 
-    public IEnumerator ShakeCamera()
+    public IEnumerator ShakeCamera(CameraShakeData csdata)
     {
         isShaking = true;
+        SetData(csdata);
         startPos = transform.localPosition;
         time = 0f;
-        //canvas.renderMode = RenderMode.WorldSpace;
 
         while(time <= duration)
         {
@@ -42,7 +41,13 @@ public class CameraShake : MonoBehaviour
         }
 
         transform.localPosition = startPos;
-        //canvas.renderMode = RenderMode.ScreenSpaceCamera;
         isShaking = false;
+    }
+
+    public void SetData(CameraShakeData data)
+    {
+        duration = data.duration;
+        strengthMultiplier = data.strengthMultiplier;
+        curve = data.curve;
     }
 }

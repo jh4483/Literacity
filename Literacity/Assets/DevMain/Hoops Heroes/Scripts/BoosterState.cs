@@ -9,6 +9,8 @@ public class BoosterState : MonoBehaviour
     public static int boosterPower;
     public ParticleSystem particleSystem;
     public SpreadSheetNew spreadSheetNew;
+    public CameraShake cameraShake;
+    public CameraShakeData[] CameraShakeData;
     public Animator animator;
     public GameObject origin;
     public GameObject cardMask;
@@ -18,6 +20,7 @@ public class BoosterState : MonoBehaviour
     public bool hasCollided;
     public float timeTaken;
     private float fadeDuration = 1.0f;
+    
 
 
     public Gradient[] presetColors;
@@ -29,15 +32,8 @@ public class BoosterState : MonoBehaviour
         boosterPower = 0;
         spreadSheetNew = FindObjectOfType<SpreadSheetNew>();
         hasPlayedParticles = false;
-
-        //ballAnims = FindObjectOfType<BallAnims>();
-        
     }
 
-    void Update()
-    {
-        
-    }
 
     public void KazShoots()
     {
