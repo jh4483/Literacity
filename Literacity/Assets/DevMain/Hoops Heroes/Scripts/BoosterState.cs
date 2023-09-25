@@ -147,11 +147,12 @@ public class BoosterState : MonoBehaviour
                 timeTaken = 4f;
                 yield return new WaitForSeconds(1f);
                 KazShoots();
-
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(1.3f);
+                StartCoroutine(cameraShake.ShakeCamera(CameraShakeData[0]));
+                yield return new WaitForSeconds(0.7f);
                 
                 ballAnims.ballSprite.GetComponent<Animator>().SetBool("Ball_Shoot_L", false);
-                ballAnims.ballSprite.GetComponent<Animator>().SetBool("Ball_Shoot_Missed", false);
+                //ballAnims.ballSprite.GetComponent<Animator>().SetBool("Ball_Shoot_Missed", false);
                 ballAnims.ballSprite.SetActive(false);
                 
                 animator.SetBool("Kaz_Shoot", false);
@@ -162,11 +163,13 @@ public class BoosterState : MonoBehaviour
                 timeTaken = 4f;
                 yield return new WaitForSeconds(1f);
                 KazShoots();
+                yield return new WaitForSeconds(2.2f);
+                StartCoroutine(cameraShake.ShakeCamera(CameraShakeData[0]));
 
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(0.8f);
                 
                 ballAnims.ballSprite.GetComponent<Animator>().SetBool("Ball_Shoot_L", false);
-                ballAnims.ballSprite.GetComponent<Animator>().SetBool("Ball_Shoot_Missed", false);
+                //ballAnims.ballSprite.GetComponent<Animator>().SetBool("Ball_Shoot_Missed", false);
                 ballAnims.ballSprite.SetActive(false);
                 
                 animator.SetBool("Kaz_Shoot", false);
@@ -177,8 +180,10 @@ public class BoosterState : MonoBehaviour
                 timeTaken = 5.3f;
                 yield return new WaitForSeconds(1f);
                 KazLayUp();
+                yield return new WaitForSeconds(2.5f);
+                StartCoroutine(cameraShake.ShakeCamera(CameraShakeData[0]));
 
-                yield return new WaitForSeconds(3.3f);
+                yield return new WaitForSeconds(0.8f);
                 
                 ballAnims.ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_L", false);
                 ballAnims.ballSprite.SetActive(false);
@@ -191,8 +196,10 @@ public class BoosterState : MonoBehaviour
                 timeTaken = 7.7f;
                 yield return new WaitForSeconds(1f);
                 KazDisappearR();
+                yield return new WaitForSeconds(5.0f);
+                StartCoroutine(cameraShake.ShakeCamera(CameraShakeData[0]));
 
-                yield return new WaitForSeconds(5.7f);
+                yield return new WaitForSeconds(0.7f);
                 
                 ballAnims.ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_L", false);
                 ballAnims.ballSprite.SetActive(false);                
@@ -205,8 +212,10 @@ public class BoosterState : MonoBehaviour
                 timeTaken = 7.5f;
                 yield return new WaitForSeconds(1f);
                 KazDribbleTurn();
+                yield return new WaitForSeconds(4.8f);
+                StartCoroutine(cameraShake.ShakeCamera(CameraShakeData[0]));
 
-                yield return new WaitForSeconds(5.5f);
+                yield return new WaitForSeconds(0.7f);
                 ballAnims.ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_L", false);
                 ballAnims.ballSprite.SetActive(false);
                 
@@ -218,8 +227,10 @@ public class BoosterState : MonoBehaviour
                 timeTaken = 7.7f;
                 yield return new WaitForSeconds(1f);
                 KazDisappearL();
+                yield return new WaitForSeconds(5.0f);
+                StartCoroutine(cameraShake.ShakeCamera(CameraShakeData[0]));
 
-                yield return new WaitForSeconds(5.7f);
+                yield return new WaitForSeconds(0.7f);
                 ballAnims.ballSprite.GetComponent<Animator>().SetBool("Ball_DribbleNShoot_L", false);
                 ballAnims.ballSprite.SetActive(false);
                 
@@ -231,8 +242,10 @@ public class BoosterState : MonoBehaviour
                 timeTaken = 5.95f;
                 yield return new WaitForSeconds(1f);
                 KazFade();
+                yield return new WaitForSeconds(3.25f);
+                StartCoroutine(cameraShake.ShakeCamera(CameraShakeData[0]));
 
-                yield return new WaitForSeconds(3.95f);
+                yield return new WaitForSeconds(0.7f);
                 ballAnims.ballSprite.GetComponent<Animator>().SetBool("Ball_Fade", false);
                 ballAnims.ballSprite.SetActive(false);
                 
@@ -244,8 +257,10 @@ public class BoosterState : MonoBehaviour
                 timeTaken = 4.6f;
                 yield return new WaitForSeconds(1f);
                 KazDunk();
+                yield return new WaitForSeconds(1.8f);
+                StartCoroutine(cameraShake.ShakeCamera(CameraShakeData[1]));
 
-                yield return new WaitForSeconds(2.6f);
+                yield return new WaitForSeconds(0.7f);
                 
                 animator.SetBool("Kaz_Dunk", false);
         

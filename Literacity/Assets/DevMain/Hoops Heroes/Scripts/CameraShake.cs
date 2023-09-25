@@ -12,6 +12,8 @@ public class CameraShake : MonoBehaviour
     public float strengthMultiplier = 1f;
     public bool isShaking = false;
     public CameraShakeData testing;
+    public Image backboardImage;
+    public Vector3 backboardStartPos;
 
     void Update()
     {
@@ -30,6 +32,7 @@ public class CameraShake : MonoBehaviour
         isShaking = true;
         SetData(csdata);
         startPos = transform.localPosition;
+        backboardStartPos = backboardImage.transform.localPosition;
         time = 0f;
 
         while(time <= duration)
@@ -37,10 +40,12 @@ public class CameraShake : MonoBehaviour
             time += Time.deltaTime;
             float strength = curve.Evaluate(time / duration) * strengthMultiplier;
             transform.localPosition = startPos + Random.insideUnitSphere * strength;
+            backboardImage.transform.localPosition = backboardStartPos + Random.insideUnitSphere * strength;
             yield return null;
         }
 
         transform.localPosition = startPos;
+        backboardImage.transform.localPosition = backboardStartPos;
         isShaking = false;
     }
 

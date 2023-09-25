@@ -59,8 +59,6 @@ public class BallBehaviour : MonoBehaviour
 
     private IEnumerator HalfCompletedWord()
     {
-        //backboardScale.Play("Backboard Scaling");
-        //animator.Play("Backboard_Scaling");
         backboardScale.Play("Backboard_Scaling");
         ballHitAudio.Play();
         transform.position = initialPos;
@@ -91,9 +89,7 @@ public class BallBehaviour : MonoBehaviour
         }
         else if (checkText.GetComponent<TextMeshProUGUI>().text != spreadSheetNew.letterOneList[spreadSheetNew.targetIndex].ToString() && !spreadSheetNew.playNextRound)
         {
-            //backboardScale.Play("Backboard Rotation");
             backboardScale.Play("Backboard_Rotation");
-            //animator.Play("Backboard_Rotation");
             if (BoosterState.boosterPower != 0)
             {
                 BoosterState.boosterPower = 0;
@@ -103,9 +99,7 @@ public class BallBehaviour : MonoBehaviour
         }
         else if (checkText.GetComponent<TextMeshProUGUI>().text != spreadSheetNew.letterTwoList[spreadSheetNew.targetIndex].ToString() && spreadSheetNew.playNextRound)
         {
-            //backboardScale.Play("Backboard Rotation");
             backboardScale.Play("Backboard_Rotation");
-            //animator.Play("Backboard_Rotation");
             BoosterState.boosterPower = 0;
             boosterState.isCorrect = false;
         }
@@ -114,9 +108,7 @@ public class BallBehaviour : MonoBehaviour
 
     private IEnumerator CompletedWord()
     {
-        //backboardScale.Play("Backboard Scaling");
         backboardScale.Play("Backboard_Scaling");
-        //animator.Play("Backboard_Scaling");
         boosterState.isCorrect = true;
         yield return new WaitForSeconds(0.7f);
         playAudio.OnCollisionAudio();
