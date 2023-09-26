@@ -1,0 +1,10 @@
+[
+  {"Round": "A1", "Word": "THING", "BallLetters": "ING", "LetterOne": "TH", "LetterTwo": "ING"},
+  {"Round": "A2", "Word": "WING", "BallLetters": "TH", "LetterOne": "W", "LetterTwo": "ING"},
+  {"Round": "A3", "Word": "BRING", "BallLetters": "ING", "LetterOne": "BR", "LetterTwo": "ING"},
+  {"Round": "A4", "Word": "SING", "BallLetters": "W", "LetterOne": "S", "LetterTwo": "ING"},
+  {"Round": "", "Word": "", "BallLetters": "ING", "LetterOne": "", "LetterTwo": ""},
+  {"Round": "", "Word": "", "BallLetters": "S", "LetterOne": "", "LetterTwo": ""},
+  {"Round": "", "Word": "", "BallLetters": "ING", "LetterOne": "", "LetterTwo": ""},
+  {"Round": "", "Word": "", "BallLetters": "BR", "LetterOne": "", "LetterTwo": ""}
+]
