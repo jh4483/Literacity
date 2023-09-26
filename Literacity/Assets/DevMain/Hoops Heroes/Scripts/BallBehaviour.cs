@@ -69,7 +69,7 @@ public class BallBehaviour : MonoBehaviour
             BoosterState.boosterPower++;
             selectedTarget.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = checkText.GetComponent<TextMeshProUGUI>().text.ToString();
             boosterState.StartCoroutine(boosterState.PlayParticles());
-            spreadSheetNew.playNextRound = true;
+            // spreadSheetNew.playNextRound = true;
 
             for (int i = 0; i < enabledButtons.Length; i++)
             {
@@ -78,7 +78,6 @@ public class BallBehaviour : MonoBehaviour
         }
         else if (checkText.GetComponent<TextMeshProUGUI>().text == spreadSheetNew.letterTwoList[spreadSheetNew.targetIndex].ToString() && spreadSheetNew.playNextRound)
         {
-            spreadSheetNew.playNextRound = false;
             StartCoroutine(CompletedWord());
 
         }
@@ -132,6 +131,7 @@ public class BallBehaviour : MonoBehaviour
         spreadSheetNew.selectedCard.tag = "close";
         selectedTarget.GetComponent<RectTransform>().anchoredPosition = moveButton.originalPos;
         spreadSheetNew.totalScore++;
+        spreadSheetNew.playNextRound = false;
     }
 
     public IEnumerator BumpCollider()

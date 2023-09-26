@@ -9,6 +9,7 @@ public class Whisper : MonoBehaviour
 {
     [SerializeField] private Button recordButton;
     // [SerializeField] private Image progressBar;
+    [SerializeField] private Button stopButton;
     [SerializeField] private Text message;
     [SerializeField] private Dropdown dropdown;
     [SerializeField] private AudioSource audioSource;
@@ -16,12 +17,15 @@ public class Whisper : MonoBehaviour
     [SerializeField] private TextMeshProUGUI transcribedText;
     [SerializeField] private Slider speedChecker;
     [SerializeField] private Text textOutput;
+    [SerializeField] private TextMeshProUGUI textCount;
 
     private readonly string fileName = "output.wav";
     private readonly int duration = 2;
+    private int redTextIndex = 0;
 
     private AudioClip clip;
     private bool isRecording;
+    private bool hasTranscribed;
     private float time;
     private OpenAIApi openai = new OpenAIApi();
     private string selectedMicrophone;
@@ -35,8 +39,8 @@ public class Whisper : MonoBehaviour
     private float clipEndTime = 0f; 
     private float noiseClipTimer = 0f; 
     private AudioClip noiseClip; 
-
     public int moveNextLine;
+    StopRecording stopRecording;
 
     public class AuthData
     {
@@ -47,6 +51,8 @@ public class Whisper : MonoBehaviour
     {
         noiseCount = 0;
         moveNextLine = 0;
+        hasTranscribed = false;
+        stopRecording = FindObjectOfType<StopRecording>();
         string apiKey = "";
         openai = new OpenAIApi(apiKey);
 
@@ -106,7 +112,7 @@ public class Whisper : MonoBehaviour
         }
 
         selectedMicrophone = selectedDevice;
-        clip = Microphone.Start(selectedDevice, false, 7, 44100);
+        clip = Microphone.Start(selectedDevice, false, 15, 44100);
 
         if (clip == null)
         {
@@ -141,38 +147,68 @@ public class Whisper : MonoBehaviour
 
         Debug.Log("Transcription complete");
 
+        if (res.Text.Contains("?") || res.Text.Contains("!") || res.Text.Contains(".") || res.Text.Contains(",") || res.Text.Contains(":") || res.Text.Contains(";") || res.Text.Contains("-"))
+        {
+            res.Text = res.Text.Replace("?", "").Replace("!", "").Replace(".", "").Replace(",", "").Replace(":", "").Replace(";", "").Replace("-", "");
+        }
 
-        // CHECK IF STRINGS MATCH WORD BY WORD - IF THEY MATCH, CHANGE COLOUR TO GREEN, IF NOT, CHANGE  TO RED.
-
-
-
-        // string messageTextLower = res.Text.ToLower();
+        
         transcribedText.text = res.Text.ToLower();
-        // string searchStringLower = TextInput.textOutput.ToLower();
-        // Debug.Log(messageTextLower);
-        // Debug.Log(searchStringLower);
+        string[] inputWords = textOutput.text.Split(' ');
+        string[] transcribedWords = transcribedText.text.Split(' ');
+        int minLength = Mathf.Min(inputWords.Length, transcribedWords.Length);
 
-        // if (messageTextLower.Contains(searchStringLower))
-        // {
-        //     Debug.Log("That's correct!");
-        //     karaokeSpreadSheet.lineText.GetComponent<Text>().color = Color.red;
-        // }
-        // else
-        // {
-        //     Debug.Log(res.Text);
-        // }
+        string coloredText = ""; 
+
+        for (int i = 0; i < minLength; i++)
+        {
+            if (inputWords[i] == transcribedWords[i])
+            {
+                coloredText += $"<color=green>{transcribedWords[i]}</color> ";
+            }
+            else
+            {
+                coloredText += $"<color=red>{transcribedWords[i]}</color> "; 
+            }
+        }
+
+        if (inputWords.Length > transcribedWords.Length)
+        {
+            for (int i = minLength; i < transcribedWords.Length; i++)
+            {
+                coloredText += $"<color=red>{transcribedWords[i]}</color> "; 
+            }
+        }
+        else if (inputWords.Length < transcribedWords.Length)
+        {
+            for (int i = minLength; i < transcribedWords.Length; i++)
+            {
+                coloredText += $"<color=red>{transcribedWords[i]}</color> "; 
+            }
+
+        }
+
+        transcribedText.text = coloredText;
+        noiseText.text = transcribedWords.Length.ToString();
 
         string audioURL = "https://example.com/path/to/audio.wav";
         OnRecordingComplete(audioURL);
 
+        isRecording = false;
         recordButton.enabled = true;
+        hasTranscribed = true;
     }
 
     private void OnRecordingComplete(string audioUrl)
     {
-        // audioSource.clip = clip;
-        // audioSource.enabled = true;
-        // audioSource.Play();
+        audioSource.clip = clip;
+        audioSource.enabled = true;
+        stopRecording.gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("replay");
+    }
+
+    public void PlayAudio()
+    {
+        audioSource.Play();
     }
 
     private void Update()
@@ -182,13 +218,12 @@ public class Whisper : MonoBehaviour
             time += Time.deltaTime;
             // progressBar.fillAmount = time / 4;
 
-            if (time >= 7)
+            if (stopRecording.stopRecordingClicked)
             {
-                time = 7;
                 isRecording = false;
                 EndRecording();
             }
-            textOutput.GetComponent<Text>().color = Color.red;
+
             timeSinceLastDetection += Time.deltaTime;
             if (!hasDetectedNoise && timeSinceLastDetection >= noiseDetectionInterval)
             {
@@ -221,13 +256,23 @@ public class Whisper : MonoBehaviour
 
                 timeSinceLastDetection = 0f;
             }
-            
-            // textOutput.GetComponent<Text>().color = Color.black;
 
             if (hasDetectedNoise && timeSinceLastDetection >= noiseDetectionInterval)
             {
                 hasDetectedNoise = false;
+                
             }
+        }
+
+        if(!isRecording && stopRecording.replayClicked)
+        {
+            transcribedText.text = "";
+            textOutput.text = "";
+            noiseText.text = "";
+            noiseCount = 0;
+            stopRecording.gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Big button (2)");
+            stopRecording.stopRecordingClicked = false;
+            stopRecording.replayClicked = false;
         }
     }
 }
