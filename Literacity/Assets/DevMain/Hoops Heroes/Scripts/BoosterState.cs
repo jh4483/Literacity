@@ -20,6 +20,7 @@ public class BoosterState : MonoBehaviour
     public bool hasCollided;
     public float timeTaken;
     private float fadeDuration = 1.0f;
+    public bool AnimIsRunning = false;
     
 
 
@@ -285,6 +286,8 @@ public class BoosterState : MonoBehaviour
 
     private IEnumerator FadeOutImagesAndText()
     {
+        AnimIsRunning = true;
+
         yield return new WaitForSeconds(1);
         float elapsedTime = 0;
         float startAlpha = 1.0f;
@@ -355,6 +358,8 @@ public class BoosterState : MonoBehaviour
             }
 
             hasPlayedParticles = false;
+
+            AnimIsRunning = false;
 
             yield return null;
             //spreadSheetNew.playNextRound = true;

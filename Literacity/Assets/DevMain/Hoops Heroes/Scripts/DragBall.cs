@@ -12,10 +12,14 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     BallBehaviour ballBehaviour;
     public bool isDragging;
 
+    public BoosterState boosterState;
+
     private void Start()
     {
         StartCoroutine(BallDrop());
         gameMask = GameObject.Find("Canvas").transform.Find("Mask").gameObject;
+
+        boosterState = FindObjectOfType<BoosterState>();
     }
 
     private IEnumerator BallDrop()
@@ -48,6 +52,10 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     public void OnDrag(PointerEventData eventData)
     {
+        if(boosterState.AnimIsRunning)
+        {
+            return;
+        }
         transform.position = eventData.position;
     }
 
