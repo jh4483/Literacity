@@ -50,6 +50,7 @@ public class BallBehaviour : MonoBehaviour
                 StartCoroutine(HalfCompletedWord());
             }
         }
+
     }
 
     private IEnumerator HalfCompletedWord()

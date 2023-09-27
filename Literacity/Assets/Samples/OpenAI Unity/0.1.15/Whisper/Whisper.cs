@@ -53,7 +53,7 @@ public class Whisper : MonoBehaviour
         moveNextLine = 0;
         hasTranscribed = false;
         stopRecording = FindObjectOfType<StopRecording>();
-        string apiKey = "";
+        string apiKey = "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";
         openai = new OpenAIApi(apiKey);
 
         string[] availableDevices = Microphone.devices;
@@ -208,6 +208,7 @@ public class Whisper : MonoBehaviour
 
     public void PlayAudio()
     {
+        Debug.Log("playing");
         audioSource.Play();
     }
 

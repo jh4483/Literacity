@@ -34,7 +34,8 @@ public class ClickedPrompt : MonoBehaviour
     }
 
     public void OnPromptClicked()
-    {   
+    {  
+        spreadSheetNew.playStarted = true;
         moveButton.movedButtons.Add(gameObject);
         moveButton.TransformButton();
         backboardHighlight.GetComponent<Image>().color = currentColour;
