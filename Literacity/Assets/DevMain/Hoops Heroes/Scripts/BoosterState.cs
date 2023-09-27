@@ -357,7 +357,7 @@ public class BoosterState : MonoBehaviour
             hasPlayedParticles = false;
 
             yield return null;
-            spreadSheetNew.playNextRound = true;
+            //spreadSheetNew.playNextRound = true;
         }
     }
 }
