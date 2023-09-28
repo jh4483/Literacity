@@ -23,6 +23,7 @@ public class SpreadSheetNew : MonoBehaviour
     public int totalScore = 0;
     public bool playNextRound;
     public GameObject outroScene;
+    public bool playStarted;
     ClickedPrompt clickedPrompt;
     BoosterState boosterState;
 
@@ -47,6 +48,7 @@ public class SpreadSheetNew : MonoBehaviour
         playNextRound = false;
         clickedPrompt = FindObjectOfType<ClickedPrompt>();
         boosterState = FindObjectOfType<BoosterState>();
+        playStarted = false;
     }
 
     void Update()
