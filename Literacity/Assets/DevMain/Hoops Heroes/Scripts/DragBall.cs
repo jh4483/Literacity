@@ -13,6 +13,7 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public bool isDragging;
 
     public BoosterState boosterState;
+    public SpreadSheetNew spreadSheetNew;
 
     private void Start()
     {
@@ -20,6 +21,7 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         gameMask = GameObject.Find("Canvas").transform.Find("Mask").gameObject;
 
         boosterState = FindObjectOfType<BoosterState>();
+        spreadSheetNew = FindObjectOfType<SpreadSheetNew>();
     }
 
     private IEnumerator BallDrop()
@@ -56,7 +58,10 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         {
             return;
         }
-        transform.position = eventData.position;
+        if(spreadSheetNew.playStarted)
+        {
+            transform.position = eventData.position;
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
