@@ -2,21 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallLauncher : MonoBehaviour
+public class BallLauncher : Subject
 {
     public Rigidbody ball;
     public Transform[] target;
+    public Transform[] ballPos;
     public int targetIndex;
 
     public float height = 25f;
     public float gravity = -18f;
+    public bool isLaunched = false;
 
     void Start()
     {
         targetIndex = 3;
 
-        //ball = GetComponent<Rigidbody>();
         ball.useGravity = false;
+        NotifyObservers();
     }
 
     void Update()
@@ -24,7 +26,9 @@ public class BallLauncher : MonoBehaviour
         ResetBall();
         SetTarget();
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        SetBallPos();
+
+        if (Input.GetKeyDown(KeyCode.Space) && !isLaunched)
         {
             Launch();
         }
@@ -34,6 +38,8 @@ public class BallLauncher : MonoBehaviour
     {
         Physics.gravity = Vector3.up * gravity;
         ball.useGravity = true;
+
+        isLaunched = true;
 
         ball.velocity = CalculateLaunchVelocity();
     }
@@ -70,6 +76,22 @@ public class BallLauncher : MonoBehaviour
         }
     }
 
+    void SetBallPos()
+    {
+        if(Input.GetKeyDown(KeyCode.Alpha1) && !isLaunched)
+        {
+            ball.transform.position = ballPos[0].position;
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha2) && !isLaunched)
+        {
+            ball.transform.position = ballPos[1].position;
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha3) && !isLaunched)
+        {
+            ball.transform.position = ballPos[2].position;
+        }
+    }
+
     void ResetBall()
     {
         if(Input.GetKeyDown(KeyCode.R))
@@ -78,6 +100,8 @@ public class BallLauncher : MonoBehaviour
             ball.angularVelocity = Vector3.zero;
             ball.useGravity = false;
             ball.transform.position = transform.position;
+
+            isLaunched = false;
         }
     }
 }

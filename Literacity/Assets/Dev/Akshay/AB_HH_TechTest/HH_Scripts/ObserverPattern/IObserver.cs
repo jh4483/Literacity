@@ -1,4 +1,4 @@
-public class IObserver
+public interface IObserver
 {
     public void OnNotify()
     {

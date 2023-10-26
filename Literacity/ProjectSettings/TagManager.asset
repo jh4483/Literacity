@@ -11,6 +11,7 @@ TagManager:
   - close
   - moved
   - unmoved
+  - Ring
   layers:
   - Default
   - TransparentFX
