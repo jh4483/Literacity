@@ -6,6 +6,11 @@ public class AnimSysController : MonoBehaviour
 {
     //Player values
     public Vector3 kazInitialPos;
+    public Quaternion kazInitialRot;
+
+    //Camera Controls
+    public Cinemachine.CinemachineVirtualCamera gameCam;
+    public Cinemachine.CinemachineVirtualCamera kazCam;
 
     public Animator animator;
     public int combo;
@@ -16,6 +21,7 @@ public class AnimSysController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         kazInitialPos = transform.position;
+        kazInitialRot = Quaternion.Euler(0, 0, 0);
     }
 
     // Update is called once per frame
@@ -66,89 +72,136 @@ public class AnimSysController : MonoBehaviour
         switch(combo)
         {
             case 1:
+                SetCamera();
+                yield return new WaitForSeconds(1.0f);
+
                 animator.SetBool("isReady", true);
                 yield return new WaitForSeconds(0.23f);
 
                 animator.SetInteger("ComboVal", combo);
                 yield return new WaitForSeconds(2.8f);
 
-                transform.position = kazInitialPos;
-                animator.SetBool("isReady", false);
-                animator.SetInteger("ComboVal", 0);
-
                 yield return new WaitForSeconds(0.5f);
+                ResetAnim();
+                ResetKaz();
+
+                ResetCamera();
+                yield return new WaitForSeconds(1.0f);
+
                 isAnimating = false;
 
                 break;
+
             case 2:
+                SetCamera();
+                yield return new WaitForSeconds(1.0f);
+
                 animator.SetBool("isReady", true);
                 yield return new WaitForSeconds(0.23f);
 
                 animator.SetInteger("ComboVal", combo);
                 yield return new WaitForSeconds(3.7f);
 
-                transform.position = kazInitialPos;
-                animator.SetBool("isReady", false);
-                animator.SetInteger("ComboVal", 0);
-
                 yield return new WaitForSeconds(0.5f);
+                ResetAnim();
+                ResetKaz();
+
+                ResetCamera();
+                yield return new WaitForSeconds(1.0f);
+
                 isAnimating = false;
 
                 break;
+
             case 3:
+                SetCamera();
+                yield return new WaitForSeconds(1.0f);
+
                 animator.SetBool("isReady", true);
                 yield return new WaitForSeconds(0.23f);
 
                 animator.SetInteger("ComboVal", combo);
                 yield return new WaitForSeconds(3.7f);
 
-                transform.position = kazInitialPos;
-                animator.SetBool("isReady", false);
-                animator.SetInteger("ComboVal", 0);
-
                 yield return new WaitForSeconds(0.5f);
+                ResetAnim();
+                ResetKaz();
+
+                ResetCamera();
+                yield return new WaitForSeconds(1.0f);
+
                 isAnimating = false;
 
                 break;
+
             case 4:
+                SetCamera();
+                yield return new WaitForSeconds(1.0f);
+                
                 animator.SetBool("isReady", true);
                 yield return new WaitForSeconds(0.23f);
 
                 animator.SetInteger("ComboVal", combo);
                 yield return new WaitForSeconds(3.3f);
 
-                transform.position = kazInitialPos;
-                animator.SetBool("isReady", false);
-                animator.SetInteger("ComboVal", 0);
-
                 yield return new WaitForSeconds(0.5f);
+                ResetAnim();
+                ResetKaz();
+
+                ResetCamera();
+                yield return new WaitForSeconds(1.0f);
+
                 isAnimating = false;
 
                 break;
+
             case 5:
+                SetCamera();
+                yield return new WaitForSeconds(1.0f);
+                
                 animator.SetBool("isReady", true);
                 yield return new WaitForSeconds(0.23f);
 
                 animator.SetInteger("ComboVal", combo);
                 yield return new WaitForSeconds(3.0f);
 
-                transform.position = kazInitialPos;
-                animator.SetBool("isReady", false);
-                animator.SetInteger("ComboVal", 0);
-
                 yield return new WaitForSeconds(0.5f);
+                ResetAnim();
+                ResetKaz();
+
+                ResetCamera();
+                yield return new WaitForSeconds(1.0f);
+
                 isAnimating = false;
 
                 break;
+
             default:
                 break;
         }
     }
 
-    void ResetData()
+    void ResetKaz()
     {
         transform.position = kazInitialPos;
+        transform.rotation = kazInitialRot;
+    }
 
+    void ResetAnim()
+    {
         animator.SetBool("isReady", false);
+        animator.SetInteger("ComboVal", 0);
+    }
+
+    void SetCamera()
+    {
+        gameCam.gameObject.SetActive(false);
+        kazCam.gameObject.SetActive(true);
+    }
+
+    void ResetCamera()
+    {
+        gameCam.gameObject.SetActive(true);
+        kazCam.gameObject.SetActive(false);
     }
 }
