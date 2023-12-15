@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 
 public class HH_DragScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    public float scaleFactor = 1.5f;
     public void OnBeginDrag(PointerEventData eventData)
     {
         
