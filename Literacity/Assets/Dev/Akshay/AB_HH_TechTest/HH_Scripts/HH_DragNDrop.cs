@@ -21,8 +21,6 @@ public class HH_DragNDrop : MonoBehaviour
     void OnMouseDown()
     {
         mPosInWorld = Input.mousePosition - GetObjectPos();
-        //mPosInWorld.x = mPosInWorld.x / Screen.width;
-        //mPosInWorld.y = mPosInWorld.y / Screen.height;
     }
 
     void OnMouseDrag()
@@ -33,9 +31,6 @@ public class HH_DragNDrop : MonoBehaviour
         //Backbox math which sets the starting position for the object and adds as the mouse is moved up to sync Z and Y
         zySense = Input.mousePosition.y / Screen.height;
         float newZPos = flyingVec.y * zySense/heightMultiplier;
-
-        //float newZPos = flyingVec.z + flyingVec.y - (flyingVec.y * zySense);
-        //float newZPos = flyingVec.z + flyingVec.y - zySense;
 
         mDragPos = targetCamera.ScreenToWorldPoint(new Vector3(flyingVec.x, flyingVec.y, newZPos));
         

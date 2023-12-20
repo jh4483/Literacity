@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class AnimSysController : MonoBehaviour
@@ -11,6 +12,8 @@ public class AnimSysController : MonoBehaviour
     //Camera Controls
     public Cinemachine.CinemachineVirtualCamera gameCam;
     public Cinemachine.CinemachineVirtualCamera kazCam;
+    public float camInitDist;
+    public float camFinDist;
 
     public Animator animator;
     public int combo;
@@ -181,6 +184,19 @@ public class AnimSysController : MonoBehaviour
         }
     }
 
+    public IEnumerator ZoomCam()
+    {
+        camInitDist = kazCam.GetCinemachineComponent<Cinemachine3rdPersonFollow>().CameraDistance;
+
+        while(kazCam.GetCinemachineComponent<Cinemachine3rdPersonFollow>().CameraDistance < camFinDist)
+        {
+            kazCam.GetCinemachineComponent<Cinemachine3rdPersonFollow>().CameraDistance += 0.1f;
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        yield return new WaitForSeconds(1.0f);
+    }
+
     void ResetKaz()
     {
         transform.position = kazInitialPos;
@@ -196,6 +212,7 @@ public class AnimSysController : MonoBehaviour
     void SetCamera()
     {
         gameCam.gameObject.SetActive(false);
+        StartCoroutine(ZoomCam());
         kazCam.gameObject.SetActive(true);
     }
 
