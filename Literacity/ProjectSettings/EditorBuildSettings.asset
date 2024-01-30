@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/janzDev/Scenes/JanzDevNewScene.unity
     guid: 9cc241f19e7c34712a8bfada20495972
   - enabled: 1
-    path: Assets/Dev/Janz/ReverseKaraoke/NoiseDetector.unity
+    path: Assets/Dev/Janz/ReverseKaraoke/Scene/NoiseDetector.unity
     guid: f79af7ed5e47049abae5cdf9352e977f
   m_configObjects: {}
