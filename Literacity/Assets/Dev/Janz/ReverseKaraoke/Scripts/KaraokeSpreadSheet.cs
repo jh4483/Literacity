@@ -85,19 +85,4 @@ public class KaraokeSpreadSheet : MonoBehaviour
 
     }
 
-
-        //     string messageTextLower = message.text.ToLower();
-        // string searchStringLower = karaokeSpreadSheet.lineSeparated[lineChecker].ToLower(); // Replace "your-search-string" with the string you want to search for
-
-        // // Check if messageTextLower contains searchStringLower
-        // if (messageTextLower.Contains(searchStringLower))
-        // {
-        //     Debug.Log("That's correct!");
-        //     message.text = message.text + " " + res.Text;
-        // }
-
-        // else
-        // {
-        //     Debug.Log(message.text);
-        // }
 }
