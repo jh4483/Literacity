@@ -11,12 +11,12 @@ public class PlayButtonPress : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
     public void makeWordsDisappear()
     {
+
         if (button.activeSelf)
         {
             title1.SetActive(false);

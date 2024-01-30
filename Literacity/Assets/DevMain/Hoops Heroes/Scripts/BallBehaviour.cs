@@ -14,6 +14,10 @@ public class BallBehaviour : MonoBehaviour
     private GameObject basketBallRing;
     private AudioSource ballHitAudio;
     private Animation backboardScale;
+    public AnimationClip backboardRotation;
+    public AnimationClip backboardScaling;
+    public AnimationClip backboardExplodes;
+    public Animator animator;
     private Color backboardColor;
     ClickedPrompt clickedPrompt;
     SpreadSheetNew spreadSheetNew;
@@ -32,6 +36,7 @@ public class BallBehaviour : MonoBehaviour
         clickedPrompt = FindObjectOfType<ClickedPrompt>();
         spreadSheetNew = FindObjectOfType<SpreadSheetNew>();
         backboardScale = backboardHighlight.GetComponent<Animation>();
+        animator = backboardHighlight.GetComponent<Animator>();
         boosterState = FindObjectOfType<BoosterState>();
         playAudio = GetComponent<PlayAudio>();
         moveButton = FindObjectOfType<MoveButton>();
@@ -55,7 +60,7 @@ public class BallBehaviour : MonoBehaviour
 
     private IEnumerator HalfCompletedWord()
     {
-        backboardScale.Play("Backboard Scaling");
+        backboardScale.Play("Backboard_Scaling");
         ballHitAudio.Play();
         transform.position = initialPos;
         transform.rotation = initialRot;
@@ -70,7 +75,7 @@ public class BallBehaviour : MonoBehaviour
             BoosterState.boosterPower++;
             selectedTarget.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = checkText.GetComponent<TextMeshProUGUI>().text.ToString();
             boosterState.StartCoroutine(boosterState.PlayParticles());
-            // spreadSheetNew.playNextRound = true;
+            spreadSheetNew.playNextRound = true;
 
             for (int i = 0; i < enabledButtons.Length; i++)
             {
@@ -84,7 +89,7 @@ public class BallBehaviour : MonoBehaviour
         }
         else if (checkText.GetComponent<TextMeshProUGUI>().text != spreadSheetNew.letterOneList[spreadSheetNew.targetIndex].ToString() && !spreadSheetNew.playNextRound)
         {
-            backboardScale.Play("Backboard Rotation");
+            backboardScale.Play("Backboard_Rotation");
             if (BoosterState.boosterPower != 0)
             {
                 BoosterState.boosterPower = 0;
@@ -94,7 +99,7 @@ public class BallBehaviour : MonoBehaviour
         }
         else if (checkText.GetComponent<TextMeshProUGUI>().text != spreadSheetNew.letterTwoList[spreadSheetNew.targetIndex].ToString() && spreadSheetNew.playNextRound)
         {
-            backboardScale.Play("Backboard Rotation");
+            backboardScale.Play("Backboard_Rotation");
             BoosterState.boosterPower = 0;
             boosterState.isCorrect = false;
         }
@@ -103,7 +108,8 @@ public class BallBehaviour : MonoBehaviour
 
     private IEnumerator CompletedWord()
     {
-        backboardScale.Play("Backboard Scaling");
+        backboardScale.Play("Backboard_Scaling");
+        spreadSheetNew.playNextRound = false;
         boosterState.isCorrect = true;
         yield return new WaitForSeconds(0.7f);
         playAudio.OnCollisionAudio();
@@ -132,7 +138,7 @@ public class BallBehaviour : MonoBehaviour
         spreadSheetNew.selectedCard.tag = "close";
         selectedTarget.GetComponent<RectTransform>().anchoredPosition = moveButton.originalPos;
         spreadSheetNew.totalScore++;
-        spreadSheetNew.playNextRound = false;
+        
     }
 
     public IEnumerator BumpCollider()
