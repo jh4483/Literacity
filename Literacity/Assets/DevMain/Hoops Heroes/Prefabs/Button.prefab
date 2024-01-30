@@ -140,10 +140,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 3
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 26
+  m_GravityScale: 20
   m_Material: {fileID: 6200000, guid: 3de50c6a01e184f9dac6d695993a28aa, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -220,6 +220,10 @@ MonoBehaviour:
   initialRot: {x: 0, y: 0, z: 0, w: 0}
   backboardHighlight: {fileID: 0}
   wordAudioSource: {fileID: 0}
+  backboardRotation: {fileID: 0}
+  backboardScaling: {fileID: 0}
+  backboardExplodes: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!114 &5977954055823130552
 MonoBehaviour:
   m_ObjectHideFlags: 0

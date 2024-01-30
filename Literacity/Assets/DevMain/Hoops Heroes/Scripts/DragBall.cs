@@ -11,12 +11,16 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     CircleCollider2D collider;
     BallBehaviour ballBehaviour;
     public bool isDragging;
-    SpreadSheetNew spreadSheetNew;
+
+    public BoosterState boosterState;
+    public SpreadSheetNew spreadSheetNew;
 
     private void Start()
     {
         StartCoroutine(BallDrop());
         gameMask = GameObject.Find("Canvas").transform.Find("Mask").gameObject;
+
+        boosterState = FindObjectOfType<BoosterState>();
         spreadSheetNew = FindObjectOfType<SpreadSheetNew>();
     }
 
@@ -39,15 +43,21 @@ public class DragBall : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-            rb.velocity = Vector2.zero;
-            rb.isKinematic = true;
-            isDragging = true;
-            rb.constraints = RigidbodyConstraints2D.None;
-            StopAllCoroutines();
+        rb.velocity = Vector2.zero;
+        rb.isKinematic = true;
+
+        isDragging = true;
+        rb.constraints = RigidbodyConstraints2D.None;
+        StopAllCoroutines();
+
     }
 
     public void OnDrag(PointerEventData eventData)
     {
+        if(boosterState.AnimIsRunning)
+        {
+            return;
+        }
         if(spreadSheetNew.playStarted)
         {
             transform.position = eventData.position;

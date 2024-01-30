@@ -9182,6 +9182,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outroScene: {fileID: 1622323696}
   outroAudio: {fileID: 1622323696}
+  particles: []
+  time: 0.1
+  repeatRate: 0.3
 --- !u!1 &1712715742
 GameObject:
   m_ObjectHideFlags: 0
@@ -9782,6 +9785,7 @@ MonoBehaviour:
   totalScore: 0
   playNextRound: 0
   outroScene: {fileID: 1622323696}
+  playStarted: 0
 --- !u!114 &2019489085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9897,6 +9901,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particleSystem: {fileID: 219162897}
   spreadSheetNew: {fileID: 0}
+  cameraShake: {fileID: 0}
+  CameraShakeData: []
   animator: {fileID: 136605444}
   origin: {fileID: 1599437730}
   cardMask: {fileID: 507140442}
@@ -9905,6 +9911,7 @@ MonoBehaviour:
   hasPlayedParticles: 0
   hasCollided: 0
   timeTaken: 0
+  AnimIsRunning: 0
   presetColors:
   - serializedVersion: 2
     key0: {r: 0.9339623, g: 0.85705733, b: 0.18062477, a: 1}

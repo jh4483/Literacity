@@ -5802,6 +5802,9 @@ MonoBehaviour:
   time: 0
   strengthMultiplier: 5
   isShaking: 0
+  testing: {fileID: 11400000, guid: 5c939b6554cf534469f73a1c43dc9ce7, type: 2}
+  backboardImage: {fileID: 1468226988}
+  backboardStartPos: {x: 0, y: 0, z: 0}
 --- !u!1 &252590386
 GameObject:
   m_ObjectHideFlags: 0
@@ -6200,7 +6203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6228,9 +6231,9 @@ Animation:
   serializedVersion: 3
   m_Animation: {fileID: 0}
   m_Animations:
-  - {fileID: 7400000, guid: 98e0c1092c1924ceda7dc0ceaf5af543, type: 2}
-  - {fileID: 7400000, guid: 24ca41db030b24f1387e15b677464001, type: 2}
-  - {fileID: 7400000, guid: aeaf92e4ce7264f60a6a0acfe5ca2806, type: 2}
+  - {fileID: 7400000, guid: b6bd7c3acd21b4bafbdc88add1707b03, type: 2}
+  - {fileID: 7400000, guid: 5e2a74ddc06574471871b117d0ae1a67, type: 2}
+  - {fileID: 7400000, guid: 7f2d4ce3b4a9a42f5aee071f70870713, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -17332,7 +17335,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1162942084
 RectTransform:
   m_ObjectHideFlags: 0
@@ -29844,6 +29847,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particleSystem: {fileID: 219162897}
   spreadSheetNew: {fileID: 0}
+  cameraShake: {fileID: 251108986}
+  CameraShakeData:
+  - {fileID: 11400000, guid: acb6623599d1e504ba6a37b4977b302e, type: 2}
+  - {fileID: 11400000, guid: 9e6019970f13af540aa370fe16b7decb, type: 2}
   animator: {fileID: 136605444}
   origin: {fileID: 1599437730}
   cardMask: {fileID: 507140442}

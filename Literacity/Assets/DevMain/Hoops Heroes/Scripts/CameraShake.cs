@@ -6,13 +6,14 @@ using UnityEngine.UI;
 public class CameraShake : MonoBehaviour
 {
     public AnimationCurve curve;
-    //public Canvas canvas;
-    //public Image background;
     public float duration = 1f;
     public Vector3 startPos;
     public float time = 0f;
     public float strengthMultiplier = 1f;
     public bool isShaking = false;
+    public CameraShakeData testing;
+    public Image backboardImage;
+    public Vector3 backboardStartPos;
 
     void Update()
     {
@@ -22,27 +23,36 @@ public class CameraShake : MonoBehaviour
             {
                 return;
             }
-            StartCoroutine(ShakeCamera());
+            StartCoroutine(ShakeCamera(testing));
         }
     }
 
-    public IEnumerator ShakeCamera()
+    public IEnumerator ShakeCamera(CameraShakeData csdata)
     {
         isShaking = true;
+        SetData(csdata);
         startPos = transform.localPosition;
+        backboardStartPos = backboardImage.transform.localPosition;
         time = 0f;
-        //canvas.renderMode = RenderMode.WorldSpace;
 
         while(time <= duration)
         {
             time += Time.deltaTime;
             float strength = curve.Evaluate(time / duration) * strengthMultiplier;
             transform.localPosition = startPos + Random.insideUnitSphere * strength;
+            backboardImage.transform.localPosition = backboardStartPos + Random.insideUnitSphere * strength;
             yield return null;
         }
 
         transform.localPosition = startPos;
-        //canvas.renderMode = RenderMode.ScreenSpaceCamera;
+        backboardImage.transform.localPosition = backboardStartPos;
         isShaking = false;
+    }
+
+    public void SetData(CameraShakeData data)
+    {
+        duration = data.duration;
+        strengthMultiplier = data.strengthMultiplier;
+        curve = data.curve;
     }
 }
