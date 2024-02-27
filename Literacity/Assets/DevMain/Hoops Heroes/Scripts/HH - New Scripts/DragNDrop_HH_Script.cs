@@ -27,7 +27,6 @@ public class DragNDrop_HH_Script : MonoBehaviour
     void OnMouseDown()
     {
         mPosInWorld = Input.mousePosition - GetObjectPos();
-        ballObserver.TransmitInfo();
     }
 
     void OnMouseDrag()
@@ -43,5 +42,10 @@ public class DragNDrop_HH_Script : MonoBehaviour
         
         transform.position = mDragPos;
 
+    }
+
+    void OnMouseUp()
+    {
+        ballObserver.TransmitInfo();
     }
 }
