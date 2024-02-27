@@ -4,11 +4,16 @@ using UnityEngine;
 using UnityEngine.Networking;
 using SimpleJSON;
 
-public class ObtainData : MonoBehaviour
+public class ObtainData_HH_Script : MonoBehaviour
 {
-
+    [SerializeField]
+    public List <string> ballValues = new List<string>();
+    LoadLevelData_HH_Script loadLevelData;
+    AssignData_HH_Script assignData;
     void Start()
     {
+        loadLevelData = FindObjectOfType<LoadLevelData_HH_Script>();
+        assignData = FindObjectOfType<AssignData_HH_Script>();
         StartCoroutine(AccessData());
     }
 
@@ -34,7 +39,19 @@ public class ObtainData : MonoBehaviour
             
             foreach(var item in o["values"])
             {
-                var itemo = JSON.Parse(item.ToString());
+                var levelData = JSON.Parse(item.ToString());
+                if(levelData[0][0] == loadLevelData.levelName)
+                {
+                    ballValues.Add(levelData[0][2]);
+                    ballValues.Add(levelData[0][3]);
+                    assignData.AddBallData();
+
+                }
+
+                else
+                {
+                    yield return null;
+                }
             }
         }
     }
