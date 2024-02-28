@@ -173,7 +173,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2, y: 2}
+  m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3951217137124408565
 Canvas:
@@ -251,8 +251,8 @@ GameObject:
   - component: {fileID: 6764587421594928647}
   - component: {fileID: 4863865829534585725}
   - component: {fileID: 3354810315938635223}
-  - component: {fileID: 656255173025107751}
   - component: {fileID: 7053634992237997904}
+  - component: {fileID: 4878998466526721851}
   m_Layer: 0
   m_Name: Basketball_HH_Prefab_DONTDELETE
   m_TagString: Untagged
@@ -374,26 +374,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &656255173025107751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7978877024387988618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c45e41c7a6f0d40e999447100305bc70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetCamera: {fileID: 0}
-  zySense: 0
-  heightMultiplier: 1.5
-  mPosInWorld: {x: 0, y: 0, z: 0}
-  mDragPos: {x: 0, y: 0, z: 0}
-  minClamp: -65
-  maxClamp: 58
-  newZPos: 0
 --- !u!114 &7053634992237997904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,3 +387,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   originalPos: {x: 0, y: 0, z: 0}
+--- !u!114 &4878998466526721851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7978877024387988618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffae177afce4246d48a582d5bb7ca420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetCamera: {fileID: 0}
+  zySense: 0
+  heightMultiplier: 1.5
+  mPosInWorld: {x: 0, y: 0, z: 0}
+  mDragPos: {x: 0, y: 0, z: 0}
+  minClamp: -65
+  maxClamp: 58
+  newZPos: 0

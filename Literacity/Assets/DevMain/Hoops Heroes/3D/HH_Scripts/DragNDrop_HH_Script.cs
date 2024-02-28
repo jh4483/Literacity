@@ -16,6 +16,8 @@ public class DragNDrop_HH_Script : MonoBehaviour
     public float minClamp;
     public float maxClamp;
     public float newZPos;
+    public float minClampY = -25;
+    public float maxClampY = 1;
     BallObserver_HH_Script ballObserver;
 
     void Start()
@@ -46,7 +48,7 @@ public class DragNDrop_HH_Script : MonoBehaviour
 
         mDragPos = targetCamera.ScreenToWorldPoint(new Vector3(flyingVec.x, flyingVec.y, newZPos));
         mDragPos.z = Mathf.Clamp(mDragPos.z, minClamp, maxClamp);
-        mDragPos.y = Mathf.Clamp(mDragPos.z, -25, 1);
+        mDragPos.y = Mathf.Clamp(mDragPos.z, minClampY, maxClampY);
         
         transform.position = mDragPos;
 
