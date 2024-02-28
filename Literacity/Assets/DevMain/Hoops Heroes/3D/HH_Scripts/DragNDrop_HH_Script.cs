@@ -56,12 +56,6 @@ public class DragNDrop_HH_Script : MonoBehaviour
 
         float zDelta = (displacementY * zySense)/heightMultiplier;
 
-        // newZPos = Mathf.Clamp(newZPos, minClamp, maxClamp);
-
-        // mDragPos = targetCamera.ScreenToWorldPoint(new Vector3(flyingVec.x, flyingVec.y, newZPos));
-        // mDragPos.z = Mathf.Clamp(mDragPos.z, minClamp, maxClamp);
-        // mDragPos.y = Mathf.Clamp(mDragPos.z, minClampY, maxClampY);
-
         mDragPos = targetCamera.ScreenToWorldPoint(new Vector3(flyingVec.x, flyingVec.y, flyingVec.z + zDelta));
         mDragPos.z = Mathf.Clamp(mDragPos.z, minClamp, maxClamp);
         //mDragPos.y = Mathf.Clamp(mDragPos.y, minClampY, maxClampY);

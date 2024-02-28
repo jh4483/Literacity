@@ -13,11 +13,11 @@ public class BackboardController : MonoBehaviour
 
     void OnEnable()
     {
-       HH_Ball.onBallHoop += PlayScoreParticles; 
+       Basketball_HH_Script.onBallHoop += PlayScoreParticles; 
     }
 
     void OnDisable() 
     {
-       HH_Ball.onBallHoop -= PlayScoreParticles; 
+       Basketball_HH_Script.onBallHoop -= PlayScoreParticles; 
     }
 }

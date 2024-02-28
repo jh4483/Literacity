@@ -7,6 +7,10 @@ public class Basketball_HH_Script : MonoBehaviour
     [SerializeField]
     private Vector3 originalPos;
     BallObserver_HH_Script ballObserver;
+
+    //Ball VFX badly done Observer Pattern. Need to rework this.
+    public delegate void BallHoopEvent();
+    public static event BallHoopEvent onBallHoop;
     void Start()
     {
         StartCoroutine(SaveBallPos());
@@ -29,6 +33,16 @@ public class Basketball_HH_Script : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         this.transform.localPosition = originalPos;
+    }
+
+    //Ball VFX badly done Observer Pattern. Need to rework this.
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Ring" && onBallHoop != null)
+        {
+            Debug.Log("A HOOP!!");
+            onBallHoop();
+        }  
     }
 
 
