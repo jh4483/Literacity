@@ -21,7 +21,7 @@ public class Basketball_HH_Script : MonoBehaviour
 
     private IEnumerator SaveBallPos()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(2.5f);
         originalPos = this.transform.localPosition;
     }
 

@@ -12,6 +12,10 @@ public class DragNDrop_HH_Script : MonoBehaviour
     public Vector3 mPosInWorld;
     public Vector3 mDragPos;
 
+    [Header("Clamping")]
+    public float minClamp;
+    public float maxClamp;
+    public float newZPos;
     BallObserver_HH_Script ballObserver;
 
     void Start()
@@ -36,9 +40,13 @@ public class DragNDrop_HH_Script : MonoBehaviour
 
         //Backbox math which sets the starting position for the object and adds as the mouse is moved up to sync Z and Y
         zySense = Input.mousePosition.y / Screen.height;
-        float newZPos = flyingVec.y * zySense/heightMultiplier;
+        newZPos = (flyingVec.y + zySense)/heightMultiplier;
+
+        // newZPos = Mathf.Clamp(newZPos, minClamp, maxClamp);
 
         mDragPos = targetCamera.ScreenToWorldPoint(new Vector3(flyingVec.x, flyingVec.y, newZPos));
+        mDragPos.z = Mathf.Clamp(mDragPos.z, minClamp, maxClamp);
+        mDragPos.y = Mathf.Clamp(mDragPos.z, -25, 1);
         
         transform.position = mDragPos;
 
