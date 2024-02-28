@@ -12,6 +12,10 @@ public class DragNDrop_HH_Script : MonoBehaviour
     public Vector3 mPosInWorld;
     public Vector3 mDragPos;
 
+    //misc variables for some math
+    private Vector3 flyingVec;
+    private float yValRef; 
+
     [Header("Clamping")]
     public float minClamp;
     public float maxClamp;
@@ -33,22 +37,28 @@ public class DragNDrop_HH_Script : MonoBehaviour
     void OnMouseDown()
     {
         mPosInWorld = Input.mousePosition - GetObjectPos();
+
+        flyingVec = Input.mousePosition - mPosInWorld;
+
+        yValRef = flyingVec.y;
     }
 
     void OnMouseDrag()
     {
 
-        Vector3 flyingVec = Input.mousePosition - mPosInWorld;
+        flyingVec = Input.mousePosition - mPosInWorld;
+
+        float displacementY = flyingVec.y - yValRef;
 
         //Backbox math which sets the starting position for the object and adds as the mouse is moved up to sync Z and Y
         zySense = Input.mousePosition.y / Screen.height;
         newZPos = (flyingVec.y + zySense)/heightMultiplier;
 
-        // newZPos = Mathf.Clamp(newZPos, minClamp, maxClamp);
+        float zDelta = (displacementY * zySense)/heightMultiplier;
 
-        mDragPos = targetCamera.ScreenToWorldPoint(new Vector3(flyingVec.x, flyingVec.y, newZPos));
+        mDragPos = targetCamera.ScreenToWorldPoint(new Vector3(flyingVec.x, flyingVec.y, flyingVec.z + zDelta));
         mDragPos.z = Mathf.Clamp(mDragPos.z, minClamp, maxClamp);
-        mDragPos.y = Mathf.Clamp(mDragPos.z, minClampY, maxClampY);
+        //mDragPos.y = Mathf.Clamp(mDragPos.y, minClampY, maxClampY);
         
         transform.position = mDragPos;
 
