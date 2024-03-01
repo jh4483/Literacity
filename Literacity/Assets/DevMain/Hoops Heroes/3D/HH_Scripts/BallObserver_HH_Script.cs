@@ -7,6 +7,8 @@ public class BallObserver_HH_Script : MonoBehaviour
 {
     [SerializeField]
     public UnityEvent moveOver;
+    [SerializeField]
+    public string pickedWord;
     void Start()
     {
         

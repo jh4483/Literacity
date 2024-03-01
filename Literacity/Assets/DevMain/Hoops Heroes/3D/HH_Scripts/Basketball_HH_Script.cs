@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Basketball_HH_Script : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class Basketball_HH_Script : MonoBehaviour
     //Ball VFX badly done Observer Pattern. Need to rework this.
     public delegate void BallHoopEvent();
     public static event BallHoopEvent onBallHoop;
+    private string ballText;
+    private float heightChecker;
     void Start()
     {
         StartCoroutine(SaveBallPos());
@@ -38,9 +41,11 @@ public class Basketball_HH_Script : MonoBehaviour
     //Ball VFX badly done Observer Pattern. Need to rework this.
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Ring" && onBallHoop != null)
+        heightChecker = this.transform.localPosition.y;
+        if(other.gameObject.tag == "Ring" && onBallHoop != null && heightChecker > 16)
         {
-            Debug.Log("A HOOP!!");
+            ballText = transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text;
+            ballObserver.pickedWord = ballText;
             onBallHoop();
         }  
     }

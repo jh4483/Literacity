@@ -10,7 +10,6 @@ public class LoadLevelData_HH_Script : MonoBehaviour
     public string levelName;
     void Start()
     {
-       levelNum = 1;
        levelName = levelNum.ToString();
     }
 

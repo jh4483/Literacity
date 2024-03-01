@@ -6,7 +6,11 @@ using TMPro;
 
 public class AssignData_HH_Script : MonoBehaviour
 {
+    [SerializeField]
     public List<GameObject> ballCollection = new List<GameObject>();
+    [SerializeField]
+    public GameObject[] buttonArray;
+    public Dictionary<GameObject, string> buttonCollection = new Dictionary<GameObject, string>();
     ObtainData_HH_Script obtainData;
     void Start()
     {
@@ -25,4 +29,13 @@ public class AssignData_HH_Script : MonoBehaviour
             ballCollection[i].GetComponent<TextMeshProUGUI>().text = obtainData.ballValues[i];
         }
     }
+
+    public void AddButtonData()
+    {
+        for(int i = 0; i < obtainData.buttonValues.Count; i++)
+        {
+            buttonCollection.Add(buttonArray[i], obtainData.buttonValues[i]);
+        }
+    }
+
 }

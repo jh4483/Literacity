@@ -8,6 +8,8 @@ public class ObtainData_HH_Script : MonoBehaviour
 {
     [SerializeField]
     public List <string> ballValues = new List<string>();
+    [SerializeField]
+    public List <string> buttonValues = new List<string>();
     LoadLevelData_HH_Script loadLevelData;
     AssignData_HH_Script assignData;
     void Start()
@@ -42,10 +44,10 @@ public class ObtainData_HH_Script : MonoBehaviour
                 var levelData = JSON.Parse(item.ToString());
                 if(levelData[0][0] == loadLevelData.levelName)
                 {
+                    buttonValues.Add(levelData[0][1]);
                     ballValues.Add(levelData[0][2]);
                     ballValues.Add(levelData[0][3]);
                     assignData.AddBallData();
-
                 }
 
                 else
@@ -53,6 +55,8 @@ public class ObtainData_HH_Script : MonoBehaviour
                     yield return null;
                 }
             }
+
+            assignData.AddButtonData();
         }
     }
 }
