@@ -4,14 +4,18 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
 
-public class AnsweChecker_HH_Script : MonoBehaviour
+public class AnswerChecker_HH_Script : MonoBehaviour
 {
     [SerializeField]
     public string pickedButton;
     [SerializeField]
     public GameObject disableButton;
+    public bool isCorrect;
+    public UnityEvent UpdateCounter;
     private bool isCompleting;
+    private int counter;
     private int pointer;
     private TextMeshProUGUI addText;
     AssignData_HH_Script assignData;
@@ -30,6 +34,7 @@ public class AnsweChecker_HH_Script : MonoBehaviour
         assignData = FindObjectOfType<AssignData_HH_Script>();
         ballObserver = FindObjectOfType<BallObserver_HH_Script>();
         isCompleting = false;
+        isCorrect = false;
     }
 
     void Update()
@@ -49,33 +54,49 @@ public class AnsweChecker_HH_Script : MonoBehaviour
         int charCount = ballObserver.pickedWord.Length;
 
         if(!isCompleting && pickedButton != "")
-        {   
+        {
+            counter = 0;   
             pointer = 0;        
             for(int i = 0; i < charCount; i++)
             {
                 if(ballObserver.pickedWord[i] == pickedButton[i])
                 {
+                    counter++;
                     pointer++;
                     addText.text += ballObserver.pickedWord[i];
                     isCompleting = true;
                     DisableButtons();
                 }
             }
+
+            if(counter > 0)
+            {
+                isCorrect = true;
+                UpdateCounter.Invoke();
+            }
             
         }
 
         else if (isCompleting && pickedButton != "")
         {
+            counter = 0;
             for(int i = 0; i < charCount; i++)
             {
                 if(ballObserver.pickedWord[i] == pickedButton[pointer])
-                {
+                {  
+                    counter++; 
                     pointer++;
                     addText.text += ballObserver.pickedWord[i];
                     isCompleting = false;
                 }
 
                 else return;
+            }
+
+            if(counter > 0)
+            {
+                isCorrect = true;
+                UpdateCounter.Invoke();
             }
 
             pickedButton = "";
@@ -102,7 +123,7 @@ public class AnsweChecker_HH_Script : MonoBehaviour
                 assignData.buttonArray[i].transform.GetComponent<Button>().enabled = true;
             }
 
-            else return;
+            else continue;
         }
     }
 }

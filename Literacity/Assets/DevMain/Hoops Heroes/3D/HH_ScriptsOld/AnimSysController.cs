@@ -18,60 +18,86 @@ public class AnimSysController : MonoBehaviour
     public Animator animator;
     public int combo;
     public bool isAnimating;
+    AnswerChecker_HH_Script answerChecker;
 
     // Start is called before the first frame update
     void Start()
     {
+        answerChecker = FindObjectOfType<AnswerChecker_HH_Script>();
         animator = GetComponent<Animator>();
         kazInitialPos = transform.position;
         kazInitialRot = Quaternion.Euler(0, 0, 0);
+        answerChecker.UpdateCounter.AddListener(() => UpdateScore(answerChecker.isCorrect));
+    }
+
+    private void UpdateScore(bool isCorrect)
+    {
+        if(isCorrect)
+        {
+            combo++;
+            if(!isAnimating)
+            {
+                StartCoroutine(PlayAnimation());
+            }
+        }
+
+        else if(!isCorrect)
+        {
+            combo = 0;
+            if(!isAnimating)
+            {
+                StartCoroutine(PlayAnimation());
+            }
+        }
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!isAnimating)
-        {
-            if(Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                combo = 1;
-                isAnimating = true;
+        // if(!isAnimating)
+        // {
+        //     if(Input.GetKeyDown(KeyCode.Alpha1))
+        //     {
+        //         combo = 1;
+        //         isAnimating = true;
 
-                StartCoroutine(PlayAnimation());
-            }
-            if(Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                combo = 2;
-                isAnimating = true;
+        //         StartCoroutine(PlayAnimation());
+        //     }
+        //     if(Input.GetKeyDown(KeyCode.Alpha2))
+        //     {
+        //         combo = 2;
+        //         isAnimating = true;
 
-                StartCoroutine(PlayAnimation());
-            }
-            if(Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                combo = 3;
-                isAnimating = true;
+        //         StartCoroutine(PlayAnimation());
+        //     }
+        //     if(Input.GetKeyDown(KeyCode.Alpha3))
+        //     {
+        //         combo = 3;
+        //         isAnimating = true;
 
-                StartCoroutine(PlayAnimation());
-            }
-            if(Input.GetKeyDown(KeyCode.Alpha4))
-            {
-                combo = 4;
-                isAnimating = true;
+        //         StartCoroutine(PlayAnimation());
+        //     }
+        //     if(Input.GetKeyDown(KeyCode.Alpha4))
+        //     {
+        //         combo = 4;
+        //         isAnimating = true;
 
-                StartCoroutine(PlayAnimation());
-            }
-            if(Input.GetKeyDown(KeyCode.Alpha5))
-            {
-                combo = 5;
-                isAnimating = true;
+        //         StartCoroutine(PlayAnimation());
+        //     }
+        //     if(Input.GetKeyDown(KeyCode.Alpha5))
+        //     {
+        //         combo = 5;
+        //         isAnimating = true;
 
-                StartCoroutine(PlayAnimation());
-            }
-        }
+        //         StartCoroutine(PlayAnimation());
+        //     }
+        // }
     }
 
     public IEnumerator PlayAnimation()
     {
+        isAnimating = true;
         switch(combo)
         {
             case 1:
