@@ -52,7 +52,7 @@ public class DragNDrop_HH_Script : MonoBehaviour
 
         //Backbox math which sets the starting position for the object and adds as the mouse is moved up to sync Z and Y
         zySense = Input.mousePosition.y / Screen.height;
-        newZPos = (flyingVec.y + zySense)/heightMultiplier;
+        // newZPos = (flyingVec.y + zySense)/heightMultiplier;
 
         float zDelta = (displacementY * zySense)/heightMultiplier;
 
