@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 989
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Scene
   m_RootView: {fileID: 4}
   m_MinSize: {x: 875, y: 371}
   m_MaxSize: {x: 10000, y: 10000}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 32279
+  controlID: 64
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 49
+  controlID: 175
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 50
+  controlID: 51
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 51
+  controlID: 52
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -240,8 +240,8 @@ MonoBehaviour:
     y: 0
     width: 311
     height: 544
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -321,8 +321,8 @@ MonoBehaviour:
     y: 0
     width: 489
     height: 939
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 21}
   m_Panes:
   - {fileID: 21}
@@ -375,7 +375,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Basketball_Court_Set_1/Mesh/Materials
+    - Assets/Basketball_Court_Set_1/Prefabs
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -383,16 +383,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 56
   m_LastFolders:
-  - Assets/Basketball_Court_Set_1/Mesh/Materials
+  - Assets/Basketball_Court_Set_1/Prefabs
   m_LastFoldersGridSize: 56
   m_LastProjectPath: D:\Columbia University GRL\Literacity\Literacity
   m_LockTracker:
     m_IsLocked: 1
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 24790000
-    m_LastClickedID: 31012
-    m_ExpandedIDs: 00000000647800001079000018790000
+    m_SelectedIDs: 2a780000
+    m_LastClickedID: 30762
+    m_ExpandedIDs: 00000000e27700001478000018780000ee780000f6780000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -420,7 +420,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 
+    m_ExpandedIDs: 00000000e2770000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -543,7 +543,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -610,21 +610,21 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 52dcffff
-      m_LastClickedID: -9134
-      m_ExpandedIDs: 9adbffffbcdbfffff2dbffff1edcffff40dcffff76dcffffc2dcffffc6dcffffd2dcffffd6dcffffe2dcffffe6dcfffff2dcfffff6dcfffffadcfffffedcffff02ddffff06ddffff12ddffff1eddffff22ddffff2eddffff32ddffff3eddffff42ddffff4eddffff52ddffff5eddffff62ddffff66ddffff6addffff6eddffff72ddffff76ddffff7addffff7eddffff82ddffff8eddffff92ddffff96ddffffa2ddffffa6ddffffaaddffffaeddffffb2ddffff24deffff50deffff78deffffb4ecfffff0faffff
+      scrollPos: {x: 0, y: 112}
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 04bafffff0faffffba720000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Basketball_HH_Prefab
-        m_OriginalName: Basketball_HH_Prefab
+        m_Name: BasketBall
+        m_OriginalName: BasketBall
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -9134
+        m_UserData: 29272
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
         m_OriginalEventType: 0
@@ -947,7 +947,7 @@ MonoBehaviour:
       containerId: overlay-container--right
       floating: 0
       collapsed: 0
-      displayed: 1
+      displayed: 0
       snapOffset: {x: 48, y: 48}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
@@ -1110,9 +1110,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.76277566, y: 1.9588472, z: 14.160673}
+    m_Target: {x: 5.015593, y: 8.657869, z: 4.59709}
     speed: 2
-    m_Value: {x: -0.76277566, y: 1.9588472, z: 14.160673}
+    m_Value: {x: 5.015593, y: 8.657869, z: 4.59709}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1158,13 +1158,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.20434003, y: -0.6613598, z: 0.19371293, w: 0.6958149}
+    m_Target: {x: -0.44367772, y: 0.2983088, z: -0.1596382, w: -0.8303536}
     speed: 2
-    m_Value: {x: 0.20454502, y: -0.66003996, z: 0.19332555, w: 0.69651556}
+    m_Value: {x: -0.44225293, y: 0.29842746, z: -0.1591255, w: -0.8306819}
   m_Size:
-    m_Target: 3.508083
+    m_Target: 1.6876166
     speed: 2
-    m_Value: 3.508083
+    m_Value: 1.7671378
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1236,7 +1236,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Basketball_Court_Set_1/Materials
+    - Assets/Basketball_Court_Set_1
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -1244,16 +1244,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 60
   m_LastFolders:
-  - Assets/Basketball_Court_Set_1/Materials
+  - Assets/Basketball_Court_Set_1
   m_LastFoldersGridSize: 60
   m_LastProjectPath: D:\Columbia University GRL\Literacity\Literacity
   m_LockTracker:
     m_IsLocked: 1
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 20790000
-    m_LastClickedID: 31008
-    m_ExpandedIDs: 000000006478000066780000687800006a7800006c780000107900001479000018790000
+    m_SelectedIDs: 14780000
+    m_LastClickedID: 30740
+    m_ExpandedIDs: 00000000e2770000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1281,7 +1281,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 5c720000
     m_LastClickedID: 29276
-    m_ExpandedIDs: 000000006478000066780000687800006a7800006c7800006e78000070780000
+    m_ExpandedIDs: 00000000e2770000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1308,7 +1308,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000b2730000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
