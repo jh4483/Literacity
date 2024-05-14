@@ -238,7 +238,7 @@ public class AnimSysController : MonoBehaviour
     void SetCamera()
     {
         gameCam.gameObject.SetActive(false);
-        StartCoroutine(ZoomCam());
+        // StartCoroutine(ZoomCam());
         kazCam.gameObject.SetActive(true);
     }
 

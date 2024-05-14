@@ -27,6 +27,7 @@ public class AssignData_HH_Script : MonoBehaviour
         for(int i = 0; i < obtainData.ballValues.Count; i++)
         {
             ballCollection[i].GetComponent<TextMeshProUGUI>().text = obtainData.ballValues[i];
+            // Debug.Log("Adding Ball Data" + ballCollection[i].GetComponent<TextMeshProUGUI>().text);
         }
     }
 
@@ -35,6 +36,7 @@ public class AssignData_HH_Script : MonoBehaviour
         for(int i = 0; i < obtainData.buttonValues.Count; i++)
         {
             buttonCollection.Add(buttonArray[i], obtainData.buttonValues[i]);
+            Debug.Log("Adding Button Data" + buttonCollection[buttonArray[i]]);
         }
     }
 

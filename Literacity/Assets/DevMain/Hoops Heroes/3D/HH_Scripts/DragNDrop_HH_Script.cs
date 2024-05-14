@@ -17,8 +17,8 @@ public class DragNDrop_HH_Script : MonoBehaviour
     private float yValRef; 
 
     [Header("Clamping")]
-    public float minClamp;
-    public float maxClamp;
+    public float minClampZ;
+    public float maxClampZ;
     public float newZPos;
     public float minClampY = -25;
     public float maxClampY = 1;
@@ -57,7 +57,7 @@ public class DragNDrop_HH_Script : MonoBehaviour
         float zDelta = (displacementY * zySense)/heightMultiplier;
 
         mDragPos = targetCamera.ScreenToWorldPoint(new Vector3(flyingVec.x, flyingVec.y, flyingVec.z + zDelta));
-        mDragPos.z = Mathf.Clamp(mDragPos.z, minClamp, maxClamp);
+        mDragPos.z = Mathf.Clamp(mDragPos.z, minClampZ, maxClampZ);
         //mDragPos.y = Mathf.Clamp(mDragPos.y, minClampY, maxClampY);
         
         transform.position = mDragPos;

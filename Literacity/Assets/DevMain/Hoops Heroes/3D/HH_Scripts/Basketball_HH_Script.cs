@@ -14,6 +14,8 @@ public class Basketball_HH_Script : MonoBehaviour
     public static event BallHoopEvent onBallHoop;
     private string ballText;
     private float heightChecker;
+
+    [SerializeField] private float heightMaxVal = 16;
     void Start()
     {
         StartCoroutine(SaveBallPos());
@@ -42,8 +44,10 @@ public class Basketball_HH_Script : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         heightChecker = this.transform.localPosition.y;
-        if(other.gameObject.tag == "Ring" && onBallHoop != null && heightChecker > 16)
+        Debug.Log("Ball Hooped");
+        if(other.gameObject.tag == "Ring" && onBallHoop != null && heightChecker > heightMaxVal)
         {
+            Debug.Log("Ball Hooped");
             ballText = transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text;
             ballObserver.pickedWord = ballText;
             onBallHoop();
