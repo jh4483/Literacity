@@ -9596,7 +9596,7 @@ GameObject:
   - component: {fileID: 1556459203}
   - component: {fileID: 1556459202}
   m_Layer: 0
-  m_Name: BasketBall DragNDrop (3)
+  m_Name: KazBasketBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9611,7 +9611,7 @@ Transform:
   m_GameObject: {fileID: 1556459195}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.343, y: 0.826, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 408182648}
@@ -9637,7 +9637,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6061a50bc8c90f3488e687c68e786e3b, type: 2}
+  - {fileID: 2100000, guid: d2ef96015e30c5541b90359833bf191c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9666,7 +9666,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1556459195}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -8471513108107235005, guid: 3665ad7ecf3e09f4fa9c77d59a137f7c, type: 3}
 --- !u!1 &1567621952
 GameObject:
   m_ObjectHideFlags: 0
