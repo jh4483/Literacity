@@ -18,6 +18,7 @@ public class AnswerChecker_HH_Script : MonoBehaviour
     private int counter;
     private int pointer;
     private TextMeshProUGUI addText;
+    private Dictionary <GameObject, GameObject> hotspotLink = new Dictionary<GameObject, GameObject>();
     AssignData_HH_Script assignData;
     BallObserver_HH_Script ballObserver;
     void OnEnable()
