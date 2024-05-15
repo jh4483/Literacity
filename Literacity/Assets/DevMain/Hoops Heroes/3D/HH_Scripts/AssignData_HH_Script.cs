@@ -15,26 +15,46 @@ public class AssignData_HH_Script : MonoBehaviour
     private GameObject[] hotspotButtons;
     private Dictionary<GameObject, GameObject> hotspotLink = new Dictionary<GameObject, GameObject>();
     private ObtainData_HH_Script obtainData;
+    private AnswerChecker_HH_Script answerChecker;
 
     void Start()
     {
         obtainData = FindObjectOfType<ObtainData_HH_Script>();
+        answerChecker = FindObjectOfType<AnswerChecker_HH_Script>();
         InitializeHotspotLinks();
     }
 
     void Update()
     {
-        
+        HotSpotActivated();
     }
 
     private void InitializeHotspotLinks()
     {
         for (int i = 0; i < buttonArray.Length; i++)
         {
-            hotspotLink.Add(buttonArray[i], hotspotButtons[i]);
-            Debug.Log(hotspotLink[buttonArray[i]]);
+            hotspotLink.Add(hotspotButtons[i], buttonArray[i]);
         }
    
+    }
+
+    public void HotSpotActivated()
+    {
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out hit) && Input.GetMouseButtonDown(0))
+        {
+            if (hit.collider.tag == "hotspot")
+            {
+                GameObject linkedButton = hotspotLink[hit.collider.gameObject];
+                if (linkedButton != null)
+                {
+                    linkedButton.GetComponent<Button>().Select();
+                    answerChecker.OnButtonClick();
+                }
+            }
+        }
     }
 
     public void AddBallData()
