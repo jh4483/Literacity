@@ -44,7 +44,6 @@ public class Basketball_HH_Script : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         heightChecker = this.transform.localPosition.y;
-        Debug.Log("Ball Hooped");
         if(other.gameObject.tag == "Ring" && onBallHoop != null && heightChecker > heightMaxVal)
         {
             Debug.Log("Ball Hooped");

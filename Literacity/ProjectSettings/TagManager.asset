@@ -12,6 +12,7 @@ TagManager:
   - moved
   - unmoved
   - Ring
+  - hotspot
   layers:
   - Default
   - TransparentFX
