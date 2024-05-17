@@ -388,6 +388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   originalPos: {x: 0, y: 0, z: 0}
+  heightMaxVal: 16
 --- !u!114 &4878998466526721851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -405,8 +406,8 @@ MonoBehaviour:
   heightMultiplier: 1.5
   mPosInWorld: {x: 0, y: 0, z: 0}
   mDragPos: {x: 0, y: 0, z: 0}
-  minClamp: -65
-  maxClamp: 58
+  minClampZ: 0
+  maxClampZ: 0
   newZPos: 0
   minClampY: -25
   maxClampY: 18

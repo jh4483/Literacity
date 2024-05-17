@@ -238,6 +238,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameMask: {fileID: 0}
   isDragging: 0
+  boosterState: {fileID: 0}
+  spreadSheetNew: {fileID: 0}
 --- !u!114 &-1737883155450259559
 MonoBehaviour:
   m_ObjectHideFlags: 0
