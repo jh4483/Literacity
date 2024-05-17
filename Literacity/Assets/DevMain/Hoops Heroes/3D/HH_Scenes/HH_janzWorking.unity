@@ -1129,7 +1129,8 @@ MonoBehaviour:
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 23ef184d0e2f94e70880cb860da83471, type: 2}
   m_sharedMaterial: {fileID: 5695088517405329790, guid: 23ef184d0e2f94e70880cb860da83471, type: 2}
-  m_fontSharedMaterials: []
+  m_fontSharedMaterials:
+  - {fileID: 5695088517405329790, guid: 23ef184d0e2f94e70880cb860da83471, type: 2}
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
@@ -2278,7 +2279,8 @@ MonoBehaviour:
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 23ef184d0e2f94e70880cb860da83471, type: 2}
   m_sharedMaterial: {fileID: 5695088517405329790, guid: 23ef184d0e2f94e70880cb860da83471, type: 2}
-  m_fontSharedMaterials: []
+  m_fontSharedMaterials:
+  - {fileID: 5695088517405329790, guid: 23ef184d0e2f94e70880cb860da83471, type: 2}
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
@@ -2359,6 +2361,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1140593024}
     m_Modifications:
+    - target: {fileID: 224389948052127148, guid: 2a98a44e6d8270f43ba8efccad774765, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 1871163216483953777, guid: 2a98a44e6d8270f43ba8efccad774765, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -4202,7 +4208,8 @@ MonoBehaviour:
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 23ef184d0e2f94e70880cb860da83471, type: 2}
   m_sharedMaterial: {fileID: 5695088517405329790, guid: 23ef184d0e2f94e70880cb860da83471, type: 2}
-  m_fontSharedMaterials: []
+  m_fontSharedMaterials:
+  - {fileID: 5695088517405329790, guid: 23ef184d0e2f94e70880cb860da83471, type: 2}
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
@@ -5679,7 +5686,8 @@ MonoBehaviour:
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 23ef184d0e2f94e70880cb860da83471, type: 2}
   m_sharedMaterial: {fileID: 5695088517405329790, guid: 23ef184d0e2f94e70880cb860da83471, type: 2}
-  m_fontSharedMaterials: []
+  m_fontSharedMaterials:
+  - {fileID: 5695088517405329790, guid: 23ef184d0e2f94e70880cb860da83471, type: 2}
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
@@ -6225,6 +6233,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1841177423}
     m_Modifications:
+    - target: {fileID: 1636108874810140067, guid: 9779960990bab7742b2a38941122a268, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+    - target: {fileID: 3823458865476082387, guid: 9779960990bab7742b2a38941122a268, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 5948620922008106685, guid: 9779960990bab7742b2a38941122a268, type: 3}
       propertyPath: m_CapsuleColliders.Array.data[0]
       value: 

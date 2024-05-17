@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -767,7 +767,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9182,6 +9182,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outroScene: {fileID: 1622323696}
   outroAudio: {fileID: 1622323696}
+  particles: []
+  time: 0.1
+  repeatRate: 0.3
 --- !u!1 &1712715742
 GameObject:
   m_ObjectHideFlags: 0
@@ -9782,6 +9785,7 @@ MonoBehaviour:
   totalScore: 0
   playNextRound: 0
   outroScene: {fileID: 1622323696}
+  playStarted: 0
 --- !u!114 &2019489085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9897,6 +9901,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particleSystem: {fileID: 219162897}
   spreadSheetNew: {fileID: 0}
+  cameraShake: {fileID: 0}
+  CameraShakeData: []
   animator: {fileID: 136605444}
   origin: {fileID: 1599437730}
   cardMask: {fileID: 507140442}
@@ -9905,6 +9911,7 @@ MonoBehaviour:
   hasPlayedParticles: 0
   hasCollided: 0
   timeTaken: 0
+  AnimIsRunning: 0
   presetColors:
   - serializedVersion: 2
     key0: {r: 0.9339623, g: 0.85705733, b: 0.18062477, a: 1}
