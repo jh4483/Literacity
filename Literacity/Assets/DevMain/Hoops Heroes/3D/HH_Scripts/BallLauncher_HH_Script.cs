@@ -7,6 +7,7 @@ public class BallLauncher_HH_Script : MonoBehaviour
     [SerializeField] private Rigidbody ball;
     [SerializeField] private Transform[] target;
     [SerializeField] private int targetIndex;
+    [SerializeField] private GameObject ballSprite;
 
     [SerializeField] private float height = 25f;
     [SerializeField] private float gravity = -18f;
@@ -65,10 +66,5 @@ public class BallLauncher_HH_Script : MonoBehaviour
         ball.GetComponent<TargetFollow_HH_Scripts>().enabled = true;
 
         isLaunched = false;
-
-        // if(Input.GetKeyDown(KeyCode.R))
-        // {
-        //     ball.transform.position = transform.position;
-        // }
     }
 }
