@@ -69,6 +69,7 @@ GameObject:
   - component: {fileID: 5797308983943682239}
   - component: {fileID: 7917333527679754502}
   - component: {fileID: 6951861728420047045}
+  - component: {fileID: 8571966989669806585}
   m_Layer: 0
   m_Name: HotSpotSwitch
   m_TagString: Untagged
@@ -85,7 +86,7 @@ Transform:
   m_GameObject: {fileID: 2029358449741475590}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.6, z: 0}
-  m_LocalScale: {x: 7, y: 1, z: 12}
+  m_LocalScale: {x: 7, y: 2, z: 12}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9168555491988699757}
@@ -119,7 +120,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 5161d77ddfedf49bfb6492bf2fddfd14, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -199,6 +200,23 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &8571966989669806585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029358449741475590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 51375e28d6ca647e590d99f6acb6ba2b, type: 2}
 --- !u!1 &7995883549968077616
 GameObject:
   m_ObjectHideFlags: 0
