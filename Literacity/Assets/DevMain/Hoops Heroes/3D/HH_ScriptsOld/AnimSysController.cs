@@ -19,11 +19,13 @@ public class AnimSysController : MonoBehaviour
     public int combo;
     public bool isAnimating;
     AnswerChecker_HH_Script answerChecker;
+    AssignData_HH_Script assignData;
 
     // Start is called before the first frame update
     void Start()
     {
         answerChecker = FindObjectOfType<AnswerChecker_HH_Script>();
+        assignData = FindObjectOfType<AssignData_HH_Script>();
         animator = GetComponent<Animator>();
         kazInitialPos = transform.position;
         kazInitialRot = Quaternion.Euler(0, 0, 0);
@@ -225,8 +227,7 @@ public class AnimSysController : MonoBehaviour
 
     void ResetKaz()
     {
-        transform.position = kazInitialPos;
-        transform.rotation = kazInitialRot;
+        transform.position = assignData.hotspotPos.position;
     }
 
     void ResetAnim()

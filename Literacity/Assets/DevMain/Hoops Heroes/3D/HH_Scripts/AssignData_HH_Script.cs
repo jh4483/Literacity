@@ -13,9 +13,17 @@ public class AssignData_HH_Script : MonoBehaviour
     public Dictionary<GameObject, string> buttonCollection = new Dictionary<GameObject, string>();
     [SerializeField]
     private GameObject[] hotspotButtons;
+    [SerializeField]
+    public GameObject gameCam;
+    [SerializeField]
+    public GameObject basketBallPost;
+    [SerializeField]
+    public GameObject kazPlayer;
+    public Transform hotspotPos;
     private Dictionary<GameObject, GameObject> hotspotLink = new Dictionary<GameObject, GameObject>();
     private ObtainData_HH_Script obtainData;
     private AnswerChecker_HH_Script answerChecker;
+    private bool isMoving = false;
 
     void Start()
     {
@@ -51,7 +59,14 @@ public class AssignData_HH_Script : MonoBehaviour
                 if (linkedButton != null)
                 {
                     linkedButton.GetComponent<Button>().Select();
-                    answerChecker.OnButtonClick();
+                    answerChecker.OnButtonClick();                 
+                    hotspotPos = hit.collider.transform;
+                    GameObject hotSpotAnim = hit.collider.gameObject;
+                    if(!isMoving)
+                    {
+                        StartCoroutine(MoveKazToHotspot(hotSpotAnim, hotspotPos));
+                    }
+
                 }
             }
         }
@@ -73,5 +88,35 @@ public class AssignData_HH_Script : MonoBehaviour
             buttonCollection.Add(buttonArray[i], obtainData.buttonValues[i]);
             Debug.Log("Adding Button Data" + buttonCollection[buttonArray[i]]);
         }
+    }
+
+    private IEnumerator MoveKazToHotspot(GameObject Collider, Transform Switch)
+    {
+        isMoving = true;
+        kazPlayer.GetComponent<Animator>().SetBool("toMove", true);
+
+        while(kazPlayer.transform.position != Switch.position)
+        {
+            kazPlayer.transform.LookAt(Switch.position);
+            kazPlayer.transform.position = Vector3.Lerp(kazPlayer.transform.position, Switch.position, 0.1f);
+
+            if(Mathf.Abs(Vector3.Distance(kazPlayer.transform.position, Switch.transform.position)) < 0.5f)
+            {
+                kazPlayer.GetComponent<Animator>().SetBool("toMove", false);   
+                kazPlayer.transform.position = Switch.transform.position;
+                Collider.transform.GetChild(0).GetComponent<Animation>().Play();
+                Debug.Log("Reached");
+                break;
+            }
+
+            yield return new WaitForSeconds(0.05f);            
+        }
+
+
+        kazPlayer.transform.LookAt(basketBallPost.transform.position);
+        gameCam.SetActive(true);
+        isMoving = false;
+
+        yield return null;
     }
 }
