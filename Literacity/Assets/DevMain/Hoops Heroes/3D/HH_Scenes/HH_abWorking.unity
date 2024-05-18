@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -385,6 +385,10 @@ PrefabInstance:
       propertyPath: targetCamera
       value: 
       objectReference: {fileID: 1791734758}
+    - target: {fileID: 3354810315938635223, guid: 60b162b04f51f4b5b985f946570414d8, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4878998466526721851, guid: 60b162b04f51f4b5b985f946570414d8, type: 3}
       propertyPath: maxClamp
       value: 12.5
@@ -427,7 +431,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7053634992237997904, guid: 60b162b04f51f4b5b985f946570414d8, type: 3}
       propertyPath: heightMaxVal
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7978877024387988618, guid: 60b162b04f51f4b5b985f946570414d8, type: 3}
       propertyPath: m_Name
@@ -529,6 +533,10 @@ PrefabInstance:
       propertyPath: targetCamera
       value: 
       objectReference: {fileID: 1791734758}
+    - target: {fileID: 3354810315938635223, guid: 60b162b04f51f4b5b985f946570414d8, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4878998466526721851, guid: 60b162b04f51f4b5b985f946570414d8, type: 3}
       propertyPath: maxClamp
       value: 12.5
@@ -571,7 +579,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7053634992237997904, guid: 60b162b04f51f4b5b985f946570414d8, type: 3}
       propertyPath: heightMaxVal
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7978877024387988618, guid: 60b162b04f51f4b5b985f946570414d8, type: 3}
       propertyPath: m_Name
@@ -991,6 +999,10 @@ PrefabInstance:
       propertyPath: targetCamera
       value: 
       objectReference: {fileID: 1791734758}
+    - target: {fileID: 3354810315938635223, guid: 60b162b04f51f4b5b985f946570414d8, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4878998466526721851, guid: 60b162b04f51f4b5b985f946570414d8, type: 3}
       propertyPath: maxClamp
       value: 12.5
@@ -1033,7 +1045,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7053634992237997904, guid: 60b162b04f51f4b5b985f946570414d8, type: 3}
       propertyPath: heightMaxVal
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7978877024387988618, guid: 60b162b04f51f4b5b985f946570414d8, type: 3}
       propertyPath: m_Name
@@ -1889,7 +1901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1136837fb98c2f6439e573fac4b5801d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ball: {fileID: 0}
+  ball: {fileID: 1691855567}
   target:
   - {fileID: 1666793721}
   targetIndex: 0
@@ -2765,6 +2777,10 @@ PrefabInstance:
       propertyPath: targetCamera
       value: 
       objectReference: {fileID: 1791734758}
+    - target: {fileID: 3354810315938635223, guid: 60b162b04f51f4b5b985f946570414d8, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4878998466526721851, guid: 60b162b04f51f4b5b985f946570414d8, type: 3}
       propertyPath: maxClamp
       value: 12.5
@@ -2807,7 +2823,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7053634992237997904, guid: 60b162b04f51f4b5b985f946570414d8, type: 3}
       propertyPath: heightMaxVal
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7978877024387988618, guid: 60b162b04f51f4b5b985f946570414d8, type: 3}
       propertyPath: m_Name
@@ -3162,6 +3178,10 @@ PrefabInstance:
       propertyPath: targetCamera
       value: 
       objectReference: {fileID: 1791734758}
+    - target: {fileID: 3354810315938635223, guid: 60b162b04f51f4b5b985f946570414d8, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4878998466526721851, guid: 60b162b04f51f4b5b985f946570414d8, type: 3}
       propertyPath: maxClamp
       value: 12.5
@@ -3204,7 +3224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7053634992237997904, guid: 60b162b04f51f4b5b985f946570414d8, type: 3}
       propertyPath: heightMaxVal
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7978877024387988618, guid: 60b162b04f51f4b5b985f946570414d8, type: 3}
       propertyPath: m_Name
@@ -5273,6 +5293,10 @@ PrefabInstance:
       propertyPath: targetCamera
       value: 
       objectReference: {fileID: 1791734758}
+    - target: {fileID: 3354810315938635223, guid: 60b162b04f51f4b5b985f946570414d8, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4878998466526721851, guid: 60b162b04f51f4b5b985f946570414d8, type: 3}
       propertyPath: maxClamp
       value: 12.5
@@ -5315,7 +5339,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7053634992237997904, guid: 60b162b04f51f4b5b985f946570414d8, type: 3}
       propertyPath: heightMaxVal
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7978877024387988618, guid: 60b162b04f51f4b5b985f946570414d8, type: 3}
       propertyPath: m_Name
@@ -16457,6 +16481,10 @@ PrefabInstance:
       propertyPath: targetCamera
       value: 
       objectReference: {fileID: 1791734758}
+    - target: {fileID: 3354810315938635223, guid: 60b162b04f51f4b5b985f946570414d8, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4878998466526721851, guid: 60b162b04f51f4b5b985f946570414d8, type: 3}
       propertyPath: maxClamp
       value: 12.5
@@ -16499,7 +16527,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7053634992237997904, guid: 60b162b04f51f4b5b985f946570414d8, type: 3}
       propertyPath: heightMaxVal
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7978877024387988618, guid: 60b162b04f51f4b5b985f946570414d8, type: 3}
       propertyPath: m_Name
@@ -17165,6 +17193,10 @@ PrefabInstance:
       propertyPath: targetCamera
       value: 
       objectReference: {fileID: 1791734758}
+    - target: {fileID: 3354810315938635223, guid: 60b162b04f51f4b5b985f946570414d8, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4878998466526721851, guid: 60b162b04f51f4b5b985f946570414d8, type: 3}
       propertyPath: maxClamp
       value: 15
@@ -17207,7 +17239,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7053634992237997904, guid: 60b162b04f51f4b5b985f946570414d8, type: 3}
       propertyPath: heightMaxVal
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7978877024387988618, guid: 60b162b04f51f4b5b985f946570414d8, type: 3}
       propertyPath: m_Name
