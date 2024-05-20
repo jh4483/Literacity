@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Rendering.PostProcessing;
 
 public class AssignData_HH_Script : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class AssignData_HH_Script : MonoBehaviour
     public GameObject basketBallPost;
     [SerializeField]
     public GameObject kazPlayer;
+    [SerializeField]
     public Transform hotspotPos;
     private Dictionary<GameObject, GameObject> hotspotLink = new Dictionary<GameObject, GameObject>();
     private ObtainData_HH_Script obtainData;
@@ -55,11 +57,11 @@ public class AssignData_HH_Script : MonoBehaviour
         {
             if (hit.collider.tag == "hotspot")
             {
-                GameObject linkedButton = hotspotLink[hit.collider.gameObject];
-                if (linkedButton != null)
-                {
-                    linkedButton.GetComponent<Button>().Select();
-                    answerChecker.OnButtonClick();                 
+                // GameObject linkedButton = hotspotLink[hit.collider.gameObject];
+                // if (linkedButton != null)
+                // {
+                //     linkedButton.GetComponent<Button>().Select();
+                    // answerChecker.OnButtonClick();                 
                     hotspotPos = hit.collider.transform;
                     GameObject hotSpotAnim = hit.collider.gameObject;
                     if(!isMoving)
@@ -67,7 +69,7 @@ public class AssignData_HH_Script : MonoBehaviour
                         StartCoroutine(MoveKazToHotspot(hotSpotAnim, hotspotPos));
                     }
 
-                }
+                // }
             }
         }
     }
@@ -104,8 +106,10 @@ public class AssignData_HH_Script : MonoBehaviour
             {
                 kazPlayer.GetComponent<Animator>().SetBool("toMove", false);   
                 kazPlayer.transform.position = Switch.transform.position;
+                
+                Collider.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = new Color(0, 1, 1, 0);
+
                 Collider.transform.GetChild(0).GetComponent<Animation>().Play();
-                Debug.Log("Reached");
                 break;
             }
 
